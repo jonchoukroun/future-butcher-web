@@ -1,26 +1,17 @@
-import Component from '@ember/component'
-import { Socket } from 'phoenix'
+import Component  from '@ember/component'
+import { get, set }    from '@ember/object'
+import { inject } from '@ember/service'
 
 export default Component.extend({
 
-  didReceiveAttrs() {
-    this._super(...arguments);
+  phoenixSocket: inject('phoenix-socket'),
 
-    let socket = new Socket('ws://localhost:4000/socket', {});
-    socket.connect();
+  actions: {
 
-    let channel = socket.channel("game:jon", {
-      screen_name: "jon",
-      player_hash: "sdf09sjdf"
-    });
-
-    channel.join()
-      .receive("ok", response => {
-        console.log("Connected successfully", response);
-      })
-      .receive("error", response => {
-        console.error("Fucked up", response);
-      })
-  },
+    connect() {
+      let options = { name: "jon" };
+      get(this, 'phoenixSocket').connect(options);
+    }
+  }
 
 })

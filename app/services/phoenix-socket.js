@@ -1,20 +1,50 @@
-import PhoenixSocket from 'phoenix/services/phoenix-socket';
+import Service      from '@ember/service'
+import { Socket }   from 'phoenix'
+import { get, set } from '@ember/object'
+import ENV          from '../config/environment'
 
-export default PhoenixSocket.extend({
+export default Service.extend({
 
-  init() {
-    this.on('open', () => {
-      console.log('Socket opened');
-    })
+  gameChannel() {
+    get(this, 'gameChannel')
   },
 
-  connect(/*url, options*/) {
-    this._super("wss://localhost.com/socket/");
-    const channel = this.joinChannel("game:jon", {
-      screen_name: "jon",
-      player_hash: "s89sdf23or"
+  connect(params) {
+    let name   = params.name;
+    let socket = this.openSocket(ENV.api_url);
+
+    set(this, 'gameChannel', this.joinChannel(socket, name));
+
+    localStorage.setItem('current_player', name);
+  },
+
+  openSocket(url) {
+    const socket = new Socket(url, {});
+    socket.connect();
+    return socket;
+  },
+
+  joinChannel(socket, name) {
+    let channel = socket.channel("game:" + name, {
+      screen_name: name,
+      player_hash: this._getPlayerHash(name)
     });
 
-    channel.on("ok", () => { console.log("connected") })
+    channel.join()
+      .receive("ok", res => {
+        console.log("Connected!", res);
+      })
+      .receive("error", res => {
+        this._handleFailure("Couldn't connect", res);
+      })
+  },
+
+  _getPlayerHash(name) {
+    return `${name}_some2399sbdf`;
+  },
+
+  _handleFailure(message, response) {
+    console.error(message, response.reason);
   }
+
 })
