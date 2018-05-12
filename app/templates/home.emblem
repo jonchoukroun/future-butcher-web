@@ -1,0 +1,6 @@
+#main-menu.container-fluid.my-5
+  if channelJoined
+    h1 Hey nong man
+  else
+    = title-screen
+    = sign-up sendJoin='hasJoinedChannel'
