@@ -1,0 +1,115 @@
+$green: #5AD25A;
+$lightGreen: rgba(90, 210, 90, 0.4);
+$red: #ED4848;
+$black: #282828;
+
+.text-green {
+  color: $green;
+}
+
+.text-red {
+  color: $red;
+}
+
+.bg-black {
+  background: $black;
+}
+
+html, body {
+  max-height: 100vh;
+  background: $black;
+  color: $green;
+  overflow: hidden;
+  font-family: 'Space Mono', monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3 {
+  font-family: 'Voltaire', sans-serif;
+}
+
+h5 {
+  font-weight: 800;
+}
+
+input.form-control {
+  background-color: $black;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-color: $lightGreen;
+  border-radius: 2px;
+  font-size: 1rem;
+  transition: all 0.5s ease-out;
+}
+
+input.form-control:focus {
+  background-color: $black;
+  border-color: $green;
+  box-shadow: none;
+  color: $green;
+  font-family: 'Space Mono', monospace;
+  font-weight: 800 !important;
+}
+
+.btn-group-lg > .btn {
+  border-radius: 2px;
+}
+
+.btn-primary {
+  margin: 10px 0;
+  background-color: $black;
+  border-color: $lightGreen;
+  border-radius: 2px;
+  border-width: 2px;
+  color: $green;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 0.2s ease-out;
+}
+
+.btn-primary:active {
+  background-color: $lightGreen !important;
+  border-color: $green !important;
+  border-radius: 2px !important;
+  color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.btn-primary:focus {
+  box-shadow: none;
+}
+
+.btn-primary:hover {
+  background-color: $lightGreen;
+  border-color: $lightGreen;
+  transform: translateY(-2px);
+  box-shadow: 1px 1px 7px 3px $lightGreen;
+  color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.btn-primary:active:focus {
+  box-shadow: 0 0 0 0.2rem $lightGreen !important;
+}
+
+.btn-plain {
+  background-color: $black;
+  border: none;
+  border-radius: 2px;
+  font-family: 'Voltaire', sans-serif;
+  font-size: 1.5rem;
+  color: $green;
+}
+
+.btn-disabled {
+  background-color: transparent;
+  color: $lightGreen;
+  font-style: italic;
+}
+
+.list-group-item {
+  background-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+  border: none;
+  }
