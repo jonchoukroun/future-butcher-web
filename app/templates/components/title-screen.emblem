@@ -1,0 +1,5 @@
+#title-screen.d-flex.justify-content-center.align-items-current_player
+  .text-block
+    h1#title-future.display-1 Future
+
+    #title-butcher.display-1.code-text.typewriter Butcher
