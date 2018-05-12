@@ -1,5 +1,0 @@
-h2 All salads aside
-
-.d-flex.justify-content-center
-  button.btn.btn-primary.btn-lg click='connect'
-    | Connect
