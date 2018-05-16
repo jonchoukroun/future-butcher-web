@@ -1,7 +1,7 @@
-import Service      from '@ember/service'
-import { Socket }   from 'phoenix'
-import { set } from '@ember/object'
-import ENV          from '../config/environment'
+import Service    from '@ember/service'
+import { Socket } from 'phoenix'
+import { set }    from '@ember/object'
+import ENV        from '../config/environment'
 
 export default Service.extend({
 
@@ -15,8 +15,7 @@ export default Service.extend({
   },
 
   _openSocket(url) {
-    const params = {token: "heyNongMan"}
-    const socket = new Socket(url, { params: params });
+    const socket = new Socket(url, {});
     socket.connect();
     return socket;
   },
