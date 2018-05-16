@@ -3,4 +3,4 @@
     h1 Hey nong man
   else
     = title-screen
-    = sign-up sendJoin='hasJoinedChannel'
+    = sign-up sendJoin=(action 'hasJoinedChannel')

@@ -1,10 +1,7 @@
 import Component from '@ember/component';
-import { get, set, computed } from '@ember/object';
-import { inject as service } from '@ember/service';
+import { get, set } from '@ember/object';
 
 export default Component.extend({
-
-  phoenixChannel: service('phoenix-socket'),
 
   elementId: 'sign-up',
 
@@ -23,10 +20,8 @@ export default Component.extend({
     },
 
     createPlayer() {
-      let payload = { name: get(this, 'playerName') };
-      get(this, 'phoenixChannel').connect(payload);
-
-      this.sendAction('sendJoin');
+      get(this, 'socket').connect({ name: get(this, 'playerName') });
+      get(this, 'sendJoin')();
     }
 
   }

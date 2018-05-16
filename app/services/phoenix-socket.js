@@ -1,6 +1,6 @@
 import Service      from '@ember/service'
 import { Socket }   from 'phoenix'
-import { get, set } from '@ember/object'
+import { set } from '@ember/object'
 import ENV          from '../config/environment'
 
 export default Service.extend({
@@ -8,15 +8,15 @@ export default Service.extend({
   connect(params) {
     let name    = params.name;
     let socket  = this._openSocket(ENV.api_url);
-    let channel = this._joinChannel(socket, name);
 
-    localStorage.setItem('current_player', name);
+    localStorage.setItem('player_name', name);
 
-    return channel;
+    return this._joinChannel(socket, name);
   },
 
   _openSocket(url) {
-    const socket = new Socket(url, {});
+    const params = {token: "heyNongMan"}
+    const socket = new Socket(url, { params: params });
     socket.connect();
     return socket;
   },
@@ -36,11 +36,11 @@ export default Service.extend({
   },
 
   _handleSuccess(message, response) {
-    console.log(message, response)
+    console.log(message, response) // eslint-disable-line
   },
 
   _handleFailure(message, response) {
-    console.error(message, response.reason);
+    console.error(message, response.reason); // eslint-disable-line
   }
 
 })
