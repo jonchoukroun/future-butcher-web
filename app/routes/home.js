@@ -1,5 +1,5 @@
-import Route from '@ember/routing/route';
-import { get } from '@ember/object';
+import Route   from '@ember/routing/route'
+import { get } from '@ember/object'
 
 export default Route.extend({
 
@@ -13,7 +13,5 @@ export default Route.extend({
       controller.set('channelJoined', true);
     }
 
-  },
-
-
+  }
 })
