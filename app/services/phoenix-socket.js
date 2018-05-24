@@ -75,13 +75,24 @@ export default Service.extend({
   },
 
   buyCut(cut, amount) {
-    get(this, 'gameChannel').push("buy_cut", {"cut": cut, "amount": amount})
+    get(this, 'gameChannel').push("buy_cut", { "cut": cut, "amount": amount })
       .receive("ok", response => {
         set(this, 'stateData', response.state_data);
         this._handleSuccess("Cut bought", response);
       })
       .receive("error", response => {
         this._handleFailure("Failed to buy cut", response);
+      })
+  },
+
+  sellCut(cut, amount) {
+    get(this, 'gameChannel').push("sell_cut", { "cut": cut, "amount": amount })
+      .receive("ok", response => {
+        set(this, 'stateData', response.state_data);
+        this._handleSuccess("Cut sold", response);
+      })
+      .receive("error", response => {
+        this._handleFailure("Failed to sell cut", response);
       })
   },
 
