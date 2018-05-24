@@ -95,6 +95,17 @@ export default Service.extend({
       })
   },
 
+  payDebt(amount) {
+    get(this, 'gameChannel').push("pay_debt", { "amount": amount })
+      .receive("ok", response => {
+        set(this, 'stateData', response.state_data);
+        this._handleSuccess("Debt repaid", response);
+      })
+      .receive("error", response => {
+        this._handleFailure("Failed to repay debt", response);
+      })
+  },
+
   retirePlayer(state) {
     let score = state.player.debt === 0 ? state.player.funds : null;
     if (score === 0) { score = null; }
