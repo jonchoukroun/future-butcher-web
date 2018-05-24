@@ -14,7 +14,7 @@ export default Route.extend({
     if (playerName && playerName.length > 2 && playerHash) {
       get(this, 'socket').connect({ name: playerName, hash_id: playerHash });
     } else {
-      this.transitionTo('create-player');
+      this.replaceWith('create-player');
     }
   }
 
