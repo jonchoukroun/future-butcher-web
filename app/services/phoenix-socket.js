@@ -8,18 +8,21 @@ export default Service.extend({
   gameChannel: null,
   stateData:   null,
   highScores:  null,
+  gameStatus:  null,
+  finalScore:  null,
 
   connect(params) {
-    let name    = params.name;
-    let hash_id = params.hash_id;
-    let socket  = this._openSocket(ENV.api_url);
-
+    let name = params.name;
+    if (!name || name.length < 3) { return; }
     localStorage.setItem('player_name', name);
+
+    let socket  = this._openSocket(ENV.api_url);
+    let hash_id = params.hash_id;
 
     if (hash_id) {
       return this._reJoinChannel(socket, name, hash_id);
     } else {
-      return this._joinChannel(socket, name, hash_id);
+      return this._joinChannel(socket, name);
     }
   },
 
@@ -57,19 +60,25 @@ export default Service.extend({
 
   },
 
-  // changeStation(station) {
-  //   get(this, 'gameChannel').push("change_station", {"destination": station})
-  //     .receive("ok", response => {
-  //       set(this, 'stateData', response.state_data);
-  //       this._handleSuccess("Station changed", response);
-  //     })
-  //     .receive("game_over", response => {
-  //       this._retirePlayer();
-  //     })
-  //     .receive("error", response => {
-  //       this._handleFailure("Failed to change station", response);
-  //     })
-  // },
+  changeStation(station) {
+    get(this, 'gameChannel').push("change_station", {"destination": station})
+      .receive("ok", response => {
+        set(this, 'stateData', response.state_data);
+        this._handleSuccess("Station changed", response);
+      })
+      .receive("game_over", response => {
+        this._retirePlayer(response.state_data);
+      })
+      .receive("error", response => {
+        this._handleFailure("Failed to change station", response);
+      })
+  },
+
+  _retirePlayer(state) {
+    let score = state.player.debt === 0 ? state.player.funds : null;
+    if (score === 0) { score = null; }
+    set(this, 'finalScore', score);
+  },
 
   _openSocket(url) {
     const socket = new Socket(url, {});
@@ -96,9 +105,8 @@ export default Service.extend({
     let channel = socket.channel("game:" + name, { player_name: name, hash_id: hash_id });
 
     channel.join()
-      .receive("ok", response => {
-        localStorage.setItem('player_hash', response.hash_id);
-        this._handleSuccess("Reconnected successfully", response)
+      .receive("ok", () => {
+        this._restoreGameState(name);
       })
       .receive("error", response => {
         localStorage.setItem('player_name', null);
@@ -109,12 +117,34 @@ export default Service.extend({
     set(this, 'gameChannel', channel);
   },
 
+  _restoreGameState(name) {
+    get(this, 'gameChannel').push("restore_game_state", name)
+      .receive("ok", response => {
+        set(this, 'stateData', response.state_data);
+        this._handleSuccess("Reconnected successfully", response)
+      })
+      .receive("error", response => {
+        this._handleFailure("Couldn't restore game state", response);
+      })
+  },
+
   _handleSuccess(message, response) {
-    console.log(message, response) // eslint-disable-line
+    this._setGameStatus();
+    console.log(message, response); // eslint-disable-line
   },
 
   _handleFailure(message, response) {
     console.error(message, response.reason); // eslint-disable-line
+  },
+
+  _setGameStatus() {
+    let status = get(this, 'stateData.rules.state');
+
+    if (!status || status === 'game_over') {
+      set(this, 'gameStatus', null);
+    } else {
+      set(this, 'gameStatus', status);
+    }
   }
 
 })
