@@ -1,0 +1,4 @@
+.container-fluid.my-5
+  = title-screen
+  
+  = sign-up sendJoin=(action 'signInPlayer')
