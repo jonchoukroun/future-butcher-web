@@ -67,14 +67,25 @@ export default Service.extend({
         this._handleSuccess("Station changed", response);
       })
       .receive("game_over", response => {
-        this._retirePlayer(response.state_data);
+        this.retirePlayer(response.state_data);
       })
       .receive("error", response => {
         this._handleFailure("Failed to change station", response);
       })
   },
 
-  _retirePlayer(state) {
+  buyCut(cut, amount) {
+    get(this, 'gameChannel').push("buy_cut", {"cut": cut, "amount": amount})
+      .receive("ok", response => {
+        set(this, 'stateData', response.state_data);
+        this._handleSuccess("Cut bought", response);
+      })
+      .receive("error", response => {
+        this._handleFailure("Failed to buy cut", response);
+      })
+  },
+
+  retirePlayer(state) {
     let score = state.player.debt === 0 ? state.player.funds : null;
     if (score === 0) { score = null; }
     set(this, 'finalScore', score);
