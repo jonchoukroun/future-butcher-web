@@ -7,7 +7,6 @@ export default Service.extend({
 
   gameChannel: null,
   stateData:   null,
-  highScores:  null,
   gameStatus:  null,
   finalScore:  null,
 
@@ -51,7 +50,7 @@ export default Service.extend({
     let payload = { score: score, hash_id: localStorage.getItem('player_hash') };
     get(this, 'gameChannel').push("end_game", payload)
       .receive("ok", response => {
-        set(this, 'highScores', response.state_data);
+        set(this, 'stateData', response.state_data);
         this._handleSuccess("Game ended successfully", response);
       })
       .receive("error", response => {
