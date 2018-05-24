@@ -3,15 +3,19 @@ import { get } from '@ember/object'
 
 export default Route.extend({
 
-  setupController(controller) {
+  beforeModel() {
     this._super(...arguments);
 
-    let name = localStorage.getItem('player_name');
+    let playerName = localStorage.getItem('player_name');
+    let playerHash = localStorage.getItem('player_hash');
 
-    if (name && name.length > 2) {
-      get(this, 'socket').connect({ name: name });
-      controller.set('channelJoined', true);
+    if (get(this, 'socket.gameChannel')) { return; }
+
+    if (playerName && playerName.length > 2 && playerHash) {
+      get(this, 'socket').connect({ name: playerName, hash_id: playerHash });
+    } else {
+      this.transitionTo('create-player');
     }
-
   }
+
 })
