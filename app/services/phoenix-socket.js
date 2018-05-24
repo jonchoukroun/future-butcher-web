@@ -25,91 +25,37 @@ export default Service.extend({
     }
   },
 
-  newGame() {
-    get(this, 'gameChannel').push("new_game")
-      .receive("ok", response => {
-        this._handleSuccess("New game created", response);
-      })
-      .receive("error", response => {
-        this._handleFailure("Failed to create new game", response);
-      })
-  },
+  pushCallBack(callback, payload) {
+    if (!this._validateCallback(callback)) {
+      return this._handleFailure("Invalid callback", null);
+    }
 
-  startGame() {
-    get(this, 'gameChannel').push("start_game")
+    get(this, 'gameChannel').push(callback, payload)
       .receive("ok", response => {
         set(this, 'stateData', response.state_data);
-        this._handleSuccess("Game started successfully", response);
-      })
-      .receive("error", response => {
-        this._handleFailure("Failed to start game", response);
-      })
-  },
-
-  endGame(score) {
-    let payload = { score: score, hash_id: localStorage.getItem('player_hash') };
-    get(this, 'gameChannel').push("end_game", payload)
-      .receive("ok", response => {
-        set(this, 'stateData', response.state_data);
-        this._handleSuccess("Game ended successfully", response);
-      })
-      .receive("error", response => {
-        this._handleFailure("Failed to end game", response);
-      })
-
-  },
-
-  changeStation(station) {
-    get(this, 'gameChannel').push("change_station", {"destination": station})
-      .receive("ok", response => {
-        set(this, 'stateData', response.state_data);
-        this._handleSuccess("Station changed", response);
+        this._handleSuccess("Success", response);
       })
       .receive("game_over", response => {
-        this.retirePlayer(response.state_data);
+        set(this, 'stateData', response);
+        this._handleSuccess("Success", response);
       })
       .receive("error", response => {
-        this._handleFailure("Failed to change station", response);
+        this._handleFailure("Failed", response);
       })
   },
 
-  buyCut(cut, amount) {
-    get(this, 'gameChannel').push("buy_cut", { "cut": cut, "amount": amount })
-      .receive("ok", response => {
-        set(this, 'stateData', response.state_data);
-        this._handleSuccess("Cut bought", response);
-      })
-      .receive("error", response => {
-        this._handleFailure("Failed to buy cut", response);
-      })
-  },
-
-  sellCut(cut, amount) {
-    get(this, 'gameChannel').push("sell_cut", { "cut": cut, "amount": amount })
-      .receive("ok", response => {
-        set(this, 'stateData', response.state_data);
-        this._handleSuccess("Cut sold", response);
-      })
-      .receive("error", response => {
-        this._handleFailure("Failed to sell cut", response);
-      })
-  },
-
-  payDebt(amount) {
-    get(this, 'gameChannel').push("pay_debt", { "amount": amount })
-      .receive("ok", response => {
-        set(this, 'stateData', response.state_data);
-        this._handleSuccess("Debt repaid", response);
-      })
-      .receive("error", response => {
-        this._handleFailure("Failed to repay debt", response);
-      })
-  },
-
+  // extract this to subway component
   retirePlayer(state) {
     let score = state.player.debt === 0 ? state.player.funds : null;
     if (score === 0) { score = null; }
     set(this, 'finalScore', score);
+  },
+
+  _validateCallback(callback) {
+    const validCallbacks = [
+      "new_game", "start_game", "end_game", "change_station", "buy_cut", "sell_cut", "pay_debt"
+    ];
+    return validCallbacks.includes(callback);
   },
 
   _openSocket(url) {
@@ -166,7 +112,8 @@ export default Service.extend({
   },
 
   _handleFailure(message, response) {
-    console.error(message, response.reason); // eslint-disable-line
+    let reason = (response || {}).reason || "";
+    console.error(message, reason); // eslint-disable-line
   },
 
   _setGameStatus() {
