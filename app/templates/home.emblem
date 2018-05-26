@@ -1,11 +1,6 @@
 .container-fluid.my-5
-  h1 Hey nong man
-
   if socket.gameStatus
-    = buy-cut text="Buy Cut"
-    = sell-cut text="Sell Cut"
-    = pay-debt text="Pay Debt"
-    = change-station text="Change Station"
+    = game-menu
   else
     = start-game text="start game"
 
