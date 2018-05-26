@@ -44,13 +44,6 @@ export default Service.extend({
       })
   },
 
-  // extract this to subway component
-  retirePlayer(state) {
-    let score = state.player.debt === 0 ? state.player.funds : null;
-    if (score === 0) { score = null; }
-    set(this, 'finalScore', score);
-  },
-
   _validateCallback(callback) {
     const validCallbacks = [
       "new_game", "start_game", "end_game", "change_station", "buy_cut", "sell_cut", "pay_debt"
