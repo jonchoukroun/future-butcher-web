@@ -7,9 +7,17 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
+
   this.route('home', { path: '/' });
 
   this.route('create-player');
+
+  this.route('bank');
+
+  this.route('market');
+
+  this.route('subway');
+
 });
 
 export default Router;
