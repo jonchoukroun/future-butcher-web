@@ -1,0 +1,7 @@
+= collapsed-game-stats isCollapsed=false
+
+.container-fluid: .row
+  h5 List inventory here
+
+.d-flex.justify-content-end.px-4
+  span: i.fas.fa-minus click='action "sendCollapseStats"'

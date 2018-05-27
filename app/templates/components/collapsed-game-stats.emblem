@@ -1,0 +1,20 @@
+h5.game-stat
+  span: i.fas.fa-dollar-sign
+  ' #{playerFunds}
+  if currentDebt
+    span.text-red
+      ' (#{currentDebt})
+
+
+h5.game-stat
+  span: i.fas.fa-heart
+  | #{playerHealth}
+
+h5.game-stat
+  span: i.fas.fa-clock
+  | #{turnsLeft}
+
+if isCollapsed
+  span: i.fas.fa-plus click='action "sendExpandStats"'
+else
+  span: i.fas.fa-plus.text-black

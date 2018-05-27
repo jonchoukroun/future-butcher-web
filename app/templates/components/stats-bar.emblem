@@ -1,0 +1,4 @@
+if collapsed
+  = collapsed-game-stats sendExpandStats=(action 'showExpandedStats')
+else
+  = expanded-game-stats sendCollapseStats=(action 'showCollapsedStats')
