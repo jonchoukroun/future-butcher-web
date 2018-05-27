@@ -1,0 +1,9 @@
+each scores as |score|
+  li.list-group-item
+    .d-flex
+      .col-7.text-right
+        | #{score.player}
+      .col-2.text-center
+        ' .
+      .col-3.text-left
+        | #{score.score}
