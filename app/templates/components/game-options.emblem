@@ -1,0 +1,7 @@
+.btn-group.btn-group-lg
+  = link-to .btn.btn-primary 'bank'
+    | Bank
+  = link-to .btn.btn-primary 'market'
+    | Market
+  = link-to .btn.btn-primary 'subway'
+    | Subway

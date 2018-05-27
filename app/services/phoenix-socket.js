@@ -8,7 +8,6 @@ export default Service.extend({
   gameChannel: null,
   stateData:   null,
   gameStatus:  null,
-  finalScore:  null,
 
   connect(params) {
     let name = params.name;
@@ -42,13 +41,6 @@ export default Service.extend({
       .receive("error", response => {
         this._handleFailure("Failed", response);
       })
-  },
-
-  // extract this to subway component
-  retirePlayer(state) {
-    let score = state.player.debt === 0 ? state.player.funds : null;
-    if (score === 0) { score = null; }
-    set(this, 'finalScore', score);
   },
 
   _validateCallback(callback) {
