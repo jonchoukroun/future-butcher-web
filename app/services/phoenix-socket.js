@@ -8,7 +8,6 @@ export default Service.extend({
   gameChannel: null,
   stateData:   null,
   gameStatus:  null,
-  finalScore:  null,
 
   connect(params) {
     let name = params.name;
