@@ -1,0 +1,13 @@
+if lastTurn
+  .mx-auto.my-5
+    h3 Time's up!
+    p.lead Do you want to end your game, or do you have some unfinished business?
+
+    .btn.btn-plain click='action "retirePlayer"'
+      | Retire
+
+else
+  .d-flex.align-items-center.justify-content-center.my-5
+    = subway-stations sendStation=(action 'navigate')
+
+= game-options
