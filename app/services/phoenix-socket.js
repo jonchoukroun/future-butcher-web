@@ -43,6 +43,12 @@ export default Service.extend({
       })
   },
 
+  getScores() {
+    get(this, 'gameChannel').push("get_scores").receive("ok", response => {
+      set(this, 'orderedScores', response.state_data);
+    });
+  },
+
   _validateCallback(callback) {
     const validCallbacks = [
       "new_game", "start_game", "end_game", "change_station", "buy_cut", "sell_cut", "pay_debt"
@@ -69,13 +75,14 @@ export default Service.extend({
       })
 
     set(this, 'gameChannel', channel);
+    this.getScores();
   },
 
   _reJoinChannel(socket, name, hash_id) {
     let channel = socket.channel("game:" + name, { player_name: name, hash_id: hash_id });
 
     channel.join()
-      .receive("ok", () => {
+      .receive("ok", (res) => {
         this._restoreGameState(name);
       })
       .receive("error", response => {
@@ -85,6 +92,7 @@ export default Service.extend({
       })
 
     set(this, 'gameChannel', channel);
+    this.getScores();
   },
 
   _restoreGameState(name) {
