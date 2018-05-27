@@ -10,6 +10,8 @@ Router.map(function() {
 
   this.route('home', { path: '/' });
 
+  this.route('help');
+
   this.route('create-player');
 
   this.route('bank');
