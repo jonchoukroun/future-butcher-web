@@ -82,7 +82,7 @@ export default Service.extend({
     let channel = socket.channel("game:" + name, { player_name: name, hash_id: hash_id });
 
     channel.join()
-      .receive("ok", (res) => {
+      .receive("ok", () => {
         this._restoreGameState(name);
       })
       .receive("error", response => {
