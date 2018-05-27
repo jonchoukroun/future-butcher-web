@@ -1,5 +1,6 @@
 .row.mb-4
   #signup-label.col-sm.d-flex.align-items-center.justify-content-current_player
+    / verify this is being computed
     if nameTaken
       h3
         | That name is already taken!
