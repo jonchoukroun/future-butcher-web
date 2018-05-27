@@ -15,7 +15,7 @@
       .d-flex.col-sm.align-items-center.justify-content-center.mt-3
         if validInput
           button.btn.btn-primary.btn-lg type='submit'
-            | Start Game
+            | New Game
         else
           button.btn.btn-disabled.btn-lg
             | Validating input...
