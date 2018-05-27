@@ -1,5 +1,5 @@
 import Controller    from '@ember/controller'
-import { computed, get, set }  from '@ember/object'
+import { computed, get }  from '@ember/object'
 
 export default Controller.extend({
 

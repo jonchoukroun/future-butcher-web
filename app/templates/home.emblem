@@ -1,10 +1,8 @@
-.container-fluid.my-5
-  if socket.gameStatus
-    / display scrolling high scores
-    / link-to game route (start game)
-    / link-to help route
-  else
-    = start-game text="new game"
-
+if socket.gameStatus
+  / link-to game route (start game)
+  / link-to help route
   / temp during dev
   = end-game text="end game"
+
+else
+  = game-menu

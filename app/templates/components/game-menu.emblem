@@ -1,0 +1,11 @@
+#scores-title.container.d-flex.justify-content-center.bg-black
+  h3 Meat Guy Hall of Fame
+
+= scrolling-scores
+
+#menu-actions.container.d-flex.justify-content-center.bg-black
+  .btn-group.btn-group-lg
+    = link-to .btn.btn-primary 'help'
+      | Help
+    .btn.btn-primary click='action "startGame"'
+      | Start
