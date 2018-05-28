@@ -39,6 +39,10 @@ module.exports = function(environment) {
     ENV.APP.autoboot = false;
   }
 
+  if (environment === 'semilocal') {
+    ENV.api_url = 'ws://futurebutcher.com:4000/socket';
+  }
+
   if (environment === 'production') {
     // here you can enable a production-specific feature
   }
