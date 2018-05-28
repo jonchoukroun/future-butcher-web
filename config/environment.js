@@ -44,7 +44,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    // here you can enable a production-specific feature
+    ENV.api_url = 'ws://127.0.0.1:4000/socket';
   }
 
   return ENV;
