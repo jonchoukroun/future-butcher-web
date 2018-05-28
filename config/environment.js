@@ -44,7 +44,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.api_url = 'ws://127.0.0.1:4000/socket';
+    ENV.api_url = 'ws://localhost:4000/socket';
   }
 
   return ENV;
