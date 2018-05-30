@@ -1,22 +1,21 @@
-.row.mb-4
-  #signup-label.col-sm.d-flex.align-items-center.justify-content-current_player
-    / verify this is being computed
-    if nameTaken
-      h3
-        | That name is already taken!
-    else
-      h3
-        | Enter a unique screen name
+#signup-label
+  / verify this is being computed
+  if nameTaken
+    h3
+      | That name is already taken!
+  else
+    h3
+      | Enter a unique screen name
 
-  form.signup-form submit='action "createPlayer" value'
-    .form-row
-      .col-sm.offset-sm-2
-        = input classNames="form-control form-control-lg mt-md-2" type='text' value=playerName key-up='validatePlayerName' autofocus=true
+form.signup-form.text-center submit='action "createPlayer" value'
+  = input classNames="form-control form-control-lg mt-md-2" type='text' value=playerName key-up='validatePlayerName' autofocus=true
 
-      .d-flex.col-sm.align-items-center.justify-content-center.mt-3
-        if validInput
-          button.btn.btn-primary.btn-lg type='submit'
-            | New Game
-        else
-          button.btn.btn-disabled.btn-lg
-            | Validating input...
+  if inTransition
+    button.btn.btn-disabled.btn-lg
+      | Connecting...
+  else if validInput
+    button.btn.btn-primary.btn-lg type='submit'
+      | New Game
+  else
+    button.btn.btn-disabled.btn-lg
+      | #{invalidButtonText}
