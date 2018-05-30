@@ -114,6 +114,12 @@ input.form-control:focus {
   border-right: none;
 }
 
+.btn-secondary:visited {
+  background-color: $black !important;
+  color: $green !important;
+  border: solid $green !important;
+}
+
 .btn-disabled {
   background-color: transparent;
   color: $lightGreen;
