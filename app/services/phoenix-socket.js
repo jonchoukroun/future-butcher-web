@@ -7,6 +7,7 @@ export default Service.extend({
 
   gameChannel: null,
   stateData:   null,
+  gameRestore: null,
 
   gameStatus: computed('stateData.rules.state', function(){
     return get(this, 'stateData.rules.state');
@@ -85,17 +86,17 @@ export default Service.extend({
     let channel = socket.channel("game:" + name, { player_name: name, hash_id: hash_id });
 
     channel.join()
-      .receive("ok", () => {
+      .receive("ok", response => {
+        set(this, 'gameChannel', channel);
+        this._handleSuccess("Connected successfully", response);
         this._restoreGameState(name);
+        this.getScores();
       })
       .receive("error", response => {
         localStorage.setItem('player_name', null);
         localStorage.setItem('player_hash', null);
         this._handleFailure("Couldn't reconnect", response);
       })
-
-    set(this, 'gameChannel', channel);
-    this.getScores();
   },
 
   _restoreGameState(name) {
@@ -106,6 +107,7 @@ export default Service.extend({
       })
       .receive("error", response => {
         this._handleFailure("Couldn't restore game state", response);
+        set(this, 'gameRestore', 'failed');
       })
   },
 
