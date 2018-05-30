@@ -3,4 +3,4 @@ if socket.gameStatus
   = end-game text="end game"
 
 else
-  = game-menu
+  = game-menu sendGameStarted=(action 'redirectToGame')
