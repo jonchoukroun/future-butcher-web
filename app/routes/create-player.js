@@ -9,6 +9,6 @@ export default Route.extend({
     if (get(this, 'socket.gameChannel')) {
       this.replaceWith('home');
     }
-  },
+  }
 
 })
