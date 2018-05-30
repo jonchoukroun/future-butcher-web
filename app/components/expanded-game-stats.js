@@ -19,7 +19,6 @@ export default Component.extend({
 
   playerPack: computed('socket.stateData.player.pack', function() {
     let pack = get(this, 'socket.stateData.player.pack');
-    console.log('pack', pack);
     return pack;
   }),
 

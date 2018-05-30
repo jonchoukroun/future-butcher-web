@@ -8,7 +8,7 @@
           | #{amount} #{cut}
   else
     if hasOpenedInventory
-      p Outta cuts
+      p You're outta cuts
     else
       p No cuts owned, buy some from the market
 
