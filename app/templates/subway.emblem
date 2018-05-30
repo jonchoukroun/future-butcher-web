@@ -7,7 +7,7 @@ if lastTurn
       | Retire
 
 else
-  .d-flex.flex-column.align-items-center.justify-content-center.my-5
+  .d-flex.flex-column.align-items-center.justify-content-center.my-3
     .w-75.text-right.border-bottom.border-secondary
       h2 Destinations
 
