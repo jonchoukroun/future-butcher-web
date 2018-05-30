@@ -1,13 +1,16 @@
 import Service    from '@ember/service'
 import { Socket } from 'phoenix'
-import { get, set }    from '@ember/object'
+import { computed, get, set }    from '@ember/object'
 import ENV        from '../config/environment'
 
 export default Service.extend({
 
   gameChannel: null,
   stateData:   null,
-  gameStatus:  null,
+
+  gameStatus: computed('stateData.rules.state', function(){
+    return get(this, 'stateData.rules.state');
+  }),
 
   connect(params) {
     let name = params.name;
@@ -68,14 +71,14 @@ export default Service.extend({
     channel.join()
       .receive("ok", response => {
         localStorage.setItem('player_hash', response.hash_id);
+        set(this, 'gameChannel', channel);
         this._handleSuccess("Connected successfully", response);
+        this.getScores();
       })
       .receive("error", response => {
         this._handleFailure("Couldn't connect", response);
       })
 
-    set(this, 'gameChannel', channel);
-    this.getScores();
   },
 
   _reJoinChannel(socket, name, hash_id) {
@@ -107,23 +110,12 @@ export default Service.extend({
   },
 
   _handleSuccess(message, response) {
-    this._setGameStatus();
     console.log(message, response); // eslint-disable-line
   },
 
   _handleFailure(message, response) {
     let reason = (response || {}).reason || "";
     console.error(message, reason); // eslint-disable-line
-  },
-
-  _setGameStatus() {
-    let status = get(this, 'stateData.rules.state');
-
-    if (!status || status === 'game_over') {
-      set(this, 'gameStatus', null);
-    } else {
-      set(this, 'gameStatus', status);
-    }
   }
 
 })
