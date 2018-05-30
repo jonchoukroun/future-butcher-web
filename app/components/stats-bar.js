@@ -3,6 +3,8 @@ import { set }   from '@ember/object'
 
 export default Component.extend({
 
+  classNames: ['border-bottom', 'border-secondary'],
+
   collapsed: true,
 
   _incrementExpandedStatus() {

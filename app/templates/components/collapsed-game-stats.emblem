@@ -1,10 +1,9 @@
 h5.game-stat
-  span: i.fas.fa-dollar-sign
+  if (gt currentDebt 0)
+    span.text-red: i.fas.fa-dollar-sign
+  else
+    span: i.fas.fa-dollar-sign
   ' #{playerFunds}
-  if currentDebt
-    span.text-red
-      ' (#{currentDebt})
-
 
 h5.game-stat
   span: i.fas.fa-heart

@@ -9,10 +9,6 @@ export default Component.extend({
     return localStorage.getItem('expanded_inventory') > 1;
   }),
 
-  playerFunds: computed('socket.stateData.player.funds', function() {
-    return get(this, 'socket.stateData.player.funds');
-  }),
-
   currentDebt: computed('socket.stateData.player.debt', function() {
     return get(this, 'socket.stateData.player.debt');
   }),
@@ -32,14 +28,6 @@ export default Component.extend({
     if (totalCuts === 20) { return "Full"; }
 
     return 20 - totalCuts;
-  }),
-
-  playerHealth: computed('socket.stateData.player.health', function() {
-    return get(this, 'socket.stateData.player.health');
-  }),
-
-  turnsLeft: computed('socket.stateData.rules.turns_left', function() {
-    return get(this, 'socket.stateData.rules.turns_left');
   }),
 
   actions: {

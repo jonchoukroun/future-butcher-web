@@ -8,10 +8,8 @@ export default Component.extend({
   elementId: 'collapsed-game-stats',
 
   classNames: [
-    'd-flex', 'justify-content-between', 'my-3', 'mx-1', 'px-3'
+    'd-flex', 'justify-content-between', 'mt-3', 'mx-1', 'px-3'
   ],
-
-  classNameBindings: ['isCollapsed'],
 
   playerFunds: computed('socket.stateData.player.funds', function() {
     return get(this, 'socket.stateData.player.funds');
