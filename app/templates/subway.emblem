@@ -13,11 +13,11 @@ else
 
     = subway-stations sendStation=(action 'navigate')
 
-    .w-100.text-center.border-top.border-secondary
+    .w-100.text-center.border-top.border-secondary.pt-2
       .d-flex.w-50.mx-auto.align-items-center.justify-content-around
-        .btn.btn-secondary click='action "quitGame"'
+        .btn.btn-primary click='action "quitGame"'
           | Quit
-        = link-to .btn.btn-secondary 'game'
+        = link-to .btn.btn-primary 'game'
           | Back
 
 = game-options
