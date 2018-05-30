@@ -7,8 +7,17 @@ export default Controller.extend({
     return get(this, 'socket.stateData.rules.turns_left') === 0;
   }),
 
+  _endGame(payload) {
+    get(this, 'socket').pushCallBack('end_game', payload);
+    this.transitionToRoute('home');
+  },
 
   actions: {
+
+    quitGame() {
+      let payload = { hash_id: localStorage.getItem('player_hash'), score: 0 };
+      this._endGame(payload);
+    },
 
     retirePlayer() {
       let score = get(this, 'stateData.player.debt') === 0 ?
@@ -20,13 +29,12 @@ export default Controller.extend({
         hash_id: localStorage.getItem('player_hash')
       };
 
-      get(this, 'socket').pushCallBack('end_game', payload);
-      this.transitionToRoute('home');
+      this._endGame(payload);
     },
 
     navigate(station) {
       get(this, 'socket').pushCallBack('change_station', { destination: station });
-      this.transitionToRoute('home');
+      this.transitionToRoute('game');
     }
 
   }
