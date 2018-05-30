@@ -1,6 +1,6 @@
-import Component                from '@ember/component'
-import {  computed, get }  from '@ember/object'
-import { subwayStations }       from '../fixtures/subway-stations'
+import Component from '@ember/component'
+import {  computed, get } from '@ember/object'
+import { subwayStations } from '../fixtures/subway-stations'
 
 export default Component.extend({
 
