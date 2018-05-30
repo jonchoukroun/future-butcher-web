@@ -105,6 +105,15 @@ input.form-control:focus {
   color: $green;
 }
 
+.btn-secondary {
+  @extend .btn-primary;
+  border-radius: 2px;
+  border-width: 1px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
 .btn-disabled {
   background-color: transparent;
   color: $lightGreen;
@@ -116,4 +125,12 @@ input.form-control:focus {
   padding-left: 0;
   padding-right: 0;
   border: none;
-  }
+}
+
+.border-primary {
+  border-color: $green !important;
+}
+
+.border-secondary {
+  border-color: $lightGreen !important;
+}
