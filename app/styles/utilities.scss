@@ -73,23 +73,23 @@ input.form-control:focus {
   transition: all 0.2s ease-out;
 }
 
-.btn-primary:active {
+%brightenState {
   background-color: $lightGreen !important;
   border-color: $green !important;
   border-radius: 2px !important;
   color: rgba(0, 0, 0, 0.5) !important;
 }
 
+.btn-primary:active { @extend %brightenState; }
+
 .btn-primary:focus {
   box-shadow: none;
 }
 
 .btn-primary:hover {
-  background-color: $lightGreen;
-  border-color: $lightGreen;
+  @extend %brightenState;
   transform: translateY(-2px);
   box-shadow: 1px 1px 7px 3px $lightGreen;
-  color: rgba(0, 0, 0, 0.5) !important;
 }
 
 .btn-primary:active:focus {
@@ -120,10 +120,23 @@ input.form-control:focus {
   border: solid $green !important;
 }
 
+%steadyState {
+  transform: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+  color: $lightGreen !important;
+  border-color: $lightGreen !important;
+}
+
 .btn-disabled {
   background-color: transparent;
   color: $lightGreen;
   font-style: italic;
+  cursor: not-allowed !important;
+
+  &:hover { @extend %steadyState; }
+
+  &:active { @extend %steadyState; }
 }
 
 .list-group-item {

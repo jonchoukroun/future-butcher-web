@@ -1,6 +1,15 @@
-if socket.gameStatus
-  = stats-bar
-  = end-game text="end game"
+if (not socket.gameStatus)
+  .d-flex.justify-content-center
+    #scores-title.container.d-flex.justify-content-center.bg-black
+      h3 Meat Guy Hall of Fame
 
-else
-  = game-menu sendGameStarted=(action 'redirectToGame')
+    = scrolling-scores
+
+    #menu-actions.container.d-flex.justify-content-center.bg-black
+      .btn-group.btn-group-lg
+        = link-to .btn.btn-primary 'help'
+          | Help
+        .btn.btn-primary click='action "startGame"'
+          | Start
+        / dev only
+        = end-game text="end game"
