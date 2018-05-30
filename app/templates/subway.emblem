@@ -19,3 +19,5 @@ else
           | Quit
         = link-to .btn.btn-secondary 'game'
           | Back
+
+= game-options
