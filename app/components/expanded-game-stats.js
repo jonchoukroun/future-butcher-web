@@ -5,12 +5,22 @@ export default Component.extend({
 
   elementId: 'expanded-game-stats',
 
+  hasOpenedInventory: computed('localStorage.expanded_inventory', function() {
+    return localStorage.getItem('expanded_inventory') > 1;
+  }),
+
   playerFunds: computed('socket.stateData.player.funds', function() {
     return get(this, 'socket.stateData.player.funds');
   }),
 
   currentDebt: computed('socket.stateData.player.debt', function() {
     return get(this, 'socket.stateData.player.debt');
+  }),
+
+  playerPack: computed('socket.stateData.player.pack', function() {
+    let pack = get(this, 'socket.stateData.player.pack');
+    console.log('pack', pack);
+    return pack;
   }),
 
   totalCutsOwned: computed('socket.stateData.player.pack', function() {
