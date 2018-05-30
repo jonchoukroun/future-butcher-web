@@ -1,17 +1,46 @@
-import Component    from '@ember/component'
-import { get, set } from '@ember/object'
+import Component from '@ember/component'
+import { computed, get, observer, set } from '@ember/object'
 
 export default Component.extend({
 
   elementId: 'sign-up',
 
-  classNames: ['container'],
+  classNames: ['d-flex', 'flex-column', 'align-items-center', 'justify-content-center'],
 
-  validInput: false,
+  inputLength:  null,
+  validInput:   false,
+  inTransition: false,
+
+  invalidButtonText: computed('inputLength', function() {
+    let inputLength = get(this, 'inputLength');
+
+    if (inputLength === 1) {
+      return "Needs more letters...";
+    } else if (inputLength === 2) {
+      return "Almost there...";
+    } else {
+      return null;
+    }
+  }),
+
+  isConnected: observer('socket.gameChannel', function() {
+    let channel = get(this, 'socket.gameChannel');
+
+    if (channel) {
+      set(this, 'inTransition', false);
+      get(this, 'sendJoin')();
+    }
+  }),
+
+  evaluateNewCharInput() {
+    set(this, 'inputLength', get(this, 'playerName').length);
+  },
 
   actions: {
 
     validatePlayerName() {
+      this.evaluateNewCharInput();
+
       if (get(this, 'playerName').length >= 3) {
         set(this, 'validInput', true);
       } else {
@@ -20,8 +49,8 @@ export default Component.extend({
     },
 
     createPlayer() {
+      set(this, 'inTransition', true);
       get(this, 'socket').connect({ name: get(this, 'playerName') });
-      get(this, 'sendJoin')();
     }
 
   }
