@@ -129,10 +129,9 @@ input.form-control:focus {
 }
 
 .btn-black {
-  @extend .btn-primary;
-  background-color: $black;
-  border-color: $black;
-  color: $black;
+  background-color: $black !important;
+  border-color: $black !important;
+  color: $black !important;
 
   &:hover { @extend %steadyState; }
 
