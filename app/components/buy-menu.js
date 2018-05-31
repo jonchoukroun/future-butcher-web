@@ -1,12 +1,11 @@
 import Component from '@ember/component'
-import { computed, get, observer, set } from '@ember/object'
+import { computed, get, set } from '@ember/object'
 
 export default Component.extend({
 
   classNames: ['d-flex', 'flex-column', 'align-items-start', 'justify-content-between', 'p-3'],
 
   cutName:      null,
-  errorMessage: null,
 
   marketData: computed('socket.stateData.station.market', 'cutName', function() {
     let cutName = get(this, 'cutName');
