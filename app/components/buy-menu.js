@@ -3,7 +3,7 @@ import { computed, get, set } from '@ember/object'
 
 export default Component.extend({
 
-  classNames: ['d-flex', 'flex-column', 'align-items-start', 'justify-content-between', 'p-3'],
+  classNames: ['d-flex', 'flex-column', 'align-items-center', 'justify-content-between', 'p-3'],
 
   cutName:      null,
 
