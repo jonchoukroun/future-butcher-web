@@ -1,15 +1,8 @@
-each-in marketCuts as |cut market|
-  if (gt market.quantity 0)
-    li.list-group-item
-      .d-flex.flex-row.align-items-center.justify-content-around
-        .d-flex.flex-column.align-items-start.justify-content-center
-          h5.m-0
-            | #{cut}
-          p.m-0.border-top.border-secondary
-            | #{market.quantity} / $#{market.price}
-
-        .btn-group
-          .btn.btn-primary.btn-disabled
-            | Buy
-          .btn.btn-primary
-            | Sell
+if showBuyForm
+  = buy-menu cutName=buyingCut sendBuyMenuClose=(action 'closeBuyMenu')
+else if showSellForm
+  p Sell
+else
+  each-in marketCuts as |cut market|
+    if (gt market.quantity 0)
+      = cut-entry cut=cut price=market.price quantity=market.quantity sendOpenBuyMenu=(action 'openBuyMenu')

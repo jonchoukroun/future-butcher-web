@@ -1,0 +1,16 @@
+.d-flex.flex-row.align-items-center.justify-content-around
+  .d-flex.flex-column.align-items-start.justify-content-center
+    h5.m-0
+      | #{cut}
+    p.m-0.border-top.border-secondary
+      | #{quantity} / $#{price}
+
+  .btn-group
+    if (and canAffordCut hasPackSpace)
+      .btn.btn-primary click='action "openBuyMenu"'
+        | Buy
+    else
+      .btn.btn-primary.btn-disabled
+        | Buy
+    .btn.btn-primary
+      | Sell

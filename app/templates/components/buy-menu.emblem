@@ -1,0 +1,36 @@
+h5
+  ' #{cutsAvailable}
+  ' #{cutName}
+  ' in stock
+
+if transactionConfirmed
+  p
+    ' Success!
+  p
+    ' #{buyAmount} {{cutName}} bought for ${{estimatedCost}}.
+
+else
+  if buyCost
+    p.my-3
+      ' Cost:
+      ' $#{buyCost}
+
+  if errorMessage
+    p.my-3.text-red
+      | #{errorMessage}
+
+  form.transaction-form.align-self-center submit='action "submitBuyCut"'
+    .form-row
+      = input classNames="form-control form-control-lg mt-md-2" value=buyAmount key-up="calculateCost" type="text" placeholder=maxCanBuy autofocus=true
+
+    if (not buyAmount)
+      .d-flex.justify-content-center
+        p How many?
+    else
+      if (not errorMessage)
+        .d-flex.justify-content-center
+          button.btn.btn-primary type="submit"
+            | Buy for $#{estimatedCost}
+
+.btn.btn-secondary.align-self-end click='action "clickBack"'
+  | Close
