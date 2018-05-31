@@ -1,36 +1,39 @@
-h5
-  ' #{cutsAvailable}
-  ' #{cutName}
-  ' in stock
-
 if transactionConfirmed
-  p
-    ' Success!
-  p
-    ' #{buyAmount} {{cutName}} bought for ${{estimatedCost}}.
-
+  .btn.btn-black.align-self-end
+    i.fas.fa-times.text-black
 else
-  if buyCost
-    p.my-3
-      ' Cost:
-      ' $#{buyCost}
+  .btn.btn-secondary.align-self-end click='action "clickBack"'
+    i.fas.fa-times
 
-  if errorMessage
+.mt-5
+  h5
+    ' #{cutsAvailable}
+    ' #{cutName}
+    ' in stock
+
+  if transactionConfirmed
+    p.mb-0
+      ' Success!
+    p
+      ' #{buyAmount} {{cutName}} bought for ${{estimatedCost}}.
+
+    .d-flex.justify-content-center
+      .btn.btn-secondary click='action "clickBack"'
+        | Close
+
+  else
     p.my-3.text-red
       | #{errorMessage}
 
-  form.transaction-form.align-self-center submit='action "submitBuyCut"'
-    .form-row
-      = input classNames="form-control form-control-lg mt-md-2" value=buyAmount key-up="calculateCost" type="text" placeholder=maxCanBuy autofocus=true
+    form.transaction-form.align-self-center submit='action "submitBuyCut"'
+      .form-row
+        = input classNames="form-control form-control-lg mt-md-2" value=buyAmount key-up="calculateCost" type="text" placeholder=maxCanBuy autofocus=true
 
-    if (not buyAmount)
-      .d-flex.justify-content-center
-        p How many?
-    else
-      if (not errorMessage)
+      if (not buyAmount)
         .d-flex.justify-content-center
-          button.btn.btn-primary type="submit"
-            | Buy for $#{estimatedCost}
-
-.btn.btn-secondary.align-self-end click='action "clickBack"'
-  | Close
+          p How many?
+      else
+        if (not errorMessage)
+          .d-flex.justify-content-center
+            button.btn.btn-primary type="submit"
+              | Buy for $#{estimatedCost}
