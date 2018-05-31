@@ -11,10 +11,6 @@ export default Component.extend({
     return get(this, 'socket.stateData.station.market')[get(this, 'cutName')].price;
   }),
 
-  playerFunds: computed('socket.stateData.player.funds', function() {
-    return get(this, 'socket.stateData.player.funds');
-  }),
-
   cutsOwned: computed('socket.stateData.player.pack', 'cutName', function() {
     return get(this, 'socket.stateData.player.pack')[get(this, 'cutName')];
   }),
