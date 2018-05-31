@@ -14,7 +14,7 @@ export default Component.extend({
   canAffordCut: computed('price', 'socket.stateData.player.funds', function() {
     let price = get(this, 'price');
     let funds = get(this, 'socket.stateData.player.funds');
-    return funds > price;
+    return funds >= price;
   }),
 
   totalCutsOwned: computed('socket.stateData.player.pack', function() {
