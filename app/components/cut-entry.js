@@ -26,10 +26,18 @@ export default Component.extend({
     return 20 > get(this, 'totalCutsOwned');
   }),
 
+  ownsCut: computed('cut', 'socket.stateData.player.pack', function() {
+    return get(this, 'socket.stateData.player.pack')[get(this, 'cut')] > 0;
+  }),
+
   actions: {
 
     openBuyMenu() {
       get(this, 'sendOpenBuyMenu')(get(this, 'cut'));
+    },
+
+    openSellMenu() {
+      get(this, 'sendOpenSellMenu')(get(this, 'cut'));
     }
 
   }
