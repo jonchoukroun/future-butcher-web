@@ -1,0 +1,21 @@
+if (gt fundsRemaining 0)
+  .btn.btn-secondary.align-self-end click='action "clickBack"'
+    i.fas.fa-times
+
+  h5.my-3
+    ' About time you came to pay your debt, deadbeat.
+
+  p
+    ' You will have
+    ' $#{number-format fundsRemaining decimals=0 thousandsSeparator=","}
+    ' remaining.
+
+  .btn.btn-primary click='action "payDebt"'
+    | Pay $#{number-format playerDebt decimals=0 thousandsSeparator=","} debt
+
+else
+  h5.my-3
+    ' Come back when you have enough cash, punk.
+
+  .btn.btn-secondary click='action "clickBack"'
+    | Back
