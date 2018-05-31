@@ -1,8 +1,8 @@
 if showBuyForm
   = buy-menu cutName=buyingCut sendBuyMenuClose=(action 'closeBuyMenu')
 else if showSellForm
-  p Sell
+  = sell-menu cutName=sellingCut sendSellMenuClose=(action 'closeSellMenu')
 else
   each-in marketCuts as |cut market|
     if (gt market.quantity 0)
-      = cut-entry cut=cut price=market.price quantity=market.quantity sendOpenBuyMenu=(action 'openBuyMenu')
+      = cut-entry cut=cut price=market.price quantity=market.quantity sendOpenBuyMenu=(action 'openBuyMenu') sendOpenSellMenu=(action 'openSellMenu')
