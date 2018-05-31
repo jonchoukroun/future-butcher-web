@@ -3,7 +3,7 @@
     h5.m-0
       | #{cut}
     p.m-0.border-top.border-secondary
-      | #{quantity} / $#{price}
+      | #{number-format quantity decimals=0 thousandsSeparator=","} / $#{number-format price decimals=0 thousandsSeparator=","}
 
   .btn-group
     if (and canAffordCut hasPackSpace)
@@ -12,5 +12,10 @@
     else
       .btn.btn-primary.btn-disabled
         | Buy
-    .btn.btn-primary
-      | Sell
+
+    if ownsCut
+      .btn.btn-primary click='action "openSellMenu"'
+        | Sell
+    else
+      .btn.btn-primary.btn-disabled
+        | Sell
