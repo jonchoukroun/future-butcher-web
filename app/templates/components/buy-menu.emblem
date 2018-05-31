@@ -1,5 +1,5 @@
 if transactionConfirmed
-  .btn.btn-black.align-self-end
+  .btn.btn-secondary.btn-black.align-self-end
     i.fas.fa-times.text-black
 else
   .btn.btn-secondary.align-self-end click='action "clickBack"'
@@ -7,7 +7,7 @@ else
 
 .mt-5
   h5
-    ' #{cutsAvailable}
+    ' #{number-format cutsAvailable decimals=0 thousandsSeparator=","}
     ' #{cutName}
     ' in stock
 
@@ -15,7 +15,8 @@ else
     p.mb-0
       ' Success!
     p
-      ' #{buyAmount} {{cutName}} bought for ${{estimatedCost}}.
+      ' #{number-format buyAmount decimals=0 thousandsSeparator=","} #{cutName} bought for
+      ' $#{number-format estimatedCost decimals=0 thousandsSeparator=","}.
 
     .d-flex.justify-content-center
       .btn.btn-secondary click='action "clickBack"'
@@ -36,4 +37,4 @@ else
         if (not errorMessage)
           .d-flex.justify-content-center
             button.btn.btn-primary type="submit"
-              | Buy for $#{estimatedCost}
+              | Buy for $#{number-format estimatedCost decimals=0 thousandsSeparator=","}

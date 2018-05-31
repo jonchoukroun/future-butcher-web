@@ -1,5 +1,5 @@
 if transactionConfirmed
-  .btn.btn-black.align-self-end
+  .btn.btn-secondary.btn-black.align-self-end
     i.fas.fa-times.text-black
 else
   .btn.btn-secondary.align-self-end click='action "clickBack"'
@@ -8,14 +8,15 @@ else
 .mt-5
   h5
     ' You're carrying
-    ' #{cutsOwned}
+    ' #{number-format cutsOwned decimals=0 thousandsSeparator=","}
     ' #{cutName}
 
   if transactionConfirmed
     p.mb-0
       ' Success!
     p
-      ' #{sellAmount} {{cutName}} sold for ${{estimatedProfit}}.
+      ' #{number-format sellAmount decimals=0 thousandsSeparator=","} #{cutName} sold for
+      ' $#{number-format estimatedProfit decimals=0 thousandsSeparator=","}.
 
     .d-flex.justify-content-center
       .btn.btn-secondary click='action "clickBack"'
@@ -36,4 +37,4 @@ else
         if (not errorMessage)
           .d-flex.justify-content-center
             button.btn.btn-primary type="submit"
-              | Sell for $#{estimatedProfit}
+              | Sell for $#{number-format estimatedProfit decimals=0 thousandsSeparator=","}
