@@ -9,13 +9,13 @@ else
   h5
     ' You're carrying
     ' #{number-format cutsOwned decimals=0 thousandsSeparator=","}
-    ' #{cutName}
+    ' #{uc-words cutName}
 
   if transactionConfirmed
     p.mb-0
       ' Success!
     p
-      ' #{number-format sellAmount decimals=0 thousandsSeparator=","} #{cutName} sold for
+      ' #{number-format sellAmount decimals=0 thousandsSeparator=","} #{uc-words cutName} sold for
       ' $#{number-format estimatedProfit decimals=0 thousandsSeparator=","}.
 
     .d-flex.justify-content-center

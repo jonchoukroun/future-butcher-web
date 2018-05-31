@@ -3,7 +3,7 @@ h5.game-stat
     span.text-red: i.fas.fa-dollar-sign
   else
     span: i.fas.fa-dollar-sign
-  ' #{playerFunds}
+  ' #{number-format playerFunds decimals=0 thousandsSeparator=","}
 
 h5.game-stat
   span: i.fas.fa-heart

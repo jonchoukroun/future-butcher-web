@@ -3,14 +3,14 @@
 .d-flex.justify-content-between.mx-1.px-3
   if (gt currentDebt 0)
     h5.game-stat.text-red
-      ' (#{currentDebt})
+      ' (#{number-format currentDebt decimals=0 thousandsSeparator=","})
 
 .d-flex.flex-column.align-items-start.px-3
   if (gt totalCutsOwned 0)
     each-in playerPack as |cut amount|
       if (gt amount 0)
         p
-          | #{amount} #{cut}
+          | #{number-format amount decimals=0 thousandsSeparator=","} #{uc-words cut}
   else
     if hasOpenedInventory
       p You're outta cuts

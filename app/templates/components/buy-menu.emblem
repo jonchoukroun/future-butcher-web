@@ -8,14 +8,14 @@ else
 .mt-5
   h5
     ' #{number-format cutsAvailable decimals=0 thousandsSeparator=","}
-    ' #{cutName}
+    ' #{uc-words cutName}
     ' in stock
 
   if transactionConfirmed
     p.mb-0
       ' Success!
     p
-      ' #{number-format buyAmount decimals=0 thousandsSeparator=","} #{cutName} bought for
+      ' #{number-format buyAmount decimals=0 thousandsSeparator=","} #{uc-words cutName} bought for
       ' $#{number-format estimatedCost decimals=0 thousandsSeparator=","}.
 
     .d-flex.justify-content-center
