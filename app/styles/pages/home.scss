@@ -1,0 +1,16 @@
+#scores-title {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 1rem 0;
+  z-index: 1000;
+  border-bottom: 1px solid black;
+}
+
+#menu-actions {
+  position: absolute;
+  bottom: 0;
+  padding: 1rem 0;
+  z-index: 1000;
+  border-top: 1px solid black;
+}
