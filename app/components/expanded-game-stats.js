@@ -5,8 +5,8 @@ export default Component.extend({
 
   elementId: 'expanded-game-stats',
 
-  hasOpenedInventory: computed('localStorage.expanded_inventory', function() {
-    return localStorage.getItem('expanded_inventory') > 1;
+  tutorialMode: computed('localStorage.stats_tutorial_seen', function() {
+    return localStorage.getItem('stats_seen_count') > 1;
   }),
 
   currentDebt: computed('socket.stateData.player.debt', function() {
