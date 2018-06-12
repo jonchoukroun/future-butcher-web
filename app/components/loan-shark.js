@@ -21,7 +21,6 @@ export default Component.extend({
 
     payDebt() {
       let payload = { amount: get(this, 'playerDebt') };
-      
       get(this, 'socket').pushCallBack("pay_debt", payload).then(() => {
         get(this, 'sendToGameRoute')();
       });
