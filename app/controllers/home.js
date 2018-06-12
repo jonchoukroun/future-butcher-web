@@ -12,8 +12,9 @@ export default Controller.extend({
   actions: {
 
     startGame() {
-      get(this, 'socket').pushCallBack("new_game", {});
-      get(this, 'socket').pushCallBack("start_game", {});
+      get(this, 'socket').pushCallBack("new_game", {}).then(() => {
+        get(this, 'socket').pushCallBack("start_game", {});
+      })
     }
 
   }
