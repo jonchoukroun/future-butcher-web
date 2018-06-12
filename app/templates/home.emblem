@@ -11,5 +11,3 @@ if (not socket.gameStatus)
           | Help
         .btn.btn-primary click='action "startGame"'
           | Start
-        / dev only
-        = end-game text="end game"

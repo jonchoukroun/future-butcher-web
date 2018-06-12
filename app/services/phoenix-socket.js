@@ -1,7 +1,8 @@
-import Service    from '@ember/service'
+import Service from '@ember/service'
 import { Socket } from 'phoenix'
-import { computed, get, set }    from '@ember/object'
-import ENV        from '../config/environment'
+import { computed, get, set } from '@ember/object'
+import RSVP from 'rsvp'
+import ENV from '../config/environment'
 
 export default Service.extend({
 
@@ -29,22 +30,20 @@ export default Service.extend({
   },
 
   pushCallBack(callback, payload) {
-    if (!this._validateCallback(callback)) {
-      return this._handleFailure("Invalid callback", null);
-    }
+    if (!this._validateCallback(callback)) { return this._handleFailure("Invalid callback", null); }
 
-    get(this, 'gameChannel').push(callback, payload)
-      .receive("ok", response => {
-        set(this, 'stateData', response.state_data);
-        this._handleSuccess("Success", response);
-      })
-      .receive("game_over", response => {
-        set(this, 'stateData', response);
-        this._handleSuccess("Success", response);
-      })
-      .receive("error", response => {
-        this._handleFailure("Failed", response);
-      })
+    let phoenixService = this;
+    return new RSVP.Promise(function(resolve, reject) {
+      get(phoenixService, 'gameChannel').push(callback, payload)
+        .receive("ok", response => {
+          phoenixService._handleSuccess("Success", response);
+          resolve(response);
+        })
+        .receive("error", response => {
+          phoenixService._handleFailure("Failure", response);
+          reject(response);
+        })
+    });
   },
 
   getScores() {
@@ -102,7 +101,6 @@ export default Service.extend({
   _restoreGameState(name) {
     get(this, 'gameChannel').push("restore_game_state", name)
       .receive("ok", response => {
-        set(this, 'stateData', response.state_data);
         this._handleSuccess("Reconnected successfully", response)
       })
       .receive("error", response => {
@@ -112,12 +110,15 @@ export default Service.extend({
   },
 
   _handleSuccess(message, response) {
+    message = message || "Success, no message";
     console.log(message, response); // eslint-disable-line
+    set(this, 'stateData', response.state_data);
   },
 
   _handleFailure(message, response) {
-    let reason = (response || {}).reason || "";
-    console.error(message, reason); // eslint-disable-line
+    message    = message || "Failure, no message";
+    let reason = (response || {}) || "";
+    console.error("Failure", reason); // eslint-disable-line
   }
 
 })

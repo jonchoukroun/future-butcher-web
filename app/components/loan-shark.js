@@ -20,8 +20,10 @@ export default Component.extend({
   actions: {
 
     payDebt() {
-      get(this, 'socket').pushCallBack("pay_debt", { amount: get(this, 'playerDebt') });
-      get(this, 'sendToGameRoute')();
+      let payload = { amount: get(this, 'playerDebt') };
+      get(this, 'socket').pushCallBack("pay_debt", payload).then(() => {
+        get(this, 'sendToGameRoute')();
+      });
     },
 
     clickBack() {

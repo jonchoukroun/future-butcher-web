@@ -75,8 +75,9 @@ export default Component.extend({
         amount: get(this, 'buyAmount')
       };
 
-      get(this, 'socket').pushCallBack("buy_cut", payload);
-      set(this, 'transactionConfirmed', true);
+      get(this, 'socket').pushCallBack("buy_cut", payload).then(() => {
+        set(this, 'transactionConfirmed', true);
+      });
     }
   }
 

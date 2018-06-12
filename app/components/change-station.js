@@ -8,7 +8,8 @@ export default Component.extend({
   classNames: ['btn', 'btn-primary', 'btn-lg'],
 
   click() {
-    get(this, 'socket').pushCallBack("change_station", { destination: "koreatown" });
+    let payload = { destination: "koreatown" };
+    get(this, 'socket').pushCallBack("change_station", payload);
   }
 
 })

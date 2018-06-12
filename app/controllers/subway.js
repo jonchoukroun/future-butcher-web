@@ -8,8 +8,9 @@ export default Controller.extend({
   }),
 
   _endGame(payload) {
-    get(this, 'socket').pushCallBack('end_game', payload);
-    this.transitionToRoute('home');
+    get(this, 'socket').pushCallBack('end_game', payload).then(() => {
+      this.transitionToRoute('home');
+    });
   },
 
   actions: {
@@ -33,8 +34,10 @@ export default Controller.extend({
     },
 
     navigate(station) {
-      get(this, 'socket').pushCallBack('change_station', { destination: station });
-      this.transitionToRoute('game');
+      let payload = { destination: station };
+      get(this, 'socket').pushCallBack('change_station', payload).then(() => {
+        this.transitionToRoute('game');
+      });
     }
 
   }
