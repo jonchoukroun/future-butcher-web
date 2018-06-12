@@ -10,6 +10,8 @@ Router.map(function() {
 
   this.route('home', { path: '/' });
 
+  this.route('intro', { path: '/intro' });
+
   this.route('game');
 
   this.route('help');
