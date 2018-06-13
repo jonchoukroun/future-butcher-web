@@ -1,23 +1,38 @@
-import Controller    from '@ember/controller'
-import { computed, get }  from '@ember/object'
+import Controller from '@ember/controller'
+import { computed, get } from '@ember/object'
+import ENV from '../config/environment'
 
 export default Controller.extend({
+
+  isDevelopmentENV: computed('ENV', function() {
+    return ENV.environment === 'development';
+  }),
 
   lastTurn: computed('socket.stateData.rules.turns_left', function() {
     return get(this, 'socket.stateData.rules.turns_left') === 0;
   }),
 
-  _endGame(payload) {
+  endGame(payload) {
     get(this, 'socket').pushCallBack('end_game', payload).then(() => {
       this.transitionToRoute('home');
+      this.incrementGamesCount();
     });
+  },
+
+  incrementGamesCount() {
+    let count = localStorage.getItem('games_played');
+    if (count) {
+      localStorage.setItem('games_played', ++count);
+    } else {
+      localStorage.setItem('games_played', 1);
+    }
   },
 
   actions: {
 
     quitGame() {
       let payload = { hash_id: localStorage.getItem('player_hash'), score: 0 };
-      this._endGame(payload);
+      this.endGame(payload);
     },
 
     retirePlayer() {
@@ -30,7 +45,7 @@ export default Controller.extend({
         hash_id: localStorage.getItem('player_hash')
       };
 
-      this._endGame(payload);
+      this.endGame(payload);
     },
 
     navigate(station) {

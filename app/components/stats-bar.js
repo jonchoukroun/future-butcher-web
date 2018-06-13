@@ -8,11 +8,11 @@ export default Component.extend({
   collapsed: true,
 
   _incrementExpandedStatus() {
-    let status = localStorage.getItem('expanded_inventory');
+    let status = localStorage.getItem('stats_expanded_count');
     if (parseInt(status) > 0) {
-      localStorage.setItem('expanded_inventory', ++status);
+      localStorage.setItem('stats_expanded_count', ++status);
     } else {
-      localStorage.setItem('expanded_inventory', 1);
+      localStorage.setItem('stats_expanded_count', 1);
     }
   },
 

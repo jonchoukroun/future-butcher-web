@@ -24,7 +24,9 @@ export default Route.extend({
     if (!name || !hash_id) {
       this.transitionTo('home');
     } else {
-      get(this, 'socket').connect({name: name, hash_id: hash_id});
+      get(this, 'socket').connect({name: name, hash_id: hash_id}).then(() => {
+        get(this, 'socket').restoreGameState(name);
+      });
     }
   }
 

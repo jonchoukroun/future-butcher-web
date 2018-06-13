@@ -15,9 +15,10 @@ else
 
     .w-100.text-center.border-top.border-secondary.pt-2
       .d-flex.w-50.mx-auto.align-items-center.justify-content-around
-        .btn.btn-primary click='action "quitGame"'
-          | Quit
-        = link-to .btn.btn-primary 'game'
+        if isDevelopmentENV
+          .btn.btn-secondary click='action "quitGame"'
+            | Quit
+        = link-to .btn.btn-secondary 'game'
           | Back
 
 = game-options

@@ -10,10 +10,7 @@
 form.signup-form.text-center submit='action "createPlayer" value'
   = input classNames="form-control form-control-lg mt-md-2" type='text' value=playerName key-up='validatePlayerName' autofocus=true
 
-  if inTransition
-    button.btn.btn-disabled.btn-lg
-      | Connecting...
-  else if validInput
+  if validInput
     button.btn.btn-primary.btn-lg type='submit'
       | New Game
   else
