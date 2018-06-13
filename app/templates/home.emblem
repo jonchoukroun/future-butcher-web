@@ -1,13 +1,45 @@
 if (not socket.gameStatus)
-  .d-flex.justify-content-center
-    #scores-title.container.d-flex.justify-content-center.bg-black
-      h3 Meat Guy Hall of Fame
+  if isSeasonedVeteran
+    .d-flex.justify-content-center
+      #scores-title.container.d-flex.justify-content-center.bg-black
+        h3 Meat Guy Hall of Fame
 
-    = scrolling-scores
+      = scrolling-scores
 
-    #menu-actions.container.d-flex.justify-content-center.bg-black
-      .btn-group.btn-group-lg
-        = link-to .btn.btn-primary 'help'
-          | Help
-        .btn.btn-primary click='action "startGame"'
+      #menu-actions.container.d-flex.justify-content-center.bg-black
+        .btn-group.btn-group-lg
+          = link-to .btn.btn-primary 'help'
+            | Help
+          .btn.btn-primary click='action "startGame"'
           | Start
+
+  else
+    .d-flex.flex-column.align-items-start.justify-content-center.p-4
+      if (eq screen 'welcome')
+        h3.secondary.italics.align-self-center
+          | ... Los Angeles, 2050
+
+        p A new celebrity diet has swept the nation, more addicting than kombucha and sexier than coffee enemas. Today's rich and famous keep their youthful glow by enjoying delicious human flesh.
+
+        p With the emergence of new municipal self-defense laws and the high price of meat, nobody is safe from the cleaver.
+
+        .d-flex.align-items-center.justify-content-center.align-self-end
+          .btn.btn-secondary.mr-1 click='action "startGame"'
+            | Skip intro
+          .btn.btn-secondary.ml-1 click='action "clickNextScreen"'
+            | Next
+
+
+
+      if (eq screen 'start')
+        p Fortunately Meat Hustlers like you can make quick cash, and a few even make it out of the city.
+
+        p You have 24 hours and a loan from Large Hand Marge - buy and sell cuts in the market to earn money.
+
+        p And watch your back. It's a rough town and you're kind of a pussy.
+
+        .d-flex.align-items-center.justify-content-center.align-self-end
+          .btn.btn-secondary.mr-1 click='action "clickBackScreen"'
+            | Back
+          .btn.btn-secondary.ml-1 click='action "startGame"'
+            | Start
