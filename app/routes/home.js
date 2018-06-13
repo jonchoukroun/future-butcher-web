@@ -12,7 +12,9 @@ export default Route.extend({
     if (get(this, 'socket.gameChannel')) { return; }
 
     if (playerName && playerName.length > 2 && playerHash) {
-      get(this, 'socket').connect({ name: playerName, hash_id: playerHash });
+      get(this, 'socket').connect({ name: playerName, hash_id: playerHash }).then(() => {
+        get(this, 'socket').getScores();
+      })
     } else {
       localStorage.removeItem('player_name');
       localStorage.removeItem('player_hash');
