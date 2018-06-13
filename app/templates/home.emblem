@@ -2,7 +2,7 @@ if (not socket.gameStatus)
   if isSeasonedVeteran
     .d-flex.justify-content-center
       #scores-title.container.d-flex.justify-content-center.bg-black
-        h3 Meat Guy Hall of Fame
+        h3 Meat Hustlers Hall of Fame
 
       = scrolling-scores
 
@@ -11,7 +11,7 @@ if (not socket.gameStatus)
           = link-to .btn.btn-primary 'help'
             | Help
           .btn.btn-primary click='action "startGame"'
-          | Start
+            | Start
 
   else
     .d-flex.flex-column.align-items-start.justify-content-center.p-4
