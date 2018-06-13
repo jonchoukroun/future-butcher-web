@@ -9,7 +9,6 @@ export default Component.extend({
 
   inputLength:  null,
   validInput:   false,
-  inTransition: false,
 
   invalidButtonText: computed('inputLength', function() {
     let inputLength = get(this, 'inputLength');
@@ -27,7 +26,6 @@ export default Component.extend({
     let channel = get(this, 'socket.gameChannel');
 
     if (channel) {
-      set(this, 'inTransition', false);
       get(this, 'sendJoin')();
     }
   }),
@@ -49,7 +47,6 @@ export default Component.extend({
     },
 
     createPlayer() {
-      set(this, 'inTransition', true);
       get(this, 'socket').connect({ name: get(this, 'playerName') });
     }
 
