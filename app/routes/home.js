@@ -14,6 +14,8 @@ export default Route.extend({
     if (playerName && playerName.length > 2 && playerHash) {
       get(this, 'socket').connect({ name: playerName, hash_id: playerHash });
     } else {
+      localStorage.removeItem('player_name');
+      localStorage.removeItem('player_hash');
       this.replaceWith('create-player');
     }
   }
