@@ -6,11 +6,10 @@ if (not socket.gameStatus)
 
       = scrolling-scores
 
-      #menu-actions.container.d-flex.justify-content-center.bg-black
-        .btn-group.btn-group-lg
-          = link-to .btn.btn-primary 'help'
+      #menu-actions.container.d-flex.justify-content-around.bg-black
+          = link-to .btn.btn-secondary.btn-lg 'help'
             | Help
-          .btn.btn-primary click='action "startGame"'
+          .btn.btn-secondary.btn-lg click='action "startGame"'
             | Start
 
   else
