@@ -1,5 +1,6 @@
 import Component from '@ember/component'
 import { computed, get, set } from '@ember/object'
+import { htmlSafe } from '@ember/string'
 
 export default Component.extend({
 
@@ -41,6 +42,14 @@ export default Component.extend({
     return Math.min(get(this, 'maxAfford'), get(this, 'maxSpace'));
   }),
 
+  maxCanBuyPlaceholder: computed('maxCanBuy', function() {
+    return htmlSafe(`You can buy ${get(this, 'maxCanBuy')}`);
+  }),
+
+  maxCanBuyCost: computed('maxCanBuy', 'cutPrice', function() {
+    return get(this, 'maxCanBuy') * get(this, 'cutPrice');
+  }),
+
   errorMessage: computed('buyAmount', 'maxAfford', 'maxSpace', 'cutsAvailable', function() {
     let buyAmount = get(this, 'buyAmount');
     let message;
@@ -58,6 +67,17 @@ export default Component.extend({
     return message;
   }),
 
+  buyCut() {
+    let payload = {
+      cut: get(this, 'cutName'),
+      amount: get(this, 'buyAmount')
+    };
+
+    get(this, 'socket').pushCallBack("buy_cut", payload).then(() => {
+      set(this, 'transactionConfirmed', true);
+    });
+  },
+
   actions: {
 
     clickBack() {
@@ -69,15 +89,14 @@ export default Component.extend({
       set(this, 'estimatedCost', cost);
     },
 
-    submitBuyCut() {
-      let payload = {
-        cut: get(this, 'cutName'),
-        amount: get(this, 'buyAmount')
-      };
+    clickBuyMax() {
+      set(this, 'buyAmount', get(this, 'maxCanBuy'));
+      set(this, 'estimatedCost', get(this, 'maxCanBuyCost'));
+      this.buyCut();
+    },
 
-      get(this, 'socket').pushCallBack("buy_cut", payload).then(() => {
-        set(this, 'transactionConfirmed', true);
-      });
+    submitBuyCut() {
+      this.buyCut();
     }
   }
 

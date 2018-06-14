@@ -1,4 +1,5 @@
 import Component from '@ember/component'
+import { htmlSafe } from '@ember/string'
 import { computed, get, set } from '@ember/object'
 
 export default Component.extend({
@@ -15,6 +16,14 @@ export default Component.extend({
     return get(this, 'socket.stateData.player.pack')[get(this, 'cutName')];
   }),
 
+  cutsOwnedProfit: computed('cutsOwned', 'cutPrice', function() {
+    return get(this, 'cutPrice') * get(this, 'cutsOwned');
+  }),
+
+  cutsOwnedPlaceholder: computed('cutsOwned', function() {
+    return htmlSafe(`You own ${get(this, 'cutsOwned')} lbs.`);
+  }),
+
   errorMessage: computed('sellAmount', 'cutsOwned', function() {
     let message;
 
@@ -27,6 +36,17 @@ export default Component.extend({
     return message;
   }),
 
+  sellCut() {
+    let payload = {
+      cut: get(this, 'cutName'),
+      amount: get(this, 'sellAmount')
+    };
+
+    get(this, 'socket').pushCallBack("sell_cut", payload).then(() => {
+      set(this, 'transactionConfirmed', true);
+    });
+  },
+
   actions: {
 
     clickBack() {
@@ -38,15 +58,14 @@ export default Component.extend({
       set(this, 'estimatedProfit', profit);
     },
 
-    submitSellCut() {
-      let payload = {
-        cut: get(this, 'cutName'),
-        amount: get(this, 'sellAmount')
-      };
+    clickSellMax() {
+      set(this, 'sellAmount', get(this, 'cutsOwned'));
+      set(this, 'estimatedProfit', get(this, 'cutsOwnedProfit'));
+      this.sellCut();
+    },
 
-      get(this, 'socket').pushCallBack("sell_cut", payload).then(() => {
-        set(this, 'transactionConfirmed', true);
-      });
+    submitSellCut() {
+      this.sellCut();
     }
   }
 

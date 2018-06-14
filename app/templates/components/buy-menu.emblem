@@ -28,11 +28,17 @@ else
 
     form.transaction-form.align-self-center submit='action "submitBuyCut"'
       .form-row
-        = input classNames="form-control form-control-lg mt-md-2" value=buyAmount key-up="calculateCost" type="number" placeholder=maxCanBuy autofocus=true
+        = input classNames="form-control form-control-lg mt-md-2" value=buyAmount key-up="calculateCost" type="number" placeholder=maxCanBuyPlaceholder autofocus=true
 
       if (not buyAmount)
-        .d-flex.justify-content-center
-          p How many?
+        .d-flex.flex-column.align-items-center.justify-content-center
+          .btn.btn-primary click='action "clickBuyMax"'
+            ' Buy all
+            ' #{maxCanBuy}
+            ' for
+            ' $#{number-format maxCanBuyCost decimals=0 thousandsSeparator=","}
+          p.small
+            | Or enter a different amount
       else
         if (not errorMessage)
           .d-flex.justify-content-center
