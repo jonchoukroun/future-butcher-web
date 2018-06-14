@@ -7,8 +7,8 @@ else
 
 .mt-5
   h5
-    ' #{number-format cutsAvailable decimals=0 thousandsSeparator=","}
-    ' #{uc-words cutName}
+    ' #{number-format cutsAvailable decimals=0 thousandsSeparator=","} lbs
+    ' of #{uc-words cutName}
     ' in stock
 
   if transactionConfirmed
