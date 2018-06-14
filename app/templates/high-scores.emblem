@@ -1,9 +1,4 @@
-.d-flex.flex-column.align-items-center.justify-content-center.py-4
-  h3 Top Scores
-
-  each socket.stateData as |score|
-    p #{score.player}: $#{score.score}
-
+  = top-scores
 
   #menu-actions.container.d-flex.justify-content-around.bg-black
       = link-to .btn.btn-secondary.btn-lg 'help'
