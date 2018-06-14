@@ -1,5 +1,5 @@
-import Component         from '@ember/component'
-import { computed, get } from '@ember/object'
+import Component from '@ember/component'
+import { get, set } from '@ember/object'
 
 export default Component.extend({
 
@@ -9,7 +9,12 @@ export default Component.extend({
 
   classNames: ['list-group'],
 
-  scores: computed('socket.orderedScores', function() {
-    return get(this, 'socket.orderedScores');
-  })
+  didInsertElement() {
+    this._super(...arguments);
+
+    get(this, 'socket').getScores().then((response) => {
+      set(this, 'scores', response.state_data);
+    })
+  },
+
 })
