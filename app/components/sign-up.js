@@ -47,7 +47,7 @@ export default Component.extend({
     },
 
     createPlayer() {
-      get(this, 'socket').connect({ name: get(this, 'playerName') });
+      get(this, 'socket').joinChannel({ name: get(this, 'playerName') });
     }
 
   }
