@@ -28,7 +28,7 @@ else
 
     form.transaction-form.align-self-center submit='action "submitSellCut"'
       .form-row
-        = input classNames="form-control form-control-lg mt-md-2" value=sellAmount key-up="calculateProfit" type="text" placeholder=cutsOwned autofocus=true
+        = input classNames="form-control form-control-lg mt-md-2" value=sellAmount key-up="calculateProfit" type="number" placeholder=cutsOwned autofocus=true
 
       if (not sellAmount)
         .d-flex.justify-content-center
