@@ -14,19 +14,62 @@ export default Service.extend({
     return get(this, 'stateData.rules.state');
   }),
 
-  connect(params) {
+  joinChannel(params) {
     let name = params.name;
-    if (!name || name.length < 3) { return; }
+    if (!name || name.length < 3) { return ; }
     localStorage.setItem('player_name', name);
 
     let socket  = this._openSocket(ENV.api_url);
+    let channel = socket.channel("game:" + name, { player_name: name });
+
+    return new RSVP.Promise((resolve, reject) => {
+      channel.join()
+        .receive("ok", response => {
+          localStorage.setItem('player_hash', response.hash_id);
+          set(this, 'gameChannel', channel);
+          this._handleSuccess("Connected successfully", response);
+          resolve(response);
+        })
+        .receive("error", response => {
+          this._handleFailure("Couldn't connect", response);
+          reject(response);
+        })
+    });
+  },
+
+  reJoinChannel(params) {
+    let name    = params.name;
     let hash_id = params.hash_id;
 
-    if (hash_id) {
-      return this._reJoinChannel(socket, name, hash_id);
-    } else {
-      return this._joinChannel(socket, name);
-    }
+    if(!name || name.length < 3 || !hash_id) { return; }
+
+    let socket  = this._openSocket(ENV.api_url);
+    let channel = socket.channel("game:" + name, { player_name: name, hash_id: hash_id });
+
+    let joinPromise = new RSVP.Promise((resolve, reject) => {
+      channel.join()
+        .receive("ok", response => {
+          set(this, 'gameChannel', channel);
+          this._handleSuccess("Reconnected successfully", response);
+          resolve(response);
+        })
+        .receive("error", response => {
+          localStorage.removeItem('player_name');
+          localStorage.removeItem('player_hash');
+          this._handleFailure("Couldn't reconnect", response);
+          reject(response);
+        })
+    });
+
+    return joinPromise.then((response) => {
+      return this.restoreGameState(name)
+        .catch(() => {
+          return response;
+        })
+        .then((response) => {
+          return response;
+        })
+    });
   },
 
   pushCallBack(callback, payload) {
@@ -63,47 +106,10 @@ export default Service.extend({
   getScores() {
     return new RSVP.Promise((resolve) => {
       get(this, 'gameChannel').push("get_scores").receive("ok", response => {
-        set(this, 'orderedScores', response.state_data);
+        this._handleSuccess("Scores retrieved", response);
         resolve(response);
       });
     });
-  },
-
-  _joinChannel(socket, name) {
-    let channel = socket.channel("game:" + name, { player_name: name });
-
-    return new RSVP.Promise((resolve, reject) => {
-      channel.join()
-        .receive("ok", response => {
-          localStorage.setItem('player_hash', response.hash_id);
-          set(this, 'gameChannel', channel);
-          this._handleSuccess("Connected successfully", response);
-          resolve(response);
-        })
-        .receive("error", response => {
-          this._handleFailure("Couldn't connect", response);
-          reject(response);
-        })
-    })
-  },
-
-  _reJoinChannel(socket, name, hash_id) {
-    let channel = socket.channel("game:" + name, { player_name: name, hash_id: hash_id });
-
-    return new RSVP.Promise((resolve, reject) => {
-      channel.join()
-        .receive("ok", response => {
-          set(this, 'gameChannel', channel);
-          this._handleSuccess("Reconnected successfully", response);
-          resolve(response);
-        })
-        .receive("error", response => {
-          localStorage.setItem('player_name', null);
-          localStorage.setItem('player_hash', null);
-          this._handleFailure("Couldn't reconnect", response);
-          reject(response);
-        })
-    })
   },
 
   _validateCallback(callback) {
