@@ -40,6 +40,8 @@ export default Controller.extend({
         get(this, 'socket.stateData.player.funds') : null;
       if (score === 0) { score = null; }
 
+      localStorage.setItem('player_score', score);
+
       let payload = {
         score: score,
         hash_id: localStorage.getItem('player_hash')
