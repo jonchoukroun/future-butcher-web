@@ -3,7 +3,8 @@
     h5.m-0
       | #{uc-words cut}
     p.m-0.border-top.border-secondary
-      | #{number-format quantity decimals=0 thousandsSeparator=","} / $#{number-format price decimals=0 thousandsSeparator=","}
+      ' #{number-format quantity decimals=0 thousandsSeparator=","} lbs /
+      ' $#{number-format price decimals=0 thousandsSeparator=","}
 
   .btn-group
     if (and canAffordCut hasPackSpace)

@@ -10,7 +10,8 @@
     each-in playerPack as |cut amount|
       if (gt amount 0)
         p
-          | #{number-format amount decimals=0 thousandsSeparator=","} #{uc-words cut}
+          ' #{uc-words cut}:
+          ' #{number-format amount decimals=0 thousandsSeparator=","} lbs
   else
     if tutorialMode
       p You're outta cuts
