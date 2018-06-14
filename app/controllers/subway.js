@@ -14,7 +14,7 @@ export default Controller.extend({
 
   endGame(payload) {
     get(this, 'socket').pushCallBack('end_game', payload).then(() => {
-      this.transitionToRoute('home');
+      this.transitionToRoute('high-scores');
       this.incrementGamesCount();
     });
   },
@@ -36,8 +36,8 @@ export default Controller.extend({
     },
 
     retirePlayer() {
-      let score = get(this, 'stateData.player.debt') === 0 ?
-        get(this, 'stateData.player.funds') : null;
+      let score = get(this, 'socket.stateData.player.debt') === 0 ?
+        get(this, 'socket.stateData.player.funds') : null;
       if (score === 0) { score = null; }
 
       let payload = {
