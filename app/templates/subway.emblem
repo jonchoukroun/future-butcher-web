@@ -1,9 +1,11 @@
 if lastTurn
-  .mx-auto.my-5
-    h3 Time's up!
-    p.lead Do you want to end your game, or do you have some unfinished business?
+  .d-flex.flex-column.align-items-start.justify-content-center.my-5.p-4
+    h3.secondary.italics.mb-3
+      | Time's up!
+    p
+      | Do you want to end your game, or do you have some unfinished business?
 
-    .btn.btn-plain click='action "retirePlayer"'
+    .btn.btn-secondary.align-self-center click='action "retirePlayer"'
       | Retire
 
 else

@@ -1,9 +1,9 @@
 each scores as |score|
   li.list-group-item
     .d-flex
-      .col-7.text-right
+      .col-6.text-center
         | #{score.player}
-      .col-2.text-center
+      .col-1.px-0.text-center
         ' .
-      .col-3.text-left
-        | #{score.score}
+      .col-4.text-right
+        | $#{number-format score.score decimals=0 thousandsSeparator=","}

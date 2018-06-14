@@ -24,6 +24,8 @@ Router.map(function() {
 
   this.route('subway');
 
+  this.route('high-scores');
+
 });
 
 export default Router;

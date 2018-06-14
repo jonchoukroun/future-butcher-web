@@ -16,7 +16,11 @@ $black: #282828;
 }
 
 .bg-black {
-  background: $black;
+  background-color: $black;
+}
+
+.bg-secondary {
+  background-color: $lightGreen !important;
 }
 
 html, body {
