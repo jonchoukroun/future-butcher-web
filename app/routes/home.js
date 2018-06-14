@@ -6,7 +6,7 @@ export default Route.extend({
   beforeModel() {
     this._super(...arguments);
 
-    if (get(this, 'socket.gameChannel')) { return; }
+    localStorage.removeItem('player_score');
     this._validateParams();
   },
 
@@ -14,6 +14,7 @@ export default Route.extend({
     let playerName = localStorage.getItem('player_name');
     let playerHash = localStorage.getItem('player_hash');
 
+    if (get(this, 'socket.gameChannel')) { return; }
     return get(this, 'socket').reJoinChannel({ name: playerName, hash_id: playerHash });
   },
 
