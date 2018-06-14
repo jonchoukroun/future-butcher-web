@@ -40,11 +40,11 @@ module.exports = function(environment) {
   }
 
   if (environment === 'semilocal') {
-    ENV.api_url = 'ws://futurebutcher.com:4000/socket';
+    ENV.api_url = 'wss://futurebutcher.com:4000/socket';
   }
 
   if (environment === 'production') {
-    ENV.api_url = 'ws://futurebutcher.com:4000/socket';
+    ENV.api_url = 'wss://futurebutcher.com:4000/socket';
   }
 
   return ENV;
