@@ -1,5 +1,5 @@
 import Controller from '@ember/controller'
-import { observer, get } from '@ember/object'
+import { get, observer  } from '@ember/object'
 
 export default Controller.extend({
 
@@ -12,6 +12,8 @@ export default Controller.extend({
   actions: {
 
     startNewGame() {
+      localStorage.removeItem('player_score');
+
       get(this, 'socket').pushCallBack("new_game", {}).then(() => {
         get(this, 'socket').pushCallBack("start_game", {});
       })
