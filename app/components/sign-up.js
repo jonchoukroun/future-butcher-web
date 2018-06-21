@@ -7,8 +7,9 @@ export default Component.extend({
 
   classNames: ['d-flex', 'flex-column', 'align-items-center', 'justify-content-center'],
 
-  inputLength:  null,
-  validInput:   false,
+  socketUnavailable: true,      // temporary default, make conditional on socket open
+  inputLength:       null,
+  validInput:        false,
 
   invalidButtonText: computed('inputLength', function() {
     let inputLength = get(this, 'inputLength');

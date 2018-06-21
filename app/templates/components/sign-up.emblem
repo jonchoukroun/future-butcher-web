@@ -1,18 +1,26 @@
-#signup-label
-  / verify this is being computed
-  if nameTaken
-    h3
-      | That name is already taken!
-  else
-    h3
-      | Enter a unique screen name
+if socketUnavailable
+  .text-left
+    p.lead
+      | Law enforcement is cracking down on meat markets across town.
+    p
+      | Come back when the heat is off.
 
-form.signup-form.text-center submit='action "createPlayer" value'
-  = input classNames="form-control form-control-lg mt-md-2" type='text' value=playerName key-up='validatePlayerName' autofocus=true
+else
+  #signup-label
+    / verify this is being computed
+    if nameTaken
+      h3
+        | That name is already taken!
+    else
+      h3
+        | Enter a unique screen name
 
-  if validInput
-    button.btn.btn-primary.btn-lg type='submit'
-      | New Game
-  else
-    button.btn.btn-disabled.btn-lg
-      | #{invalidButtonText}
+  form.signup-form.text-center submit='action "createPlayer" value'
+    = input classNames="form-control form-control-lg mt-md-2" type='text' value=playerName key-up='validatePlayerName' autofocus=true
+
+    if validInput
+      button.btn.btn-primary.btn-lg type='submit'
+        | New Game
+    else
+      button.btn.btn-disabled.btn-lg
+        | #{invalidButtonText}
