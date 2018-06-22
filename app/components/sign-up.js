@@ -7,7 +7,7 @@ export default Component.extend({
 
   classNames: ['d-flex', 'flex-column', 'align-items-center', 'justify-content-center'],
 
-  socketUnavailable: true,      // temporary default, make conditional on socket open
+  socketUnavailable: false,      // temporary default, make conditional on socket open
   inputLength:       null,
   validInput:        false,
 
