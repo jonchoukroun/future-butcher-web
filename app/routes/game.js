@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route'
-import { get, observer } from '@ember/object'
+import { get, observer, set } from '@ember/object'
 
 export default Route.extend({
 
@@ -11,20 +11,25 @@ export default Route.extend({
     }
   },
 
-  hasFailedRestore: observer('socket.gameRestore', function() {
-    if (get(this, 'socket.gameRestore') === 'failed') {
+  hasFailedRestore: observer('socket.gameRestoreSuccess', function() {
+    if (!get(this, 'socket.gameRestoreSuccess')) {
       this.replaceWith('home');
     }
   }),
 
   _attemptChannelConnection() {
-    const name    = localStorage.getItem('player_name');
-    const hash_id = localStorage.getItem('player_hash');
+    const socketService = get(this, 'socket');
+    const payload = {
+      name: localStorage.getItem('player_name'),
+      hash_id: localStorage.getItem('player_hash')
+    }
 
     if (!name || !hash_id) {
       this.transitionTo('home');
     } else {
-      get(this, 'socket').reJoinChannel({name: name, hash_id: hash_id});
+      socketService.openSocket()
+        .then((socket) => { socketService.joinChannel(socket, payload); })
+        .then(() => { socketService.restoreGameState(payload.name); })
     }
   }
 

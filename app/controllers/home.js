@@ -15,6 +15,16 @@ export default Controller.extend({
     }
   }),
 
+  pushStartGame() {
+    get(this, 'socket').pushCallBack("start_game", {});
+  },
+
+  handleExistingGame(reason) {
+    if (reason.indexOf(':already_started') > -1) {
+      get(this, 'socket').restoreGameState(localStorage.getItem('player_name'));
+    }
+  },
+
   actions: {
 
     clickNextScreen() {
@@ -27,9 +37,10 @@ export default Controller.extend({
 
     startGame() {
       set(this, 'screen', 'welcome');
-      get(this, 'socket').pushCallBack("new_game", {}).then(() => {
-        get(this, 'socket').pushCallBack("start_game", {});
-      });
+      const socketService = get(this, 'socket');
+      socketService.pushCallBack("new_game", {})
+        .then(() => { this.pushStartGame(); })
+        .catch((response) => { this.handleExistingGame(response.reason); })
     }
 
   }

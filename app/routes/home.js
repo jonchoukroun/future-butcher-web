@@ -11,11 +11,19 @@ export default Route.extend({
   },
 
   model() {
-    let playerName = localStorage.getItem('player_name');
-    let playerHash = localStorage.getItem('player_hash');
+    const socketService = get(this, 'socket');
+    if (get(socketService, 'gameChannel')) { return; }
 
-    if (get(this, 'socket.gameChannel')) { return; }
-    return get(this, 'socket').reJoinChannel({ name: playerName, hash_id: playerHash });
+    const payload = {
+      name: localStorage.getItem('player_name'),
+      hash_id: localStorage.getItem('player_hash')
+    };
+
+    if (get(socketService, 'gameChannel')) { return; }
+
+    socketService.openSocket().then((socket) => {
+      socketService.joinChannel(socket, payload);
+    }) ;
   },
 
   _validateParams() {

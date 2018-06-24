@@ -1,5 +1,5 @@
 import Component from '@ember/component'
-import { computed, get, observer, set } from '@ember/object'
+import { computed, get, set } from '@ember/object'
 
 export default Component.extend({
 
@@ -23,14 +23,6 @@ export default Component.extend({
     }
   }),
 
-  isConnected: observer('socket.gameChannel', function() {
-    let channel = get(this, 'socket.gameChannel');
-
-    if (channel) {
-      get(this, 'sendJoin')();
-    }
-  }),
-
   evaluateNewCharInput() {
     set(this, 'inputLength', get(this, 'playerName').length);
   },
@@ -48,7 +40,16 @@ export default Component.extend({
     },
 
     createPlayer() {
-      get(this, 'socket').joinChannel({ name: get(this, 'playerName') });
+      const socketService = get(this, 'socket');
+      const name = get(this, 'playerName');
+
+      socketService.openSocket().catch(() => {
+        set(this, 'socketUnavailable', true);
+      }).then((socket) => {
+        socketService.joinChannel(socket, { name: name }).then(() => {
+          this.sendJoin();
+        })
+      })
     }
 
   }
