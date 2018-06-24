@@ -7,9 +7,8 @@ export default Component.extend({
 
   classNames: ['d-flex', 'flex-column', 'align-items-center', 'justify-content-center'],
 
-  socketUnavailable: false,      // temporary default, make conditional on socket open
-  inputLength:       null,
-  validInput:        false,
+  inputLength: null,
+  validInput:  false,
 
   invalidButtonText: computed('inputLength', function() {
     let inputLength = get(this, 'inputLength');
@@ -43,9 +42,7 @@ export default Component.extend({
       const socketService = get(this, 'socket');
       const name = get(this, 'playerName');
 
-      socketService.openSocket().catch(() => {
-        set(this, 'socketUnavailable', true);
-      }).then((socket) => {
+      socketService.openSocket().then((socket) => {
         socketService.joinChannel(socket, { name: name }).then(() => {
           this.sendJoin();
         })

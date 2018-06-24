@@ -1,0 +1,11 @@
+.container-fluid.my-5
+  .d-flex.justify-content-center.align-items-cente.d-flex.justify-content-center.align-items-centerr
+    .text-block
+      h1#title-future.display-1 Future
+      #title-butcher.display-1.code-text Butcher
+
+  .text-left.mt-5
+    p.lead
+      | Law enforcement is cracking down on meat markets across town.
+    p
+      | Come back when the heat is off.

@@ -1,10 +1,13 @@
 import Service from '@ember/service'
+import { inject as service } from '@ember/service'
 import { Socket } from 'phoenix'
 import { computed, get, set } from '@ember/object'
 import RSVP from 'rsvp'
 import ENV from '../config/environment'
 
 export default Service.extend({
+
+  router: service(),
 
   gameStatus: computed('stateData.rules.state', function(){
     return get(this, 'stateData.rules.state');
@@ -21,6 +24,7 @@ export default Service.extend({
       socket.onError(() => {
         this._handleFailure("Failed to open socket", {});
         reject(socket);
+        get(this, 'router').replaceWith('unavailable');
       });
     });
   },

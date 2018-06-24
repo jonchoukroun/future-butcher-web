@@ -26,6 +26,8 @@ Router.map(function() {
 
   this.route('high-scores');
 
+  this.route('unavailable');
+
 });
 
 export default Router;
