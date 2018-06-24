@@ -1,7 +1,7 @@
 if showBuyForm
-  = buy-menu cutName=buyingCut sendBuyMenuClose=(action 'closeBuyMenu')
+  = buy-menu cutName=buyingCut sendBuyMenuClose=(action 'closeBuyMenu') sendRouteReload=(action 'sendRouteReload')
 else if showSellForm
-  = sell-menu cutName=sellingCut sendSellMenuClose=(action 'closeSellMenu')
+  = sell-menu cutName=sellingCut sendSellMenuClose=(action 'closeSellMenu') sendRouteReload=(action 'sendRouteReload')
 else
   each-in marketCuts as |cut market|
     if (gt market.quantity 0)

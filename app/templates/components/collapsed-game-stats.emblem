@@ -14,6 +14,10 @@ h5.game-stat
   | #{turnsLeft}
 
 if isCollapsed
-  span: i.fas.fa-arrow-circle-down click='action "sendExpandStats"'
+  h5
+    .btn.btn-primary click='action "sendExpandStats"'
+      i.fas.fa-angle-double-down
 else
-  span: i.fas.fa-plus.text-black
+  h5
+    .btn.btn-primary.btn-black
+      i.fas.fa-angle-double-down

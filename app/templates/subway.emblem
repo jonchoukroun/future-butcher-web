@@ -10,17 +10,9 @@ if lastTurn
 
 else
   .d-flex.flex-column.align-items-center.justify-content-center.my-3
-    .w-75.text-right.border-bottom.border-secondary
+    .w-75.text-right.border-bottom.border-secondary.mb-3
       h2 Destinations
 
     = subway-stations sendStation=(action 'navigate')
-
-    .w-100.text-center.border-top.border-secondary.pt-2
-      .d-flex.w-50.mx-auto.align-items-center.justify-content-around
-        if isDevelopmentENV
-          .btn.btn-secondary click='action "quitGame"'
-            | Quit
-        = link-to .btn.btn-secondary 'game'
-          | Back
 
 = game-options

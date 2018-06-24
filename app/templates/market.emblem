@@ -1,5 +1,5 @@
 = stats-bar
 
-= meat-market
+= meat-market sendRouteReload=(action 'reloadRoute')
 
 = game-options

@@ -22,6 +22,10 @@ export default Component.extend({
 
   actions: {
 
+    sendRouteReload() {
+      get(this, 'sendRouteReload')();
+    },
+
     openBuyMenu(cut) {
       set(this, 'showBuyForm', true);
       set(this, 'buyingCut', cut);

@@ -18,5 +18,10 @@
     else
       p No cuts owned, buy some from the market
 
-.d-flex.justify-content-end.mb-2.px-4
-  span: i.fas.fa-arrow-circle-up click='action "sendCollapseStats"'
+.d-flex.align-items-center.justify-content-between.mb-2.px-4
+  h5
+    = link-to .btn.btn-secondary 'help'
+      | Need help?
+  h5
+    .btn.btn-primary
+      i.fas.fa-angle-double-up click='action "sendCollapseStats"'
