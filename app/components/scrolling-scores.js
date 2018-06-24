@@ -1,5 +1,5 @@
 import Component from '@ember/component'
-import { get, set } from '@ember/object'
+import { get, observer, set } from '@ember/object'
 
 export default Component.extend({
 
@@ -9,12 +9,12 @@ export default Component.extend({
 
   classNames: ['list-group'],
 
-  didInsertElement() {
-    this._super(...arguments);
-
-    get(this, 'socket').getScores().then((response) => {
-      set(this, 'scores', response.state_data);
-    })
-  },
-
+  retrieveScores: observer('socket.gameChannel', function() {
+    if (get(this, 'socket.gameChannel')) {
+      get(this, 'socket').getScores().then((response) => {
+        set(this, 'scores', response.state_data);
+      })
+    }
+  })
+  
 })
