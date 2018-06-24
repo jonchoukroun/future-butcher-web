@@ -1,7 +1,7 @@
-  = top-scores
+= top-scores
 
-  #menu-actions.container.d-flex.justify-content-around.bg-black
-      = link-to .btn.btn-secondary.btn-lg 'help'
-        | Store
-      .btn.btn-secondary.btn-lg click='action "startNewGame"'
-        | Start Over
+#menu-actions.container.d-flex.justify-content-around.bg-black
+    = link-to .btn.btn-secondary.btn-lg 'help'
+      | Store
+    .btn.btn-secondary.btn-lg click='action "startNewGame"'
+      | Start Over

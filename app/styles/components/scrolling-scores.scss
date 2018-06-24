@@ -1,4 +1,6 @@
 #scrolling-scores {
+  height: 95vh;
+  overflow: hidden;
   z-index: 0;
   animation: scrollUp 200s;
 }
