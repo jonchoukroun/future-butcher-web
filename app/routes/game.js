@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route'
-import { get, observer, set } from '@ember/object'
+import { get, observer } from '@ember/object'
 
 export default Route.extend({
 
@@ -19,10 +19,12 @@ export default Route.extend({
 
   _attemptChannelConnection() {
     const socketService = get(this, 'socket');
-    const payload = {
+    let payload = {
       name: localStorage.getItem('player_name'),
-      hash_id: localStorage.getItem('player_hash')
     }
+
+    let hash_id = localStorage.getItem('player_hash')
+    if (hash_id) { payload.hash_id = hash_id }
 
     if (!name || !hash_id) {
       this.transitionTo('home');
