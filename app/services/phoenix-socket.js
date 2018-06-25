@@ -103,10 +103,11 @@ export default Service.extend({
   },
 
   _handleSuccess(message, response) {
+    set(this, 'stateData', response.state_data);
+
     if (ENV.environment === 'production') { return; }
     message = message || "Success, no message";
     console.log(message, response); // eslint-disable-line
-    set(this, 'stateData', response.state_data);
   },
 
   _handleFailure(message, response) {
