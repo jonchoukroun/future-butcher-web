@@ -9,3 +9,7 @@
       | Law enforcement is cracking down on meat markets across town.
     p
       | Come back when the heat is off.
+
+  .d-flex.justify-content-center.mt-1
+    = link-to .btn.btn-primary 'home'
+      | Try again
