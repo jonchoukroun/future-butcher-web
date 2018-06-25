@@ -1,6 +1,10 @@
 = stats-bar
 
-if showGameContinuePrompt
+#game-screen.container
+  h1.border-bottom.border-primary
+    | #{uc-words currentStation}
+
+/ if showGameContinuePrompt
   .d-flex.flex-column.align-items-center.justify-content-start.mt-5
     .mx-2.py-2.border-bottom.border-top.border-black.text-center
       p

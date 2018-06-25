@@ -1,7 +1,16 @@
 import Controller from '@ember/controller'
-import { get, set } from '@ember/object'
+import { computed, get, set } from '@ember/object'
+import { subwayStations } from '../fixtures/subway-stations'
 
 export default Controller.extend({
+
+  currentStation: computed('socket.stateData.station.station_name', function() {
+    return subwayStations.map(station => {
+      if (station.name === get(this, 'socket.stateData.station.station_name')) {
+        return station.display
+      }
+    }).filter((el) => el )[0];
+  }),
 
   actions: {
 
