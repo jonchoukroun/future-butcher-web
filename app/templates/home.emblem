@@ -20,7 +20,7 @@ if (not socket.gameStatus)
 
         p A new celebrity diet has swept the nation, more addicting than kombucha and sexier than coffee enemas. Today's rich and famous keep their youthful glow by enjoying delicious human flesh.
 
-        p With the emergence of new municipal self-defense laws and the high price of meat, nobody is safe from the cleaver.
+        p With extreme law enforcement deregulation and the high price of meat, nobody is safe from the cleaver.
 
         .d-flex.align-items-center.justify-content-center.align-self-end
           .btn.btn-secondary.mr-1 click='action "startGame"'
