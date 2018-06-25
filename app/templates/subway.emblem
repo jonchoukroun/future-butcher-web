@@ -1,3 +1,5 @@
+= stats-bar
+
 if lastTurn
   .d-flex.flex-column.align-items-start.justify-content-center.my-5.p-4
     h3.secondary.italics.mb-3
@@ -11,7 +13,7 @@ if lastTurn
 else
   .d-flex.flex-column.align-items-center.justify-content-center.my-3
     .w-75.text-right.border-bottom.border-secondary.mb-3
-      h2 Destinations
+      h3 Destinations
 
     = subway-stations sendStation=(action 'navigate')
 
