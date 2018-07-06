@@ -13,32 +13,34 @@ if (not socket.gameStatus)
             | Start
 
   else
-    .d-flex.flex-column.align-items-start.justify-content-center.p-4
-      if (eq screen 'welcome')
-        h3.secondary.italics.align-self-center
-          | ... Los Angeles, 2050
+    .container style="height: 100vh;"
+      .row.justify-content-center style="height: 100%;"
+        .col-11.col-sm-8.col-lg-6.align-self-center
+          if (eq screen 'welcome')
+            h2.secondary.italics.text-center.mb-4
+              | ... Los Angeles, 2050
 
-        p A new celebrity diet has swept the nation, more addicting than kombucha and sexier than coffee enemas. Today's rich and famous keep their youthful glow by enjoying delicious human flesh.
+            p A new celebrity diet has swept the nation, more addicting than kombucha and sexier than coffee enemas. Today's rich and famous keep their youthful glow by enjoying delicious human flesh.
 
-        p With extreme law enforcement deregulation and the high price of meat, nobody is safe from the cleaver.
+            p With extreme law enforcement deregulation and the high price of meat, nobody is safe from the cleaver.
 
-        .d-flex.align-items-center.justify-content-center.align-self-end
-          .btn.btn-secondary.mr-1 click='action "startGame"'
-            | Skip intro
-          .btn.btn-secondary.ml-1 click='action "clickNextScreen"'
-            | Next
+            .d-flex.align-items-center.justify-content-center.align-self-end
+              .btn.btn-secondary.mr-1 click='action "startGame"'
+                | Skip intro
+              .btn.btn-secondary.ml-1 click='action "clickNextScreen"'
+                | Next
 
 
 
-      if (eq screen 'start')
-        p Fortunately Meat Hustlers like you can make quick cash, and a few even make it out of the city.
+          if (eq screen 'start')
+            p Fortunately Meat Hustlers like you can make quick cash, and a few even make it out of the city.
 
-        p You have 24 hours and a loan from Large Hand Marge - buy and sell cuts in the market to earn money.
+            p You have 24 hours and a loan from Large Hand Marge - buy and sell cuts in the market to earn money.
 
-        p And watch your back. It's a rough town and you're kind of a pussy.
+            p And watch your back. It's a rough town and you're kind of a pussy.
 
-        .d-flex.align-items-center.justify-content-center.align-self-end
-          .btn.btn-secondary.mr-1 click='action "clickBackScreen"'
-            | Back
-          .btn.btn-secondary.ml-1 click='action "startGame"'
-            | Start
+            .d-flex.align-items-center.justify-content-center.align-self-end
+              .btn.btn-secondary.mr-1 click='action "clickBackScreen"'
+                | Back
+              .btn.btn-secondary.ml-1 click='action "startGame"'
+                | Start
