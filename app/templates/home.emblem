@@ -1,16 +1,18 @@
 if (not socket.gameStatus)
   if isSeasonedVeteran
-    .d-flex.justify-content-center
-      #scores-title.container.d-flex.justify-content-center.bg-black
-        h3 Meat Hustlers Hall of Fame
+    .container style="height: 100vh;"
+      .row.justify-content-center style="height: 100%;"
+        .col-11.col-sm-8.col-lg-6
+          #scores-title.bg-black
+            h3 Meat Hustlers Hall of Fame
 
-      = scrolling-scores
+          = scrolling-scores
 
-      #menu-actions.container.d-flex.justify-content-around.bg-black
-          = link-to .btn.btn-secondary.btn-lg 'help'
-            | Help
-          .btn.btn-secondary.btn-lg click='action "startGame"'
-            | Start
+          #menu-actions.d-flex.justify-content-around.bg-black
+              = link-to .btn.btn-secondary.btn-lg 'help'
+                | Help
+              .btn.btn-secondary.btn-lg click='action "startGame"'
+                | Start
 
   else
     .container style="height: 100vh;"
