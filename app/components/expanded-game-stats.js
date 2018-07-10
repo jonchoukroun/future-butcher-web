@@ -6,7 +6,11 @@ export default Component.extend({
   elementId: 'expanded-game-stats',
 
   tutorialMode: computed('localStorage.stats_expanded_count', function() {
-    return localStorage.getItem('stats_expanded_count') > 1;
+    return localStorage.getItem('stats_expanded_count') > 4;
+  }),
+
+  cash: computed('socket.stateData.player.funds', function() {
+    return get(this, 'socket.stateData.player.funds');
   }),
 
   currentDebt: computed('socket.stateData.player.debt', function() {

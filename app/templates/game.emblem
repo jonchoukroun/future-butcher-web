@@ -1,20 +1,23 @@
-= stats-bar
+.container-fluid style="height: 100vh; padding: 0;"
+  .row.justify-content-center style="height: 100%;"
+    .col-12.col-sm-10.col-md-8.col-lg-7.col-xl-5
+      = stats-bar
 
-#game-screen.container
-  h1.border-bottom.border-primary
-    | #{uc-words currentStation}
+      #game-screen.container
+        h1.border-bottom.border-primary
+          | #{uc-words currentStation}
 
-/ if showGameContinuePrompt
-  .d-flex.flex-column.align-items-center.justify-content-start.mt-5
-    .mx-2.py-2.border-bottom.border-top.border-black.text-center
-      p
-        | An earlier game was loaded.
+      / if showGameContinuePrompt
+        .d-flex.flex-column.align-items-center.justify-content-start.mt-5
+          .mx-2.py-2.border-bottom.border-top.border-black.text-center
+            p
+              | An earlier game was loaded.
 
-      .d-flex.justify-content-around
-        .btn.btn-primary click="continueGame"
-          | Continue
+            .d-flex.justify-content-around
+              .btn.btn-primary click="continueGame"
+                | Continue
 
-        .btn.btn-primary click="startNewGame"
-          | Start Over
+              .btn.btn-primary click="startNewGame"
+                | Start Over
 
-= game-options
+      = game-options

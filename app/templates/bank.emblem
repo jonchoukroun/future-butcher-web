@@ -1,13 +1,16 @@
-= stats-bar
+.container-fluid style="height: 100vh; padding: 0;"
+  .row.justify-content-center style="height: 100%;"
+    .col-12.col-sm-10.col-md-8.col-lg-7.col-xl-5
+      = stats-bar
 
-if (gt socket.stateData.player.debt 0)
-  = loan-shark sendToGameRoute=(action 'returnToGame')
-else
-  .d-flex.flex-column.align-items-center.justify-content-center.my-5
-    h5
-      | Your debt is paid.
+      if (gt socket.stateData.player.debt 0)
+        = loan-shark sendToGameRoute=(action 'returnToGame')
+      else
+        .d-flex.flex-column.align-items-center.justify-content-center.my-5
+          h5
+            | Your debt is paid.
 
-    .btn.btn-secondary click='action "returnToGame"'
-      | Back
+          .btn.btn-secondary click='action "returnToGame"'
+            | Back
 
-= game-options
+      = game-options

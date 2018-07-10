@@ -3,8 +3,12 @@ $lightGreen: rgba(90, 210, 90, 0.4);
 $red: #ED4848;
 $black: #282828;
 
-.text-green {
-  color: $green;
+.text-primary {
+  color: $green !important;
+}
+
+.text-secondary {
+  color: $lightGreen !important;
 }
 
 .text-black {
@@ -13,6 +17,17 @@ $black: #282828;
 
 .text-red {
   color: $red;
+}
+
+.link-text {
+  color: $green;
+  text-decoration: underline;
+  transition: all 0.3s ease-in;
+
+  &:hover {
+    color: $green !important;
+    font-weight: bold;
+  }
 }
 
 .bg-black {
@@ -84,7 +99,10 @@ input.form-control:focus {
   color: rgba(0, 0, 0, 0.5) !important;
 }
 
-.btn-primary:active { @extend %brightenState; }
+.btn-primary:active {
+  background-color: transparent;
+  border: none;
+}
 
 .btn-primary:focus {
   box-shadow: none;
@@ -124,6 +142,11 @@ input.form-control:focus {
   border: solid $green !important;
 }
 
+.btn-simple {
+  @extend .btn-secondary;
+  border: none;
+}
+
 %steadyState {
   transform: none !important;
   box-shadow: none !important;
@@ -137,8 +160,7 @@ input.form-control:focus {
   border-color: $black !important;
   color: $black !important;
 
-  &:hover { @extend %steadyState; }
-
+  &:hover  { @extend %steadyState; }
   &:active { @extend %steadyState; }
 }
 
@@ -148,8 +170,16 @@ input.form-control:focus {
   font-style: italic;
   cursor: not-allowed !important;
 
-  &:hover { @extend %steadyState; }
+  &:hover  { @extend %steadyState; }
+  &:active { @extend %steadyState; }
+}
 
+.disabled {
+  color: $lightGreen;
+  font-style: italic;
+  cursor: not-allowed !important;
+
+  &:hover  { @extend %steadyState; }
   &:active { @extend %steadyState; }
 }
 
