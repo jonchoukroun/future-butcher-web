@@ -49,7 +49,7 @@
 .d-flex.align-items-center.justify-content-between.mb-2.px-4
   h5
     = link-to .btn.btn-primary.btn.sm 'help'
-      | Need help?
+      | Help
   h5
     .btn.btn-primary click='action "sendCollapseStats"'
       i.fas.fa-angle-double-up
