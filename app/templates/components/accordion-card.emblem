@@ -1,0 +1,8 @@
+.card-header id=headerId
+  h5.mb-0
+    .btn.btn-secondary data-toggle="collapse" data-target=bodyId
+      | #{cardTitle}
+
+.collapse id=cardId data-parent=parentId
+  .card-body
+   | #{cardText}
