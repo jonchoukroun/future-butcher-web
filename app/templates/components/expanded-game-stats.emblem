@@ -25,19 +25,20 @@
 
   if (gt totalCutsOwned 0)
     .row.align-items-center.justify-content-start.my-2
+      each-in playerPack as |cut amount|
+        if (gt amount 0)
+          .col-4.col-sm-3.text-right
+            p.font-weight-bold.game-stat
+              ' #{uc-words cut}:
+          .col-5.col-sm-3.text-left
+            p.game-stat
+              ' #{number-format amount decimals=0 thousandsSeparator=","} lbs
+
       if (eq totalCutsOwned 20)
         .col-12
           p.game-stat.font-italic
-            | -- Full pack --
+            | -- No more space --
 
-      each-in playerPack as |cut amount|
-        if (gt amount 0)
-          .col-3.text-right
-            p.font-weight-bold.game-stat
-              ' #{uc-words cut}:
-          .col-3.text-left
-            p.game-stat
-              ' #{number-format amount decimals=0 thousandsSeparator=","} lbs
   else
     if tutorialMode
       = link-to .btn.btn-secondary.btn-sm 'market'
