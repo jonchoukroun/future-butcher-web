@@ -4,7 +4,7 @@ if (not socket.gameStatus)
       .row.justify-content-center style="height: 100%;"
         .col-11.col-sm-8.col-lg-6
           #scores-title.bg-black
-            h3 Meat Hustlers Hall of Fame
+            h3 Meat Hustlers Top Scores
 
           = scrolling-scores
 

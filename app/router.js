@@ -28,6 +28,8 @@ Router.map(function() {
 
   this.route('unavailable');
 
+  this.route('bullshit');
+
 });
 
 export default Router;
