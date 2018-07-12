@@ -4,6 +4,18 @@ import { subwayStations } from '../fixtures/subway-stations'
 
 export default Controller.extend({
 
+  turnsLeft: computed('socket.stateData.rules.turns_left', function() {
+    return get(this, 'socket.stateData.rules.turns_left');
+  }),
+
+  isFirstTurn: computed('turnsLeft', function() {
+    return get(this, 'turnsLeft') === 23;
+  }),
+
+  isSecondTurn: computed('turnsLeft', function() {
+    return get(this, 'turnsLeft') === 22;
+  }),
+
   currentStation: computed('socket.stateData.station.station_name', function() {
     return subwayStations.map(station => {
       if (station.name === get(this, 'socket.stateData.station.station_name')) {

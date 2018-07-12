@@ -1,27 +1,61 @@
-= collapsed-game-stats isCollapsed=false
+.container-fluid.flex-column.align-items-start.px-3
+  h5.align-self-center.text-secondary.my-3.border-bottom.border-secondary
+    | Your stats
 
-.d-flex.justify-content-between.mx-1.px-3
+  p.game-stat
+    span.font-weight-bold
+      ' Cash:
+    ' $#{number-format cash decimals=0 thousandsSeparator=","}
+
   if (gt currentDebt 0)
-    h5.game-stat.text-red
-      ' (#{number-format currentDebt decimals=0 thousandsSeparator=","})
+    .row.align-items-center.justify-content-start
+      .col.col-md-5.col-lg-4
+        p.game-stat.text-red
+          span.font-weight-bold
+            ' Debt:
+          ' (#{number-format currentDebt decimals=0 thousandsSeparator=","})
 
-.d-flex.flex-column.align-items-start.px-3
+      .col.col-md-5.col-lg-4
+        if (gt cash currentDebt)
+          = link-to .btn.btn-secondary.btn-sm.my-0.ml-3 'bank'
+            | Pay off
+        else
+          .btn.btn-secondary.btn-disabled.btn-sm.my-0.ml-3
+            | Can't pay off
+
   if (gt totalCutsOwned 0)
-    each-in playerPack as |cut amount|
-      if (gt amount 0)
-        p
-          ' #{uc-words cut}:
-          ' #{number-format amount decimals=0 thousandsSeparator=","} lbs
+    .row.align-items-center.justify-content-start.my-2
+      each-in playerPack as |cut amount|
+        if (gt amount 0)
+          .col-4.col-sm-3.text-right
+            p.font-weight-bold.game-stat
+              ' #{uc-words cut}:
+          .col-5.col-sm-3.text-left
+            p.game-stat
+              ' #{number-format amount decimals=0 thousandsSeparator=","} lbs
+
+      if (eq totalCutsOwned 20)
+        .col-12
+          p.game-stat.font-italic
+            | -- No more space --
+
   else
     if tutorialMode
-      p You're outta cuts
+      = link-to .btn.btn-secondary.btn-sm 'market'
+        | Visit market
     else
-      p No cuts owned, buy some from the market
+      = link-to .btn.btn-secondary.btn-sm 'market'
+        | No cuts owned, buy some from the market
 
 .d-flex.align-items-center.justify-content-between.mb-2.px-4
   h5
-    = link-to .btn.btn-secondary 'help'
-      | Need help?
+    = link-to .btn.btn-primary.btn.sm 'help'
+      | Help
+
+  h5
+    = link-to .btn.btn-primary.btn.sm 'price-guide'
+      | Price Guide
+
   h5
     .btn.btn-primary click='action "sendCollapseStats"'
       i.fas.fa-angle-double-up

@@ -1,7 +1,9 @@
-= top-scores
+.container-fluid style="height: 100vh; padding: 0;"
+  .row.justify-content-center style="height: 100%;"
+    .col-12.col-sm-10.col-md-8.col-lg-7.col-xl-5
 
-#menu-actions.container.d-flex.justify-content-around.bg-black
-    = link-to .btn.btn-secondary.btn-lg 'help'
-      | Store
-    .btn.btn-secondary.btn-lg click='action "startNewGame"'
-      | Start Over
+      = top-scores
+
+      #menu-actions.container.d-flex.justify-content-around.bg-black
+        .btn.btn-secondary.btn-lg click='action "startNewGame"'
+          | Start Over

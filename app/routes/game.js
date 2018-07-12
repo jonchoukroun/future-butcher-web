@@ -9,6 +9,11 @@ export default Route.extend({
     if (get(this, 'socket.gameStatus') !== 'in_game') {
       this._attemptChannelConnection();
     }
+
+    // extend this for random encounters
+    if (get(this, 'socket.stateData.rules.turns_left') < 22) {
+      this.replaceWith('market');
+    }
   },
 
   hasFailedRestore: observer('socket.gameRestoreSuccess', function() {

@@ -11,5 +11,4 @@ export default Route.extend({
     }
   }
 
-
 })

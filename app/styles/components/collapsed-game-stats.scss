@@ -1,5 +1,11 @@
 @import '../utilities';
 
-.game-stat span {
-  margin-right: 0.5rem;
+#collapsed-game-stats {
+  .game-stat span {
+    margin-right: 0.5rem;
+  }
+
+  h5 {
+    line-height: 65px;
+  }
 }

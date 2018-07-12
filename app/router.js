@@ -28,6 +28,8 @@ Router.map(function() {
 
   this.route('unavailable');
 
+  this.route('price-guide');
+
 });
 
 export default Router;

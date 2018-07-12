@@ -7,9 +7,7 @@ export default Component.extend({
 
   elementId: 'collapsed-game-stats',
 
-  classNames: [
-    'd-flex', 'align-items-center', 'justify-content-between', 'mt-3', 'mx-1', 'px-3'
-  ],
+  classNames: [ 'd-flex', 'align-items-center', 'justify-content-around', 'mx-1'],
 
   playerFunds: computed('socket.stateData.player.funds', function() {
     return get(this, 'socket.stateData.player.funds');
