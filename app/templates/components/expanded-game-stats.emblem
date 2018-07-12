@@ -51,6 +51,11 @@
   h5
     = link-to .btn.btn-primary.btn.sm 'help'
       | Help
+
+  h5
+    = link-to .btn.btn-primary.btn.sm 'price-guide'
+      | Price Guide
+
   h5
     .btn.btn-primary click='action "sendCollapseStats"'
       i.fas.fa-angle-double-up

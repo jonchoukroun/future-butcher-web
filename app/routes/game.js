@@ -11,7 +11,7 @@ export default Route.extend({
     }
 
     // extend this for random encounters
-    if (get(this, 'socket.stateData.rules.turns_left') !== 22) {
+    if (get(this, 'socket.stateData.rules.turns_left') < 22) {
       this.replaceWith('market');
     }
   },

@@ -28,7 +28,7 @@ Router.map(function() {
 
   this.route('unavailable');
 
-  this.route('bullshit');
+  this.route('price-guide');
 
 });
 
