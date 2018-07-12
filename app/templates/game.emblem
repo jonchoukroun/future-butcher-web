@@ -3,9 +3,18 @@
     .col-12.col-sm-10.col-md-8.col-lg-7.col-xl-5
       = stats-bar
 
-      #game-screen.container
+      #game-screen.container.pt-5
         h1.border-bottom.border-primary
           | #{uc-words currentStation}
+
+        if isSecondTurn
+          h6.mt-3
+            ' One hour has gone by, and your debt went up 15%.
+          h6.mt-3
+            ' Your debt will go up until you pay it off at
+            = link-to .link-text 'bank'
+              | General Bank
+            | .
 
       / if showGameContinuePrompt
         .d-flex.flex-column.align-items-center.justify-content-start.mt-5
