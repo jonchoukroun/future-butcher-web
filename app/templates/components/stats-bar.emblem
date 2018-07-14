@@ -1,15 +1,41 @@
 .d-flex.align-items-center.justify-content-between.mx-1
-  .btn.btn-simple.btn-small
+  a.btn.btn-simple.btn-small data-toggle="collapse" href="#fundsHelp" role="button"
     | $#{playerFunds}
     i.fas.fa-caret-down.ml-1.ml-md-3
 
-  .btn.btn-simple.btn-small.text-red
+  a.btn.btn-simple.btn-small.text-red data-toggle="collapse" href="#debtHelp" role="button"
     | $#{playerDebt}
     i.fas.fa-caret-down.ml-1.ml-md-3
 
-  .btn.btn-simple.btn-small
+  a.btn.btn-simple.btn-small data-toggle="collapse" href="#turnsHelp" role="button"
     | #{turnsLeft}
     i.fas.fa-caret-down.ml-1.ml-md-3
 
-  .btn.btn-simple.btn-small
+  = link-to .btn.btn-simple.btn-small 'help'
     i.fas.fa-question
+
+#fundsHelp.collapse
+  .card.card-body.bg-black.border-left-0.border-right-0
+    p Your cash on hand. Use it to buy meat, then sell it for a profit.
+
+#debtHelp.collapse
+  .card.card-body.bg-black.border-left-0.border-right-0
+    if (gt playerDebt 0)
+      p
+        ' Your debt, with a 15% interest rate.
+        if (gt playerDebt playerFunds)
+          ' Pay it off at the
+          = link-to .link-text 'bank'
+            | bank
+          ' .
+    else
+      p You've paid your debt.
+
+#turnsHelp.collapse
+  .card.card-body.bg-black.border-left-0.border-right-0
+    p
+      ' You have
+      ' #{turnsLeft} Uber rides
+      ' remaining out of 25.
+
+    p Better make them count!
