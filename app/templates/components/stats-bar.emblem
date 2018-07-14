@@ -1,4 +1,15 @@
-if collapsed
-  = collapsed-game-stats sendExpandStats=(action 'showExpandedStats')
-else
-  = expanded-game-stats sendCollapseStats=(action 'showCollapsedStats')
+.d-flex.align-items-center.justify-content-between.mx-1
+  .btn.btn-simple.btn-small
+    | $#{playerFunds}
+    i.fas.fa-caret-down.ml-1.ml-md-3
+
+  .btn.btn-simple.btn-small.text-red
+    | $#{playerDebt}
+    i.fas.fa-caret-down.ml-1.ml-md-3
+
+  .btn.btn-simple.btn-small
+    | #{turnsLeft}
+    i.fas.fa-caret-down.ml-1.ml-md-3
+
+  .btn.btn-simple.btn-small
+    i.fas.fa-question
