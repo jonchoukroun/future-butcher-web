@@ -1,4 +1,37 @@
 @import url('https://fonts.googleapis.com/css?family=Voltaire|Space+Mono');
+@import './defaults';
 @import './utilities';
 @import './pages/pages';
 @import './components/components';
+
+html, body {
+  min-height: 100vh;
+  background: $black;
+  color: $green;
+  overflow: hidden;
+  font-family: 'Space Mono', monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3 {
+  font-family: 'Voltaire', sans-serif;
+}
+
+h5 {
+  font-weight: 800;
+}
+
+@media (min-width: 992px) {
+  body {
+    width: 50vw;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1200px) {
+  body {
+    width: 35vw;
+    margin: 0 auto;
+  }
+}
