@@ -19,6 +19,6 @@ export default Component.extend({
 
   turnsLeft: computed('stateData.rules.turns_left', function() {
     return get(this, 'stateData.rules.turns_left');
-  }),
+  })
 
 })
