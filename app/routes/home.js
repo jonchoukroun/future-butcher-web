@@ -22,8 +22,17 @@ export default Route.extend({
     if (get(socketService, 'gameChannel')) { return; }
 
     socketService.openSocket().then((socket) => {
-      socketService.joinChannel(socket, payload);
+      socketService.joinChannel(socket, payload).then(() => {
+        socketService.pushCallBack("new_game", {})
+          .catch((response) => { this._handleExistingGame(response.reason); })
+      })
     }) ;
+  },
+
+  _handleExistingGame(reason) {
+    if (reason.indexOf(':already_started') > -1) {
+      get(this, 'socket').restoreGameState(localStorage.getItem('player_name'));
+    }
   },
 
   _validateParams() {
