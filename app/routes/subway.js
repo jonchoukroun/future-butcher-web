@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route'
-import { get, observer } from '@ember/object'
+import { get } from '@ember/object'
 
 export default Route.extend({
 
