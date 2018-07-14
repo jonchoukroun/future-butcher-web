@@ -1,48 +1,38 @@
 if (not socket.gameStatus)
-  if isSeasonedVeteran
-    .container style="height: 100vh;"
-      .row.justify-content-center style="height: 100%;"
-        .col-11.col-sm-8.col-lg-6
-          #scores-title.bg-black
-            h3 Meat Hustlers Top Scores
+  .d-flex.flex-column style="height: 100%;"
+    h2.my-3.my-md-5.pb-1.secondary.font-italic.text-center.border-bottom.border-black
+      | Future Butcher
 
-          = scrolling-scores
+    .container-fluid
+      h5.secondary.mb-md-4 ... Los Angeles, 2050
 
-          #menu-actions.d-flex.justify-content-around.bg-black
-              = link-to .btn.btn-secondary.btn-lg 'help'
-                | Help
-              .btn.btn-secondary.btn-lg click='action "startGame"'
-                | Start
+      p.small
+        | The city is crumbling and your only option is to profit off the new celebrity diet.
 
-  else
-    .container style="height: 100vh;"
-      .row.justify-content-center style="height: 100%;"
-        .col-11.col-sm-8.col-lg-6.align-self-center
-          if (eq screen 'welcome')
-            h2.secondary.italics.text-center.mb-4
-              | ... Los Angeles, 2050
+      p.small
+        | More addicting than kombucha and sexier than coffee enemas, the rich and famous enjoy fresh - and expensive - human meat.
 
-            p A new celebrity diet has swept the nation, more addicting than kombucha and sexier than coffee enemas. Today's rich and famous keep their youthful glow by enjoying delicious human flesh.
+      .row.align-items-start.justify-content-center.py-md-4
+        .col-4.text-center
+          p
+            b.border-bottom.border-secondary 25x
+            br
+            | Free uber rides
 
-            p With extreme law enforcement deregulation and the high price of meat, nobody is safe from the cleaver.
+        .col-4.text-center.border-left.border-right.border-black
+          p
+            b.border-bottom.border-secondary $5,000
+            br
+            | Starter loan, 15% interest
 
-            .d-flex.align-items-center.justify-content-center.align-self-end
-              .btn.btn-secondary.mr-1 click='action "startGame"'
-                | Skip intro
-              .btn.btn-secondary.ml-1 click='action "clickNextScreen"'
-                | Next
+        .col-4.text-center
+          p
+            b.border-bottom.border-secondary 20 lbs
+            br
+            | Max carrying space
 
+        .col.text-center
+          h6.secondary.text-center.mt-md-5 Start with a loan and buy & sell meat to earn your freedom.
 
-
-          if (eq screen 'start')
-            p Fortunately Meat Hustlers like you can make quick cash, and a few even make it out of the city.
-
-            p You have 24 hours and a loan from Large Hand Marge - buy and sell cuts in the market to earn money.
-
-            p And watch your back. It's a rough town and you're kind of a pussy.
-
-            .d-flex.align-items-center.justify-content-center.align-self-end
-              .btn.btn-secondary.mr-1 click='action "clickBackScreen"'
-                | Back
-              .btn.btn-secondary.ml-1 click='action "startGame"'
-                | Start
+          .btn.btn-primary.btn-lg click="startGame"
+            | Get $5,000 Loan
