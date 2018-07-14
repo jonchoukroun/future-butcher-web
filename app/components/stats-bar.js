@@ -1,32 +1,28 @@
 import Component from '@ember/component'
-import { set }   from '@ember/object'
+import { computed, get, set }   from '@ember/object'
 
 export default Component.extend({
 
   classNames: ['border-bottom', 'border-secondary'],
 
-  collapsed: true,
+  stateData: computed('socket.stateData', function() {
+    return get(this, 'socket.stateData');
+  }),
 
-  _incrementExpandedStatus() {
-    let status = localStorage.getItem('stats_expanded_count');
-    if (parseInt(status) > 0) {
-      localStorage.setItem('stats_expanded_count', ++status);
-    } else {
-      localStorage.setItem('stats_expanded_count', 1);
-    }
-  },
+  playerFunds: computed('stateData', function() {
+    return get(this, 'stateData.player.funds');
+  }),
 
-  actions: {
+  playerDebt: computed('stateData', function() {
+    return get(this, 'stateData.player.debt');
+  }),
 
-    showExpandedStats() {
-      set(this, 'collapsed', false);
-      this._incrementExpandedStatus();
-    },
+  playerHealth: computed('stateData', function() {
+    return get(this, 'stateData.player.health');
+  }),
 
-    showCollapsedStats() {
-      set(this, 'collapsed', true);
-    }
-
-  }
+  turnsLeft: computed('stateData.rules.turns_left', function() {
+    return get(this, 'stateData.rules.turns_left');
+  }),
 
 })
