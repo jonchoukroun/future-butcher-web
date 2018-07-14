@@ -17,10 +17,6 @@ export default Component.extend({
     return get(this, 'stateData.player.debt');
   }),
 
-  playerHealth: computed('stateData', function() {
-    return get(this, 'stateData.player.health');
-  }),
-
   turnsLeft: computed('stateData.rules.turns_left', function() {
     return get(this, 'stateData.rules.turns_left');
   }),
