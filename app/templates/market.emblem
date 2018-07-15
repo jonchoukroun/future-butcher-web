@@ -1,8 +1,11 @@
 = stats-bar
 
 .container-fluid
-  
+
   = meat-market sendRouteReload=(action 'reloadRoute')
 
-  = link-to .btn.btn-primary.btn-lg.btn-block 'subway'
-    | Take Uber
+  .container.fixed-bottom.mb-3.mb-md-5
+    .row.justify-content-center
+      .col-12.col-md-4
+        = link-to .btn.btn-primary.btn-lg.btn-block 'subway'
+          | Call an Uber
