@@ -36,6 +36,6 @@
           .col.text-center
             h6.secondary.text-center.mt-md-5 Start with a loan, then buy & sell from the market to earn your freedom.
 
-          .col-12.col-md-4
+          .col-12.col-md-4.text-center
             .btn.btn-primary.btn-lg click="startGame"
               | Get $5,000 Loan
