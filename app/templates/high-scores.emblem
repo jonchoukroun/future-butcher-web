@@ -1,9 +1,7 @@
-.container-fluid style="height: 100vh; padding: 0;"
-  .row.justify-content-center style="height: 100%;"
-    .col-12.col-sm-10.col-md-8.col-lg-7.col-xl-5
+.d-flex.flex-column
+  = top-scores
 
-      = top-scores
-
-      #menu-actions.container.d-flex.justify-content-around.bg-black
-        .btn.btn-secondary.btn-lg click='action "startNewGame"'
-          | Start Over
+  .container.text-center
+    h6 Ready to try again? Take out a new loan and hit that meat market.
+    .btn.btn-primary.btn-lg click='action "startNewGame"'
+      | Get $5,000 Loan
