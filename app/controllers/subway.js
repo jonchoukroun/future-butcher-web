@@ -15,17 +15,7 @@ export default Controller.extend({
   endGame(payload) {
     get(this, 'socket').pushCallBack('end_game', payload).then(() => {
       this.transitionToRoute('high-scores');
-      this.incrementGamesCount();
     });
-  },
-
-  incrementGamesCount() {
-    let count = localStorage.getItem('games_played');
-    if (count) {
-      localStorage.setItem('games_played', ++count);
-    } else {
-      localStorage.setItem('games_played', 1);
-    }
   },
 
   actions: {
