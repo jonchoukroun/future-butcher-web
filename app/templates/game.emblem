@@ -23,9 +23,9 @@
         | &nbsp;
         ' if you're a rank amateur.
 
-      .container.fixed-bottom.mb-3.mb-md-5
+      .container.mb-3.mb-md-5
         .row.justify-content-center
-          .col-12.col-md-4
+          .col-12.text-center
             = link-to .btn.btn-primary.btn-lg.btn-block 'market'
               | Find some meat
 
@@ -34,13 +34,14 @@
         ' You used one of your 25 Uber rides to get to
         ' #{uc-words currentStation}.
 
-      h6.my-4
-        ' You debt is now up to
-        ' $#{number-format currentDebt decimals=0 thousandsSeparator=","}
-        ' and will keep rising by 15% until you pay it off.
+      if (gt currentDebt 0)
+        h6.my-4
+          ' Your debt is now up to
+          ' $#{number-format currentDebt decimals=0 thousandsSeparator=","}
+          ' and will keep rising by 15% until you pay it off.
 
-      .container.fixed-bottom.mb-3.mb-md-5
+      .container.mb-3.mb-md-5
         .row.justify-content-center
-          .col-12.col-md-4
+          .col-12.text-center
             = link-to .btn.btn-primary.btn-lg.btn-block 'market'
               | Hit the market
