@@ -1,8 +1,11 @@
 .d-flex.flex-row.align-items-center.justify-content-between.px-sm-5
   .d-flex.flex-column.align-items-start.justify-content-center
     h5.m-0
-      | #{uc-words cut}
-    p.m-0.border-top.border-secondary
+      ' #{uc-words cut}
+      if (gt cutsOwned 0)
+        span.lead
+          ' (#{cutsOwned})
+    p.small.m-0.border-top.border-secondary
       ' #{number-format quantity decimals=0 thousandsSeparator=","} lbs /
       ' $#{number-format price decimals=0 thousandsSeparator=","}
 
@@ -14,7 +17,7 @@
       .btn.btn-primary.btn-disabled
         | Buy
 
-    if ownsCut
+    if (gt cutsOwned 0)
       .btn.btn-primary click='action "openSellMenu"'
         | Sell
     else
