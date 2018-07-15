@@ -1,42 +1,41 @@
-if (not socket.gameStatus)
-  .d-flex.flex-column style="height: 100%;"
-    h2.my-3.my-md-5.pb-1.secondary.font-italic.text-center.border-bottom.border-black
-      | Future Butcher
+.d-flex.flex-column style="height: 100%;"
+  h2.my-3.my-md-5.pb-1.secondary.font-italic.text-center.border-bottom.border-black
+    | Future Butcher
 
-    .container-fluid
-      h5.secondary.mb-md-4 ... Los Angeles, 2050
+  .container-fluid
+    h5.secondary.mb-md-4 ... Los Angeles, 2050
 
-      p.small
-        | The city is crumbling and your only option is to profit off the new celebrity diet.
+    p.small
+      | The city is crumbling and your only option is to profit off the new celebrity diet.
 
-      p.small
-        | More addicting than kombucha and sexier than coffee enemas, the rich and famous enjoy fresh - and expensive - human meat.
+    p.small
+      | More addicting than kombucha and sexier than coffee enemas, the rich and famous enjoy fresh - and expensive - human meat.
 
-      .row.align-items-start.justify-content-center.py-md-4
-        .col-4.text-center
-          p
-            b.border-bottom.border-secondary 25x
-            br
-            | Free uber rides
+    .row.align-items-start.justify-content-center.py-md-4
+      .col-4.text-center
+        p
+          b.border-bottom.border-secondary 25x
+          br
+          | Free uber rides
 
-        .col-4.text-center.border-left.border-right.border-black
-          p
-            b.border-bottom.border-secondary $5,000
-            br
-            | Starter loan, 15% interest
+      .col-4.text-center.border-left.border-right.border-black
+        p
+          b.border-bottom.border-secondary $5,000
+          br
+          | Starter loan, 15% interest
 
-        .col-4.text-center
-          p
-            b.border-bottom.border-secondary 20 lbs
-            br
-            | Max carrying space
+      .col-4.text-center
+        p
+          b.border-bottom.border-secondary 20 lbs
+          br
+          | Max carrying space
 
-          .container.fixed-bottom.mb-3.mb-md-5
-            .row.justify-content-center
+      .container.mb-3.mb-md-5
+        .row.justify-content-center
 
-              .col.text-center
-                h6.secondary.text-center.mt-md-5 Start with a loan, then buy & sell from the market to earn your freedom.
+          .col.text-center
+            h6.secondary.text-center.mt-md-5 Start with a loan, then buy & sell from the market to earn your freedom.
 
-              .col-12.col-md-4
-                .btn.btn-primary.btn-lg click="startGame"
-                  | Get $5,000 Loan
+          .col-12.col-md-4
+            .btn.btn-primary.btn-lg click="startGame"
+              | Get $5,000 Loan
