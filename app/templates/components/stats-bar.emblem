@@ -35,15 +35,14 @@
         ' You still owe
         ' $#{number-format playerDebt decimals=0 thousandsSeparator=","}
         ' on your loan. Hurry up, it's got a 15% interest rate.
-        / replace with pay debt action
+
         if (gt playerFunds playerDebt)
-          ' Pay it off at the
-          = link-to .link-text 'bank'
-            | bank
-          ' .
+          .btn.btn-primary.btn-small click="payDebt"
+            | Pay it off
+
     else
       p You've paid your debt.
-
+      
 #turnsHelp.collapse data-parent="#stats-bar"
   .card.card-body.pt-0.pt-md-2.bg-black.border-left-0.border-right-0
     p
