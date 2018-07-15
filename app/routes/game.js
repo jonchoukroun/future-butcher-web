@@ -10,7 +10,7 @@ export default Route.extend({
       this._attemptChannelConnection();
     }
 
-    if (get(this, 'socket.gameStatus') !== 'random_encounter') {
+    if (get(this, 'socket.stateData.rules.turnsLeft') < 22 ) {
       this.replaceWith('market');
     }
   },
