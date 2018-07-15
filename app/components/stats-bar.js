@@ -3,6 +3,8 @@ import { computed, get, set }   from '@ember/object'
 
 export default Component.extend({
 
+  elementId: 'stats-bar',
+  
   classNames: ['border-bottom', 'border-secondary'],
 
   stateData: computed('socket.stateData', function() {
