@@ -1,9 +1,7 @@
 import Controller from '@ember/controller'
-import { computed, get, observer, set } from '@ember/object'
+import { get, observer } from '@ember/object'
 
 export default Controller.extend({
-
-  screen: 'welcome',
 
   gameStarted: observer('socket.gameStatus', function() {
     if (get(this, 'socket.gameStatus')) {
