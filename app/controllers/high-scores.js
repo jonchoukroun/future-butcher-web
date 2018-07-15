@@ -13,10 +13,7 @@ export default Controller.extend({
 
     startNewGame() {
       localStorage.removeItem('player_score');
-
-      get(this, 'socket').pushCallBack("new_game", {}).then(() => {
-        this.transitionToRoute('home');
-      })
+      this.transitionToRoute('home');
     }
   }
 
