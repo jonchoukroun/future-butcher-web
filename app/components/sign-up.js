@@ -42,6 +42,8 @@ export default Component.extend({
       const socketService = get(this, 'socket');
       const name = get(this, 'playerName');
 
+      if (!name || name.length <= 3) { return; }
+
       socketService.openSocket().then((socket) => {
         socketService.joinChannel(socket, { name: name }).then(() => {
           this.sendJoin();
