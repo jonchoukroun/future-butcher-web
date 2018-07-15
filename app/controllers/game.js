@@ -16,6 +16,12 @@ export default Controller.extend({
     return get(this, 'turnsLeft') === 22;
   }),
 
+  currentDebt: computed('isSecondTurn', function() {
+    if (get(this, 'isSecondTurn')) {
+      return get(this, 'socket.stateData.player.debt');
+    }
+  }),
+
   currentStation: computed('socket.stateData.station.station_name', function() {
     return subwayStations.map(station => {
       if (station.name === get(this, 'socket.stateData.station.station_name')) {
