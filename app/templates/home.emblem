@@ -32,7 +32,7 @@ if (not socket.gameStatus)
             | Max carrying space
 
         .col.text-center
-          h6.secondary.text-center.mt-md-5 Start with a loan and buy & sell meat to earn your freedom.
+          h6.secondary.text-center.mt-md-5 Start with a loan, then buy & sell from the market to earn your freedom.
 
           .btn.btn-primary.btn-lg click="startGame"
             | Get $5,000 Loan
