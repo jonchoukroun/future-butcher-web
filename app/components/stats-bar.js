@@ -21,6 +21,15 @@ export default Component.extend({
 
   turnsLeft: computed('stateData.rules.turns_left', function() {
     return get(this, 'stateData.rules.turns_left');
-  })
+  }),
+
+  actions: {
+
+    payDebt() {
+      let payload = { amount: get(this, 'playerDebt') };
+      get(this, 'socket').pushCallBack("pay_debt", payload);
+    }
+
+  }
 
 })
