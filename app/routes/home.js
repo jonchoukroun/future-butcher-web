@@ -6,45 +6,54 @@ export default Route.extend({
   beforeModel() {
     this._super(...arguments);
 
-    localStorage.removeItem('player_score');
-    this._validateParams();
-  },
+    const playerName = localStorage.getItem('player_name');
+    const playerHash = localStorage.getItem('player_hash');
 
-  model() {
-    const socketService = get(this, 'socket');
-    if (get(socketService, 'gameChannel')) { return; }
-
-    const payload = {
-      name: localStorage.getItem('player_name'),
-      hash_id: localStorage.getItem('player_hash')
-    };
-
-    if (get(socketService, 'gameChannel')) { return; }
-
-    socketService.openSocket().then((socket) => {
-      socketService.joinChannel(socket, payload).then(() => {
-        socketService.pushCallBack("new_game", {})
-          .catch((response) => { this._handleExistingGame(response.reason); })
-      })
-    }) ;
-  },
-
-  _handleExistingGame(reason) {
-    if (reason.indexOf(':already_started') > -1) {
-      get(this, 'socket').restoreGameState(localStorage.getItem('player_name'));
+    if (!playerName || !playerHash) {
+      return this.replaceWith('create-player');
+    } else {
+      this.handleJoinChannel(playerName, playerHash);
     }
   },
 
-  _validateParams() {
-    let playerName = localStorage.getItem('player_name');
-    let playerHash = localStorage.getItem('player_hash');
+  handleJoinChannel(name, hash_id) {
+    get(this, 'socket').openSocket().then((socket) => {
+      if (get(this, 'socket.gameChannel.state') === "joined") {
+        this.initializeGame(name);
+      } else {
+        this.joinGameChannel(socket, name, hash_id);
+      }
+    })
+  },
 
-    if (!playerName || playerName.length < 3 || !playerHash) {
-      localStorage.removeItem('player_name');
-      localStorage.removeItem('player_hash');
-      this.replaceWith('create-player');
+  joinGameChannel(socket, name, hash_id) {
+    if (!name || !hash_id) { return this.replaceWith('create-player'); }
+
+    const socketService = get(this, 'socket');
+    socketService.joinChannel(socket, { name: name, hash_id: hash_id }).then(() => {
+      this.initializeGame(name);
+    })
+  },
+
+  initializeGame(name) {
+    const socketService = get(this, 'socket');
+
+    socketService.pushCallBack("new_game", {})
+      .catch((response) => {
+        this.handleExistingGame(socketService, response.reason, name);
+      })
+  },
+
+  handleExistingGame(socketService, reason, name) {
+    if (reason.indexOf(":already_started") > -1) {
+      socketService.restoreGameState(name).then(() => {
+        if (get(socketService, 'gameStatus') === "initialized") {
+          return;
+        } else {
+          return this.replaceWith('game');
+        }
+      });
     }
   }
-
 
 })
