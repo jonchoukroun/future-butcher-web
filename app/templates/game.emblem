@@ -7,54 +7,40 @@
 
     if isFirstTurn
       h6.my-4
-        ' You're on the streets with $5,000 and a pack that can carry 20 pounds of meat.
+        ' You're on the streets with a $5,000 loan and a pack that can carry 20 pounds of meat.
 
       h6.my-4
-        ' Cash ain't free, you'll need to pay the debt back, but right now you need some cuts.
-
-      h6.my-4
-        ' You can buy cuts at the
+        ' Head
         = link-to .link-text 'market'
-          | market
+          | to the market
         | &nbsp;
-        ' or go
-        = link-to .link-text 'subway'
-          | somewhere else
-        |.
+        ' to buy some meat.
 
       h6.my-4
-        ' Don't forget you have a
+        ' Or flip through the
         = link-to .link-text 'price-guide'
-          | price guide
-        ' (for amateurs) in your pack.
+          | Beginner's Meat Pricing Guide
+        | &nbsp;
+        ' if you're a rank amateur.
 
-
+      .container.fixed-bottom.mb-3.mb-md-5
+        .row.justify-content-center
+          .col-12.col-md-4
+            = link-to .btn.btn-primary.btn-lg.btn-block 'market'
+              | Find some meat
 
     if isSecondTurn
       h6.my-4
-        ' One hour has gone by, and your debt went up 15%.
-      h6.my-4
-        ' Your debt will keep going up until you pay it off at
-        = link-to .link-text 'bank'
-          | General Bank
-        | , if you have the cash.
+        ' You used one of your 25 Uber rides to get to
+        ' #{uc-words currentStation}.
 
       h6.my-4
-        ' Don't take too long - that interest rate is killer.
-        ' And the bank is known for aggressive collections agents...
+        ' You debt is now up to
+        ' $#{number-format currentDebt decimals=0 thousandsSeparator=","}
+        ' and will keep rising by 15% until you pay it off.
 
-  / if showGameContinuePrompt
-    .d-flex.flex-column.align-items-center.justify-content-start.mt-5
-      .mx-2.py-2.border-bottom.border-top.border-black.text-center
-        p
-          | An earlier game was loaded.
-
-        .d-flex.justify-content-around
-          .btn.btn-primary click="continueGame"
-            | Continue
-
-          .btn.btn-primary click="startNewGame"
-            | Start Over
-
-  = link-to .btn.btn-primary.btn-lg.btn-block 'subway'
-    | Call Uber
+      .container.fixed-bottom.mb-3.mb-md-5
+        .row.justify-content-center
+          .col-12.col-md-4
+            = link-to .btn.btn-primary.btn-lg.btn-block 'market'
+              | Hit the market
