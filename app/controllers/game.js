@@ -9,11 +9,11 @@ export default Controller.extend({
   }),
 
   isFirstTurn: computed('turnsLeft', function() {
-    return get(this, 'turnsLeft') === 23;
+    return get(this, 'turnsLeft') === 24;
   }),
 
   isSecondTurn: computed('turnsLeft', function() {
-    return get(this, 'turnsLeft') === 22;
+    return get(this, 'turnsLeft') === 23;
   }),
 
   currentDebt: computed('isSecondTurn', function() {
