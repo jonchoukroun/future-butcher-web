@@ -26,8 +26,8 @@ export default Component.extend({
     return 20 > get(this, 'totalCutsOwned');
   }),
 
-  ownsCut: computed('cut', 'socket.stateData.player.pack', function() {
-    return get(this, 'socket.stateData.player.pack')[get(this, 'cut')] > 0;
+  cutsOwned: computed('socket.stateData.player.pack', 'cut', function() {
+    return get(this, 'socket.stateData.player.pack')[get(this, 'cut')];
   }),
 
   actions: {
