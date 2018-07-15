@@ -35,7 +35,8 @@
         ' You still owe
         ' $#{number-format playerDebt decimals=0 thousandsSeparator=","}
         ' on your loan. Hurry up, it's got a 15% interest rate.
-        if (gt playerDebt playerFunds)
+        / replace with pay debt action
+        if (gt playerFunds playerDebt)
           ' Pay it off at the
           = link-to .link-text 'bank'
             | bank
