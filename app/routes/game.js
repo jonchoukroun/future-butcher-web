@@ -10,7 +10,7 @@ export default Route.extend({
       this._attemptChannelConnection();
     }
 
-    if (get(this, 'socket.stateData.rules.turnsLeft') < 22 ) {
+    if (get(this, 'socket.stateData.rules.turns_left') < 23 ) {
       this.replaceWith('market');
     }
   },
