@@ -1,6 +1,5 @@
 import Controller from '@ember/controller'
 import { computed, get } from '@ember/object'
-import ENV from '../config/environment'
 
 export default Controller.extend({
 
