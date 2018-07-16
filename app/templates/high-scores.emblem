@@ -4,4 +4,4 @@
   .container.text-center
     h6 Ready to try again? Take out a new loan and hit that meat market.
     .btn.btn-primary.btn-lg click='action "startNewGame"'
-      | Get $5,000 Loan
+      | Start Over
