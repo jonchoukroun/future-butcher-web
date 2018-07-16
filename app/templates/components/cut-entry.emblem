@@ -5,7 +5,7 @@
       if (gt cutsOwned 0)
         span.lead
           ' (#{cutsOwned})
-    p.small.m-0.border-top.border-secondary
+    p.m-0.border-top.border-secondary
       ' #{number-format quantity decimals=0 thousandsSeparator=","} lbs /
       ' $#{number-format price decimals=0 thousandsSeparator=","}
 
