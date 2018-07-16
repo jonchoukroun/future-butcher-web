@@ -4,10 +4,6 @@ import ENV from '../config/environment'
 
 export default Controller.extend({
 
-  isDevelopmentENV: computed('ENV', function() {
-    return ENV.environment === 'development' || ENV.environment === 'semilocal';
-  }),
-
   lastTurn: computed('socket.stateData.rules.turns_left', function() {
     return get(this, 'socket.stateData.rules.turns_left') === 0;
   }),
