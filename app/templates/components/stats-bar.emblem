@@ -1,17 +1,17 @@
 .d-flex.align-items-center.justify-content-between.mx-1
-  a.btn.btn-simple.btn-small data-toggle="collapse" href="#fundsHelp" role="button"
+  a.btn.btn-simple.btn-small.px-0 data-toggle="collapse" href="#fundsHelp" role="button"
     | $#{number-format playerFunds decimals=0 thousandsSeparator=","}
     i.fas.fa-caret-down.ml-1.ml-md-3
 
-  a.btn.btn-simple.btn-small.text-red data-toggle="collapse" href="#debtHelp" role="button"
+  a.btn.btn-simple.btn-small.pr-0.text-red data-toggle="collapse" href="#debtHelp" role="button"
     | $#{number-format playerDebt decimals=0 thousandsSeparator=","}
     i.fas.fa-caret-down.ml-1.ml-md-3
 
-  a.btn.btn-simple.btn-small data-toggle="collapse" href="#turnsHelp" role="button"
+  a.btn.btn-simple.btn-small.pr-0 data-toggle="collapse" href="#turnsHelp" role="button"
     | #{turnsLeft}
     i.fas.fa-caret-down.ml-1.ml-md-3
 
-  = link-to .btn.btn-simple.btn-small 'help'
+  = link-to .btn.btn-simple.btn-small.pr-0 'help'
     i.fas.fa-question
 
 #fundsHelp.collapse data-parent="#stats-bar"
