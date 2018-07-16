@@ -10,6 +10,4 @@
           | Quit Game
 
         = link-to .btn.btn-primary 'game'
-          | Back to Game
-
-      = game-options
+          | Keep Playing
