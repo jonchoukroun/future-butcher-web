@@ -1,6 +1,7 @@
-.container-fluid.full-screen
+.container-fluid.full-screen.px-0.px-sm-3
 
-  = stats-bar
+  .px-3.px-sm-0
+    = stats-bar
 
   = meat-market sendRouteReload=(action 'reloadRoute')
 
