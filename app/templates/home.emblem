@@ -1,9 +1,9 @@
-.d-flex.flex-column style="height: 100%;"
-  h2.my-3.my-md-5.pb-1.secondary.font-italic.text-center.border-bottom.border-black
+.container-fluid.full-screen
+  h2.my-3.my-md-5.pb-1.font-italic.text-center.border-bottom.border-black
     | Future Butcher
 
   .container-fluid
-    h5.secondary.mb-md-4 ... Los Angeles, 2050
+    h5.mb-md-4 ... Los Angeles, 2050
 
     p.small
       | The city is crumbling and your only option is to profit off the new celebrity diet.
@@ -30,12 +30,11 @@
           br
           | Max carrying space
 
-      .container.mb-3.mb-md-5
-        .row.justify-content-center
+.container.fixed-bottom.pb-3.pb-md-5.bg-black
+  .row.justify-content-center
+    .col-12.text-center
+      h6.text-center.mt-md-5 Start with a loan, then buy & sell from the market to earn your freedom.
 
-          .col-12.text-center
-            h6.secondary.text-center.mt-md-5 Start with a loan, then buy & sell from the market to earn your freedom.
-
-          .col-12.text-center
-            .btn.btn-primary.btn-lg click="startGame"
-              | Get $5,000 Loan
+    .col-12.text-center
+      .btn.btn-primary.btn-lg click="startGame"
+        | Get $5,000 Loan

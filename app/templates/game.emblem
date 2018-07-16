@@ -1,4 +1,4 @@
-.container-fluid
+.container-fluid.full-screen
   = stats-bar
 
   #game-screen.container.pt-3.pt-sm-5
@@ -40,8 +40,8 @@
           ' $#{number-format currentDebt decimals=0 thousandsSeparator=","}
           ' and will keep rising by 15% until you pay it off.
 
-      .container.mb-3.mb-md-5
-        .row.justify-content-center
-          .col-12.text-center
-            = link-to .btn.btn-primary.btn-lg.btn-block 'market'
-              | Hit the market
+.container.fixed-bottom.pb-3.pb-md-5.bg-black
+  .row.justify-content-center
+    .col-12.text-center
+      = link-to .btn.btn-primary.btn-lg.btn-block 'market'
+        | Back to the market

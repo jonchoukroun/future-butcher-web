@@ -1,11 +1,11 @@
-= stats-bar
+.container-fluid.full-screen
 
-.container-fluid
+  = stats-bar
 
   = meat-market sendRouteReload=(action 'reloadRoute')
 
-  .container.fixed-bottom.mb-3.mb-md-5
-    .row.justify-content-center
-      .col-12.col-md-4
-        = link-to .btn.btn-primary.btn-lg.btn-block 'subway'
-          | Call an Uber
+.container.fixed-bottom.pb-3.pb-md-5.bg-black
+  .row.justify-content-center
+    .col-12.text-center
+      = link-to .btn.btn-primary.btn-lg.btn-block 'subway'
+        | Call an Uber
