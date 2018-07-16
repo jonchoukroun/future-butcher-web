@@ -1,30 +1,33 @@
 import Component from '@ember/component'
-import { set }   from '@ember/object'
+import { computed, get }   from '@ember/object'
 
 export default Component.extend({
 
+  elementId: 'stats-bar',
+
   classNames: ['border-bottom', 'border-secondary'],
 
-  collapsed: true,
+  stateData: computed('socket.stateData', function() {
+    return get(this, 'socket.stateData');
+  }),
 
-  _incrementExpandedStatus() {
-    let status = localStorage.getItem('stats_expanded_count');
-    if (parseInt(status) > 0) {
-      localStorage.setItem('stats_expanded_count', ++status);
-    } else {
-      localStorage.setItem('stats_expanded_count', 1);
-    }
-  },
+  playerFunds: computed('stateData', function() {
+    return get(this, 'stateData.player.funds');
+  }),
+
+  playerDebt: computed('stateData', function() {
+    return get(this, 'stateData.player.debt');
+  }),
+
+  turnsLeft: computed('stateData.rules.turns_left', function() {
+    return get(this, 'stateData.rules.turns_left');
+  }),
 
   actions: {
 
-    showExpandedStats() {
-      set(this, 'collapsed', false);
-      this._incrementExpandedStatus();
-    },
-
-    showCollapsedStats() {
-      set(this, 'collapsed', true);
+    payDebt() {
+      let payload = { amount: get(this, 'playerDebt') };
+      get(this, 'socket').pushCallBack("pay_debt", payload);
     }
 
   }

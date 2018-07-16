@@ -1,4 +1,56 @@
-if collapsed
-  = collapsed-game-stats sendExpandStats=(action 'showExpandedStats')
-else
-  = expanded-game-stats sendCollapseStats=(action 'showCollapsedStats')
+.d-flex.align-items-center.justify-content-between.mx-1
+  a.btn.btn-simple.btn-small.px-0 data-toggle="collapse" href="#fundsHelp" role="button"
+    | $#{number-format playerFunds decimals=0 thousandsSeparator=","}
+    i.fas.fa-caret-down.ml-1.ml-md-3
+
+  a.btn.btn-simple.btn-small.pr-0.text-red data-toggle="collapse" href="#debtHelp" role="button"
+    | $#{number-format playerDebt decimals=0 thousandsSeparator=","}
+    i.fas.fa-caret-down.ml-1.ml-md-3
+
+  a.btn.btn-simple.btn-small.pr-0 data-toggle="collapse" href="#turnsHelp" role="button"
+    | #{turnsLeft}
+    i.fas.fa-caret-down.ml-1.ml-md-3
+
+  = link-to .btn.btn-simple.btn-small.pr-0 'help'
+    i.fas.fa-question
+
+#fundsHelp.collapse data-parent="#stats-bar"
+  .card.card-body.pt-0.pt-md-2.bg-black.border-left-0.border-right-0
+    p
+      ' You have
+      ' $#{number-format playerFunds decimals=0 thousandsSeparator=","}
+      ' to buy meat from the
+      = link-to .link-text 'market'
+        | market
+      ' , then sell it for a profit.
+
+    p
+      ' Check out the
+      = link-to .link-text 'price-guide'
+        | Beginner's Meat Pricing Guide
+      | &nbsp;
+      ' if you're stuck.
+
+#debtHelp.collapse data-parent="#stats-bar"
+  .card.card-body.pt-0.pt-md-2.bg-black.border-left-0.border-right-0
+    if (gt playerDebt 0)
+      p
+        ' You still owe
+        ' $#{number-format playerDebt decimals=0 thousandsSeparator=","}
+        ' on your loan. Hurry up, it's got a 15% interest rate.
+
+        if (gt playerFunds playerDebt)
+          .btn.btn-primary.btn-small click="payDebt"
+            | Pay it off
+
+    else
+      p You've paid your debt.
+
+#turnsHelp.collapse data-parent="#stats-bar"
+  .card.card-body.pt-0.pt-md-2.bg-black.border-left-0.border-right-0
+    p
+      ' You have
+      ' #{turnsLeft} Uber rides
+      ' remaining out of 25.
+
+    p Call a ride and check out meat prices in a different part of town.

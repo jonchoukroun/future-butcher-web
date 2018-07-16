@@ -1,61 +1,46 @@
-.container-fluid style="height: 100vh; padding: 0;"
-  .row.justify-content-center style="height: 100%;"
-    .col-12.col-sm-10.col-md-8.col-lg-7.col-xl-5
-      = stats-bar
+.container-fluid.full-screen
+  = stats-bar
 
-      #game-screen.container.pt-3.pt-sm-5
-        h1.border-bottom.border-primary
-          | #{uc-words currentStation}
+  #game-screen.container.pt-3.pt-sm-5
+    h1.border-bottom.border-primary
+      | #{uc-words currentStation}
 
-        if isFirstTurn
-          h6.my-4
-            ' You're on the streets with $5,000 and a pack that can carry 20 pounds of meat.
+    if isFirstTurn
+      h6.my-4
+        ' You're on the streets with a $5,000 loan and a pack that can carry 20 pounds of meat.
 
-          h6.my-4
-            ' Cash ain't free, you'll need to pay the debt back, but right now you need some cuts.
+      h6.my-4
+        ' Head
+        = link-to .link-text 'market'
+          | to the market
+        | &nbsp;
+        ' to buy some meat.
 
-          h6.my-4
-            ' You can buy cuts at the
-            = link-to .link-text 'market'
-              | market
-            | &nbsp;
-            ' or go
-            = link-to .link-text 'subway'
-              | somewhere else
-            |.
+      h6.my-4
+        ' Or flip through the
+        = link-to .link-text 'price-guide'
+          | Beginner's Meat Pricing Guide
+        | &nbsp;
+        ' if you're a rank amateur.
 
-          h6.my-4
-            ' Don't forget you have a
-            = link-to .link-text 'price-guide'
-              | price guide
-            ' (for amateurs) in your pack.
+    if isSecondTurn
+      h6.my-4
+        ' You used one of your 25 Uber rides to get to
+        ' #{uc-words currentStation}.
 
+      if (gt currentDebt 0)
+        h6.my-4
+          ' Your debt is now up to
+          ' $#{number-format currentDebt decimals=0 thousandsSeparator=","}
+          ' and will keep rising by 15% until you pay it off.
 
+.container.cta-container.pb-3.pb-md-5.bg-black
+  .row.justify-content-center
+    .col-12.text-center
+      if isFirstTurn
+        = link-to .btn.btn-primary.btn-lg 'market'
+          | Find some meat
 
-        if isSecondTurn
-          h6.my-4
-            ' One hour has gone by, and your debt went up 15%.
-          h6.my-4
-            ' Your debt will keep going up until you pay it off at
-            = link-to .link-text 'bank'
-              | General Bank
-            | , if you have the cash.
-
-          h6.my-4
-            ' Don't take too long - that interest rate is killer.
-            ' And the bank is known for aggressive collections agents...
-
-      / if showGameContinuePrompt
-        .d-flex.flex-column.align-items-center.justify-content-start.mt-5
-          .mx-2.py-2.border-bottom.border-top.border-black.text-center
-            p
-              | An earlier game was loaded.
-
-            .d-flex.justify-content-around
-              .btn.btn-primary click="continueGame"
-                | Continue
-
-              .btn.btn-primary click="startNewGame"
-                | Start Over
-
-      = game-options
+      if isSecondTurn
+        = link-to .btn.btn-primary.btn-lg 'market'
+          | Hit the market

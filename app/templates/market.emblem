@@ -1,8 +1,11 @@
-.container-fluid style="height: 100vh; padding: 0;"
-  .row.justify-content-center style="height: 100%;"
-    .col-12.col-sm-10.col-md-8.col-lg-7.col-xl-5
-      = stats-bar
+.container-fluid.full-screen
 
-      = meat-market sendRouteReload=(action 'reloadRoute')
+  = stats-bar
 
-      = game-options
+  = meat-market sendRouteReload=(action 'reloadRoute')
+
+.container.cta-container.pb-3.pb-md-5.bg-black
+  .row.justify-content-center
+    .col-12.text-center
+      = link-to .btn.btn-primary.btn-lg 'subway'
+        | Call an Uber

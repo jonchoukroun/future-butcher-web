@@ -1,0 +1,158 @@
+@import './utilities';
+
+.full-screen {
+  overflow: hidden;
+}
+
+.cta-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+input.form-control {
+  background-color: $black;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-color: $lightGreen;
+  border-radius: 2px;
+  font-size: 1rem;
+  transition: all 0.5s ease-out;
+}
+
+input.form-control:focus {
+  background-color: $black;
+  border-color: $green;
+  box-shadow: none;
+  color: $green;
+  font-family: 'Space Mono', monospace;
+  font-weight: 800 !important;
+}
+
+.btn-group-lg > .btn {
+  border-radius: 2px;
+}
+
+.btn-primary {
+  margin: 10px 0;
+  background-color: $black;
+  border-color: $lightGreen;
+  border-radius: 2px;
+  border-width: 2px;
+  color: $green;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 0.2s ease-out;
+}
+
+%brightenState {
+  background-color: $lightGreen !important;
+  border-color: $green !important;
+  border-radius: 2px !important;
+  color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.btn-primary:active {
+  background-color: transparent;
+  border: none;
+}
+
+.btn-primary:focus {
+  box-shadow: none;
+}
+
+.btn-primary:hover {
+  @extend %brightenState;
+  transform: translateY(-2px);
+  box-shadow: 1px 1px 7px 3px $lightGreen;
+}
+
+.btn-primary:active:focus {
+  box-shadow: 0 0 0 0.2rem $lightGreen !important;
+}
+
+.btn-plain {
+  background-color: $black;
+  border: none;
+  border-radius: 2px;
+  font-family: 'Voltaire', sans-serif;
+  font-size: 1.5rem;
+  color: $green;
+}
+
+.btn-secondary {
+  @extend .btn-primary;
+  border-radius: 2px;
+  border-width: 1px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.btn-secondary:visited {
+  background-color: $black !important;
+  color: $green !important;
+  border: solid $green !important;
+}
+
+.btn-simple {
+  @extend .btn-secondary;
+  border: none;
+}
+
+%steadyState {
+  transform: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+  color: $lightGreen !important;
+  border-color: $lightGreen !important;
+}
+
+.btn-black {
+  background-color: $black !important;
+  border-color: $black !important;
+  color: $black !important;
+
+  &:hover  { @extend %steadyState; }
+  &:active { @extend %steadyState; }
+}
+
+.btn-disabled {
+  background-color: transparent;
+  color: $lightGreen;
+  font-style: italic;
+  cursor: not-allowed !important;
+
+  &:hover  { @extend %steadyState; }
+  &:active { @extend %steadyState; }
+}
+
+.disabled {
+  color: $lightGreen;
+  font-style: italic;
+  cursor: not-allowed !important;
+
+  &:hover  { @extend %steadyState; }
+  &:active { @extend %steadyState; }
+}
+
+.list-group-item {
+  background-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+  border: none;
+}
+
+.border-primary {
+  border-color: $green !important;
+}
+
+.border-secondary {
+  border-color: $lightGreen !important;
+}
+
+.border-black {
+  border-color: black !important;
+}

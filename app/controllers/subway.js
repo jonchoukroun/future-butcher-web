@@ -4,31 +4,45 @@ import ENV from '../config/environment'
 
 export default Controller.extend({
 
-  isDevelopmentENV: computed('ENV', function() {
-    return ENV.environment === 'development' || ENV.environment === 'semilocal';
-  }),
-
   lastTurn: computed('socket.stateData.rules.turns_left', function() {
     return get(this, 'socket.stateData.rules.turns_left') === 0;
+  }),
+
+  playerStats: computed('socket.stateData.player', function() {
+    return get(this, 'socket.stateData.player');
+  }),
+
+  playerDebt: computed('playerStats.debt', function() {
+    return get(this, 'playerStats.debt');
+  }),
+
+  hasPayableDebt: computed('playerStats.funds', 'playerDebt', function() {
+    const debt = get(this, 'playerDebt');
+
+    return debt > 0 && get(this, 'playerStats.funds') > debt;
+  }),
+
+  totalCutsOwned: computed('playerStats.pack', function() {
+    return Object.values(get(this, 'playerStats.pack')).reduce((sum, cut) => {
+      return sum += cut;
+    });
+  }),
+
+  hasLooseEnds: computed('hasPayableDebt', 'totalCutsOwned', function() {
+    return get(this, 'hasPayableDebt') || get(this, 'totalCutsOwned') > 0;
   }),
 
   endGame(payload) {
     get(this, 'socket').pushCallBack('end_game', payload).then(() => {
       this.transitionToRoute('high-scores');
-      this.incrementGamesCount();
     });
   },
 
-  incrementGamesCount() {
-    let count = localStorage.getItem('games_played');
-    if (count) {
-      localStorage.setItem('games_played', ++count);
-    } else {
-      localStorage.setItem('games_played', 1);
-    }
-  },
-
   actions: {
+
+    payDebt() {
+      get(this, 'socket').pushCallBack("pay_debt", { amount: get(this, 'playerDebt') });
+    },
 
     quitGame() {
       let payload = { hash_id: localStorage.getItem('player_hash'), score: 0 };
