@@ -18,8 +18,8 @@
 
       = subway-stations sendStation=(action 'navigate')
 
-  .container
-    .row.justify-content-center
-      .col-12.text-center
-        = link-to .btn.btn-primary.btn-lg.btn-block 'market'
-          | Hit the market
+    .container
+      .row.justify-content-center
+        .col-12.text-center
+          = link-to .btn.btn-primary.btn-lg.btn-block 'market'
+            | Back to the market
