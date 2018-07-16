@@ -1,5 +1,11 @@
 @import './utilities';
 
+.full-screen {
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
 input.form-control {
   background-color: $black;
   border-top: none;
