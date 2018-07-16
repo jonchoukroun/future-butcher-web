@@ -19,7 +19,10 @@
     p
       ' You have
       ' $#{number-format playerFunds decimals=0 thousandsSeparator=","}
-      ' to buy meat from the market, then sell it for a profit.
+      ' to buy meat from the
+      = link-to .link-text 'market'
+        | market
+      ' , then sell it for a profit.
 
     p
       ' Check out the
@@ -42,7 +45,7 @@
 
     else
       p You've paid your debt.
-      
+
 #turnsHelp.collapse data-parent="#stats-bar"
   .card.card-body.pt-0.pt-md-2.bg-black.border-left-0.border-right-0
     p
