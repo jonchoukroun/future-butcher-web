@@ -4,8 +4,8 @@
 
   = meat-market sendRouteReload=(action 'reloadRoute')
 
-.container.fixed-bottom.pb-3.pb-md-5.bg-black
+.container.cta-container.pb-3.pb-md-5.bg-black
   .row.justify-content-center
     .col-12.text-center
-      = link-to .btn.btn-primary.btn-lg.btn-block 'subway'
+      = link-to .btn.btn-primary.btn-lg 'subway'
         | Call an Uber

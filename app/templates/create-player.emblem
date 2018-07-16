@@ -1,4 +1,4 @@
-.container-fluid.my-5
+.container-fluid.full-screen
   = title-screen
-  
+
   = sign-up sendJoin=(action 'signInPlayer')

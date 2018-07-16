@@ -23,12 +23,6 @@
         | &nbsp;
         ' if you're a rank amateur.
 
-      .container.mb-3.mb-md-5
-        .row.justify-content-center
-          .col-12.text-center
-            = link-to .btn.btn-primary.btn-lg.btn-block 'market'
-              | Find some meat
-
     if isSecondTurn
       h6.my-4
         ' You used one of your 25 Uber rides to get to
@@ -40,8 +34,13 @@
           ' $#{number-format currentDebt decimals=0 thousandsSeparator=","}
           ' and will keep rising by 15% until you pay it off.
 
-.container.fixed-bottom.pb-3.pb-md-5.bg-black
+.container.cta-container.pb-3.pb-md-5.bg-black
   .row.justify-content-center
     .col-12.text-center
-      = link-to .btn.btn-primary.btn-lg.btn-block 'market'
-        | Back to the market
+      if isFirstTurn
+        = link-to .btn.btn-primary.btn-lg 'market'
+          | Find some meat
+
+      if isSecondTurn
+        = link-to .btn.btn-primary.btn-lg 'market'
+          | Hit the market

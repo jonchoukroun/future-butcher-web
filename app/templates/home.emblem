@@ -30,9 +30,9 @@
           br
           | Max carrying space
 
-.container.fixed-bottom.pb-3.pb-md-5.bg-black
+.container.cta-container.pb-3.pb-md-5.bg-black
   .row.justify-content-center
-    .col-12.text-center
+    .col-12.col-md-4.text-center
       h6.text-center.mt-md-5 Start with a loan, then buy & sell from the market to earn your freedom.
 
     .col-12.text-center
