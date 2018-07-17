@@ -1,7 +1,9 @@
 import Controller from '@ember/controller'
-import { get } from '@ember/object'
+import { get, set } from '@ember/object'
 
 export default Controller.extend({
+
+  screen: 'intro',
 
   actions: {
 
@@ -9,6 +11,10 @@ export default Controller.extend({
       get(this, 'socket').pushCallBack("start_game", {}).then(() => {
         this.transitionToRoute('game');
       })
+    },
+
+    nextScreen() {
+      set(this, 'screen', 'instructions');
     }
 
   }

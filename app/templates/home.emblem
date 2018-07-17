@@ -1,40 +1,59 @@
-.container-fluid.full-screen
-  h2.my-3.my-md-5.pb-1.font-italic.text-center.border-bottom.border-black
-    | Future Butcher
+if (eq screen 'intro')
+  .container-fluid.full-screen
+    .d-flex.flex-column.align-items-center.justify-content-end
+      .intro-image.jumbotron.my-3.px-1.w-100
+        h1.display-4.mb-md-4.text-center
+          ' Los Angeles
+        h2.text-center
+          ' 2055
 
-  .container-fluid
-    h5.mb-md-4 ... Los Angeles, 2050
+      p
+        | The city is crumbling and your only option is to profit off the new celebrity diet.
 
-    p.small
-      | The city is crumbling and your only option is to profit off the new celebrity diet.
+      p
+        | More addicting than kombucha and sexier than coffee enemas, the rich and famous enjoy fresh - and expensive - human meat.
 
-    p.small
-      | More addicting than kombucha and sexier than coffee enemas, the rich and famous enjoy fresh - and expensive - human meat.
+  .container.cta-container.pb-3.pb-md-5.bg-black
+    .row.justify-content-center
+      .col-12.text-center
+        .btn.btn-primary.btn-lg click='action "nextScreen"'
+          | Next
 
-    .row.align-items-start.justify-content-center.py-md-4
-      .col-4.text-center
-        p
-          b.border-bottom.border-secondary 25x
-          br
-          | Free uber rides
+if (eq screen 'instructions')
+  .container-fluid.full-screen
+    h1.mt-5.mb-3.pb-2.font-italic.text-center.border-bottom.border-black
+      | Future Butcher
 
-      .col-4.text-center.border-left.border-right.border-black
-        p
-          b.border-bottom.border-secondary $5,000
-          br
-          | Starter loan, 15% interest
+    .container-fluid.instructions
+      .row.justify-content-center.mb-2
+        h6 Navigate the city to find the best deals on liver, ribs, flank - and other cuts.
 
-      .col-4.text-center
-        p
-          b.border-bottom.border-secondary 20 lbs
-          br
-          | Max carrying space
+      .row.align-items-center.mb-3.mb-md-0.py-md-4
+        .col-2
+          h4
+            i.fas.fa-dollar-sign
+        .col
+          p.mb-1.game-details
+            | Start with a $5,000 loan.
+          p.mb-0.game-details
+            | You'll have to pay this off... or else!
 
-.container.cta-container.pb-3.pb-md-5.bg-black
-  .row.justify-content-center
-    .col-12.col-md-4.text-center
-      h6.text-center.mt-md-5 Start with a loan, then buy & sell from the market to earn your freedom.
+      .row.align-items-center.mb-3.mb-md-0.py-md-4
+        .col-2
+          h4
+            i.fas.fa-subway
+        .col
+          p.mb-1.game-details
+            | You only have 25 subway tokens to get around town.
+          p.mb-0.game-details
+            | When they're done - game over!
 
-    .col-12.text-center
-      .btn.btn-primary.btn-lg click="startGame"
-        | Get $5,000 Loan
+  .container.cta-container.pb-3.pb-md-5.bg-black
+    .row.justify-content-center
+      .col-12.col-md-4.text-center
+        h5.text-center.mt-md-5
+          | Now take your first ride downtown and get that loan.
+
+      .col-12.text-center
+        .btn.btn-primary.btn-lg click='action "startGame"'
+          | Let's ride

@@ -1,0 +1,26 @@
+.intro-image {
+  height: 40vh;
+  background-color: $black;
+  background-image: url("https://s3-us-west-1.amazonaws.com/futurebutcher.com/assets/downtown-bridge.jpg");
+  background-size: cover;
+  background-position: top left;
+  background-repeat: no-repeat;
+
+  h1, h2 {
+    text-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  }
+
+  h1 {
+    font-size: 3em;
+  }
+}
+
+.game-details {
+  font-size: 0.8em;
+}
+
+@media(min-width: 768px) {
+  .game-details {
+    font-size: 1em;
+  }
+}
