@@ -55,7 +55,7 @@
                 | $#{number-format score.score decimals=0 thousandsSeparator=","}
 
         .mt-4.py-3.border-top.border-black
-          p
+          p.text-center
             ' Ouch. Your grandma has a higher score. Better try again.
 
       else

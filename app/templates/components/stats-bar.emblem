@@ -24,13 +24,6 @@
         | market
       ' , then sell it for a profit.
 
-    p
-      ' Check out the
-      = link-to .link-text 'price-guide'
-        | Beginner's Meat Pricing Guide
-      | &nbsp;
-      ' if you're stuck.
-
 #debtHelp.collapse data-parent="#stats-bar"
   .card.card-body.pt-0.pt-md-2.bg-black.border-left-0.border-right-0
     if (gt playerDebt 0)

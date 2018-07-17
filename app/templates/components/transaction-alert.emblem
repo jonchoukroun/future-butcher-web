@@ -1,2 +1,2 @@
-p.mb-0.text-center.text-black
+p.mb-0.text-center.text-black.font-weight-bold
   = message

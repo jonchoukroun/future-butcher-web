@@ -16,13 +16,6 @@
         | &nbsp;
         ' to buy some meat.
 
-      h6.my-4
-        ' Or flip through the
-        = link-to .link-text 'price-guide'
-          | Beginner's Meat Pricing Guide
-        | &nbsp;
-        ' if you're a rank amateur.
-
     if isSecondTurn
       h6.my-4
         ' You used one of your 25 Uber rides to get to
