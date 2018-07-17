@@ -74,8 +74,8 @@ export default Component.extend({
     };
 
     get(this, 'socket').pushCallBack("buy_cut", payload).then(() => {
-      set(this, 'transactionConfirmed', true);
-      get(this, 'sendRouteReload')()
+      get(this, 'sendBuyMenuClose')();
+      get(this, 'sendTransactionConfirmed')("buy", payload, get(this, 'estimatedCost'))
     });
   },
 

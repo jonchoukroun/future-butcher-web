@@ -156,3 +156,9 @@ input.form-control:focus {
 .border-black {
   border-color: black !important;
 }
+
+.alert-success {
+  background-color: $lightGreen;
+  border: none;
+  border-radius: 2px;
+}
