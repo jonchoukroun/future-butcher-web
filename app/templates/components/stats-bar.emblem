@@ -11,8 +11,8 @@
     | #{turnsLeft}
     i.fas.fa-caret-down.ml-1.ml-md-3
 
-  = link-to .btn.btn-simple.btn-small.pr-0 'help'
-    i.fas.fa-question
+  a.btn.btn-simple.btn-small.pr-0 data-toggle="collapse" href="#gameHelp" role="button"
+    i.fas.fa-cog
 
 #fundsHelp.collapse data-parent="#stats-bar"
   .card.card-body.pt-0.pt-md-2.bg-black.border-left-0.border-right-0
@@ -47,3 +47,20 @@
       ' remaining out of 25.
 
     p Call a ride and check out meat prices in a different part of town.
+
+#gameHelp.collapse data-parents="#stats-bar"
+  .card.card-body.pt-0.pt-md-2.bg-black.border-left-0.border-right-0
+    .d-flex.align-items-center.justify-content-around.my-3
+      .btn.btn-primary click='action "quitGame"'
+        | Quit
+
+      = link-to .btn.btn-primary 'game'
+        | Back
+    .container
+      .row.align-items-center.justify-content-start.px-2
+        p.small Powered by Elixir/Phoenix and Ember.js
+        p.small
+          ' 2018
+          i.far.fa-copyright
+          | &nbsp;
+          ' Jon Choukroun

@@ -12,8 +12,6 @@ Router.map(function() {
 
   this.route('game');
 
-  this.route('help');
-
   this.route('create-player');
 
   this.route('market');
