@@ -10,13 +10,15 @@ Router.map(function() {
 
   this.route('home', { path: '/' });
 
-  this.route('game');
-
   this.route('create-player');
 
   this.route('market');
 
   this.route('subway');
+
+  this.route('bank');
+
+  this.route('game');
 
   this.route('high-scores');
 
