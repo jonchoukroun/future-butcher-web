@@ -39,6 +39,10 @@ export default Controller.extend({
 
   actions: {
 
+    sendToScores() {
+      this.transitionToRoute('high-scores');
+    },
+
     payDebt() {
       get(this, 'socket').pushCallBack("pay_debt", { amount: get(this, 'playerDebt') });
     },

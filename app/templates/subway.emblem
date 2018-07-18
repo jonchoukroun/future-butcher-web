@@ -1,5 +1,5 @@
 .container-fluid.full-screen
-  = stats-bar
+  = stats-bar  sendQuit=(action 'sendToScores')
 
   if lastTurn
     .d-flex.flex-column.align-items-center.justify-content-center.my-1.my-md-5.p-4

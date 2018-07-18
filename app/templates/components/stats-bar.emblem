@@ -54,8 +54,8 @@
       .btn.btn-primary click='action "quitGame"'
         | Quit
 
-      = link-to .btn.btn-primary 'game'
-        | Back
+      a.btn.btn-primary.btn-small data-toggle="collapse" href="#gameHelp" role="button"
+        | Close
     .container
       .row.align-items-center.justify-content-start.px-2
         p.small Powered by Elixir/Phoenix and Ember.js

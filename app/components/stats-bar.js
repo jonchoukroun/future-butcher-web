@@ -23,11 +23,22 @@ export default Component.extend({
     return get(this, 'stateData.rules.turns_left');
   }),
 
+  endGame(payload) {
+    get(this, 'socket').pushCallBack('end_game', payload).then(() => {
+      get(this, 'sendQuit')();
+    });
+  },
+
   actions: {
 
     payDebt() {
       let payload = { amount: get(this, 'playerDebt') };
       get(this, 'socket').pushCallBack("pay_debt", payload);
+    },
+
+    quitGame() {
+      let payload = { hash_id: localStorage.getItem('player_hash'), score: 0 };
+      this.endGame(payload);
     }
 
   }

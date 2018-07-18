@@ -1,5 +1,5 @@
 .container-fluid.full-screen
-  = stats-bar
+  = stats-bar sendQuit=(action 'sendToScores')
 
   #game-screen.container.pt-3.pt-sm-5
     h1.border-bottom.border-primary

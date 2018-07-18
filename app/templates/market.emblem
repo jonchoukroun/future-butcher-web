@@ -1,7 +1,7 @@
 .container-fluid.full-screen.px-0.px-sm-3
 
   .px-3.px-sm-0
-    = stats-bar
+    = stats-bar sendQuit=(action 'sendToScores')
 
   = meat-market sendRouteReload=(action 'reloadRoute')
 
