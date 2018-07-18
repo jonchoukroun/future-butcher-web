@@ -9,4 +9,4 @@
   .row.justify-content-center
     .col-12.text-center
       = link-to .btn.btn-primary.btn-lg 'subway'
-        | Call an Uber
+        | Hit the subway
