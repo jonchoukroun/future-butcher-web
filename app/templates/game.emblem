@@ -18,7 +18,7 @@
 
     if isSecondTurn
       h6.my-4
-        ' You used one of your 25 Uber rides to get to
+        ' You used one of your 25 subway rides to get to
         ' #{uc-words currentStation}.
 
       if (gt currentDebt 0)
