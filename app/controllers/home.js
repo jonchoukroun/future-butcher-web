@@ -9,7 +9,7 @@ export default Controller.extend({
 
     startGame() {
       get(this, 'socket').pushCallBack("start_game", {}).then(() => {
-        this.transitionToRoute('game');
+        this.transitionToRoute('bank');
       })
     },
 
