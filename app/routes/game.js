@@ -11,12 +11,12 @@ export default Route.extend({
     }
 
     if (get(this, 'socket.stateData.rules.turns_left') === 24) {
-      if (get(this, 'socket.stateData.player.funds') === 0) {
+      if (get(this, 'socket.stateData.player.debt') === 0) {
         this.replaceWith('bank');
+      } else {
+        this.replaceWith('market');
       }
-    }
-
-    if (get(this, 'socket.stateData.rules.turns_left') < 23 ) {
+    } else {
       this.replaceWith('market');
     }
   },
