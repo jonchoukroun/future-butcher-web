@@ -4,7 +4,7 @@ import { computed, get, set } from '@ember/object'
 export default Controller.extend({
 
   debt: null,
-  rate:  null,
+  rate: null,
 
   isFirstTurn: computed('socket.stateData.rules.turns_left', function() {
     return get(this, 'socket.stateData.rules.turns_left');
