@@ -6,6 +6,10 @@ export default Controller.extend({
 
     reloadRoute() {
       this.transitionToRoute('market');
+    },
+
+    sendToScores() {
+      this.transitionToRoute('high-scores');
     }
   }
 

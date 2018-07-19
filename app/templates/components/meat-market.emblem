@@ -1,8 +1,17 @@
+.alert-container
+  = transaction-alert message=transactionAlert
+
 if showBuyForm
-  = buy-menu cutName=buyingCut sendBuyMenuClose=(action 'closeBuyMenu') sendRouteReload=(action 'sendRouteReload')
+  = buy-menu cutName=buyingCut sendBuyMenuClose=(action 'closeBuyMenu') sendTransactionConfirmed=(action 'sendTransactionConfirmed')
 else if showSellForm
-  = sell-menu cutName=sellingCut sendSellMenuClose=(action 'closeSellMenu') sendRouteReload=(action 'sendRouteReload')
+  = sell-menu cutName=sellingCut sendSellMenuClose=(action 'closeSellMenu') sendTransactionConfirmed=(action 'sendTransactionConfirmed')
 else
   each-in marketCuts as |cut market|
     if (gt market.quantity 0)
       = cut-entry cut=cut price=market.price quantity=market.quantity sendOpenBuyMenu=(action 'openBuyMenu') sendOpenSellMenu=(action 'openSellMenu')
+
+  .flex-row.pt-2.mx-1.mx-md-5.px-2.border-top.border-black
+    p.text-right
+      b
+        ' Total:
+      ' #{totalCutsOwned}/20 lbs

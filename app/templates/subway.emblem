@@ -1,8 +1,8 @@
 .container-fluid.full-screen
-  = stats-bar
+  = stats-bar  sendQuit=(action 'sendToScores')
 
   if lastTurn
-    .d-flex.flex-column.align-items-start.justify-content-center.my-1.my-md-5.p-4
+    .d-flex.flex-column.align-items-center.justify-content-center.my-1.my-md-5.p-4
       h2.mb-3
         | You're out of rides!
 

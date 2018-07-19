@@ -1,5 +1,6 @@
 import Component from '@ember/component'
 import { computed, get } from '@ember/object'
+import { cutStats } from '../fixtures/cut-stats'
 
 export default Component.extend({
 
@@ -28,6 +29,10 @@ export default Component.extend({
 
   cutsOwned: computed('socket.stateData.player.pack', 'cut', function() {
     return get(this, 'socket.stateData.player.pack')[get(this, 'cut')];
+  }),
+
+  medianPrice: computed('cut', function() {
+    return cutStats[get(this, 'cut')];
   }),
 
   actions: {

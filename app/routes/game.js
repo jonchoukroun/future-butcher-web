@@ -10,6 +10,12 @@ export default Route.extend({
       this._attemptChannelConnection();
     }
 
+    if (get(this, 'socket.stateData.rules.turns_left') === 24) {
+      if (get(this, 'socket.stateData.player.funds') === 0) {
+        this.replaceWith('bank');
+      }
+    }
+
     if (get(this, 'socket.stateData.rules.turns_left') < 23 ) {
       this.replaceWith('market');
     }

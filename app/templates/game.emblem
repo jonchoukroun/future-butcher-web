@@ -1,5 +1,5 @@
 .container-fluid.full-screen
-  = stats-bar
+  = stats-bar sendQuit=(action 'sendToScores')
 
   #game-screen.container.pt-3.pt-sm-5
     h1.border-bottom.border-primary
@@ -16,16 +16,9 @@
         | &nbsp;
         ' to buy some meat.
 
-      h6.my-4
-        ' Or flip through the
-        = link-to .link-text 'price-guide'
-          | Beginner's Meat Pricing Guide
-        | &nbsp;
-        ' if you're a rank amateur.
-
     if isSecondTurn
       h6.my-4
-        ' You used one of your 25 Uber rides to get to
+        ' You used one of your 25 subway rides to get to
         ' #{uc-words currentStation}.
 
       if (gt currentDebt 0)

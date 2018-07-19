@@ -1,6 +1,5 @@
 import Controller from '@ember/controller'
 import { computed, get } from '@ember/object'
-import ENV from '../config/environment'
 
 export default Controller.extend({
 
@@ -40,6 +39,10 @@ export default Controller.extend({
 
   actions: {
 
+    sendToScores() {
+      this.transitionToRoute('high-scores');
+    },
+
     payDebt() {
       get(this, 'socket').pushCallBack("pay_debt", { amount: get(this, 'playerDebt') });
     },
@@ -50,7 +53,7 @@ export default Controller.extend({
     },
 
     retirePlayer() {
-      let score = get(this, 'socket.stateData.player.debt') === 0 ?
+      let score = get(this, 'playerDebt') === 0 ?
         get(this, 'socket.stateData.player.funds') : null;
       if (score === 0) { score = null; }
 
@@ -67,7 +70,7 @@ export default Controller.extend({
     navigate(station) {
       let payload = { destination: station };
       get(this, 'socket').pushCallBack('change_station', payload).then(() => {
-        this.transitionToRoute('game');
+        this.transitionToRoute('market');
       });
     }
 

@@ -6,8 +6,9 @@
         span.lead
           ' (#{cutsOwned})
     p.m-0.border-top.border-secondary
-      ' #{number-format quantity decimals=0 thousandsSeparator=","} lbs /
       ' $#{number-format price decimals=0 thousandsSeparator=","}
+      span.small
+        | (avg: $#{number-format medianPrice decimals=0 thousandsSeparator=","})
 
   .btn-group
     if (and canAffordCut hasPackSpace)

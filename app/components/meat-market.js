@@ -9,10 +9,11 @@ export default Component.extend({
 
   classNames: ['list-group-flush', 'px-2'],
 
-  showBuyForm:  false,
-  showSellForm: false,
-  buyingCut:    false,
-  sellingCut:   false,
+  showBuyForm:      false,
+  showSellForm:     false,
+  buyingCut:        false,
+  sellingCut:       false,
+  transactionAlert: null,
 
   marketCuts: computed('gameStatus', 'socket.stateData.station.market', function() {
     if (get(this, 'socket.gameStatus') !== 'in_game') { return; }
@@ -20,10 +21,22 @@ export default Component.extend({
     return get(this, 'socket.stateData.station.market');
   }),
 
+  totalCutsOwned: computed('socket.stateData.player.pack', function() {
+    return Object.values(get(this, 'socket.stateData.player.pack')).reduce((sum, cut) => {
+      return sum += cut;
+    });
+  }),
+
   actions: {
 
-    sendRouteReload() {
-      get(this, 'sendRouteReload')();
+    sendTransactionConfirmed(action, payload, value) {
+      if (action === "buy") {
+        let message = `${payload.amount} lbs of ${payload.cut} bought for $${value}!`
+        set(this, 'transactionAlert', message);
+      } else {
+        let message = `${payload.amount} lbs of ${payload.cut} bought for $${value}!`
+        set(this, 'transactionAlert', message);
+      }
     },
 
     openBuyMenu(cut) {

@@ -32,10 +32,8 @@ export default Controller.extend({
 
   actions: {
 
-    showGameContinuePrompt: false,      // make conditional on reloading game
-
-    continueGame() {
-      set(this, 'showGameContinuePrompt', false);
+    sendToScores() {
+      this.transitionToRoute('high-scores');
     },
 
     startNewGame() {
