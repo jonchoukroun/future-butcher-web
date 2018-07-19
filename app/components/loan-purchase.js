@@ -3,8 +3,8 @@ import { computed, get, set } from '@ember/object'
 
 export default Component.extend({
 
-  principle: null,
-  interest:  null,
+  debt: null,
+  rate: null,
 
   isDisabled: false,
   isSelected: false,
@@ -13,15 +13,15 @@ export default Component.extend({
 
   classNameBindings: ['isDisabled:disabled-loan'],
 
-  displayedInterest: computed('interest', function() {
-    return get(this, 'interest') * 100;
+  displayedRate: computed('rate', function() {
+    return get(this, 'rate') * 100;
   }),
 
   actions: {
 
     selectLoan() {
       set(this, 'isSelected', true);
-      get(this, 'sendLoanSelect')(get(this, 'principle'), get(this, 'interest'));
+      get(this, 'sendLoanSelect')(get(this, 'debt'), get(this, 'rate'));
     },
 
     deSelectLoan() {

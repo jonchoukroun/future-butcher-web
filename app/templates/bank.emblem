@@ -18,19 +18,19 @@
           p
             | Welcome back, favored customer. With your credit, now have access to the following loans.
 
-    = loan-purchase principle=5000 interest=0.15 isDisabled=false sendLoanSelect=(action 'selectLoan')
+    = loan-purchase debt=5000 rate=0.15 isDisabled=false sendLoanSelect=(action 'selectLoan')
 
-    = loan-purchase principle=10000 interest=0.20 isDisabled=true sendLoanSelect=(action 'selectLoan')
+    = loan-purchase debt=10000 rate=0.20 isDisabled=true sendLoanSelect=(action 'selectLoan')
 
-    = loan-purchase principle=30000 interest=0.25 isDisabled=true sendLoanSelect=(action 'selectLoan')
+    = loan-purchase debt=30000 rate=0.25 isDisabled=true sendLoanSelect=(action 'selectLoan')
 
 .container.cta-container.pb-3.pb-md-5.bg-black
   .row.justify-content-center
     .col-12.text-center
-      if (and principle interest)
+      if (and debt rate)
         .btn.btn-primary.btn-lg click='action "buyLoan"'
           ' Buy
-          ' $#{number-format principle decimals=0 thousandsSeparator=","}
+          ' $#{number-format debt decimals=0 thousandsSeparator=","}
           ' loan
       else
         .btn.btn-primary.btn-lg.btn-disabled

@@ -10,10 +10,10 @@ else
       i.far.fa-circle
 
 h5.mb-0
-  | #{number-format principle decimals=0 thousandsSeparator=","}
+  | #{number-format debt decimals=0 thousandsSeparator=","}
 
 p.small.mb-0
-  ' #{number-format displayedInterest decimals=0}% /
+  ' #{number-format displayedRate decimals=0}% /
   ' turn
 
 if isDisabled

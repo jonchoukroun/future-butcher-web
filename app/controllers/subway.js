@@ -11,8 +11,8 @@ export default Controller.extend({
     return get(this, 'socket.stateData.player');
   }),
 
-  playerDebt: computed('playerStats.principle', function() {
-    return get(this, 'playerStats.principle');
+  playerDebt: computed('playerStats.debt', function() {
+    return get(this, 'playerStats.debt');
   }),
 
   hasPayableDebt: computed('playerStats.funds', 'playerDebt', function() {
