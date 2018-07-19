@@ -1,9 +1,12 @@
 .container-fluid.full-screen.px-0.px-sm-3
+  .transaction-alert.alert.alert-success.bg-primary.fixed-top.border-bottom.border-black.collapse
+    p.mb-0.text-center.text-black.font-weight-bold
+      | #{transactionAlert}
 
   .px-3.px-sm-0
     = stats-bar sendQuit=(action 'sendToScores')
 
-  = meat-market sendRouteReload=(action 'reloadRoute')
+  = meat-market sendRouteReload=(action 'reloadRoute') sendTransactionAlert=(action 'confirmTransaction')
 
 .container.cta-container.pb-3.pb-md-5.bg-black
   .row.justify-content-center

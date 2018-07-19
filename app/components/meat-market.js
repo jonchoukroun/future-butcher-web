@@ -32,10 +32,10 @@ export default Component.extend({
     sendTransactionConfirmed(action, payload, value) {
       if (action === "buy") {
         let message = `${payload.amount} lbs of ${payload.cut} bought for $${value}!`
-        set(this, 'transactionAlert', message);
+        get(this, 'sendTransactionAlert')(message);
       } else {
         let message = `${payload.amount} lbs of ${payload.cut} bought for $${value}!`
-        set(this, 'transactionAlert', message);
+        get(this, 'sendTransactionAlert')(message);
       }
     },
 
