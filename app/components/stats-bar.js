@@ -16,7 +16,7 @@ export default Component.extend({
   }),
 
   playerDebt: computed('stateData', function() {
-    return get(this, 'stateData.player.debt');
+    return get(this, 'stateData.player.principle');
   }),
 
   turnsLeft: computed('stateData.rules.turns_left', function() {

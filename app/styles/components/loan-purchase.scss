@@ -1,0 +1,7 @@
+@import '../utilities';
+
+.disabled-loan {
+  color: $lightGreen;
+
+  h5, p { font-style: italic; }
+}

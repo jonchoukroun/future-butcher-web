@@ -1,0 +1,28 @@
+if isDisabled
+  span
+    i.fas.fa-times
+else
+  if isSelected
+    span
+      i.fas.fa-dot-circle
+  else
+    span
+      i.far.fa-circle
+
+h5.mb-0
+  | #{number-format principle decimals=0 thousandsSeparator=","}
+
+p.small.mb-0
+  ' #{number-format displayedInterest decimals=0}% /
+  ' turn
+
+if isDisabled
+  .btn.btn-primary.btn-disabled
+    | Buy
+else
+  if isSelected
+    .btn.btn-primary click='action "deSelectLoan"'
+      | Cancel
+  else
+    .btn.btn-primary click='action "selectLoan"'
+      | Select

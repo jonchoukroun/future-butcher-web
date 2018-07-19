@@ -18,7 +18,7 @@ export default Controller.extend({
 
   currentDebt: computed('isSecondTurn', function() {
     if (get(this, 'isSecondTurn')) {
-      return get(this, 'socket.stateData.player.debt');
+      return get(this, 'socket.stateData.player.principle');
     }
   }),
 

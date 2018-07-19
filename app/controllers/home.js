@@ -5,6 +5,7 @@ export default Controller.extend({
 
   screen: 'intro',
 
+
   actions: {
 
     startGame() {

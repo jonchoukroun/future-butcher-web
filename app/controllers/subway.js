@@ -11,8 +11,8 @@ export default Controller.extend({
     return get(this, 'socket.stateData.player');
   }),
 
-  playerDebt: computed('playerStats.debt', function() {
-    return get(this, 'playerStats.debt');
+  playerDebt: computed('playerStats.principle', function() {
+    return get(this, 'playerStats.principle');
   }),
 
   hasPayableDebt: computed('playerStats.funds', 'playerDebt', function() {
@@ -53,7 +53,7 @@ export default Controller.extend({
     },
 
     retirePlayer() {
-      let score = get(this, 'socket.stateData.player.debt') === 0 ?
+      let score = get(this, 'playerDebt') === 0 ?
         get(this, 'socket.stateData.player.funds') : null;
       if (score === 0) { score = null; }
 

@@ -97,7 +97,7 @@ export default Service.extend({
 
   _validateCallback(callback) {
     const validCallbacks = [
-      "new_game", "start_game", "end_game", "change_station", "buy_cut", "sell_cut", "pay_debt"
+      "new_game", "start_game", "end_game", "change_station", "buy_cut", "sell_cut", "pay_debt", "buy_loan"
     ];
     return validCallbacks.includes(callback);
   },
