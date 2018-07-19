@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route'
-import { get } from '@ember/object'
+import { get, set } from '@ember/object'
 
 export default Route.extend({
 
@@ -15,6 +15,16 @@ export default Route.extend({
       this.handleJoinChannel(playerName, playerHash);
     }
   },
+
+  setupController(controller) {
+    this._super(...arguments);
+
+    if (localStorage.getItem('player_score')) {
+      set(controller, 'screen', 'instructions');
+      localStorage.removeItem('player_score');
+    }
+  },
+
 
   handleJoinChannel(name, hash_id) {
     get(this, 'socket').openSocket().then((socket) => {
