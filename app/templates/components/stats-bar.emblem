@@ -15,7 +15,7 @@
     i.fas.fa-cog
 
 #fundsHelp.collapse
-  .card.card-body.pt-0.pt-md-2.bg-black.border-left-0.border-right-0
+  .card.card-body.pb-0.bg-black.border-left-0.border-right-0
     if isFirstTurn
       p
         ' Congratulations, you now have
@@ -34,11 +34,11 @@
         ' , then sell it for a profit.
 
     .row.justify-content-end
-      .btn.btn-secondary.btn-small click='action "toggleStatsBar" "#fundsHelp"'
-        i.fas.fa-times
+      .btn.btn-simple.btn-small click='action "toggleStatsBar" "#fundsHelp"'
+        | Close
 
 #debtHelp.collapse
-  .card.card-body.pt-0.pt-md-2.bg-black.border-left-0.border-right-0
+  .card.card-body.pb-0.bg-black.border-left-0.border-right-0
     if (gt playerDebt 0)
       if isSecondTurn
         p
@@ -58,11 +58,11 @@
       p You've paid your debt.
 
     .row.justify-content-end
-      .btn.btn-secondary.btn-small click='action "toggleStatsBar" "#debtHelp"'
-        i.fas.fa-times
+      .btn.btn-simple.btn-small click='action "toggleStatsBar" "#debtHelp"'
+        | Close
 
 #turnsHelp.collapse
-  .card.card-body.pt-0.pt-md-2.bg-black.border-left-0.border-right-0
+  .card.card-body.pb-0.bg-black.border-left-0.border-right-0
     if isFirstTurn
       p
         ' You used your first token to get Downtown. Keep your eye on these tokens, you have
@@ -75,11 +75,11 @@
         ' remaining out of 25.
 
     .row.justify-content-end
-      .btn.btn-secondary.btn-small click='action "toggleStatsBar" "#turnsHelp"'
-        i.fas.fa-times
+      .btn.btn-simple.btn-small click='action "toggleStatsBar" "#turnsHelp"'
+        | Close
 
 #gameHelp.collapse
-  .card.card-body.pt-0.pt-md-2.bg-black.border-left-0.border-right-0
+  .card.card-body.pb-0.bg-black.border-left-0.border-right-0
     .d-flex.align-items-center.justify-content-around.my-3
       .btn.btn-primary click='action "quitGame"'
         | Quit Game
@@ -96,5 +96,5 @@
           ' Jon Choukroun
 
       .row.justify-content-end
-        .btn.btn-secondary.btn-small click='action "toggleStatsBar" "#gameHelp"'
-          i.fas.fa-times
+        .btn.btn-simple.btn-small click='action "toggleStatsBar" "#gameHelp"'
+          | Close
