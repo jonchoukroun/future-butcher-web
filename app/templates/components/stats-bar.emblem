@@ -14,16 +14,30 @@
   .btn.btn-simple.btn-small.px-0 click='action "toggleStatsBar" "#gameHelp"'
     i.fas.fa-cog
 
-#fundsHelp.collapse
+#fundsHelp.collapse data-parent="#stats-bar"
   .card.card-body.pb-0.bg-black.border-left-0.border-right-0
     if isFirstTurn
-      p
-        ' Congratulations, you now have
-        ' $#{number-format playerFunds decimals=0 thousandsSeparator=","}
-        ' to buy cuts in the market.
+      if (eq playerFunds 0)
+        p
+          ' You don't have any cash yet. Get a loan below to get started.
 
-      p
-        ' Rememer: buy low, sell high!
+        .row.justify-content-end
+          .btn.btn-simple.btn-small click='action "toggleStatsBar" "#fundsHelp"'
+            | Close
+
+      else
+        p
+          ' Congratulations, you now have
+          ' $#{number-format playerFunds decimals=0 thousandsSeparator=","}
+          ' to buy cuts in the market.
+
+        p
+          ' Rememer: buy low, sell high!
+
+        .row.justify-content-end
+          .btn.btn-simple.btn-small click='action "closeFundsTutorial"'
+            | Close
+
     else
       p
         ' You have
@@ -33,18 +47,23 @@
           | market
         ' , then sell it for a profit.
 
-    .row.justify-content-end
-      .btn.btn-simple.btn-small click='action "toggleStatsBar" "#fundsHelp"'
-        | Close
+      .row.justify-content-end
+        .btn.btn-simple.btn-small click='action "toggleStatsBar" "#fundsHelp"'
+          | Close
 
-#debtHelp.collapse
+#debtHelp.collapse data-parent="#stats-bar"
   .card.card-body.pb-0.bg-black.border-left-0.border-right-0
     if (gt playerDebt 0)
       if isSecondTurn
         p
           ' The amount you owe on your loan went up by 15%.
           ' Keep an eye on your debt, you can't win if you're a deadbeat.
-        else
+
+        .row.justify-content-end
+          .btn.btn-simple.btn-small click='action "closeDebtTutorial"'
+            | Close
+
+      else
         p
           ' You still owe
           ' $#{number-format playerDebt decimals=0 thousandsSeparator=","}
@@ -54,41 +73,54 @@
             .btn.btn-primary.btn-small click="payDebt"
               | Pay it off
 
+        .row.justify-content-end
+          .btn.btn-simple.btn-small click='action "toggleStatsBar" "#debtHelp"'
+            | Close
+
     else
-      p You've paid your debt.
+      if isFirstTurn
+        p You need a loan to get started.
+      else
+        p You've paid your debt.
 
-    .row.justify-content-end
-      .btn.btn-simple.btn-small click='action "toggleStatsBar" "#debtHelp"'
-        | Close
+      .row.justify-content-end
+        .btn.btn-simple.btn-small click='action "toggleStatsBar" "#debtHelp"'
+          | Close
 
-#turnsHelp.collapse
+#turnsHelp.collapse data-parent="#stats-bar"
   .card.card-body.pb-0.bg-black.border-left-0.border-right-0
     if isFirstTurn
       p
         ' You used your first token to get Downtown. Keep your eye on these tokens, you have
         ' #{turnsLeft}
         ' left.
+
+      .row.justify-content-end
+        .btn.btn-simple.btn-small click='action "closeTurnsTutorial"'
+          | Close
+
     else
       p
         ' You have
         ' #{turnsLeft} Uber rides
         ' remaining out of 25.
 
-    .row.justify-content-end
-      .btn.btn-simple.btn-small click='action "toggleStatsBar" "#turnsHelp"'
-        | Close
+      .row.justify-content-end
+        .btn.btn-simple.btn-small click='action "toggleStatsBar" "#turnsHelp"'
+          | Close
 
-#gameHelp.collapse
+#gameHelp.collapse data-parent="#stats-bar"
   .card.card-body.pb-0.bg-black.border-left-0.border-right-0
     .d-flex.align-items-center.justify-content-around.my-3
       .btn.btn-primary click='action "quitGame"'
         | Quit Game
 
-      a.btn.btn-primary.btn-small.btn-disabled
+      .btn.btn-primary.btn-small.btn-disabled
         | High Scores
-    .container
-      .row.align-items-center.justify-content-start.px-2
-        p.small Powered by Elixir/Phoenix, Ember.js, and roast lamb.
+    .container.px-0
+      .row.align-items-center.justify-content-center.px-2
+        p.small.text-center.px-2
+          | Powered by Elixir/Phoenix, Ember.js, and roast lamb.
         p.small
           ' 2018
           i.far.fa-copyright

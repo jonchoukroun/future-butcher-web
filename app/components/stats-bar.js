@@ -1,5 +1,5 @@
 import Component from '@ember/component'
-import { computed, get }   from '@ember/object'
+import { computed, get, set }   from '@ember/object'
 import $ from 'jquery'
 
 export default Component.extend({
@@ -11,19 +11,20 @@ export default Component.extend({
   didInsertElement() {
     this._super(...arguments);
 
-    if (get(this, 'isFirstTurn') && get(this, 'playerDebt') === 0) {
+    if (get(this, 'isFirstTurn') && !localStorage.getItem('closed-turns-tutorial')) {
       $('#turnsHelp').slideToggle();
     }
 
-    if (get(this, 'isFirstTurn') && get(this, 'playerFunds') > 0) {
+    if (get(this, 'isFirstTurn') && !localStorage.getItem('closed-funds-tutorial') &&
+      get(this, 'playerFunds') > 0) {
       $('#fundsHelp').slideToggle();
     }
 
-    if (get(this, 'isSecondTurn') && get(this, 'playerDebt') > 0) {
+    if (get(this, 'isSecondTurn') && !localStorage.getItem('closed-debt-tutorial') &&
+      get(this, 'playerDebt') > 0) {
       $('#debtHelp').slideToggle();
     }
   },
-
 
   stateData: computed('socket.stateData', function() {
     return get(this, 'socket.stateData');
@@ -56,6 +57,21 @@ export default Component.extend({
   },
 
   actions: {
+
+    closeTurnsTutorial() {
+      localStorage.setItem('closed-turns-tutorial', true);
+      $('#turnsHelp').slideToggle();
+    },
+
+    closeFundsTutorial() {
+      localStorage.setItem('closed-funds-tutorial', true);
+      $('#fundsHelp').slideToggle();
+    },
+
+    closeDebtTutorial() {
+      localStorage.setItem('closed-debt-tutorial', true);
+      $('#debtHelp').slideToggle();
+    },
 
     toggleStatsBar(selector) {
       $(selector).slideToggle();
