@@ -60,5 +60,9 @@
 
       else
         .text-center
+          h6.text-secondary
+            | Your score:
+          h6
+            | $#{number-format playerScore decimals=0 thousandsSeparator=","}
           p
-            ' That wasn't any good. Try again - you can't possibly do worse.
+            | Terrible, just terrible. Try again.
