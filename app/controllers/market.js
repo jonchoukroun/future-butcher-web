@@ -1,6 +1,6 @@
 import Controller from '@ember/controller'
 import { set } from '@ember/object'
-import { cancel, debounce, later } from '@ember/runloop'
+import { debounce } from '@ember/runloop'
 import $ from 'jquery'
 
 export default Controller.extend({
@@ -18,7 +18,7 @@ export default Controller.extend({
 
     debounce(() => {
       el.slideUp();
-    }, 2400);
+    }, 2000);
   },
 
   actions: {
