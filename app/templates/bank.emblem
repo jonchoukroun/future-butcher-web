@@ -1,9 +1,9 @@
-.container-fluid.full-screen.px-0.px-sm-3
+.container-fluid
 
   .px-3.px-sm-0
     = stats-bar sendQuit=(action 'sendToScores')
 
-  .container-fluid.mt-4
+.container-fluid.full-screen.top-spacer
     .row.justify-content-center
       .col
         h3.text-center
