@@ -25,6 +25,8 @@ export default Controller.extend({
       const payload = { debt: get(this, 'debt'), rate: get(this, 'rate') };
       get(this, 'socket').pushCallBack("buy_loan", payload).then(() => {
         this.transitionToRoute('market');
+        set(this, 'debt', null);
+        set(this, 'rate', null);
       })
     }
   }
