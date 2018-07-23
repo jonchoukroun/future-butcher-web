@@ -34,7 +34,7 @@ export default Component.extend({
         let message = `${payload.amount} lbs of ${payload.cut} bought for $${value}!`
         get(this, 'sendTransactionAlert')(message);
       } else {
-        let message = `${payload.amount} lbs of ${payload.cut} bought for $${value}!`
+        let message = `${payload.amount} lbs of ${payload.cut} sold for $${value}!`
         get(this, 'sendTransactionAlert')(message);
       }
     },
