@@ -35,6 +35,8 @@ if (eq screen 'instructions')
             ' You have 25 subway tokens to get around town.
             ' When they're gone - game over!
 
+      = reset-tutorials sendTutorialSelection=(action "setTutorialSelection")
+
   .container.cta-container.pb-3.pb-md-5.bg-black
     .row.justify-content-center
       .col-12.col-md-4.text-center
