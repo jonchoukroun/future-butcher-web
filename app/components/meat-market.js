@@ -27,14 +27,20 @@ export default Component.extend({
     });
   }),
 
+  formatCurrency(value) {
+    return (value).toLocaleString("en-us",
+      { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
+  },
+
   actions: {
 
     sendTransactionConfirmed(action, payload, value) {
+      let formatted_value =  this.formatCurrency(value);
       if (action === "buy") {
-        let message = `${payload.amount} lbs of ${payload.cut} bought for $${value}!`
+        let message = `${payload.amount} lbs of ${payload.cut} bought for ${formatted_value}!`
         get(this, 'sendTransactionAlert')(message);
       } else {
-        let message = `${payload.amount} lbs of ${payload.cut} sold for $${value}!`
+        let message = `${payload.amount} lbs of ${payload.cut} sold for ${formatted_value}!`
         get(this, 'sendTransactionAlert')(message);
       }
     },
