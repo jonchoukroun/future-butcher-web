@@ -42,7 +42,6 @@ export default Controller.extend({
 
   totalPlayerValue: computed('estimatedCutsValue', 'playerFunds', function() {
     const value = get(this, 'estimatedCutsValue') + get(this, 'playerFunds');
-    console.log('value', value);
     if (value > 0) {
       return value;
     } else {
