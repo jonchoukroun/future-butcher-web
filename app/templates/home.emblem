@@ -23,35 +23,26 @@ if (eq screen 'instructions')
       | Future Butcher
 
     .container-fluid.instructions
-      .row.justify-content-center.mb-2
+      .row.justify-content-center.mt-2
         h6 Navigate the city to find the best deals on liver, ribs, flank - and other cuts.
 
-      .row.align-items-center.mb-3.mb-md-0.py-md-4
-        .col-2
-          h4
-            i.fas.fa-dollar-sign
-        .col
-          p.mb-1.game-details
-            | Start with a $5,000 loan.
-          p.mb-0.game-details
-            | You'll have to pay this off... or else!
-
-      .row.align-items-center.mb-3.mb-md-0.py-md-4
-        .col-2
-          h4
+      .row.align-items-center.my-5.mb-md-0.py-md-4
+        .col-12
+          h4.text-center
             i.fas.fa-subway
-        .col
-          p.mb-1.game-details
-            | You only have 25 subway tokens to get around town.
-          p.mb-0.game-details
-            | When they're done - game over!
+        .col-12
+          h5.text-center
+            ' You have 25 subway tokens to get around town.
+            ' When they're gone - game over!
+
+      = reset-tutorials sendTutorialSelection=(action "setTutorialSelection")
 
   .container.cta-container.pb-3.pb-md-5.bg-black
     .row.justify-content-center
       .col-12.col-md-4.text-center
-        h5.text-center.mt-md-5
-          | Now take your first ride Downtown and get that loan.
+        p.text-center.mt-md-5
+          | Use a token now to ride Downtown and get a loan.
 
       .col-12.text-center
         .btn.btn-primary.btn-lg click='action "startGame"'
-          | Let's ride
+          | Let's do this

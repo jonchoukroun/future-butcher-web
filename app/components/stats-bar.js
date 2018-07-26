@@ -1,11 +1,30 @@
 import Component from '@ember/component'
 import { computed, get }   from '@ember/object'
+import $ from 'jquery'
 
 export default Component.extend({
 
   elementId: 'stats-bar',
 
-  classNames: ['border-bottom', 'border-secondary'],
+  classNames: ['border-bottom', 'border-secondary', 'bg-black'],
+
+  didInsertElement() {
+    this._super(...arguments);
+
+    if (get(this, 'isFirstTurn') && !localStorage.getItem('closed-turns-tutorial')) {
+      $('#turnsHelp').slideToggle();
+    }
+
+    if (get(this, 'isFirstTurn') && !localStorage.getItem('closed-funds-tutorial') &&
+      get(this, 'playerFunds') > 0) {
+      $('#fundsHelp').slideToggle();
+    }
+
+    if (get(this, 'isSecondTurn') && !localStorage.getItem('closed-debt-tutorial') &&
+      get(this, 'playerDebt') > 0) {
+      $('#debtHelp').slideToggle();
+    }
+  },
 
   stateData: computed('socket.stateData', function() {
     return get(this, 'socket.stateData');
@@ -23,6 +42,14 @@ export default Component.extend({
     return get(this, 'stateData.rules.turns_left');
   }),
 
+  isFirstTurn: computed('turnsLeft', function() {
+    return get(this, 'turnsLeft') === 24;
+  }),
+
+  isSecondTurn: computed('turnsLeft', function() {
+    return get(this, 'turnsLeft') === 23;
+  }),
+
   endGame(payload) {
     get(this, 'socket').pushCallBack('end_game', payload).then(() => {
       get(this, 'sendQuit')();
@@ -30,6 +57,25 @@ export default Component.extend({
   },
 
   actions: {
+
+    closeTurnsTutorial() {
+      localStorage.setItem('closed-turns-tutorial', true);
+      $('#turnsHelp').slideToggle();
+    },
+
+    closeFundsTutorial() {
+      localStorage.setItem('closed-funds-tutorial', true);
+      $('#fundsHelp').slideToggle();
+    },
+
+    closeDebtTutorial() {
+      localStorage.setItem('closed-debt-tutorial', true);
+      $('#debtHelp').slideToggle();
+    },
+
+    toggleStatsBar(selector) {
+      $(selector).slideToggle();
+    },
 
     payDebt() {
       let payload = { amount: get(this, 'playerDebt') };

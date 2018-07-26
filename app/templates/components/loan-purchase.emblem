@@ -18,7 +18,7 @@ p.small.mb-0
 
 if isDisabled
   .btn.btn-primary.btn-disabled
-    | Buy
+    | Select
 else
   if isSelected
     .btn.btn-primary click='action "deSelectLoan"'

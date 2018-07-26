@@ -1,66 +1,132 @@
 .d-flex.align-items-center.justify-content-between.mx-1
-  a.btn.btn-simple.btn-small.px-0 data-toggle="collapse" href="#fundsHelp" role="button"
+  .btn.btn-simple.btn-small.px-0 click='action "toggleStatsBar" "#fundsHelp"'
     | $#{number-format playerFunds decimals=0 thousandsSeparator=","}
     i.fas.fa-caret-down.ml-1.ml-md-3
 
-  a.btn.btn-simple.btn-small.pr-0.text-red data-toggle="collapse" href="#debtHelp" role="button"
+  .btn.btn-simple.btn-small.px-0.text-red click='action "toggleStatsBar" "#debtHelp"'
     | $#{number-format playerDebt decimals=0 thousandsSeparator=","}
     i.fas.fa-caret-down.ml-1.ml-md-3
 
-  a.btn.btn-simple.btn-small.pr-0 data-toggle="collapse" href="#turnsHelp" role="button"
+  .btn.btn-simple.btn-small.px-0 click='action "toggleStatsBar" "#turnsHelp"'
     | #{turnsLeft}
     i.fas.fa-caret-down.ml-1.ml-md-3
 
-  a.btn.btn-simple.btn-small.pr-0 data-toggle="collapse" href="#gameHelp" role="button"
+  .btn.btn-simple.btn-small.px-0 click='action "toggleStatsBar" "#gameHelp"'
     i.fas.fa-cog
 
 #fundsHelp.collapse data-parent="#stats-bar"
-  .card.card-body.pt-0.pt-md-2.bg-black.border-left-0.border-right-0
-    p
-      ' You have
-      ' $#{number-format playerFunds decimals=0 thousandsSeparator=","}
-      ' to buy meat from the
-      = link-to .link-text 'market'
-        | market
-      ' , then sell it for a profit.
+  .card.card-body.pb-0.bg-black.border-left-0.border-right-0
+    if isFirstTurn
+      if (eq playerFunds 0)
+        p
+          ' You don't have any cash yet. Get a loan below to get started.
 
-#debtHelp.collapse data-parent="#stats-bar"
-  .card.card-body.pt-0.pt-md-2.bg-black.border-left-0.border-right-0
-    if (gt playerDebt 0)
-      p
-        ' You still owe
-        ' $#{number-format playerDebt decimals=0 thousandsSeparator=","}
-        ' on your loan. Hurry up, it's got a 15% interest rate.
+        .row.justify-content-end
+          .btn.btn-simple.btn-small click='action "toggleStatsBar" "#fundsHelp"'
+            | Close
 
-        if (gt playerFunds playerDebt)
-          .btn.btn-primary.btn-small click="payDebt"
-            | Pay it off
+      else
+        p
+          ' Congratulations, you now have
+          ' $#{number-format playerFunds decimals=0 thousandsSeparator=","}
+          ' to buy cuts in the market.
+
+        p
+          ' Rememer: buy low, sell high!
+
+        .row.justify-content-end
+          .btn.btn-simple.btn-small click='action "closeFundsTutorial"'
+            | Close
 
     else
-      p You've paid your debt.
+      p
+        ' You have
+        ' $#{number-format playerFunds decimals=0 thousandsSeparator=","}
+        ' to buy meat from the
+        = link-to .link-text 'market'
+          | market
+        ' , then sell it for a profit.
+
+      .row.justify-content-end
+        .btn.btn-simple.btn-small click='action "toggleStatsBar" "#fundsHelp"'
+          | Close
+
+#debtHelp.collapse data-parent="#stats-bar"
+  .card.card-body.pb-0.bg-black.border-left-0.border-right-0
+    if (gt playerDebt 0)
+      if isSecondTurn
+        p
+          ' The amount you owe on your loan went up by 15%.
+          ' Keep an eye on your debt, you can't win if you're a deadbeat.
+
+        .row.justify-content-end
+          .btn.btn-simple.btn-small click='action "closeDebtTutorial"'
+            | Close
+
+      else
+        p
+          ' You still owe
+          ' $#{number-format playerDebt decimals=0 thousandsSeparator=","}
+          ' on your loan. Hurry up, it's got a 15% interest rate.
+
+          if (gt playerFunds playerDebt)
+            .btn.btn-primary.btn-small click="payDebt"
+              | Pay it off
+
+        .row.justify-content-end
+          .btn.btn-simple.btn-small click='action "toggleStatsBar" "#debtHelp"'
+            | Close
+
+    else
+      if isFirstTurn
+        p You need a loan to get started.
+      else
+        p You've paid your debt.
+
+      .row.justify-content-end
+        .btn.btn-simple.btn-small click='action "toggleStatsBar" "#debtHelp"'
+          | Close
 
 #turnsHelp.collapse data-parent="#stats-bar"
-  .card.card-body.pt-0.pt-md-2.bg-black.border-left-0.border-right-0
-    p
-      ' You have
-      ' #{turnsLeft} Uber rides
-      ' remaining out of 25.
+  .card.card-body.pb-0.bg-black.border-left-0.border-right-0
+    if isFirstTurn
+      p
+        ' You used your first token to get Downtown. Keep your eye on these tokens, you have
+        ' #{turnsLeft}
+        ' left.
 
-    p Call a ride and check out meat prices in a different part of town.
+      .row.justify-content-end
+        .btn.btn-simple.btn-small click='action "closeTurnsTutorial"'
+          | Close
 
-#gameHelp.collapse data-parents="#stats-bar"
-  .card.card-body.pt-0.pt-md-2.bg-black.border-left-0.border-right-0
+    else
+      p
+        ' You have
+        ' #{turnsLeft} Uber rides
+        ' remaining out of 25.
+
+      .row.justify-content-end
+        .btn.btn-simple.btn-small click='action "toggleStatsBar" "#turnsHelp"'
+          | Close
+
+#gameHelp.collapse data-parent="#stats-bar"
+  .card.card-body.pb-0.bg-black.border-left-0.border-right-0
     .d-flex.align-items-center.justify-content-around.my-3
       .btn.btn-primary click='action "quitGame"'
-        | Quit
+        | Quit Game
 
-      a.btn.btn-primary.btn-small data-toggle="collapse" href="#gameHelp" role="button"
-        | Close
-    .container
-      .row.align-items-center.justify-content-start.px-2
-        p.small Powered by Elixir/Phoenix and Ember.js
+      .btn.btn-primary.btn-small.btn-disabled
+        | High Scores
+    .container.px-0
+      .row.align-items-center.justify-content-center.px-2
+        p.small.text-center.px-2
+          | Powered by Elixir/Phoenix, Ember.js, and roast lamb.
         p.small
           ' 2018
           i.far.fa-copyright
           | &nbsp;
           ' Jon Choukroun
+
+      .row.justify-content-end
+        .btn.btn-simple.btn-small click='action "toggleStatsBar" "#gameHelp"'
+          | Close

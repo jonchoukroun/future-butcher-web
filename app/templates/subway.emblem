@@ -1,4 +1,4 @@
-.container-fluid.full-screen
+.container-fluid.full-screen.top-spacer
   = stats-bar  sendQuit=(action 'sendToScores')
 
   if lastTurn

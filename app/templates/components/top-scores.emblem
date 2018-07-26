@@ -12,8 +12,24 @@
     .m-4.py-3.border-top.border-black
       p There should be a prize for that...
 
-  else
+    .my-2.mx-1.py-3.container
+      .row.justify-content-center
+        h5
+          | Runners up
 
+      each lowerScores as |score|
+        .row.justify-content-around
+          .col-2.text-right
+            h6.m-1
+              ' #{score.rank}.
+          .col-6.px-0.text-left
+            h6.m-1
+              ' #{score.player}
+          .col-4.pl-0.text-left
+            h6.m-1
+              | $#{number-format score.score decimals=0 thousandsSeparator=","}
+
+  else
     .m-2.py-3.border-bottom.border-black.text-center
       h6.text-secondary
         | Reigning Champ:
@@ -56,9 +72,13 @@
 
         .mt-4.py-3.border-top.border-black
           p.text-center
-            ' Ouch. Your grandma has a higher score. Better try again.
+            ' Not bad. Think you can do better?
 
       else
         .text-center
+          h6.text-secondary
+            | Your score:
+          h6
+            | $#{number-format playerScore decimals=0 thousandsSeparator=","}
           p
-            ' That wasn't any good. Try again - you can't possibly do worse.
+            | Terrible, just terrible. Try again.

@@ -12,7 +12,6 @@ export default Controller.extend({
   actions: {
 
     startNewGame() {
-      localStorage.removeItem('player_score');
       this.transitionToRoute('home');
     }
   }

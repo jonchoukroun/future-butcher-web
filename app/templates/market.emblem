@@ -1,12 +1,22 @@
-.container-fluid.full-screen.px-0.px-sm-3
+.container-fluid.full-screen.top-spacer
+  .transaction-alert.alert.alert-success.bg-primary.fixed-top.border-bottom.border-black.collapse
+    p.mb-0.text-center.text-black.font-weight-bold
+      | #{transactionAlert}
 
-  .px-3.px-sm-0
-    = stats-bar sendQuit=(action 'sendToScores')
+  = stats-bar sendQuit=(action 'sendToScores')
 
-  = meat-market sendRouteReload=(action 'reloadRoute')
+  = meat-market sendRouteReload=(action 'reloadRoute') sendTransactionAlert=(action 'confirmTransaction')
 
 .container.cta-container.pb-3.pb-md-5.bg-black
   .row.justify-content-center
-    .col-12.text-center
-      = link-to .btn.btn-primary.btn-lg 'subway'
-        | Hit the subway
+    if (and isDowntown (not isInDebt))
+      .col-6.text-center
+        = link-to .btn.btn-primary.btn-lg.btn-block 'bank'
+          | Bank
+      .col-6.text-center
+        = link-to .btn.btn-primary.btn-lg.btn-block 'subway'
+          | Subway
+    else
+      .col-12.text-center
+        = link-to .btn.btn-primary.btn-lg 'subway'
+          | Hit the Subway
