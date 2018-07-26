@@ -18,20 +18,33 @@
           p
             | Welcome back, favored customer. With your credit, now have access to the following loans.
 
-    = loan-purchase debt=5000 rate=0.15 isDisabled=false sendLoanSelect=(action 'selectLoan')
-
-    = loan-purchase debt=10000 rate=0.20 isDisabled=true sendLoanSelect=(action 'selectLoan')
-
-    = loan-purchase debt=30000 rate=0.25 isDisabled=true sendLoanSelect=(action 'selectLoan')
+    each loanOptions as |loan|
+      if (gt totalPlayerValue loan.debt)
+        = loan-purchase debt=loan.debt rate=loan.rate isDisabled=false sendLoanSelect=(action 'selectLoan')
+      else
+        = loan-purchase debt=loan.debt rate=loan.rate isDisabled=true sendLoanSelect=(action 'selectLoan')
 
 .container.cta-container.pb-3.pb-md-5.bg-black
   .row.justify-content-center
     .col-12.text-center
-      if (and debt rate)
-        .btn.btn-primary.btn-lg click='action "buyLoan"'
-          ' Buy
-          ' $#{number-format debt decimals=0 thousandsSeparator=","}
-          ' loan
+      if isFirstTurn
+        if (and debt rate)
+          .btn.btn-primary.btn-lg click='action "buyLoan"'
+            ' Buy
+            ' $#{number-format debt decimals=0 thousandsSeparator=","}
+            ' loan
+        else
+          .btn.btn-primary.btn-lg.btn-disabled
+            | Select a loan
       else
-        .btn.btn-primary.btn-lg.btn-disabled
-          | Select a loan
+        .row
+          .col-6
+            = link-to .btn.btn-primary.btn-lg.btn-block 'market'
+              | Market
+          .col-6
+            if (and debt rate)
+              .btn.btn-primary.btn-lg.btn-block click='action "buyLoan"'
+                ' Buy
+            else
+              .btn.btn-primary.btn-lg.btn-block.btn-disabled
+                | Select...
