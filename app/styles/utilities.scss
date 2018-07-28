@@ -1,5 +1,8 @@
 $green: #5AD25A;
-$lightGreen: rgba(90, 210, 90, 0.4);
+// $darkGreen: #255725;
+$darkGreen: #3c6c3c;
+$lightGreen: #bdedbd;
+// $lightGreen: rgba(90, 210, 90, 0.4);
 $red: #ED4848;
 $black: #282828;
 
@@ -8,7 +11,7 @@ $black: #282828;
 }
 
 .text-secondary {
-  color: $lightGreen !important;
+  color: $darkGreen !important;
 }
 
 .text-black {
@@ -17,6 +20,14 @@ $black: #282828;
 
 .text-red {
   color: $red;
+}
+
+.display-text {
+  font-family: 'Baumans';
+  font-weight: 900;
+  font-size: 4.5rem;
+  letter-spacing: 0.05rem;
+  color: $green;
 }
 
 .link-text {

@@ -42,17 +42,19 @@ input.form-control:focus {
 .btn-primary {
   margin: 10px 0;
   background-color: $black;
-  border-color: $lightGreen;
+  border-color: $darkGreen;
   border-radius: 2px;
   border-width: 2px;
   color: $green;
-  font-weight: bold;
+  font-family: 'Michroma';
+  letter-spacing: 0.5em;
+  font-weight: 900;
   text-transform: uppercase;
   transition: all 0.2s ease-out;
 }
 
 %brightenState {
-  background-color: $lightGreen !important;
+  background-color: $darkGreen !important;
   border-color: $green !important;
   border-radius: 2px !important;
   color: rgba(0, 0, 0, 0.5) !important;
@@ -70,11 +72,11 @@ input.form-control:focus {
 .btn-primary:hover {
   @extend %brightenState;
   transform: translateY(-2px);
-  box-shadow: 1px 1px 7px 3px $lightGreen;
+  box-shadow: 1px 1px 7px 3px $darkGreen;
 }
 
 .btn-primary:active:focus {
-  box-shadow: 0 0 0 0.2rem $lightGreen !important;
+  box-shadow: 0 0 0 0.2rem $darkGreen !important;
 }
 
 .btn-plain {
@@ -165,4 +167,10 @@ input.form-control:focus {
   background-color: $lightGreen;
   border: none;
   border-radius: 2px;
+}
+
+@media (min-width: 768px) {
+  .btn.btn-primary {
+    font-size: 22px;
+  }
 }

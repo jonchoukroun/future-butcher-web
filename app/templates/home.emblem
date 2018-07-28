@@ -1,25 +1,32 @@
 if (eq screen 'intro')
-  .container-fluid.full-screen
-    .d-flex.flex-column.align-items-center.justify-content-end
-      .intro-image.jumbotron.my-3.w-100
-        h1.display-4.mb-md-4.text-center
-          ' Los Angeles
-        h2.text-center
-          ' 2055
+  .container-fluid.full-screen.home-screen
+    .intro-image.jumbotron.my-3.w-100.d-flex.flex-column.justify-content-center
+      h1.display-4.mb-md-4.text-center
+        ' Los Angeles
+      h2.text-center
+        ' 2055
 
-      p
-        | The city is crumbling and your only option is to profit off the latest celebrity diet.
+    .row.justify-content-center
+      .col-sm-10.col-md-9.col-lg-7
+        p.mt-sm-2.mt-md-5.mt-xl-4
+          | The economy has crumbled after the collapse of HypeCoin. Your only chance for survival is hustling FreshMeat
+          sup
+            i.fas.fa-trademark
+            ' ,
+          | the new premium addiction of the wealthiest 1%.
 
-      p
-        | More addicting than kombucha and sexier than coffee enemas, the rich and famous enjoy fresh - and expensive - human meat.
+        p
+          ' There's unlimited opportunity servicing their demand for fresh, exclusive cuts of...
+          ' human meat. Not that you would ever touch the stuff.
 
-      .btn.btn-primary.align-self-end click='action "nextScreen"'
-        ' Next
-        i.fas.fa-long-arrow-alt-right
+        .row.mt-lg-3.mt-xl-4: .col-12.text-right
+          .btn.btn-primary.next-button click='action "nextScreen"'
+            ' Next
+            i.fas.fa-long-arrow-alt-right
 
 if (eq screen 'instructions')
   .container-fluid.full-screen
-    h1.mt-5.mb-3.pb-2.font-italic.text-center.border-bottom.border-black
+    h1.mt-5.mb-3.pb-2.display-text.text-secondary.text-center.border-bottom.border-black
       | Future Butcher
 
     .container-fluid.instructions
