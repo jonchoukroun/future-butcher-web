@@ -1,4 +1,4 @@
 .container-fluid.p-0
-  .row.align-items-center.justify-content-center
+  .row.align-items-center.justify-content-center.m-0
     .col-12.col-xl-8.p-0
       == outlet
