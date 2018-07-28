@@ -6,23 +6,26 @@
   animation: delayDisplay 0.5s ease-out 0.5s forwards;
 }
 
+.text-block {
+  margin: 0 auto;
+  text-align: center;
+  background: transparent;
+  z-index: 10000;
+}
+
 #title-future {
-  font-size: 6em;
+  font-family: 'Baumans';
+  font-size: 5.5em;
   font-weight: 900;
-  text-transform: uppercase;
-  transform: skewX(-25deg) skewY(-15deg) rotate(7deg);
+  letter-spacing: 10px;
   text-shadow: 0px 0px 10px $green;
 }
 
 #title-butcher {
-  text-align: left;
-  font-size: 3em;
-  text-shadow: 0px 0px 10px $green;
-}
-
-.text-block {
-  background: transparent;
-  z-index: 10000;
+  font-size: 2.8em;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: $darkGreen;
 }
 
 .typewriter {
@@ -48,10 +51,30 @@
 
 @keyframes blinkCaret {
   from, to { border-color: transparent; }
-  50% { border-color: $green; }
+  50% { border-color: $darkGreen; }
 }
 
 @keyframes fadeInGlow {
   from { text-shadow: none; }
   to { text-shadow: 0px 0px 10px $green; }
+}
+
+@media (min-width: 375px) {
+  #title-future { font-size: 6.8em; }
+  #title-butcher { font-size: 3.5em; }
+}
+
+@media (min-width: 414px) {
+  #title-future { font-size: 7.9em; }
+  #title-butcher { font-size: 4em; }
+}
+
+@media (min-width: 992px) {
+  #title-future { font-size: 12em; }
+  #title-butcher { font-size: 6em; }
+}
+
+@media (min-width: 1200px) {
+  #title-future { font-size: 12em; }
+  #title-butcher { font-size: 6em; }
 }

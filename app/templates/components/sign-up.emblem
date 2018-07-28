@@ -1,7 +1,7 @@
 #signup-label
   / verify this is being computed
   if nameTaken
-    h3
+    h3.px-1
       | That name is already taken!
   else
     h3

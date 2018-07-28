@@ -1,4 +1,6 @@
 .container-fluid.full-screen
-  = title-screen
+  .row.justify-content-center
+    .col-12.col-md-7
+      = title-screen
 
   = sign-up sendJoin=(action 'signInPlayer')

@@ -1,5 +1,5 @@
 #title-screen.d-flex.justify-content-center.align-items-center
   .text-block
-    h1#title-future.display-1 Future
+    #title-future.display-1 Future
 
     #title-butcher.display-1.code-text.typewriter Butcher

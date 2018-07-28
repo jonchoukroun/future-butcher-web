@@ -20,7 +20,7 @@ input.form-control {
   border-top: none;
   border-right: none;
   border-left: none;
-  border-color: $lightGreen;
+  border-color: $darkGreen;
   border-radius: 2px;
   font-size: 1rem;
   transition: all 0.5s ease-out;
@@ -43,12 +43,12 @@ input.form-control:focus {
   margin: 10px 0;
   background-color: $black;
   border-color: $darkGreen;
-  border-radius: 2px;
+  border-radius: 8px;
   border-width: 2px;
   color: $green;
   font-family: 'Michroma';
-  letter-spacing: 0.5em;
   font-weight: 900;
+  letter-spacing: 0.5em;
   text-transform: uppercase;
   transition: all 0.2s ease-out;
 }
@@ -56,7 +56,7 @@ input.form-control:focus {
 %brightenState {
   background-color: $darkGreen !important;
   border-color: $green !important;
-  border-radius: 2px !important;
+  border-radius: 8px !important;
   color: rgba(0, 0, 0, 0.5) !important;
 }
 
@@ -112,8 +112,8 @@ input.form-control:focus {
   transform: none !important;
   box-shadow: none !important;
   background-color: transparent !important;
-  color: $lightGreen !important;
-  border-color: $lightGreen !important;
+  color: $darkGreen !important;
+  border-color: $darkGreen !important;
 }
 
 .btn-black {
@@ -127,7 +127,7 @@ input.form-control:focus {
 
 .btn-disabled {
   background-color: transparent;
-  color: $lightGreen;
+  color: $darkGreen;
   font-style: italic;
   cursor: not-allowed !important;
 
@@ -136,7 +136,7 @@ input.form-control:focus {
 }
 
 .disabled {
-  color: $lightGreen;
+  color: $darkGreen;
   font-style: italic;
   cursor: not-allowed !important;
 

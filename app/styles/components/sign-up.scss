@@ -1,8 +1,18 @@
+@import '../utilities';
+
 #sign-up {
+
   #signup-label {
     opacity: 0;
     animation: fadeIn 0.5s ease-out 3s forwards;
+
+    text-align: center;
+
+    h3 {
+      font-family: 'Mono Space', monospace;
+    }
   }
+
   form.signup-form {
     transform: scaleY(0);
     animation: openUp 0.5s ease-out 3s forwards;
@@ -20,4 +30,16 @@
 @keyframes openUp {
   from { transform: scaleY(0); }
   to { transform: scaleY(1) }
+}
+
+@media (min-width: 375px) {
+  #signup-label {
+    padding: 1em;
+  }
+}
+
+@media (min-width: 414px) {
+  #signup-label {
+    padding: 1em;
+  }
 }
