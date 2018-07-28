@@ -1,5 +1,5 @@
 if (eq screen 'intro')
-  .container-fluid.full-screen.home-screen
+  .container-fluid.full-screen
     .intro-image.jumbotron.my-3.w-100.d-flex.flex-column.justify-content-center
       h1.display-4.mb-md-4.text-center
         ' Los Angeles
@@ -25,31 +25,23 @@ if (eq screen 'intro')
             i.fas.fa-long-arrow-alt-right
 
 if (eq screen 'instructions')
-  .container-fluid.full-screen
-    h1.mt-5.mb-3.pb-2.display-text.text-secondary.text-center.border-bottom.border-black
-      | Future Butcher
-
-    .container-fluid.instructions
-      .row.justify-content-center.mt-2
-        h6 Navigate the city to find the best deals on liver, ribs, flank - and other cuts.
-
-      .row.align-items-center.my-5.mb-md-0.py-md-4
-        .col-12
-          h4.text-center
-            i.fas.fa-subway
-        .col-12
-          h5.text-center
-            ' You have 25 subway tokens to get around town.
-            ' When they're gone - game over!
-
-      = reset-tutorials sendTutorialSelection=(action "setTutorialSelection")
-
-  .container.cta-container.pb-3.pb-md-5.bg-black
+  .container.full-screen.instructions.pt-3.pt-md-5
     .row.justify-content-center
-      .col-12.col-md-4.text-center
-        p.text-center.mt-md-5
-          | Use a token now to ride Downtown and get a loan.
+      .col-12.col-md-8.col-lg-6
+        p.mb-md-5
+          | You wake up to find 25 subway tokens in an old leather jacket your ex left before fleeing to Mexico. It might be enough to navigate the city, buying and selling fresh cuts of liver, heart, ribs - whatever deals you find.
 
-      .col-12.text-center
-        .btn.btn-primary.btn-lg click='action "startGame"'
-          | Let's do this
+        p.mb-md-5
+          | Make enough money before your tokens run out to escape the shambles of the Los Angeles Republic.
+
+        p.mb-md-5
+          | But first you need cash. A bank Downtown is offering first-time loans. Use a token to get there now.
+
+    .row.justify-content-center
+      .col-12.col-md-8.col-lg-6
+        = reset-tutorials sendTutorialSelection=(action "setTutorialSelection")
+
+    .row.justify-content-center.mt-2
+      .col-12.col-md-8.col-lg-5
+        .btn.btn-primary.btn-lg.btn-block click='action "startGame"'
+          | Let's ride
