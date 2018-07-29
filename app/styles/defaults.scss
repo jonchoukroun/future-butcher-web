@@ -8,13 +8,6 @@
   padding-top: 70px;
 }
 
-.cta-container {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
 input.form-control {
   background-color: $black;
   border-top: none;
@@ -91,6 +84,7 @@ input.form-control:focus {
   letter-spacing: 1px;
   text-transform: uppercase;
   transition: all 0.2s ease-out;
+  white-space: normal;
 }
 
 .btn-secondary:active {
@@ -142,6 +136,7 @@ input.form-control:focus {
   background-color: transparent;
   color: $darkGreen;
   font-style: italic;
+  white-space: normal;
   cursor: not-allowed !important;
 
   &:hover  { @extend %steadyState; }
@@ -180,6 +175,25 @@ input.form-control:focus {
   background-color: $lightGreen;
   border: none;
   border-radius: 2px;
+}
+
+@media (max-width: 414px) {
+  .btn-secondary.btn-lg.btn-block {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+  }
+}
+
+@media (max-width: 350px) {
+  .btn-secondary.btn-lg.btn-block {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 576px) {
+  .top-spacer {
+    padding-top: 95px;
+  }
 }
 
 @media (min-width: 768px) {

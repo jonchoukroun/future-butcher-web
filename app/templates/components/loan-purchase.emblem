@@ -10,7 +10,7 @@ else
       i.far.fa-circle
 
 h5.mb-0.display-text
-  | #{number-format debt decimals=0 thousandsSeparator=","}
+  | $#{number-format debt decimals=0 thousandsSeparator=","}
 
 p.small.mb-0.display-text
   ' #{number-format displayedRate decimals=0}%/turn
