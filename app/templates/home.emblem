@@ -29,7 +29,7 @@ if (eq screen 'instructions')
     .row.justify-content-center
       .col-12.col-md-8.col-lg-6
         p.mb-md-5
-          | You wake up to find 25 subway tokens in an old leather jacket your ex left before fleeing to Mexico. It might be enough to navigate the city, buying and selling fresh cuts of liver, heart, ribs - whatever deals you find.
+          | You wake up to find 25 subway tokens in an old leather jacket your ex left before fleeing to Mexico. It might be enough to navigate the city, buying and selling fresh cuts of liver, heart, ribs - whatever deals you can find.
 
         p.mb-md-5
           | Make enough money before your tokens run out to escape the shambles of the Los Angeles Republic.
