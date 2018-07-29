@@ -1,7 +1,7 @@
-.container-fluid
+.container-fluid.full-screen.top-spacer
+
   = stats-bar sendQuit=(action 'sendToScores')
 
-.container-fluid.full-screen.top-spacer
   .row.justify-content-center
     .col
       h3.py-3.text-center
