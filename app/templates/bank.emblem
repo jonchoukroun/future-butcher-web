@@ -1,50 +1,51 @@
 .container-fluid
+  = stats-bar sendQuit=(action 'sendToScores')
 
-  .px-3.px-sm-0
-    = stats-bar sendQuit=(action 'sendToScores')
-
-.container-fluid.full-screen.top-spacer
-    .row.justify-content-center
-      .col
-        h3.text-center
-          | Shavings & Bone Bank
-
-    .row.mb-3
-      .col.border-bottom.border-black
-        if isFirstTurn
-          p
-            | You used 1 subway token to get Downtown. Now buy the only loan you can afford to get started.
-        else
-          p
-            | Welcome back, favored customer. With your credit, now have access to the following loans.
-
-    each loanOptions as |loan|
-      if (gt totalPlayerValue loan.debt)
-        = loan-purchase debt=loan.debt rate=loan.rate isDisabled=false sendLoanSelect=(action 'selectLoan')
-      else
-        = loan-purchase debt=loan.debt rate=loan.rate isDisabled=true sendLoanSelect=(action 'selectLoan')
-
-.container.cta-container.pb-3.pb-md-5.bg-black
-  .row.justify-content-center
-    .col-12.text-center
-      if isFirstTurn
-        if (and debt rate)
-          .btn.btn-primary.btn-lg click='action "buyLoan"'
-            ' Buy
-            ' $#{number-format debt decimals=0 thousandsSeparator=","}
-            ' loan
-        else
-          .btn.btn-primary.btn-lg.btn-disabled
-            | Select a loan
-      else
-        .row
-          .col-6
-            = link-to .btn.btn-primary.btn-lg.btn-block 'market'
-              | Market
-          .col-6
-            if (and debt rate)
-              .btn.btn-primary.btn-lg.btn-block click='action "buyLoan"'
-                ' Buy
-            else
-              .btn.btn-primary.btn-lg.btn-block.btn-disabled
-                | Select...
+/   .px-3.px-sm-0
+/     = stats-bar sendQuit=(action 'sendToScores')
+/
+/ .container-fluid.full-screen.top-spacer
+/     .row.justify-content-center
+/       .col
+/         h3.text-center
+/           | Shavings & Bone Bank
+/
+/     .row.mb-3
+/       .col.border-bottom.border-black
+/         if isFirstTurn
+/           p
+/             | You used 1 subway token to get Downtown. Now buy the only loan you can afford to get started.
+/         else
+/           p
+/             | Welcome back, favored customer. With your credit, now have access to the following loans.
+/
+/     each loanOptions as |loan|
+/       if (gt totalPlayerValue loan.debt)
+/         = loan-purchase debt=loan.debt rate=loan.rate isDisabled=false sendLoanSelect=(action 'selectLoan')
+/       else
+/         = loan-purchase debt=loan.debt rate=loan.rate isDisabled=true sendLoanSelect=(action 'selectLoan')
+/
+/ .container.cta-container.pb-3.pb-md-5.bg-black
+/   .row.justify-content-center
+/     .col-12.text-center
+/       if isFirstTurn
+/         if (and debt rate)
+/           .btn.btn-primary.btn-lg click='action "buyLoan"'
+/             ' Buy
+/             ' $#{number-format debt decimals=0 thousandsSeparator=","}
+/             ' loan
+/         else
+/           .btn.btn-primary.btn-lg.btn-disabled
+/             | Select a loan
+/       else
+/         .row
+/           .col-6
+/             = link-to .btn.btn-primary.btn-lg.btn-block 'market'
+/               | Market
+/           .col-6
+/             if (and debt rate)
+/               .btn.btn-primary.btn-lg.btn-block click='action "buyLoan"'
+/                 ' Buy
+/             else
+/               .btn.btn-primary.btn-lg.btn-block.btn-disabled
+/                 | Select...

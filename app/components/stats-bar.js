@@ -6,7 +6,7 @@ export default Component.extend({
 
   elementId: 'stats-bar',
 
-  classNames: ['border-bottom', 'border-secondary', 'bg-black'],
+  classNames: ['row', 'justify-content-center', 'm-0', 'p-0', 'bg-black'],
 
   didInsertElement() {
     this._super(...arguments);

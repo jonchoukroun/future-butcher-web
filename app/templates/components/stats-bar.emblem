@@ -1,132 +1,133 @@
-.d-flex.align-items-center.justify-content-between.mx-1
-  .btn.btn-simple.btn-small.px-0 click='action "toggleStatsBar" "#fundsHelp"'
-    | $#{number-format playerFunds decimals=0 thousandsSeparator=","}
-    i.fas.fa-caret-down.ml-1.ml-md-3
+.col-12.col-md-8.col-lg-6.px-0.p-2.py-sm-3.px-sm-4.px-md-1.border-bottom.border-secondary
+  .d-flex.align-items-center.justify-content-between.mx-1
+    .btn.btn-simple.px-0 click='action "toggleStatsBar" "#fundsHelp"'
+      | $#{number-format playerFunds decimals=0 thousandsSeparator=","}
+      i.fas.fa-caret-down.ml-1.ml-md-3
 
-  .btn.btn-simple.btn-small.px-0.text-red click='action "toggleStatsBar" "#debtHelp"'
-    | $#{number-format playerDebt decimals=0 thousandsSeparator=","}
-    i.fas.fa-caret-down.ml-1.ml-md-3
+    .btn.btn-simple.px-0.text-red click='action "toggleStatsBar" "#debtHelp"'
+      | $#{number-format playerDebt decimals=0 thousandsSeparator=","}
+      i.fas.fa-caret-down.ml-1.ml-md-3
 
-  .btn.btn-simple.btn-small.px-0 click='action "toggleStatsBar" "#turnsHelp"'
-    | #{turnsLeft}
-    i.fas.fa-caret-down.ml-1.ml-md-3
+    .btn.btn-simple.px-0 click='action "toggleStatsBar" "#turnsHelp"'
+      | #{turnsLeft}
+      i.fas.fa-caret-down.ml-1.ml-md-3
 
-  .btn.btn-simple.btn-small.px-0 click='action "toggleStatsBar" "#gameHelp"'
-    i.fas.fa-cog
+    .btn.btn-simple.px-0 click='action "toggleStatsBar" "#gameHelp"'
+      i.fas.fa-cog
 
-#fundsHelp.collapse data-parent="#stats-bar"
-  .card.card-body.pb-0.bg-black.border-left-0.border-right-0
-    if isFirstTurn
-      if (eq playerFunds 0)
-        p
-          ' You don't have any cash yet. Get a loan below to get started.
-
-        .row.justify-content-end
-          .btn.btn-simple.btn-small click='action "toggleStatsBar" "#fundsHelp"'
-            | Close
-
-      else
-        p
-          ' Congratulations, you now have
-          ' $#{number-format playerFunds decimals=0 thousandsSeparator=","}
-          ' to buy cuts in the market.
-
-        p
-          ' Rememer: buy low, sell high!
-
-        .row.justify-content-end
-          .btn.btn-simple.btn-small click='action "closeFundsTutorial"'
-            | Close
-
-    else
-      p
-        ' You have
-        ' $#{number-format playerFunds decimals=0 thousandsSeparator=","}
-        ' to buy meat from the
-        = link-to .link-text 'market'
-          | market
-        ' , then sell it for a profit.
-
-      .row.justify-content-end
-        .btn.btn-simple.btn-small click='action "toggleStatsBar" "#fundsHelp"'
-          | Close
-
-#debtHelp.collapse data-parent="#stats-bar"
-  .card.card-body.pb-0.bg-black.border-left-0.border-right-0
-    if (gt playerDebt 0)
-      if isSecondTurn
-        p
-          ' The amount you owe on your loan went up by 15%.
-          ' Keep an eye on your debt, you can't win if you're a deadbeat.
-
-        .row.justify-content-end
-          .btn.btn-simple.btn-small click='action "closeDebtTutorial"'
-            | Close
-
-      else
-        p
-          ' You still owe
-          ' $#{number-format playerDebt decimals=0 thousandsSeparator=","}
-          ' on your loan. Hurry up, it's got a 15% interest rate.
-
-          if (gt playerFunds playerDebt)
-            .btn.btn-primary.btn-small click="payDebt"
-              | Pay it off
-
-        .row.justify-content-end
-          .btn.btn-simple.btn-small click='action "toggleStatsBar" "#debtHelp"'
-            | Close
-
-    else
+  #fundsHelp.collapse data-parent="#stats-bar"
+    .card.card-body.pb-0.bg-black.border-left-0.border-right-0.border-bottom-0
       if isFirstTurn
-        p You need a loan to get started.
+        if (eq playerFunds 0)
+          p
+            ' You don't have any cash yet. Get a loan below to get started.
+
+          .row.justify-content-end
+            .btn.btn-secondary.btn-sm click='action "toggleStatsBar" "#fundsHelp"'
+              | Close
+
+        else
+          p
+            ' Congratulations, you now have
+            ' $#{number-format playerFunds decimals=0 thousandsSeparator=","}
+            ' to buy cuts in the market.
+
+          p
+            ' Rememer: buy low, sell high!
+
+          .row.justify-content-end
+            .btn.btn-secondary.btn-sm click='action "closeFundsTutorial"'
+              | Close
+
       else
-        p You've paid your debt.
+        p
+          ' You have
+          ' $#{number-format playerFunds decimals=0 thousandsSeparator=","}
+          ' to buy meat from the
+          = link-to .link-text 'market'
+            | market
+          ' , then sell it for a profit.
 
-      .row.justify-content-end
-        .btn.btn-simple.btn-small click='action "toggleStatsBar" "#debtHelp"'
-          | Close
+        .row.justify-content-end
+          .btn.btn-secondary.btn-sm click='action "toggleStatsBar" "#fundsHelp"'
+            | Close
 
-#turnsHelp.collapse data-parent="#stats-bar"
-  .card.card-body.pb-0.bg-black.border-left-0.border-right-0
-    if isFirstTurn
-      p
-        ' You used your first token to get Downtown. Keep your eye on these tokens, you have
-        ' #{turnsLeft}
-        ' left.
+  #debtHelp.collapse data-parent="#stats-bar"
+    .card.card-body.pb-0.bg-black.border-left-0.border-right-0.border-bottom-0
+      if (gt playerDebt 0)
+        if isSecondTurn
+          p
+            ' The amount you owe on your loan went up by 15%.
+            ' Keep an eye on your debt, you can't win if you're a deadbeat.
 
-      .row.justify-content-end
-        .btn.btn-simple.btn-small click='action "closeTurnsTutorial"'
-          | Close
+          .row.justify-content-end
+            .btn.btn-secondary.btn-sm click='action "closeDebtTutorial"'
+              | Close
 
-    else
-      p
-        ' You have
-        ' #{turnsLeft} Uber rides
-        ' remaining out of 25.
+        else
+          p
+            ' You still owe
+            ' $#{number-format playerDebt decimals=0 thousandsSeparator=","}
+            ' on your loan. Hurry up, it's got a 15% interest rate.
 
-      .row.justify-content-end
-        .btn.btn-simple.btn-small click='action "toggleStatsBar" "#turnsHelp"'
-          | Close
+            if (gt playerFunds playerDebt)
+              .btn.btn-secondary click="payDebt"
+                | Pay it off
 
-#gameHelp.collapse data-parent="#stats-bar"
-  .card.card-body.pb-0.bg-black.border-left-0.border-right-0
-    .d-flex.align-items-center.justify-content-around.my-3
-      .btn.btn-primary click='action "quitGame"'
-        | Quit Game
+          .row.justify-content-end
+            .btn.btn-secondary.btn-sm click='action "toggleStatsBar" "#debtHelp"'
+              | Close
 
-      .btn.btn-primary.btn-small.btn-disabled
-        | High Scores
-    .container.px-0
-      .row.align-items-center.justify-content-center.px-2
-        p.small.text-center.px-2
-          | Powered by Elixir/Phoenix, Ember.js, and roast lamb.
-        p.small
-          ' 2018
-          i.far.fa-copyright
-          | &nbsp;
-          ' Jon Choukroun
+      else
+        if isFirstTurn
+          p You need a loan to get started.
+        else
+          p You've paid your debt.
 
-      .row.justify-content-end
-        .btn.btn-simple.btn-small click='action "toggleStatsBar" "#gameHelp"'
-          | Close
+        .row.justify-content-end
+          .btn.btn-secondary.btn-sm click='action "toggleStatsBar" "#debtHelp"'
+            | Close
+
+  #turnsHelp.collapse data-parent="#stats-bar"
+    .card.card-body.pb-0.bg-black.border-left-0.border-right-0.border-bottom-0
+      if isFirstTurn
+        p
+          ' You used your first token to get Downtown. Keep your eye on these tokens, you have
+          ' #{turnsLeft}
+          ' left.
+
+        .row.justify-content-end
+          .btn.btn-secondary.btn-sm click='action "closeTurnsTutorial"'
+            | Close
+
+      else
+        p
+          ' You have
+          ' #{turnsLeft} Uber rides
+          ' remaining out of 25.
+
+        .row.justify-content-end
+          .btn.btn-secondary.btn-sm click='action "toggleStatsBar" "#turnsHelp"'
+            | Close
+
+  #gameHelp.collapse data-parent="#stats-bar"
+    .card.card-body.pb-0.bg-black.border-left-0.border-right-0.border-bottom-0
+      .d-flex.align-items-center.justify-content-around.my-3
+        .btn.btn-secondary.btn-sm click='action "quitGame"'
+          | Quit Game
+
+        .btn.btn-secondary.btn-disabled.btn-sm
+          | High Scores
+      .container.px-0
+        .row.align-items-center.justify-content-center.px-2
+          p.small.text-center.px-2
+            | Powered by Elixir/Phoenix, Ember.js, and roast lamb.
+          p.small
+            ' 2018
+            i.far.fa-copyright
+            | &nbsp;
+            ' Jon Choukroun
+
+        .row.justify-content-end
+          .btn.btn-secondary.btn-sm click='action "toggleStatsBar" "#gameHelp"'
+            | Close

@@ -43,7 +43,7 @@ input.form-control:focus {
   margin: 10px 0;
   background-color: $black;
   border-color: $darkGreen;
-  border-radius: 8px;
+  border-radius: 5px;
   border-width: 2px;
   color: $green;
   font-family: 'Michroma';
@@ -79,6 +79,43 @@ input.form-control:focus {
   box-shadow: 0 0 0 0.2rem $darkGreen !important;
 }
 
+.btn-secondary {
+  margin: 10px 0;
+  background-color: $black;
+  border-color: $darkGreen;
+  border-radius: 5px;
+  border-width: 2px;
+  color: $green;
+  font-family: 'Michroma';
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.2s ease-out;
+}
+
+.btn-secondary:active {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  color: $green !important;
+  box-shadow: 0 0 3px 5px $darkGreen !important;
+}
+
+.btn-secondary:focus {
+  box-shadow: none;
+}
+
+.btn-secondary:hover {
+  @extend %brightenState;
+  transform: translateY(-2px);
+  box-shadow: 1px 1px 7px 3px $darkGreen;
+}
+
+// .btn-secondary:visited {
+//   background-color: $black !important;
+//   color: $green !important;
+//   border: solid $green !important;
+// }
+
 .btn-plain {
   background-color: $black;
   border: none;
@@ -88,24 +125,9 @@ input.form-control:focus {
   color: $green;
 }
 
-.btn-secondary {
-  @extend .btn-primary;
-  border-radius: 2px;
-  border-width: 1px;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-}
-
-.btn-secondary:visited {
-  background-color: $black !important;
-  color: $green !important;
-  border: solid $green !important;
-}
-
 .btn-simple {
-  @extend .btn-secondary;
-  border: none;
+  font-family: 'Space Mono', monospace;
+  font-weight: bold;
 }
 
 %steadyState {
@@ -114,15 +136,6 @@ input.form-control:focus {
   background-color: transparent !important;
   color: $darkGreen !important;
   border-color: $darkGreen !important;
-}
-
-.btn-black {
-  background-color: $black !important;
-  border-color: $black !important;
-  color: $black !important;
-
-  &:hover  { @extend %steadyState; }
-  &:active { @extend %steadyState; }
 }
 
 .btn-disabled {
@@ -156,7 +169,7 @@ input.form-control:focus {
 }
 
 .border-secondary {
-  border-color: $lightGreen !important;
+  border-color: $darkGreen !important;
 }
 
 .border-black {

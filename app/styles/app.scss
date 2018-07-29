@@ -16,25 +16,30 @@ body {
   background: $black;
   color: $green;
   overflow: hidden;
-  font-family: 'Space Mono', monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3 {
   font-family: 'Michroma', sans-serif;
+  letter-spacing: 1px;
 }
 
 h5 {
   font-weight: 800;
 }
 
+p {
+  font-family: 'Michroma', monospace;
+  letter-spacing: 1px;
+}
+
 @media (max-width: 320px) {
-  p { font-size: 14px; }
+  p { font-size: 13px; }
 }
 
 @media (min-width: 414px) {
-  p { font-size: 18px; }
+  p { font-size: 17px; }
 }
 
 @media (min-height: 812px) {
