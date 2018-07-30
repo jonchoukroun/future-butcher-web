@@ -4,7 +4,7 @@ import { htmlSafe } from '@ember/string'
 
 export default Component.extend({
 
-  classNames: ['d-flex', 'flex-column', 'align-items-center', 'justify-content-between', 'p-3'],
+  classNames: ['d-flex', 'flex-column', 'align-items-center', 'justify-content-between'],
 
   cutName:      null,
 
@@ -43,7 +43,9 @@ export default Component.extend({
   }),
 
   maxCanBuyPlaceholder: computed('maxCanBuy', function() {
-    return htmlSafe(`You can buy ${get(this, 'maxCanBuy')}`);
+    const max = get(this, 'maxCanBuy');
+    const pluralizedPound = (max === 1 ? "lb" : "lbs");
+    return htmlSafe(`You can buy ${max} ${pluralizedPound}`);
   }),
 
   maxCanBuyCost: computed('maxCanBuy', 'cutPrice', function() {
