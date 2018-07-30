@@ -1,5 +1,4 @@
 import Controller from '@ember/controller'
-import { get, set } from '@ember/object'
 
 export default Controller.extend({
 
@@ -8,7 +7,7 @@ export default Controller.extend({
     sendToScores() {
       this.transitionToRoute('high-scores');
     }
-    
+
   }
 
 })

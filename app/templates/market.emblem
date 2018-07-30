@@ -9,4 +9,4 @@
         p.mb-0.text-center.text-black.font-weight-bold
           | #{transactionAlert}
 
-      = meat-market sendRouteReload=(action 'reloadRoute') sendTransactionAlert=(action 'confirmTransaction')
+      = meat-market isDowntown=isDowntown isInDebt=isInDebt sendRouteReload=(action 'reloadRoute') sendTransactionAlert=(action 'confirmTransaction')

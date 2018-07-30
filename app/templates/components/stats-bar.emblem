@@ -33,7 +33,7 @@
             ' to buy cuts in the market.
 
           p
-            ' Rememer: buy low, sell high!
+            ' Remember: buy low, sell high!
 
           .row.justify-content-end
             .btn.btn-secondary.btn-sm click='action "closeFundsTutorial"'
