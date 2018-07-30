@@ -1,8 +1,9 @@
 each scores as |score|
-  li.list-group-item
-    .container-fluid
-      .row.justify-content-around
-        .col-7.col-sm-6.text-left
-          | #{score.player}
-        .col-5.col-sm-3.text-right
+  li.display-text
+    .row.justify-content-around
+      .col-6.px-0.text-left
+        h6.m-1.default-text
+          ' #{score.player}
+      .col-4.pl-0.text-right
+        h6.m-1.display-text
           | $#{number-format score.score decimals=0 thousandsSeparator=","}

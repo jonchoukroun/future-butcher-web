@@ -12,13 +12,12 @@
           else
             ' lbs
 
-
 if (eq quantity 0)
   .cut-header.text-right
     h5.text-secondary
       | Out of stock
   else
-  .d-flex.flex-row.align-items-end.mb-3
+  .d-flex.flex-row.align-items-end.mb-2
     .flex-grow-1.pr-2.pr-md-3.pr-lg-4.pr-xl-5
       p.display-text.mb-0.text-right
         ' $#{number-format price decimals=0 thousandsSeparator=","}

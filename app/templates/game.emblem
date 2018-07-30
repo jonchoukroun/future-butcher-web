@@ -25,7 +25,7 @@
         h6.my-4
           ' Your debt is now up to
           ' $#{number-format currentDebt decimals=0 thousandsSeparator=","}
-          ' and will keep rising by 15% until you pay it off.
+          ' and will keep rising by 15 percent until you pay it off.
 
 .container.cta-container.bg-black
   .row.justify-content-center

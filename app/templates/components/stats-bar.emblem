@@ -57,7 +57,7 @@
       if (gt playerDebt 0)
         if isSecondTurn
           p
-            ' The amount you owe on your loan went up by 15%.
+            ' The amount you owe on your loan went up by 15 percent.
             ' Keep an eye on your debt, you can't win if you're a deadbeat.
 
           .row.justify-content-end
@@ -68,7 +68,7 @@
           p
             ' You still owe
             ' $#{number-format playerDebt decimals=0 thousandsSeparator=","}
-            ' on your loan. Hurry up, it's got a 15% interest rate.
+            ' on your loan. Hurry up, it's got a 15 percent interest rate.
 
             if (gt playerFunds playerDebt)
               .btn.btn-secondary click="payDebt"
@@ -113,11 +113,11 @@
   #gameHelp.collapse data-parent="#stats-bar"
     .card.card-body.pb-0.bg-black.border-left-0.border-right-0.border-bottom-0
       .d-flex.align-items-center.justify-content-around.my-3
-        .btn.btn-secondary.btn-sm click='action "quitGame"'
-          | Quit Game
-
-        .btn.btn-secondary.btn-disabled.btn-sm
-          | High Scores
+        .btn-group
+          .btn.btn-secondary.btn-sm click='action "quitGame"'
+            | Quit Game
+          = link-to .btn.btn-secondary.btn-sm 'all-scores'
+            | High Scores
       .container.px-0
         .row.align-items-center.justify-content-center.px-2
           p.small.text-center.px-2

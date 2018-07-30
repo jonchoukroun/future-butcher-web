@@ -22,6 +22,8 @@ Router.map(function() {
 
   this.route('high-scores');
 
+  this.route('all-scores');
+
   this.route('unavailable');
 
 });
