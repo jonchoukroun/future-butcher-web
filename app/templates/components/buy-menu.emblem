@@ -1,30 +1,38 @@
-.btn.btn-secondary.align-self-end click='action "clickBack"'
+.btn.btn-secondary.btn-sm.align-self-end click='action "clickBack"'
   i.fas.fa-times
 
-.mt-5
+.d-flex.flex-row.justify-content-around style="width: 100%;"
   h5
-    ' #{number-format cutsAvailable decimals=0 thousandsSeparator=","} lbs
-    ' of #{uc-words cutName}
-    ' in stock
+    ' #{uc-words cutName}
+    span.small
+      | in stock:
+  h5
+    ' #{number-format cutsAvailable decimals=0 thousandsSeparator=","}
+    span.small
+      if (eq cutsAvailable 1)
+        | lb
+      else
+        | lbs
 
-  p.my-3.text-red
-    | #{errorMessage}
+p.my-3.text-red
+  | #{errorMessage}
 
-  form.transaction-form.align-self-center submit='action "submitBuyCut"'
-    .form-row
-      = input classNames="form-control form-control-lg mt-md-2" value=buyAmount key-up="calculateCost" type="number" placeholder=maxCanBuyPlaceholder autofocus=true
+form.transaction-form.align-self-center submit='action "submitBuyCut"'
+  .form-row
+    = input classNames="form-control form-control-lg mt-md-2" value=buyAmount key-up="calculateCost" type="number" placeholder=maxCanBuyPlaceholder autofocus=true
 
-    if (not buyAmount)
-      .d-flex.flex-column.align-items-center.justify-content-center
-        .btn.btn-primary click='action "clickBuyMax"'
-          ' Buy all
-          ' #{maxCanBuy}
-          ' for
-          ' $#{number-format maxCanBuyCost decimals=0 thousandsSeparator=","}
-        p.small
-          | Or enter a different amount
-    else
-      if (not errorMessage)
-        .d-flex.justify-content-center
-          button.btn.btn-primary type="submit"
-            | Buy for $#{number-format estimatedCost decimals=0 thousandsSeparator=","}
+  if (not buyAmount)
+    .d-flex.flex-column.align-items-center.justify-content-center
+      .btn.btn-secondary.btn-block click='action "clickBuyMax"'
+        ' Buy
+        ' #{maxCanBuy} lbs
+        ' for
+        ' $#{number-format maxCanBuyCost decimals=0 thousandsSeparator=","}
+      p.small
+        | Or enter a different amount
+  else
+    if (not errorMessage)
+      .d-flex.justify-content-center
+        button.btn.btn-secondary.btn-block type="submit"
+          ' Buy #{buyAmount} lbs
+          ' for $#{number-format estimatedCost decimals=0 thousandsSeparator=","}
