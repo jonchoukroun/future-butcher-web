@@ -1,0 +1,14 @@
+.cut-entry p.display-text.small {
+  letter-spacing: normal;
+}
+
+@media (max-width: 350px) {
+  .cut-header h5 { font-size: 15px; }
+
+  .cut-entry p.display-text { font-size: 12px; }
+
+  .cut-entry .btn-group .btn-secondary {
+    margin-top: 5px;
+    font-size: 14px;
+  }
+}
