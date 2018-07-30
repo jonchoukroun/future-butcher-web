@@ -2,7 +2,7 @@
 
 #title-screen {
   visibility: hidden;
-  height: 50vh;
+  height: 45vh;
   animation: delayDisplay 0.5s ease-out 0.5s forwards;
 }
 
@@ -10,7 +10,7 @@
   margin: 0 auto;
   text-align: center;
   background: transparent;
-  z-index: 10000;
+  z-index: 1000;
 }
 
 #title-future {
@@ -22,6 +22,8 @@
 }
 
 #title-butcher {
+  width: 90%;
+  font-family: 'Baumans';
   font-size: 2.8em;
   font-weight: 900;
   letter-spacing: 2px;
@@ -32,8 +34,6 @@
   overflow: hidden;
   border-right: .25em solid $green;
   white-space: nowrap;
-  margin: 0 auto;
-  letter-spacing: .15em;
   animation:
     typing 2.5s steps(8, end) 0.5s,
     blinkCaret .85s step-end infinite;
@@ -54,18 +54,13 @@
   50% { border-color: $darkGreen; }
 }
 
-@keyframes fadeInGlow {
-  from { text-shadow: none; }
-  to { text-shadow: 0px 0px 10px $green; }
-}
-
 @media (min-width: 375px) {
-  #title-future { font-size: 6.8em; }
-  #title-butcher { font-size: 3.5em; }
+  #title-future { font-size: 6.5em; }
+  #title-butcher { font-size: 3.2em; }
 }
 
 @media (min-width: 414px) {
-  #title-future { font-size: 7.9em; }
+  #title-future { font-size: 7.5em; }
   #title-butcher { font-size: 4em; }
 }
 

@@ -1,6 +1,6 @@
 if (eq screen 'intro')
   .container-fluid.full-screen
-    .intro-image.jumbotron.my-3.w-100.d-flex.flex-column.justify-content-center
+    .intro-image.jumbotron.my-3.d-flex.flex-column.justify-content-center
       h1.display-4.mb-md-4.text-center
         ' Los Angeles
       h2.text-center

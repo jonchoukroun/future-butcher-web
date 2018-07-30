@@ -1,5 +1,7 @@
 #title-screen.d-flex.justify-content-center.align-items-center
   .text-block
-    #title-future.display-1 Future
+    #title-future.display-1 future
 
-    #title-butcher.display-1.code-text.typewriter Butcher
+    #title-butcher.display-1.code-text.typewriter
+      ' b u t c h e r
+      | &nbsp;
