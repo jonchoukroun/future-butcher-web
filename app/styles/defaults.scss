@@ -15,7 +15,9 @@ input.form-control {
   border-left: none;
   border-color: $darkGreen;
   border-radius: 2px;
+  font-family: 'Michroma', sans-serif;
   font-size: 1rem;
+  letter-spacing: 1px;
   transition: all 0.5s ease-out;
 }
 
@@ -81,7 +83,7 @@ input.form-control:focus {
   color: $green;
   font-family: 'Michroma';
   font-weight: 900;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   transition: all 0.2s ease-out;
   white-space: normal;
@@ -159,6 +161,11 @@ input.form-control:focus {
   border: none;
 }
 
+.border {
+  border: 1px solid;
+  border-radius: 5px;
+}
+
 .border-primary {
   border-color: $green !important;
 }
@@ -171,10 +178,13 @@ input.form-control:focus {
   border-color: black !important;
 }
 
-.alert-success {
-  background-color: $lightGreen;
-  border: none;
-  border-radius: 2px;
+.transaction-alert {
+  position: absolute;
+  width: 100%;
+  top: -10vh;
+  left: 50%;
+  margin-left: -50%;
+  z-index: 10000;
 }
 
 @media (max-width: 414px) {
