@@ -3,6 +3,14 @@
   = top-scores
 
   .container.text-center
+    .row.justify-content-center
+      .col-12.col-sm-10.col-md-6
+        p.mb-1
+          ' Thanks for playing!
+        p
+          a.link-text href="https://jonchoukroun.typeform.com/to/xtMxpW" target="_blank"
+            | Tell me what you think
+            
     .row.justify-content-center.mb-3
       .col-12.col-sm-10.col-md-6
         .btn.btn-secondary.btn-block.btn-lg click='action "startNewGame"'
