@@ -4,7 +4,7 @@ import { computed, get, set } from '@ember/object'
 
 export default Component.extend({
 
-  classNames: ['d-flex', 'flex-column', 'align-items-center', 'justify-content-between', 'p-3'],
+  classNames: ['d-flex', 'flex-column', 'align-items-center', 'justify-content-between'],
 
   cutName:      null,
 
@@ -21,7 +21,9 @@ export default Component.extend({
   }),
 
   cutsOwnedPlaceholder: computed('cutsOwned', function() {
-    return htmlSafe(`You own ${get(this, 'cutsOwned')} lbs.`);
+    const owned = get(this, 'cutsOwned');
+    const pluralizedPound = (owned === 1 ? "lb" : "lbs");
+    return htmlSafe(`You can sell ${owned} ${pluralizedPound}`);
   }),
 
   errorMessage: computed('sellAmount', 'cutsOwned', function() {
