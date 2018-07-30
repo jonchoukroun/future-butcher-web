@@ -10,17 +10,3 @@
           | #{transactionAlert}
 
       = meat-market sendRouteReload=(action 'reloadRoute') sendTransactionAlert=(action 'confirmTransaction')
-
-.container.cta-container.pb-3.pb-md-5.bg-black
-  .row.justify-content-center
-    if (and isDowntown (not isInDebt))
-      .col-6.text-center
-        = link-to .btn.btn-secondary.btn-lg.btn-block 'bank'
-          | Bank
-      .col-6.text-center
-        = link-to .btn.btn-secondary.btn-lg.btn-block 'subway'
-          | Subway
-    else
-      .col-12.text-center
-        = link-to .btn.btn-secondary.btn-lg 'subway'
-          | Hit the Subway

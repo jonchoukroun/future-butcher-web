@@ -1,8 +1,8 @@
 each stations as |station|
-  li.list-group-item
+  li.list-group-item.text-right.mr-3
     if (eq currentStation station.name)
-      .btn.btn-plain.btn-block.btn-disabled
+      .btn.btn-plain.btn-disabled
         | #{station.display}
     else
-      .btn.btn-plain.btn-block click='action "selectStation" station.name'
+      .btn.btn-plain click='action "selectStation" station.name'
         | #{station.display}

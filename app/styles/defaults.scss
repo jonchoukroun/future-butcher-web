@@ -5,7 +5,7 @@
 }
 
 .top-spacer {
-  padding-top: 70px;
+  padding-top: 65px;
 }
 
 input.form-control {
@@ -106,18 +106,12 @@ input.form-control:focus {
   box-shadow: 1px 1px 7px 3px $darkGreen;
 }
 
-// .btn-secondary:visited {
-//   background-color: $black !important;
-//   color: $green !important;
-//   border: solid $green !important;
-// }
-
 .btn-plain {
   background-color: $black;
   border: none;
   border-radius: 2px;
-  font-family: 'Voltaire', sans-serif;
-  font-size: 1.5rem;
+  font-family: 'Michroma', sans-serif;
+  font-size: 1.6rem;
   color: $green;
 }
 
@@ -181,7 +175,7 @@ input.form-control:focus {
 .transaction-alert {
   position: absolute;
   width: 100%;
-  top: -10vh;
+  top: -7vh;
   left: 50%;
   margin-left: -50%;
   z-index: 10000;
@@ -202,7 +196,7 @@ input.form-control:focus {
 
 @media (min-width: 576px) {
   .top-spacer {
-    padding-top: 95px;
+    padding-top: 85px;
   }
 }
 

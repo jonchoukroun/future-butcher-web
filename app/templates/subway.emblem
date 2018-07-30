@@ -1,37 +1,40 @@
 .container-fluid.full-screen.top-spacer
+
   = stats-bar  sendQuit=(action 'sendToScores')
 
-  if lastTurn
-    .d-flex.flex-column.align-items-center.justify-content-center.my-1.my-md-5.p-4
-      h2.mb-3
-        | You're out of rides!
+  unless lastTurn
+    .row.justify-content-center.mb-3
+      .col-12.col-sm-10.col-md-6.mt-md-4
+        .d-flex.flex-column
+          h2.mb-3
+            | You're out of rides!
 
-      if hasLooseEnds
-        p
-          | Tie up your loose ends:
+          if hasLooseEnds
+            p
+              | Tie up your loose ends:
 
-        if hasPayableDebt
-          p.text-center
-            ' You owe
-            ' $#{number-format playerDebt decimals=0 thousandsSeparator=","}...
-            .btn.btn-secondary.my-0 click='action "payDebt"'
-              | Pay your loan
+            if hasPayableDebt
+              p.text-center
+                ' You owe
+                ' $#{number-format playerDebt decimals=0 thousandsSeparator=","}...
+                .btn.btn-secondary.my-0 click='action "payDebt"'
+                  | Pay your loan
 
-        if (gt totalCutsOwned 0)
-          p.text-center
-            ' You're carrying
-            ' #{totalCutsOwned} lbs...
-            = link-to .btn.btn-secondary.my-0 'market'
-              | Sell your inventory
+            if (gt totalCutsOwned 0)
+              p.text-center
+                ' You're carrying
+                ' #{totalCutsOwned} lbs...
+                = link-to .btn.btn-secondary.my-0 'market'
+                  | Sell your inventory
 
-        .btn.btn-primary.btn-lg.align-self-center click='action "retirePlayer"'
-          | Retire Anyway
+            .btn.btn-secondary.btn-block.btn-lg.align-self-center click='action "retirePlayer"'
+              | Retire Anyway
 
-      else
-        p Are you ready to end your game?
+          else
+            p Are you ready to end your game?
 
-        .btn.btn-primary.btn-lg.align-self-center click='action "retirePlayer"'
-          | Retire
+            .btn.btn-secondary.btn-block.btn-lg.align-self-center click='action "retirePlayer"'
+              | Retire
 
   else
     .d-flex.flex-column.align-items-center.justify-content-center.my-1.my-md-3
@@ -40,8 +43,8 @@
 
       = subway-stations sendStation=(action 'navigate')
 
-.container.cta-container.pb-3.pb-md-5.bg-black
-  .row.justify-content-center
-    .col-12.text-center
-      = link-to .btn.btn-primary.btn-lg 'market'
-        | Back to the market
+  .row.justify-content-center.mb-3
+    .col-12.col-sm-10.col-md-6.mt-md-4.px-0
+      .container.cta-container.bg-black
+        = link-to .btn.btn-secondary.btn-block.btn-lg 'market'
+          | Back to market

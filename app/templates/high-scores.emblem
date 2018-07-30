@@ -3,5 +3,5 @@
   = top-scores
 
   .container.text-center
-    .btn.btn-primary.btn-lg click='action "startNewGame"'
+    .btn.btn-secondary.btn-block.btn-lg click='action "startNewGame"'
       | Start Over

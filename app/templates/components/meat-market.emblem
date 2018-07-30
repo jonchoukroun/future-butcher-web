@@ -6,8 +6,22 @@ else
   each-in marketCuts as |cut market|
     = cut-entry cut=cut price=market.price quantity=market.quantity sendOpenBuyMenu=(action 'openBuyMenu') sendOpenSellMenu=(action 'openSellMenu')
 
-  / .flex-row.pt-2.mx-1.mx-md-5.px-2.border-top.border-black
+  .flex-row.mt-3.mx-1.mx-md-5.pt-2.px-2.border-top.border-black
     p.text-right
       b
         ' Total:
       ' #{totalCutsOwned}/20 lbs
+
+  .container.cta-container.bg-black
+    .row.justify-content-center
+      if (and isDowntown (not isInDebt))
+        .col-6.text-center
+          = link-to .btn.btn-secondary.btn-lg.btn-block 'bank'
+            | Bank
+        .col-6.text-center
+          = link-to .btn.btn-secondary.btn-lg.btn-block 'subway'
+            | Subway
+      else
+        .col-12.text-center
+          = link-to .btn.btn-secondary.btn-lg 'subway'
+            | Hit the Subway

@@ -1,4 +1,4 @@
-.col-12.col-md-8.col-lg-6.px-0.p-2.py-sm-3.px-sm-4.px-md-1.border-bottom.border-secondary
+.col-12.col-md-8.col-lg-6.px-0.p-2.py-sm-2.px-sm-4.px-md-1.border-bottom.border-secondary
   .d-flex.align-items-center.justify-content-between.mx-1
     .btn.btn-simple.px-0 click='action "toggleStatsBar" "#fundsHelp"'
       | $#{number-format playerFunds decimals=0 thousandsSeparator=","}
@@ -103,7 +103,7 @@
       else
         p
           ' You have
-          ' #{turnsLeft} Uber rides
+          ' #{turnsLeft} subway tokens
           ' remaining out of 25.
 
         .row.justify-content-end
