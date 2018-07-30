@@ -5,9 +5,11 @@
 
   = stats-bar sendQuit=(action 'sendToScores')
 
-  = meat-market sendRouteReload=(action 'reloadRoute') sendTransactionAlert=(action 'confirmTransaction')
+  .row.justify-content-center.mb-3
+    .col-12.col-sm-10.col-md-6.mt-md-4
+      = meat-market sendRouteReload=(action 'reloadRoute') sendTransactionAlert=(action 'confirmTransaction')
 
-.container.cta-container.pb-3.pb-md-5.bg-black
+/ .container.cta-container.pb-3.pb-md-5.bg-black
   .row.justify-content-center
     if (and isDowntown (not isInDebt))
       .col-6.text-center

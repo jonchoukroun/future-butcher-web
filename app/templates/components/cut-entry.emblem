@@ -1,26 +1,41 @@
-.d-flex.flex-row.align-items-center.justify-content-between.px-sm-5
-  .d-flex.flex-column.align-items-start.justify-content-center
-    h5.m-0
-      ' #{uc-words cut}
-      if (gt cutsOwned 0)
-        span.lead
-          ' (#{cutsOwned})
-    p.m-0.border-top.border-secondary
-      ' $#{number-format price decimals=0 thousandsSeparator=","}
-      span.small
-        | (avg: $#{number-format medianPrice decimals=0 thousandsSeparator=","})
-
-  .btn-group
-    if (and canAffordCut hasPackSpace)
-      .btn.btn-primary click='action "openBuyMenu"'
-        | Buy
-    else
-      .btn.btn-primary.btn-disabled
-        | Buy
+.border-bottom.border-secondary
+  .d-flex.cut-header
+    h5.mb-1.ml-2.mr-auto
+      | #{uc-words cut}
 
     if (gt cutsOwned 0)
-      .btn.btn-primary click='action "openSellMenu"'
-        | Sell
-    else
-      .btn.btn-primary.btn-disabled
-        | Sell
+      h5.mb-1.mr-2
+        ' #{cutsOwned}
+        span.small
+          if (eq cutsOwned 1)
+            ' lb
+          else
+            ' lbs
+
+
+if (eq quantity 0)
+  .cut-header.text-right
+    h5.text-secondary
+      | Out of stock
+  else
+  .d-flex.flex-row.align-items-end.mb-3
+    .flex-grow-1.pr-2.pr-md-3.pr-lg-4.pr-xl-5
+      p.display-text.mb-0.text-right
+        ' $#{number-format price decimals=0 thousandsSeparator=","}
+      p.display-text.small.mb-0.text-right.font-italic
+        ' avg: $#{number-format medianPrice decimals=0 thousandsSeparator=","}
+
+    .btn-group.ml-auto
+      if (and canAffordCut hasPackSpace)
+        .btn.btn-secondary.mb-0 click='action "openBuyMenu"'
+          | Buy
+      else
+        .btn.btn-secondary.btn-disabled.mb-0
+          | Buy
+
+      if (gt cutsOwned 0)
+        .btn.btn-secondary.mb-0 click='action "openSellMenu"'
+          | Sell
+      else
+        .btn.btn-secondary.btn-disabled.mb-0
+          | Sell

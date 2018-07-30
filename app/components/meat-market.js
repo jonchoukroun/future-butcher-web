@@ -5,10 +5,6 @@ export default Component.extend({
 
   elementId: 'meat-market',
 
-  tagName: 'ul',
-
-  classNames: ['list-group-flush', 'px-2'],
-
   showBuyForm:      false,
   showSellForm:     false,
   buyingCut:        false,
