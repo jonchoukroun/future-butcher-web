@@ -2,11 +2,11 @@
   i.fas.fa-times
 
 .d-flex.flex-row.justify-content-around style="width: 100%;"
-  h5
+  h4
     ' #{uc-words cutName}
     span.small
       | in pack:
-  h5
+  h4
     ' #{number-format cutsOwned decimals=0 thousandsSeparator=","}
     span.small
       if (eq cutsOwned 1)
@@ -31,7 +31,10 @@ form.transaction-form.align-self-center submit='action "submitSellCut"'
       p.small
         | Or enter a different amount
   else
-    if (not errorMessage)
-      .d-flex.justify-content-center
+    .d-flex.justify-content-center
+      if errorMessage
+        button.btn.btn-secondary.btn-disabled.btn-block
+          | Sell for $#{number-format estimatedProfit decimals=0 thousandsSeparator=","}
+      else
         button.btn.btn-secondary.btn-block type="submit"
           | Sell for $#{number-format estimatedProfit decimals=0 thousandsSeparator=","}

@@ -16,7 +16,7 @@
         p
           | Welcome back, favored customer. With your credit, now have access to the following loans.
 
-      .container-fluid.mb-3.mt-4.mt-md-5.px-0
+      .container-fluid.mb-4.mt-5.px-0
         each loanOptions as |loan|
           if (gt totalPlayerValue loan.debt)
             = loan-purchase debt=loan.debt rate=loan.rate isDisabled=false sendLoanSelect=(action 'selectLoan')
@@ -35,14 +35,12 @@
             .btn.btn-secondary.btn-lg.btn-block.btn-disabled
               | Select a loan
         else
-          .row
-            .col-6
-              = link-to .btn.btn-secondary.btn-lg.btn-block 'market'
-                | Market
-            .col-6
-              if (and debt rate)
-                .btn.btn-secondary.btn-lg.btn-block click='action "buyLoan"'
-                  ' Buy
-              else
-                .btn.btn-secondary.btn-disabled.btn-lg.btn-block
-                  | Select...
+          .btn-group
+            = link-to .btn.btn-secondary.btn-lg.btn-block 'market'
+              | Market
+            if (and debt rate)
+              .btn.btn-secondary.btn-lg click='action "buyLoan"'
+                ' Buy
+            else
+              .btn.btn-secondary.btn-disabled.btn-lg
+                | Select...

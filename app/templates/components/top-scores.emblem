@@ -2,17 +2,17 @@
   .row.justify-content-center.px-0
     .col-12.col-sm-10.col-md-6
       span.border-bottom.border-secondary.mb-4
-        h3.text-center Hall of Fame
+        h3.text-center The End
 
       if isHighestScore
 
-        h5 You set a new record!
+        h5.text-center You set a new record!
 
         h3.mx-5.text-center
           | $#{number-format playerScore decimals=0 thousandsSeparator=","}
 
         .m-4.py-3.border-top.border-black
-          p There should be a prize for that...
+          p You made enough to leave behind crumbling LA and retire in luxury.
 
         .my-2.mx-1.py-3.container
           .row.justify-content-center
@@ -74,7 +74,7 @@
 
             .mt-4.py-3.border-top.border-black
               p.text-center
-                ' Not bad. Think you can do better?
+                ' You made it out, but the pull of the meat hustling game is strong. Can you make even more money?
 
           else
             .text-center
@@ -83,4 +83,4 @@
               h6
                 | $#{number-format playerScore decimals=0 thousandsSeparator=","}
               p
-                | Terrible, just terrible. Try again.
+                | Terrible, just terrible. You didn't make enough to bribe the border guard and you're stuck in LA. Give it another shot, before someone harvests your flesh.

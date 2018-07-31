@@ -19,7 +19,7 @@ if (eq screen 'intro')
           ' human meat. Not that you would ever touch the stuff.
 
         .row.mt-lg-3.mt-xl-4: .col-12.text-right
-          .btn.btn-primary.next-button click='action "nextScreen"'
+          .btn.btn-primary click='action "nextScreen"'
             ' Next
             i.fas.fa-long-arrow-alt-right
 
@@ -31,7 +31,7 @@ if (eq screen 'instructions')
           | You wake up to find 25 subway tokens in an old leather jacket your ex left before fleeing to Mexico. It might be enough to navigate the city, buying and selling fresh cuts of liver, heart, ribs - whatever deals you can find.
 
         p.mb-md-5
-          | Make enough money before your tokens run out to escape the shambles of the Los Angeles Republic.
+          | Make enough money before your tokens run out to escape the shambles of the Republic of Los Angeles.
 
         p.mb-md-5
           | But first you need cash. A bank Downtown is offering first-time loans. Use a token to get there now.

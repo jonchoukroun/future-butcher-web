@@ -13,5 +13,5 @@ form.signup-form.text-center submit='action "createPlayer" value'
     button.btn.btn-primary.btn-lg type='submit'
       | New Game
   else
-    button.btn.btn-disabled.btn-lg
+    button.btn.btn-primary.btn-disabled.border-0
       | #{invalidButtonText}

@@ -6,11 +6,11 @@
     .row.justify-content-center.mb-3
       .col-12.col-sm-10.col-md-6.mt-md-4
         .d-flex.flex-column
-          h2.mb-3
+          h3.my-3.text-center
             | You're out of rides!
 
           if hasLooseEnds
-            p
+            p.px-2
               | Tie up your loose ends:
 
             if hasPayableDebt
@@ -31,10 +31,15 @@
               | Retire Anyway
 
           else
-            p Are you ready to end your game?
+            p.px-2
+              | Are you ready to escape the Republic of Los Angeles?
 
-            .btn.btn-secondary.btn-block.btn-lg.align-self-center click='action "retirePlayer"'
-              | Retire
+            .row.px-0.justify-content-center
+              .btn-group
+                = link-to .btn.btn-secondary.btn-lg 'market'
+                  | Not yet
+                .btn.btn-secondary.btn-lg click='action "retirePlayer"'
+                  | Book It
 
   else
     .row.justify-content-center.mb-3
@@ -45,8 +50,8 @@
 
           = subway-stations sendStation=(action 'navigate')
 
-  .row.justify-content-center.mb-3
-    .col-12.col-sm-10.col-md-6.mt-md-4.px-0
-      .container.cta-container.bg-black
-        = link-to .btn.btn-secondary.btn-block.btn-lg 'market'
-          | Back to market
+    .row.justify-content-center.mb-3
+      .col-12.col-sm-10.col-md-6.mt-md-4.px-0
+        .container.cta-container.bg-black
+          = link-to .btn.btn-secondary.btn-block.btn-lg 'market'
+            | Back to market

@@ -15,7 +15,6 @@
 
 #title-future {
   font-family: 'Baumans';
-  font-size: 5.5em;
   font-weight: 900;
   letter-spacing: 10px;
   text-shadow: 0px 0px 10px $green;
@@ -24,9 +23,8 @@
 #title-butcher {
   width: 90%;
   font-family: 'Baumans';
-  font-size: 2.8em;
+  font-size: 3.5em;
   font-weight: 900;
-  letter-spacing: 2px;
   color: $darkGreen;
 }
 
@@ -35,7 +33,7 @@
   border-right: .25em solid $green;
   white-space: nowrap;
   animation:
-    typing 2.5s steps(8, end) 0.5s,
+    typing 2.5s steps(7, end) 0.5s,
     blinkCaret .85s step-end infinite;
 }
 
@@ -55,8 +53,8 @@
 }
 
 @media (min-width: 375px) {
-  #title-future { font-size: 6.5em; }
-  #title-butcher { font-size: 3.2em; }
+  #title-future { font-size: 6rem; }
+  #title-butcher { font-size: 3.5rem; }
 }
 
 @media (min-width: 414px) {
@@ -64,12 +62,12 @@
   #title-butcher { font-size: 4em; }
 }
 
-@media (min-width: 992px) {
-  #title-future { font-size: 12em; }
-  #title-butcher { font-size: 6em; }
+@media (min-width: 768px) {
+  #title-future { font-size: 8rem; }
+  #title-butcher { font-size: 5rem; }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 992px) {
   #title-future { font-size: 12em; }
   #title-butcher { font-size: 6em; }
 }

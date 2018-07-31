@@ -71,7 +71,7 @@
             ' on your loan. Hurry up, it's got a 15 percent interest rate.
 
             if (gt playerFunds playerDebt)
-              .btn.btn-secondary click="payDebt"
+              .btn.btn-secondary.btn-block click="payDebt"
                 | Pay it off
 
           .row.justify-content-end
@@ -83,6 +83,12 @@
           p You need a loan to get started.
         else
           p You've paid your debt.
+          p
+            ' Head
+            = link-to .link-text 'subway'
+              | Downtown
+            ' &nbsp;
+            | to get another loan from the bank.
 
         .row.justify-content-end
           .btn.btn-secondary.btn-sm click='action "toggleStatsBar" "#debtHelp"'
