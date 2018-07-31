@@ -1,10 +1,9 @@
 #signup-label
-  / verify this is being computed
-  if nameTaken
-    h3.px-1
+  if isNameTaken
+    h4
       | That name is already taken!
   else
-    h3
+    h4
       | Enter a unique screen name
 
 form.signup-form.text-center submit='action "createPlayer" value'
