@@ -14,12 +14,15 @@
           | You used 1 subway token to get Downtown. Now take out a loan to get started.
       else
         p
-          | Welcome back, favored customer. With your credit, now have access to the following loans.
+          | Welcome back, loyal customer. With your credit, you can take out the following loans:
 
       .container-fluid.mb-4.mt-5.px-0
         each loanOptions as |loan|
           if (gt totalPlayerValue loan.debt)
-            = loan-purchase debt=loan.debt rate=loan.rate isDisabled=false sendLoanSelect=(action 'selectLoan')
+            if (eq selectedLoan loan.debt)
+              = loan-purchase debt=loan.debt rate=loan.rate isDisabled=false isSelected=true sendLoanSelect=(action 'selectLoan')
+            else
+              = loan-purchase debt=loan.debt rate=loan.rate isDisabled=false sendLoanSelect=(action 'selectLoan')
           else
             = loan-purchase debt=loan.debt rate=loan.rate isDisabled=true sendLoanSelect=(action 'selectLoan')
 
