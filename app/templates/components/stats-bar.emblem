@@ -57,7 +57,7 @@
       if (gt playerDebt 0)
         if isSecondTurn
           p
-            ' The amount you owe on your loan went up by 15 percent.
+            ' The amount you owe on your loan went up by 15%.
             ' Keep an eye on your debt, you can't win if you're a deadbeat.
 
           .row.justify-content-end
@@ -68,7 +68,7 @@
           p
             ' You still owe
             ' $#{number-format playerDebt decimals=0 thousandsSeparator=","}
-            ' on your loan. Hurry up, it's got a 15 percent interest rate.
+            ' on your loan. Hurry up, it's got a 15% interest rate.
 
             if (gt playerFunds playerDebt)
               .btn.btn-secondary.btn-block click="payDebt"
