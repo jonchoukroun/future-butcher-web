@@ -10,13 +10,11 @@
   }
 
   h1 {
-    font-family: 'Baumans', sans-serif;
     font-size: 3em;
     letter-spacing: normal;
   }
 
   h2 {
-    font-family: 'Michroma', sans-serif;
     font-weight: bold;
     font-size: 1.5em;
     letter-spacing: 0.5rem;
@@ -37,11 +35,10 @@
 
 @media (min-width: 375px) {
   .intro-image {
-    h1 { font-size: 3.7em; }
+    height: 30vh;
     h2 { font-size: 1.7em; }
   }
 }
-
 
 @media (min-width: 414px) {
   .intro-image {
