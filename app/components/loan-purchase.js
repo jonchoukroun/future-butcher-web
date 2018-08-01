@@ -20,7 +20,6 @@ export default Component.extend({
   actions: {
 
     selectLoan() {
-      set(this, 'isSelected', true);
       get(this, 'sendLoanSelect')(get(this, 'debt'), get(this, 'rate'));
     },
 
