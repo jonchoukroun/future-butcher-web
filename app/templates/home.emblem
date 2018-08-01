@@ -12,7 +12,7 @@ if (eq screen 'intro')
           | The economy has crumbled after the collapse of HypeCoin. Your only chance for survival is hustling FreshMeat
           sup
             i.fas.fa-trademark
-          ' , the new premium addiction of the wealthiest 1 percent.
+          ' , the new premium addiction of the wealthiest 1%.
 
         p
           ' There's unlimited opportunity servicing their demand for fresh, exclusive cuts of...
