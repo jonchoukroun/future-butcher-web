@@ -1,40 +1,41 @@
 @import '../utilities';
 
-#title-screen {
-  visibility: hidden;
-  height: 45vh;
-  animation: delayDisplay 0.5s ease-out 0.5s forwards;
+@font-face {
+  font-family: 'marvin-visions';
+  src: url("fonts/MarvinVisions-Bold.eot") format("eot");
+  src: url("fonts/MarvinVisions-Bold.woff2") format("woff2");
+  src: url("fonts/MarvinVisions-Bold.woff") format("woff");
 }
 
-.text-block {
-  margin: 0 auto;
-  text-align: center;
-  background: transparent;
-  z-index: 1000;
+#title-screen {
+  height: 45vh;
+}
+
+.gradient {
+  background-image: linear-gradient(to right, $green, $darkGreen);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
 }
 
 #title-future {
-  font-family: 'Baumans';
-  font-weight: 900;
-  letter-spacing: 10px;
-  text-shadow: 0px 0px 10px $green;
+  transform: translateY(-100vh);
+  overflow-x: hidden;
+  font-family: 'marvin-visions';
+  font-size: 25.5vw;
+  line-height: 19vw;
+  animation: fadeRight 1s ease-in forwards;
 }
 
-#title-butcher {
-  width: 90%;
-  font-family: 'Baumans';
-  font-size: 3.5em;
-  font-weight: 900;
-  color: $darkGreen;
-}
-
-.typewriter {
-  overflow: hidden;
-  border-right: .25em solid $green;
-  white-space: nowrap;
-  animation:
-    typing 2.5s steps(7, end) 0.5s,
-    blinkCaret .85s step-end infinite;
+@keyframes fadeRight {
+  0% {
+    transform: translateY(-100vh);
+  }
+  75% {
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 @keyframes delayDisplay {
@@ -42,32 +43,28 @@
   to { visibility: visible; }
 }
 
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-@keyframes blinkCaret {
-  from, to { border-color: transparent; }
-  50% { border-color: $darkGreen; }
-}
-
 @media (min-width: 375px) {
-  #title-future { font-size: 6rem; }
-  #title-butcher { font-size: 3.5rem; }
+  #title-future {
+    font-size: 26vw;
+  }
 }
 
-@media (min-width: 414px) {
-  #title-future { font-size: 7.5em; }
-  #title-butcher { font-size: 4em; }
-}
-
-@media (min-width: 768px) {
-  #title-future { font-size: 8rem; }
-  #title-butcher { font-size: 5rem; }
+@media (min-width: 576px) {
+  #title-future {
+    font-size: 26.5vw;
+  }
 }
 
 @media (min-width: 992px) {
-  #title-future { font-size: 12em; }
-  #title-butcher { font-size: 6em; }
+  #title-future {
+    font-size: 17.25vw;
+    line-height: 12.5vw;
+  }
+}
+
+@media (min-width: 1200px) {
+  #title-future {
+    font-size: 11.25vw;
+    line-height: 8.15vw;
+  }
 }

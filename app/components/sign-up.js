@@ -5,7 +5,7 @@ export default Component.extend({
 
   elementId: 'sign-up',
 
-  classNames: ['d-flex', 'flex-column', 'align-items-center', 'justify-content-center'],
+  classNames: ['mt-5'],
 
   inputLength: null,
   validInput:  false,

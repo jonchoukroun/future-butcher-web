@@ -4,17 +4,18 @@
 
   #signup-label {
     opacity: 0;
-    animation: fadeIn 0.5s ease-out 3s forwards;
+    animation: fadeIn 1.5s ease-out 1s forwards;
     text-align: center;
   }
 
   form.signup-form {
     transform: scaleY(0);
-    animation: openUp 0.5s ease-out 3s forwards;
+    animation: openUp 0.75s ease-out 1s forwards;
     transition: all;
 
     input {
       text-align: center;
+      margin-bottom: 1.5em;
     }
   }
 }
@@ -24,8 +25,15 @@
   to { opacity: 1; }
 }
 @keyframes openUp {
-  from { transform: scaleY(0); }
-  to { transform: scaleY(1) }
+  0% {
+    transform: scaleY(0);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(1)
+  }
 }
 
 @media (min-width: 375px) {
