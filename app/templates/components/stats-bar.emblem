@@ -88,7 +88,7 @@
             = link-to .link-text 'subway'
               | Downtown
             ' &nbsp;
-            | to get another loan from the bank.
+            | to get another loan from the Shavings & Loan Bank.
 
         .row.justify-content-end
           .btn.btn-secondary.btn-sm click='action "toggleStatsBar" "#debtHelp"'

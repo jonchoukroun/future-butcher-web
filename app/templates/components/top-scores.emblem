@@ -1,4 +1,4 @@
-.container
+.container.mt-3
   .row.justify-content-center.px-0
     .col-12.col-sm-10.col-md-6
       span.border-bottom.border-secondary.mb-4
@@ -12,7 +12,7 @@
           | $#{number-format playerScore decimals=0 thousandsSeparator=","}
 
         .m-4.py-3.border-top.border-black
-          p You made enough to leave behind crumbling LA and retire in luxury.
+          p You made enough money to leave behind crumbling LA and retire in luxury.
 
         .my-2.mx-1.py-3.container
           .row.justify-content-center
@@ -40,7 +40,7 @@
             ' #{highestScore.player}:
             | $#{number-format highestScore.score decimals=0 thousandsSeparator=","}
 
-        .my-2.mx-1.py-3.container
+        .my-2.py-3.px-0.container
           if (gt playerScoreIndex 0)
             each higherScores as |score|
               .row.justify-content-around
@@ -77,10 +77,9 @@
                 ' You made it out, but the pull of the meat hustling game is strong. Can you make even more money?
 
           else
-            .text-center
-              h6.text-secondary
-                | Your score:
-              h6
-                | $#{number-format playerScore decimals=0 thousandsSeparator=","}
-              p
-                | Terrible, just terrible. You didn't make enough to bribe the border guard and you're stuck in LA. Give it another shot, before someone harvests your flesh.
+            h6.text-secondary.text-center
+              | Your score:
+            h6.text-center
+              | $#{number-format playerScore decimals=0 thousandsSeparator=","}
+            p
+              | Terrible, just terrible. You didn't make enough to bribe the border guard and you're stuck in LA. Give it another shot, before someone harvests your flesh.
