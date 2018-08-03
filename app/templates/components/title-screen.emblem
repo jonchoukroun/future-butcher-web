@@ -1,6 +1,2 @@
-/ #title-future.display-1
-  span.gradient.squeezed
-    | Future Butcher
-
 #title-image
   img src="assets/images/fb-title-green.jpg"
