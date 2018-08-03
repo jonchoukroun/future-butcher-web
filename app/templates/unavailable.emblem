@@ -1,12 +1,9 @@
-.container-fluid.my-5
-  .d-flex.justify-content-center.align-items-cente.d-flex.justify-content-center.align-items-centerr
-    .text-block
-      h1#title-future.display-1 Future
-      #title-butcher.display-1.code-text Butcher
+.container-fluid.full-screen
+  .row.justify-content-center
+    .col-12.col-lg-8
+      .mt-5.py-2.pl-1.pl-sm-3.pl-lg-4
+        img src="assets/images/fb-title-green.jpg"
 
-.container-fluid style="height: 100vh;"
-  .row.justify-content-center style="height: 100%;"
-    .col-12.col-sm-10.col-md-8.col-lg-7.col-xl-5
       .text-left.mt-5
         p.lead
           | Law enforcement is cracking down on meat markets across town.
@@ -14,5 +11,5 @@
           | Come back when the heat is off.
 
       .d-flex.justify-content-center.mt-1
-        = link-to .btn.btn-secondary 'home'
+        = link-to .btn.btn-secondary.btn-lg.btn-block 'home'
           | Try again
