@@ -5,17 +5,17 @@
   src: url("fonts/MarvinVisions-Bold.woff") format("woff");
 }
 
-$brand-primary: #5ad25a;
-$brand-secondary: #3c6c3c;
-// $brand-danger: #ed4848;
+// $brand-primary: #5ad25a;
+// $brand-secondary: #3c6c3c;
+$brand-danger: #ed4848;
 $brand-black: #282828;
 
 // muted orange
-$brand-danger: #d3701e;
+// $brand-danger: #d3701e;
 
 // halloween edition
-// $brand-primary: #ed9348;
-// $brand-secondary: #d3701e;
+$brand-primary: #ed9348;
+$brand-secondary: #d3701e;
 
 .text-primary {
   color: $brand-primary !important;
