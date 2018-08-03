@@ -1,8 +1,8 @@
 .container-fluid.full-screen
   .row.justify-content-center
     .col-12.col-lg-8
-      .mt-5.py-2.pl-1.pl-sm-3.pl-lg-4
-        img src="assets/images/fb-title-green.jpg"
+      .mt-5.py-2
+        img src="assets/images/fb-title-green.jpg" style="width: 100%;"
 
       .text-left.mt-5
         p.lead

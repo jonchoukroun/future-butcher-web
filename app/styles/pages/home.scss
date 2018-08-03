@@ -1,12 +1,12 @@
 .intro-image {
-  background-color: $black;
+  background-color: $brand-black;
   background-image: url("https://s3-us-west-1.amazonaws.com/futurebutcher.com/assets/downtown-bridge.jpg");
   background-size: cover;
   background-position: top left;
   background-repeat: no-repeat;
 
   h1, h2 {
-    text-shadow: 0 10px 20px $darkGreen, 0 6px 6px $darkGreen;
+    text-shadow: 0 10px 20px $brand-secondary, 0 6px 6px $brand-secondary;
   }
 
   h1 {

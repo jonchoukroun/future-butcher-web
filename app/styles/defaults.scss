@@ -9,11 +9,11 @@
 }
 
 input.form-control {
-  background-color: $black;
+  background-color: $brand-black;
   border-top: none;
   border-right: none;
   border-left: none;
-  border-color: $darkGreen;
+  border-color: $brand-secondary;
   border-radius: 0;
   font-family: 'Space Mono', sans-serif;
   font-size: 1rem;
@@ -23,9 +23,9 @@ input.form-control {
 
 input.form-control:focus {
   @extend input.form-control;
-  border-color: $green;
+  border-color: $brand-primary;
   box-shadow: none;
-  color: $green;
+  color: $brand-primary;
   font-weight: 800 !important;
 }
 
@@ -35,11 +35,11 @@ input.form-control:focus {
 
 .btn-primary {
   margin: 10px 0;
-  background-color: $black;
-  border-color: $darkGreen;
+  background-color: $brand-black;
+  border-color: $brand-secondary;
   border-radius: 4px;
   border-width: 2px;
-  color: $green;
+  color: $brand-primary;
   font-family: 'Michroma';
   font-weight: 900;
   letter-spacing: 0.2em;
@@ -49,8 +49,8 @@ input.form-control:focus {
 }
 
 %brightenState {
-  background-color: $darkGreen !important;
-  border-color: $green !important;
+  background-color: $brand-secondary !important;
+  border-color: $brand-primary !important;
   color: rgba(0, 0, 0, 0.5) !important;
 }
 
@@ -66,20 +66,20 @@ input.form-control:focus {
 .btn-primary:hover {
   @extend %brightenState;
   transform: translateY(-2px);
-  box-shadow: 1px 1px 7px 3px $darkGreen;
+  box-shadow: 1px 1px 7px 3px $brand-secondary;
 }
 
 .btn-primary:active:focus {
-  box-shadow: 0 0 0 0.2rem $darkGreen !important;
+  box-shadow: 0 0 0 0.2rem $brand-secondary !important;
 }
 
 .btn-secondary {
   margin: 10px 0;
-  background-color: $black;
-  border-color: $darkGreen;
+  background-color: $brand-black;
+  border-color: $brand-secondary;
   border-radius: 4px;
   border-width: 2px;
-  color: $green;
+  color: $brand-primary;
   font-family: 'Michroma';
   font-weight: 900;
   font-size: 1em;
@@ -92,8 +92,8 @@ input.form-control:focus {
 .btn-secondary:active {
   background-color: transparent !important;
   border-color: transparent !important;
-  color: $green !important;
-  box-shadow: 0 0 3px 5px $darkGreen !important;
+  color: $brand-primary !important;
+  box-shadow: 0 0 3px 5px $brand-secondary !important;
 }
 
 .btn-secondary:focus {
@@ -103,7 +103,7 @@ input.form-control:focus {
 .btn-secondary:hover {
   @extend %brightenState;
   transform: translateY(-2px);
-  box-shadow: 1px 1px 7px 3px $darkGreen;
+  box-shadow: 1px 1px 7px 3px $brand-secondary;
 }
 
 .btn-secondary:visited {
@@ -111,12 +111,12 @@ input.form-control:focus {
 }
 
 .btn-plain {
-  background-color: $black;
+  background-color: $brand-black;
   border: none;
   border-radius: 2px;
   font-family: 'Michroma', sans-serif;
   font-size: 1.3rem;
-  color: $green;
+  color: $brand-primary;
 }
 
 .btn-simple {
@@ -128,13 +128,13 @@ input.form-control:focus {
   transform: none !important;
   box-shadow: none !important;
   background-color: transparent !important;
-  color: $darkGreen !important;
-  border-color: $darkGreen !important;
+  color: $brand-secondary !important;
+  border-color: $brand-secondary !important;
 }
 
 .btn-disabled {
   background-color: transparent;
-  color: $darkGreen;
+  color: $brand-secondary;
   font-style: italic;
   white-space: normal;
   cursor: not-allowed !important;
@@ -144,7 +144,7 @@ input.form-control:focus {
 }
 
 .disabled {
-  color: $darkGreen;
+  color: $brand-secondary;
   font-style: italic;
   cursor: not-allowed !important;
 
@@ -165,11 +165,11 @@ input.form-control:focus {
 }
 
 .border-primary {
-  border-color: $green !important;
+  border-color: $brand-primary !important;
 }
 
 .border-secondary {
-  border-color: $darkGreen !important;
+  border-color: $brand-secondary !important;
 }
 
 .border-black {

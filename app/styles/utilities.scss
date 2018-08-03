@@ -5,26 +5,32 @@
   src: url("fonts/MarvinVisions-Bold.woff") format("woff");
 }
 
-$green: #5AD25A;
-$darkGreen: #3c6c3c;
-$lightGreen: #bdedbd;
-$red: #ED4848;
-$black: #282828;
+$brand-primary: #5ad25a;
+$brand-secondary: #3c6c3c;
+// $brand-danger: #ed4848;
+$brand-black: #282828;
+
+// muted orange
+$brand-danger: #d3701e;
+
+// halloween edition
+// $brand-primary: #ed9348;
+// $brand-secondary: #d3701e;
 
 .text-primary {
-  color: $green !important;
+  color: $brand-primary !important;
 }
 
 .text-secondary {
-  color: $darkGreen !important;
+  color: $brand-secondary !important;
 }
 
 .text-black {
-  color: $black;
+  color: $brand-black;
 }
 
-.text-red {
-  color: $red;
+.text-danger {
+  color: $brand-danger !important;
 }
 
 .display-text {
@@ -36,24 +42,24 @@ $black: #282828;
 }
 
 .link-text {
-  color: $green;
+  color: $brand-primary;
   text-decoration: underline;
   transition: all 0.3s ease-in;
 
   &:hover {
-    color: $green !important;
+    color: $brand-primary !important;
     font-weight: bold;
   }
 }
 
 .bg-black {
-  background-color: $black;
+  background-color: $brand-black;
 }
 
 .bg-primary {
-  background-color: $green !important;
+  background-color: $brand-primary !important;
 }
 
 .bg-secondary {
-  background-color: $darkGreen !important;
+  background-color: $brand-secondary !important;
 }

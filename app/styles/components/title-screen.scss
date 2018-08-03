@@ -1,57 +1,17 @@
 @import '../utilities';
 
-#title-image img {
-  width: 100%;
-  animation: slideDown 1s ease-in forwards;
+#title-image {
+
+  img {
+    width: 100%;
+    transform: translateY(-100vh);
+    animation: slideDown 1s ease-in forwards;
+  }
 }
 
-// #title-screen {
-//   height: 45vh;
-// }
-//
-// .gradient {
-//   background-image: linear-gradient(to right, $green, $darkGreen);
-//   color: transparent;
-//   background-clip: text;
-//   -webkit-background-clip: text;
-// }
-//
-// #title-future {
-//   transform: translateY(-100vh);
-//   overflow-x: hidden;
-//   font-family: 'marvin-visions';
-//   font-size: 25.5vw;
-//   line-height: 19vw;
-//   animation: slideDown 1s ease-in forwards;
-// }
-
-// @keyframes delayDisplay {
-//   from { visibility: hidden; }
-//   to { visibility: visible; }
-// }
-//
-// @media (min-width: 375px) {
-//   #title-future {
-//     font-size: 26vw;
-//   }
-// }
-//
-// @media (min-width: 576px) {
-//   #title-future {
-//     font-size: 26.5vw;
-//   }
-// }
-//
-// @media (min-width: 992px) {
-//   #title-future {
-//     font-size: 17.25vw;
-//     line-height: 12.5vw;
-//   }
-// }
-//
-// @media (min-width: 1200px) {
-//   #title-future {
-//     font-size: 11.25vw;
-//     line-height: 8.15vw;
-//   }
-// }
+@keyframes slideDown {
+  0%   { transform: translateY(-100vh); }
+  75%  { transform: translateY(1vh); }
+  85%  { transform: translateY(-2vh); }
+  100% { transform: translateY(0); }
+}

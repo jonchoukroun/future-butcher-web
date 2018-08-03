@@ -4,7 +4,7 @@
       | $#{number-format playerFunds decimals=0 thousandsSeparator=","}
       i.fas.fa-caret-down.ml-1.ml-md-3
 
-    .btn.btn-simple.px-0.text-red click='action "toggleStatsBar" "#debtHelp"'
+    .btn.btn-simple.px-0.text-danger click='action "toggleStatsBar" "#debtHelp"'
       | $#{number-format playerDebt decimals=0 thousandsSeparator=","}
       i.fas.fa-caret-down.ml-1.ml-md-3
 

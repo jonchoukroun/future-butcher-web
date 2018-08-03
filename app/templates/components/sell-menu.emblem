@@ -14,7 +14,7 @@
       else
         | lbs
 
-p.my-3.text-red
+p.my-3.text-danger
   | #{errorMessage}
 
 form.transaction-form.align-self-center submit='action "submitSellCut"'
