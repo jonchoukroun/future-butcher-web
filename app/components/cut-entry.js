@@ -4,7 +4,7 @@ import { cutStats } from '../fixtures/cut-stats'
 
 export default Component.extend({
 
-  classNames: ['cut-entry'],
+  classNames: ['cut-entry', 'mb-1'],
 
   cut:      null,
   price:    null,

@@ -1,10 +1,10 @@
 .border-bottom.border-secondary
-  .d-flex.cut-header
+  .d-flex.align-items-end.cut-header
     h4.mb-1.ml-2.mr-auto
       | #{uc-words cut}
 
     if (gt cutsOwned 0)
-      h5.mb-1.mr-2
+      h5.cuts-owned.mb-1.mr-2
         ' #{cutsOwned}
         span.small
           if (eq cutsOwned 1)
@@ -14,7 +14,7 @@
 
 if (eq quantity 0)
   .cut-header.text-right
-    h5.text-secondary
+    h5.text-secondary.my-2
       | Out of stock
   else
   .d-flex.flex-row.align-items-end.mb-3

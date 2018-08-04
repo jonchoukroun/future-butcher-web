@@ -19,7 +19,7 @@ if (eq screen 'intro')
           ' human meat. Not that you would ever touch the stuff.
 
         .row.mt-lg-3.mt-xl-4: .col-12.text-right
-          .btn.btn-primary click='action "nextScreen"'
+          .btn.btn-secondary click='action "nextScreen"'
             ' Next
             i.fas.fa-long-arrow-alt-right
 
@@ -42,5 +42,5 @@ if (eq screen 'instructions')
 
     .row.justify-content-center.mt-2
       .col-12.col-md-8.col-lg-5
-        .btn.btn-primary.btn-lg.btn-block click='action "startGame"'
+        .btn.btn-secondary.btn-lg.btn-block click='action "startGame"'
           | Let's ride

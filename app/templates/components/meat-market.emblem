@@ -15,10 +15,10 @@ else
   .container.cta-container.bg-black
     .row.justify-content-center
       if (and isDowntown (not isInDebt))
-        .btn-group
-          = link-to .btn.btn-secondary.btn-lg 'bank'
+        .btn-group.w-100
+          = link-to .btn.btn-secondary.btn-lg.flex-fill 'bank'
             | Bank
-          = link-to .btn.btn-secondary.btn-lg 'subway'
+          = link-to .btn.btn-secondary.btn-lg.flex-fill 'subway'
             | Subway
       else
         .col-12.text-center

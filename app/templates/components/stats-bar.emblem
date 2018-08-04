@@ -119,10 +119,10 @@
   #gameHelp.collapse data-parent="#stats-bar"
     .card.card-body.pb-0.bg-black.border-left-0.border-right-0.border-bottom-0
       .d-flex.align-items-center.justify-content-around.my-3
-        .btn-group
-          .btn.btn-secondary.btn-sm click='action "quitGame"'
+        .btn-group.w-100
+          .btn.btn-secondary.btn-sm.flex-fill click='action "quitGame"'
             | Quit Game
-          = link-to .btn.btn-secondary.btn-sm 'all-scores'
+          = link-to .btn.btn-secondary.btn-sm.flex-fill 'all-scores'
             | High Scores
       .container.px-0
         .row.align-items-center.justify-content-center.px-2

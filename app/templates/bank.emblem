@@ -3,12 +3,13 @@
   = stats-bar sendQuit=(action 'sendToScores')
 
   .row.justify-content-center
-    .col
-      h3.py-3.text-center
-        | Shavings & Bone Bank
+    .col-12.col-sm-10.col-md-6.mt-md-4
+      .text-center.border-bottom.border-black.mb-3
+        h3.page-heading.text-secondary
+          | Shavings & Bone Bank
 
   .row.justify-content-center.mb-3
-    .col-12.col-sm-10.col-md-6.mt-md-4.border-bottom.border-black
+    .col-12.col-sm-10.col-md-6.mt-md-4
       if isFirstTurn
         p
           | You used 1 subway token to get Downtown. Now take out a loan to get started.
@@ -38,12 +39,12 @@
             .btn.btn-secondary.btn-lg.btn-block.btn-disabled
               | Select a loan
         else
-          .btn-group
-            = link-to .btn.btn-secondary.btn-lg.btn-block 'market'
+          .btn-group.w-100
+            = link-to .btn.btn-secondary.btn-lg.flex-fill 'market'
               | Market
             if (and debt rate)
-              .btn.btn-secondary.btn-lg click='action "buyLoan"'
+              .btn.btn-secondary.btn-lg.flex-fill click='action "buyLoan"'
                 ' Buy
             else
-              .btn.btn-secondary.btn-disabled.btn-lg
+              .btn.btn-secondary.btn-disabled.btn-lg.flex-fill
                 | Select...

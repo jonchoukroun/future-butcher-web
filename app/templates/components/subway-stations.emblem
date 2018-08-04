@@ -1,5 +1,5 @@
 each stations as |station|
-  li.list-group-item.text-right.mr-3
+  li.list-group-item.text-center
     if (eq currentStation station.name)
       .btn.btn-plain.btn-disabled
         | #{station.display}

@@ -23,7 +23,7 @@ export default Controller.extend({
 
     debounce(() => {
       el.fadeOut();
-    }, 1500);
+    }, 1300);
   },
 
   actions: {

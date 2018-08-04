@@ -1,3 +1,14 @@
+.cut-entry {
+  h4 {
+    font-size: 1.2rem;
+    letter-spacing: 7px;
+    text-transform: uppercase;
+  }
+
+  h5.cuts-owned {
+    text-transform: uppercase;
+  }
+}
 .cut-entry p.display-text.small {
   letter-spacing: normal;
 }

@@ -35,18 +35,20 @@
               | Are you ready to escape the Republic of Los Angeles?
 
             .row.px-0.justify-content-center
-              .btn-group
-                = link-to .btn.btn-secondary.btn-lg 'market'
+              .btn-group.w-100
+                = link-to .btn.btn-secondary.btn-lg.flex-fill 'market'
                   | Not yet
-                .btn.btn-secondary.btn-lg click='action "retirePlayer"'
+                .btn.btn-secondary.btn-lg.flex-fill click='action "retirePlayer"'
                   | Book It
 
   else
     .row.justify-content-center.mb-3
       .col-12.col-sm-10.col-md-6.mt-md-4
         .d-flex.flex-column
-          .text-right.border-bottom.border-secondary.mb-3
-            h3 Destinations
+          .text-center.border-bottom.border-secondary.mb-3
+            h3.page-heading.text-secondary
+              | &nbsp;
+              | Destinations
 
           = subway-stations sendStation=(action 'navigate')
 
