@@ -15,6 +15,7 @@ Router.map(function() {
   this.route('market');
 
   this.route('subway');
+  this.route('traveling');
 
   this.route('bank');
 
