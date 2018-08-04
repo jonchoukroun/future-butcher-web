@@ -70,7 +70,7 @@ export default Controller.extend({
     navigate(station) {
       let payload = { destination: station };
       get(this, 'socket').pushCallBack('change_station', payload).then(() => {
-        this.transitionToRoute('market');
+        this.transitionToRoute('traveling');
       });
     }
 
