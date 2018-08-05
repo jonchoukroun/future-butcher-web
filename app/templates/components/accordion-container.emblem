@@ -1,3 +1,0 @@
-= accordion-card cardId="market" cardTitle="The Market" cardText="Buy and sell cuts in the market. Observe price changes to see when to buy, and when to sell." parentId=parentId
-
-= accordion-card cardId="subway" cardTitle="The Subway" cardText="Use the subway to reach a new destination. Traveling will advance the clock 1 hour, and you will incur interest if you still owe on your debt." parentId=parentId

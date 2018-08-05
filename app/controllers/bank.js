@@ -4,12 +4,15 @@ import { loanOptions } from '../fixtures/loan-options'
 
 export default Controller.extend({
 
-  debt: null,
-  rate: null,
+  debt:         null,
+  rate:         null,
+  selectedLoan: null,
 
   init() {
     this._super(...arguments);
+
     set(this, 'loanOptions', loanOptions);
+    set(this, 'selectLoan', null);
   },
 
   isFirstTurn: computed('socket.stateData.rules.turns_left', function() {
@@ -56,6 +59,7 @@ export default Controller.extend({
     },
 
     selectLoan(debt, rate) {
+      set(this, 'selectedLoan', debt);
       set(this, 'debt', debt);
       set(this, 'rate', rate);
     },

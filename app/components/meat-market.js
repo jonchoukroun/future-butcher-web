@@ -5,10 +5,6 @@ export default Component.extend({
 
   elementId: 'meat-market',
 
-  tagName: 'ul',
-
-  classNames: ['list-group-flush', 'px-2'],
-
   showBuyForm:      false,
   showSellForm:     false,
   buyingCut:        false,
@@ -35,12 +31,13 @@ export default Component.extend({
   actions: {
 
     sendTransactionConfirmed(action, payload, value) {
-      let formatted_value =  this.formatCurrency(value);
+      let formatted_value = this.formatCurrency(value);
+      let unit = (payload.amount === 1) ? "lb" : "lbs";
       if (action === "buy") {
-        let message = `${payload.amount} lbs of ${payload.cut} bought for ${formatted_value}!`
+        let message = `${payload.amount} ${unit} of ${payload.cut} bought for ${formatted_value}!`
         get(this, 'sendTransactionAlert')(message);
       } else {
-        let message = `${payload.amount} lbs of ${payload.cut} sold for ${formatted_value}!`
+        let message = `${payload.amount} ${unit} of ${payload.cut} sold for ${formatted_value}!`
         get(this, 'sendTransactionAlert')(message);
       }
     },

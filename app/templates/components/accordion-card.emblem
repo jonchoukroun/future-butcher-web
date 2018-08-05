@@ -1,9 +1,0 @@
-.card-header id=headerId
-  h5.mb-0
-    .btn.btn-secondary data-toggle="collapse" data-target=bodyId
-      | #{cardTitle}
-      i.fas.fa-caret-down.ml-1.ml-md-3
-
-.collapse id=cardId data-parent=parentId
-  .card-body
-   | #{cardText}

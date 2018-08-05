@@ -1,28 +1,41 @@
 if isDisabled
   span
     i.fas.fa-times
+
+  h5.mb-0.display-text
+    | $#{number-format debt decimals=0 thousandsSeparator=","}
+
+  p.mb-0.display-text
+    ' #{number-format displayedRate decimals=0}%/turn
+    
 else
   if isSelected
     span
       i.fas.fa-dot-circle
+
+    h5.mb-0.display-text.font-weight-bold
+      | $#{number-format debt decimals=0 thousandsSeparator=","}
+
+    p.mb-0.display-text.font-weight-bold
+      ' #{number-format displayedRate decimals=0}%/turn
+
   else
     span
       i.far.fa-circle
 
-h5.mb-0
-  | #{number-format debt decimals=0 thousandsSeparator=","}
+    h5.mb-0.display-text
+      | $#{number-format debt decimals=0 thousandsSeparator=","}
 
-p.small.mb-0
-  ' #{number-format displayedRate decimals=0}% /
-  ' turn
+    p.mb-0.display-text
+      ' #{number-format displayedRate decimals=0}%/turn
 
 if isDisabled
-  .btn.btn-primary.btn-disabled
+  .btn.btn-secondary.btn-disabled.btn-sm
     | Select
 else
   if isSelected
-    .btn.btn-primary click='action "deSelectLoan"'
+    .btn.btn-secondary.btn-sm click='action "deSelectLoan"'
       | Cancel
   else
-    .btn.btn-primary click='action "selectLoan"'
+    .btn.btn-secondary.btn-sm click='action "selectLoan"'
       | Select

@@ -4,9 +4,7 @@ import { cutStats } from '../fixtures/cut-stats'
 
 export default Component.extend({
 
-  tagName: 'li',
-
-  classNames: ['list-group-item'],
+  classNames: ['cut-entry', 'mb-1'],
 
   cut:      null,
   price:    null,

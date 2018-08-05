@@ -1,18 +1,17 @@
 #signup-label
-  / verify this is being computed
-  if nameTaken
-    h3
+  if isNameTaken
+    h4
       | That name is already taken!
   else
-    h3
+    h4
       | Enter a unique screen name
 
 form.signup-form.text-center submit='action "createPlayer" value'
   = input classNames="form-control form-control-lg mt-md-2" type='text' value=playerName key-up='validatePlayerName' autofocus=true
 
   if validInput
-    button.btn.btn-primary.btn-lg type='submit'
+    button.btn.btn-primary.btn-lg.btn-block type='submit'
       | New Game
   else
-    button.btn.btn-disabled.btn-lg
+    button.btn.btn-primary.btn-disabled.btn-block.border-0
       | #{invalidButtonText}

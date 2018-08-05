@@ -1,50 +1,50 @@
-.container-fluid
-
-  .px-3.px-sm-0
-    = stats-bar sendQuit=(action 'sendToScores')
-
 .container-fluid.full-screen.top-spacer
-    .row.justify-content-center
-      .col
-        h3.text-center
+
+  = stats-bar sendQuit=(action 'sendToScores')
+
+  .row.justify-content-center
+    .col-12.col-sm-10.col-md-6.mt-md-4
+      .text-center.border-bottom.border-black.mb-3
+        h3.page-heading.text-secondary
           | Shavings & Bone Bank
 
-    .row.mb-3
-      .col.border-bottom.border-black
-        if isFirstTurn
-          p
-            | You used 1 subway token to get Downtown. Now buy the only loan you can afford to get started.
-        else
-          p
-            | Welcome back, favored customer. With your credit, now have access to the following loans.
-
-    each loanOptions as |loan|
-      if (gt totalPlayerValue loan.debt)
-        = loan-purchase debt=loan.debt rate=loan.rate isDisabled=false sendLoanSelect=(action 'selectLoan')
-      else
-        = loan-purchase debt=loan.debt rate=loan.rate isDisabled=true sendLoanSelect=(action 'selectLoan')
-
-.container.cta-container.pb-3.pb-md-5.bg-black
-  .row.justify-content-center
-    .col-12.text-center
+  .row.justify-content-center.mb-3
+    .col-12.col-sm-10.col-md-6.mt-md-4
       if isFirstTurn
-        if (and debt rate)
-          .btn.btn-primary.btn-lg click='action "buyLoan"'
-            ' Buy
-            ' $#{number-format debt decimals=0 thousandsSeparator=","}
-            ' loan
-        else
-          .btn.btn-primary.btn-lg.btn-disabled
-            | Select a loan
+        p
+          | You used 1 subway token to get Downtown. Now take out a loan to get started.
       else
-        .row
-          .col-6
-            = link-to .btn.btn-primary.btn-lg.btn-block 'market'
+        p
+          | Welcome back, loyal customer. With your credit, you can take out the following loans:
+
+      .container-fluid.mb-4.mt-5.px-0
+        each loanOptions as |loan|
+          if (gt totalPlayerValue loan.debt)
+            if (eq selectedLoan loan.debt)
+              = loan-purchase debt=loan.debt rate=loan.rate isDisabled=false isSelected=true sendLoanSelect=(action 'selectLoan')
+            else
+              = loan-purchase debt=loan.debt rate=loan.rate isDisabled=false sendLoanSelect=(action 'selectLoan')
+          else
+            = loan-purchase debt=loan.debt rate=loan.rate isDisabled=true sendLoanSelect=(action 'selectLoan')
+
+  .row.justify-content-center.mb-3
+    .col-12.col-sm-10.col-md-6.mt-5
+      .text-center
+        if isFirstTurn
+          if (and debt rate)
+            .btn.btn-secondary.btn-lg.btn-block click='action "buyLoan"'
+              ' Get loan
+
+          else
+            .btn.btn-secondary.btn-lg.btn-block.btn-disabled
+              | Select a loan
+        else
+          .btn-group.w-100
+            = link-to .btn.btn-secondary.btn-lg.flex-fill 'market'
               | Market
-          .col-6
             if (and debt rate)
-              .btn.btn-primary.btn-lg.btn-block click='action "buyLoan"'
+              .btn.btn-secondary.btn-lg.flex-fill click='action "buyLoan"'
                 ' Buy
             else
-              .btn.btn-primary.btn-lg.btn-block.btn-disabled
+              .btn.btn-secondary.btn-disabled.btn-lg.flex-fill
                 | Select...

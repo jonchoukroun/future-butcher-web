@@ -1,20 +1,22 @@
 import Component from '@ember/component'
-import { get, observer, set } from '@ember/object'
+import { get, set } from '@ember/object'
 
 export default Component.extend({
 
-  tagName: 'ul',
+  didReceiveAttrs() {
+    this._super(...arguments);
 
-  elementId: 'scrolling-scores',
-
-  classNames: ['list-group'],
-
-  retrieveScores: observer('socket.gameChannel', function() {
-    if (get(this, 'socket.gameChannel')) {
+    if (!get(this, 'scores')) {
       get(this, 'socket').getScores().then((response) => {
         set(this, 'scores', response.state_data);
       })
     }
-  })
+  },
+
+  tagName: 'ol',
+
+  elementId: 'scrolling-scores',
+
+  classNames: ['display-text']
 
 })

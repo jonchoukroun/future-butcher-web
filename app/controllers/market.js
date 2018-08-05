@@ -16,17 +16,14 @@ export default Controller.extend({
   handleTransactionAlert(message) {
     const el = $('.transaction-alert');
 
-    if (el.is(':visible')) {
-      el.fadeOut(200);
-      set(this, 'transactionAlert', null);
-    }
+    set(this, 'transactionAlert', null);
 
     set(this, 'transactionAlert', message);
-    el.fadeIn(300);
+    el.fadeIn();
 
     debounce(() => {
-      el.slideUp();
-    }, 2000);
+      el.fadeOut();
+    }, 1300);
   },
 
   actions: {

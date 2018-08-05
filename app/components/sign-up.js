@@ -5,10 +5,11 @@ export default Component.extend({
 
   elementId: 'sign-up',
 
-  classNames: ['d-flex', 'flex-column', 'align-items-center', 'justify-content-center'],
+  classNames: ['mt-5'],
 
   inputLength: null,
   validInput:  false,
+  isNameTaken: false,
 
   invalidButtonText: computed('inputLength', function() {
     let inputLength = get(this, 'inputLength');
@@ -23,6 +24,9 @@ export default Component.extend({
   }),
 
   evaluateNewCharInput() {
+    if (get(this, 'isNameTaken')) {
+      if (get(this, 'playerName').length === 0) { set(this, 'isNameTaken', false); }
+    }
     set(this, 'inputLength', get(this, 'playerName').length);
   },
 
@@ -46,7 +50,10 @@ export default Component.extend({
 
       socketService.openSocket().then((socket) => {
         socketService.joinChannel(socket, { name: name }).then(() => {
+          set(this, 'isNameTaken', false);
           this.sendJoin();
+        }).catch(() => {
+          set(this, 'isNameTaken', true);
         })
       })
     }

@@ -1,43 +1,65 @@
-$green: #5AD25A;
-$lightGreen: rgba(90, 210, 90, 0.4);
-$red: #ED4848;
-$black: #282828;
+@font-face {
+  font-family: 'marvin-visions';
+  src: url("fonts/MarvinVisions-Bold.eot") format("eot");
+  src: url("fonts/MarvinVisions-Bold.woff2") format("woff2");
+  src: url("fonts/MarvinVisions-Bold.woff") format("woff");
+}
+
+$brand-primary:   #5ad25a;
+$brand-secondary: #3c6c3c;
+$brand-danger:    #ed4848;
+$brand-black:     #282828;
+
+// muted orange
+// $brand-danger: #d3701e;
+
+// halloween edition
+// $brand-primary: #ed9348;
+// $brand-secondary: #d3701e;
 
 .text-primary {
-  color: $green !important;
+  color: $brand-primary !important;
 }
 
 .text-secondary {
-  color: $lightGreen !important;
+  color: $brand-secondary !important;
 }
 
 .text-black {
-  color: $black;
+  color: $brand-black;
 }
 
-.text-red {
-  color: $red;
+.text-danger {
+  color: $brand-danger !important;
+}
+
+.display-text {
+  font-family: 'Space Mono', monospace;
+}
+
+.default-text {
+  font-family: 'Michroma', monospace;
 }
 
 .link-text {
-  color: $green;
+  color: $brand-primary;
   text-decoration: underline;
   transition: all 0.3s ease-in;
 
   &:hover {
-    color: $green !important;
+    color: $brand-primary !important;
     font-weight: bold;
   }
 }
 
 .bg-black {
-  background-color: $black;
+  background-color: $brand-black;
 }
 
 .bg-primary {
-  background-color: $green !important;
+  background-color: $brand-primary !important;
 }
 
 .bg-secondary {
-  background-color: $lightGreen !important;
+  background-color: $brand-secondary !important;
 }

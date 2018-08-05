@@ -1,13 +1,6 @@
 #scrolling-scores {
-  height: 95vh;
-  overflow: hidden;
   z-index: 0;
-  animation: scrollUp 200s;
-}
-
-#scrolling-scores .list-group {
-  z-index: 0;
-  margin: 0 auto;
+  animation: scrollUp 220s linear;
 }
 
 @keyframes scrollUp {

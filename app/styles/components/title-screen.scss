@@ -1,57 +1,17 @@
 @import '../utilities';
 
-#title-screen {
-  visibility: hidden;
-  height: 50vh;
-  animation: delayDisplay 0.5s ease-out 0.5s forwards;
+#title-image {
+
+  img {
+    width: 100%;
+    transform: translateY(-100vh);
+    animation: slideDown 1s ease-in forwards;
+  }
 }
 
-#title-future {
-  font-size: 6em;
-  font-weight: 900;
-  text-transform: uppercase;
-  transform: skewX(-25deg) skewY(-15deg) rotate(7deg);
-  text-shadow: 0px 0px 10px $green;
-}
-
-#title-butcher {
-  text-align: left;
-  font-size: 3em;
-  text-shadow: 0px 0px 10px $green;
-}
-
-.text-block {
-  background: transparent;
-  z-index: 10000;
-}
-
-.typewriter {
-  overflow: hidden;
-  border-right: .25em solid $green;
-  white-space: nowrap;
-  margin: 0 auto;
-  letter-spacing: .15em;
-  animation:
-    typing 2.5s steps(8, end) 0.5s,
-    blinkCaret .85s step-end infinite;
-}
-
-@keyframes delayDisplay {
-  from { visibility: hidden; }
-  to { visibility: visible; }
-}
-
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-@keyframes blinkCaret {
-  from, to { border-color: transparent; }
-  50% { border-color: $green; }
-}
-
-@keyframes fadeInGlow {
-  from { text-shadow: none; }
-  to { text-shadow: 0px 0px 10px $green; }
+@keyframes slideDown {
+  0%   { transform: translateY(-100vh); }
+  75%  { transform: translateY(1vh); }
+  85%  { transform: translateY(-2vh); }
+  100% { transform: translateY(0); }
 }

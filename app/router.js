@@ -15,12 +15,15 @@ Router.map(function() {
   this.route('market');
 
   this.route('subway');
+  this.route('traveling');
 
   this.route('bank');
 
   this.route('game');
 
   this.route('high-scores');
+
+  this.route('all-scores');
 
   this.route('unavailable');
 

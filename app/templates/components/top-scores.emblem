@@ -1,84 +1,86 @@
-.d-flex.flex-column.align-items-center.justify-content-center.py-4
-  span.border-bottom.border-secondary.mb-4
-    h3 Hall of Fame
+.container.mt-3
+  .row.justify-content-center.px-0
+    .col-12.col-sm-10.col-md-6
+      span.border-bottom.border-secondary.mb-4
+        h3.text-center
+          | The End
 
-  if isHighestScore
+      if isHighestScore
 
-    h5 You set a new record!
+        h5.text-center You set a new record!
 
-    h3.mx-5.text-center
-      | $#{number-format playerScore decimals=0 thousandsSeparator=","}
+        h3.mx-5.text-center
+          | $#{number-format playerScore decimals=0 thousandsSeparator=","}
 
-    .m-4.py-3.border-top.border-black
-      p There should be a prize for that...
+        .m-4.py-3.border-top.border-black
+          p You made enough money to leave behind crumbling LA and retire in luxury.
 
-    .my-2.mx-1.py-3.container
-      .row.justify-content-center
-        h5
-          | Runners up
+        .my-2.mx-1.py-3.container
+          .row.justify-content-center
+            h5
+              | Runners up
 
-      each lowerScores as |score|
-        .row.justify-content-around
-          .col-2.text-right
-            h6.m-1
-              ' #{score.rank}.
-          .col-6.px-0.text-left
-            h6.m-1
-              ' #{score.player}
-          .col-4.pl-0.text-left
-            h6.m-1
-              | $#{number-format score.score decimals=0 thousandsSeparator=","}
-
-  else
-    .m-2.py-3.border-bottom.border-black.text-center
-      h6.text-secondary
-        | Reigning Champ:
-
-      h5.m1
-        ' #{highestScore.player}:
-        | $#{number-format highestScore.score decimals=0 thousandsSeparator=","}
-
-    .my-2.mx-1.py-3.container
-      if (gt playerScoreIndex 0)
-        each higherScores as |score|
-          .row.justify-content-around
-            .col-2.text-right
-              h6.m-1
-                ' #{score.rank}.
-            .col-6.px-0.text-left
-              h6.m-1
-                ' #{score.player}
-            .col-4.pl-0.text-left
-              h6.m-1
-                | $#{number-format score.score decimals=0 thousandsSeparator=","}
-
-        .row.justify-content-center.bg-secondary.my-1.py-1
-          h6.m-1.text-black
-            b
-              ' You:
-              ' $#{number-format playerScore decimals=0 thousandsSeparator=","}
-
-        each lowerScores as |score|
-          .row.justify-content-around
-            .col-2.text-right
-              h6.m-1
-                ' #{score.rank}.
-            .col-6.px-0.text-left
-              h6.m-1
-                ' #{score.player}
-            .col-4.pl-0.text-left
-              h6.m-1
-                | $#{number-format score.score decimals=0 thousandsSeparator=","}
-
-        .mt-4.py-3.border-top.border-black
-          p.text-center
-            ' Not bad. Think you can do better?
+          each lowerScores as |score|
+            .row.justify-content-around
+              .col-2.text-right
+                h6.m-1
+                  ' #{score.rank}.
+              .col-6.px-0.text-left
+                h6.m-1
+                  ' #{score.player}
+              .col-4.pl-0.text-left
+                h6.m-1
+                  | $#{number-format score.score decimals=0 thousandsSeparator=","}
 
       else
-        .text-center
+        .m-2.py-3.border-bottom.border-black.text-center
           h6.text-secondary
-            | Your score:
-          h6
-            | $#{number-format playerScore decimals=0 thousandsSeparator=","}
-          p
-            | Terrible, just terrible. Try again.
+            | Reigning Champ:
+
+          h5.m1
+            ' #{highestScore.player}:
+            | $#{number-format highestScore.score decimals=0 thousandsSeparator=","}
+
+        .my-2.py-3.px-0.container
+          if (gt playerScoreIndex 0)
+            each higherScores as |score|
+              .row.justify-content-around
+                .col-2.text-right
+                  h6.m-1
+                    ' #{score.rank}.
+                .col-6.px-0.text-left
+                  h6.m-1
+                    ' #{score.player}
+                .col-4.pl-0.text-left
+                  h6.m-1
+                    | $#{number-format score.score decimals=0 thousandsSeparator=","}
+
+            .row.justify-content-center.bg-secondary.my-1.py-1
+              h6.m-1.text-black
+                b
+                  ' You:
+                  ' $#{number-format playerScore decimals=0 thousandsSeparator=","}
+
+            each lowerScores as |score|
+              .row.justify-content-around
+                .col-2.text-right
+                  h6.m-1
+                    ' #{score.rank}.
+                .col-6.px-0.text-left
+                  h6.m-1
+                    ' #{score.player}
+                .col-4.pl-0.text-left
+                  h6.m-1
+                    | $#{number-format score.score decimals=0 thousandsSeparator=","}
+
+            .mt-4.py-3.border-top.border-black
+              p.text-center
+                ' You made it out, but the pull of the meat hustling game is strong. Can you make even more money?
+
+          else
+            h6.text-secondary.text-center
+              | Your score:
+            h6.text-center
+              | $#{number-format playerScore decimals=0 thousandsSeparator=","}
+            p
+              | Terrible, just terrible. You didn't make enough to bribe the border guard and you're stuck in LA. Give it another shot, before someone harvests your flesh.

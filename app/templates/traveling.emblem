@@ -1,0 +1,4 @@
+.container-fluid.traveling-page
+  .d-flex.align-items-center.justify-content-center.h-100
+    span#subway-icon.display-1
+      i.fas.fa-subway
