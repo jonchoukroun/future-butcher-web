@@ -7,7 +7,7 @@ export default Route.extend({
     this._super(...arguments);
 
     if (get(this, 'socket.gameStatus') !== 'in_game') {
-      this.replaceWith('game');
+      this.replaceWith('home');
     }
   }
 

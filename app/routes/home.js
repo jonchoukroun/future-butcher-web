@@ -60,7 +60,7 @@ export default Route.extend({
         if (get(socketService, 'gameStatus') === "initialized") {
           return;
         } else {
-          return this.replaceWith('game');
+          return this.replaceWith('market');
         }
       });
     }

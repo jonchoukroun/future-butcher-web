@@ -9,6 +9,9 @@ export default Route.extend({
     if (get(this, 'socket.gameChannel')) {
       this.replaceWith('home');
     }
+
+    localStorage.removeItem('player_name');
+    localStorage.removeItem('player_hash');
   }
 
 })
