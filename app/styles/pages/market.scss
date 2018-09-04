@@ -1,0 +1,29 @@
+.transaction-alert {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  width: 95%;
+  margin-left: -47.5%;
+  padding: 1em;
+}
+
+@media (min-width: 768px) {
+  .transaction-alert {
+    width: 65%;
+    margin-left: -32.5%;
+  }
+}
+
+@media (min-width: 992px) {
+  .transaction-alert {
+    width: 50%;
+    margin-left: -25%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .transaction-alert {
+    width: 33%;
+    margin-left: -16.5%;
+  }
+}
