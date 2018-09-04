@@ -1,7 +1,6 @@
 import Controller from '@ember/controller'
 import { computed, get, set } from '@ember/object'
-import { debounce } from '@ember/runloop'
-import $ from 'jquery'
+import { later } from '@ember/runloop'
 
 export default Controller.extend({
 
@@ -13,19 +12,6 @@ export default Controller.extend({
     return get(this, 'socket.stateData.station.station_name') === "downtown";
   }),
 
-  handleTransactionAlert(message) {
-    const el = $('.transaction-alert');
-
-    set(this, 'transactionAlert', null);
-
-    set(this, 'transactionAlert', message);
-    el.fadeIn();
-
-    debounce(() => {
-      el.fadeOut();
-    }, 1300);
-  },
-
   actions: {
 
     reloadRoute() {
@@ -36,8 +22,11 @@ export default Controller.extend({
       this.transitionToRoute('high-scores');
     },
 
-    confirmTransaction(transactionAlert) {
-      this.handleTransactionAlert(transactionAlert);
+    confirmTransaction(message) {
+      set(this, 'transactionAlert', message);
+      later(() => {
+        set(this, 'transactionAlert', null);
+      }, 1200);
     }
 
   }
