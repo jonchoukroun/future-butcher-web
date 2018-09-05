@@ -3,7 +3,7 @@ import { computed, get } from '@ember/object'
 
 export default Controller.extend({
 
-  lastTurn: computed('socket.stateData.rules.turns_left', function() {
+  isLastTurn: computed('socket.stateData.rules.turns_left', function() {
     return get(this, 'socket.stateData.rules.turns_left') === 0;
   }),
 
@@ -13,12 +13,6 @@ export default Controller.extend({
 
   playerDebt: computed('playerStats.debt', function() {
     return get(this, 'playerStats.debt');
-  }),
-
-  hasPayableDebt: computed('playerStats.funds', 'playerDebt', function() {
-    const debt = get(this, 'playerDebt');
-
-    return debt > 0 && get(this, 'playerStats.funds') > debt;
   }),
 
   totalCutsOwned: computed('playerStats.pack', function() {
