@@ -19,8 +19,6 @@ Router.map(function() {
 
   this.route('bank');
 
-  this.route('game');
-
   this.route('high-scores');
 
   this.route('all-scores');

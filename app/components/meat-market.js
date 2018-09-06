@@ -34,10 +34,10 @@ export default Component.extend({
       let formatted_value = this.formatCurrency(value);
       let unit = (payload.amount === 1) ? "lb" : "lbs";
       if (action === "buy") {
-        let message = `${payload.amount} ${unit} of ${payload.cut} bought for ${formatted_value}!`
+        let message = `Bought ${payload.amount} ${unit} of ${payload.cut} for ${formatted_value}!`
         get(this, 'sendTransactionAlert')(message);
       } else {
-        let message = `${payload.amount} ${unit} of ${payload.cut} sold for ${formatted_value}!`
+        let message = `Sold ${payload.amount} ${unit} of ${payload.cut} for ${formatted_value}!`
         get(this, 'sendTransactionAlert')(message);
       }
     },

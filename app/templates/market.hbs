@@ -1,0 +1,21 @@
+<div class="container-fluid full-screen top-spacer">
+
+  {{stats-bar sendQuit=(action 'sendToScores')}}
+
+  <div class="row justify-content-center mb-3">
+    <div class="col-12 col-sm-10 col-md-6 mt-md-4">
+
+      {{#if transactionAlert}}
+        {{#liquid-wormhole class="transaction-alert bg-secondary border border-primary"}}
+          <p class="mb-0 text-center text-black font-weight-bold">
+            {{transactionAlert}}
+          </p>
+        {{/liquid-wormhole}}
+      {{/if}}
+
+      {{meat-market isDowntown=isDowntown isInDebt=isInDebt sendRouteReload=(action 'reloadRoute') sendTransactionAlert=(action 'confirmTransaction')}}
+
+    </div>
+  </div>
+
+</div>

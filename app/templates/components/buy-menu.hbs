@@ -1,0 +1,56 @@
+<div class="btn btn-secondary btn-sm align-self-end" {{action 'clickBack'}}>
+  <i class="fas fa-times"></i>
+</div>
+
+<div class="d-flex flex-row">
+  <h4>
+    {{uc-words cutName}}
+    <span class="small">in stock:</span>
+    {{number-format cutsAvailable decimals=0 thousandsSeparator=","}}
+    <span class="small">
+      {{#if (eq cutsAvailable 1)}}
+        lb
+      {{else}}
+        lbs
+      {{/if}}
+    </span>
+  </h4>
+</div>
+
+{{#if errorMessage}}
+  {{#liquid-wormhole class="error-message bg-black border border-danger text-center"}}
+    <p class="mb-0 text-danger">
+      {{errorMessage}}
+    </p>
+  {{/liquid-wormhole}}
+{{/if}}
+
+<form class="transaction-form align-self-center" {{action 'submitBuyCut' on='submit'}}>
+  <div class="form-row">
+    {{input value=buyAmount type=number placeholder=maxCanBuyPlaceholder autofocus=true classNames="form-control form-control-lg mt-md-2" key-up='calculateCost'}}
+  </div>
+
+  {{#if (not buyAmount)}}
+    <div class="d-flex flex-column align-items-center justify-content-center">
+      <div class="btn btn-secondary btn-block" {{action 'clickBuyMax'}}>
+        Buy {{maxCanBuy}} lbs for ${{number-format maxCanBuyCost decimals=0 thousandsSeparator=","}}
+      </div>
+
+      <p class="small">Or enter a different amount.</p>
+    </div>
+
+  {{else}}
+    <div class="d-flex justify-content-center">
+      {{#if errorMessage}}
+        <button class="btn btn-secondary btn-disabled btn-block">
+          Buy {{buyAmount}} lbs for ${{number-format estimatedCost decimals=0 thousandsSeparator=","}}
+        </button>
+      {{else}}
+        <button type='submit' class="btn btn-secondary btn-block">
+          Buy {{buyAmount}} lbs for ${{number-format estimatedCost decimals=0 thousandsSeparator=","}}
+        </button>
+      {{/if}}
+    </div>
+  {{/if}}
+
+</form>

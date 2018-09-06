@@ -12,7 +12,6 @@ export default Controller.extend({
     this._super(...arguments);
 
     set(this, 'loanOptions', loanOptions);
-    set(this, 'selectLoan', null);
   },
 
   isFirstTurn: computed('socket.stateData.rules.turns_left', function() {
@@ -70,6 +69,7 @@ export default Controller.extend({
         this.transitionToRoute('market');
         set(this, 'debt', null);
         set(this, 'rate', null);
+        set(this, 'selectedLoan', null);
       })
     }
   }
