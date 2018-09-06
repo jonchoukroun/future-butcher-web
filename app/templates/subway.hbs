@@ -20,9 +20,13 @@
                 You owe ${{number-format playerDebt decimals=0 thousandsSeparator=","}}...
               </p>
 
-              <div class="btn btn-secondary my-0" {{action 'payDebt'}}>
-                Pay your loan
-              </div>
+              {{#if (gt playerFunds playerDebt)}}
+                <div class="btn btn-secondary my-0" {{action 'payDebt'}}>
+                  Pay your loan
+                </div>
+              {{else}}
+                <p>But you don't have the cash to pay it off, deadbeat.</p>
+              {{/if}}
             {{/if}}
 
             {{#if (gt totalCutsOwned 0)}}

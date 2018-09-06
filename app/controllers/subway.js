@@ -11,6 +11,10 @@ export default Controller.extend({
     return get(this, 'socket.stateData.player');
   }),
 
+  playerFunds: computed('playerStats.funds', function() {
+    return get(this, 'playerFunds');
+  }),
+
   playerDebt: computed('playerStats.debt', function() {
     return get(this, 'playerStats.debt');
   }),
