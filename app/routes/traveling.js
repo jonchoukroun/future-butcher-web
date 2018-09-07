@@ -7,11 +7,22 @@ export default Route.extend({
   beforeModel() {
     this._super(...arguments);
 
-    if (get(this, 'socket.gameStatus') !== 'in_game') {
+    this.handleRouteRedirect(0);
+  },
+
+  handleRouteRedirect(counter) {
+    counter   = counter || 0;
+    let state = get(this, 'socket.gameStatus');
+
+    if (!state) {
+      this.handleRouteRedirect(counter + 1)
+    } else if (state === 'mugging') {
+      this.replaceWith('mugging');
+    } else if (state === 'in_game') {
+      this.handleAnimation();
+    } else {
       this.replaceWith('home');
     }
-
-    this.handleAnimation();
   },
 
   handleAnimation() {
