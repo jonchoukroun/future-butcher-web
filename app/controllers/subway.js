@@ -35,7 +35,6 @@ export default Controller.extend({
     navigate(station) {
       let payload = { destination: station };
       get(this, 'socket').pushCallBack('change_station', payload).then((res) => {
-        console.log('subway controller | res', res.state_data.rules.state);
         this.transitionToRoute('traveling');
       });
     }
