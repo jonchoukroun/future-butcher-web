@@ -8,8 +8,8 @@ export default Route.extend({
 
     let state = get(this, 'socket.gameStatus');
 
-    if (state !== 'mugging') {
-      this.replaceWith('market');
+    if (state !== 'mugging' && state !== 'in_game') {
+      this.replaceWith('home');
     }
   },
 
