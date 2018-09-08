@@ -14,10 +14,12 @@
               &nbsp;Destinations
             </h3>
           </div>
+
           {{subway-stations sendStation=(action 'navigate')}}
+
         </div>
 
-        <div class="container cta-container bg-black">
+        <div class="container cta-container bg-black px-0">
           {{#link-to 'market' class="btn btn-secondary btn-lg btn-block"}}
             Back to market
           {{/link-to}}
