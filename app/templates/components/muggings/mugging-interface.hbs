@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+  <div class="col-12 col-sm-10 col-md-6 mt-md-4">
+
+    {{#if inProgress}}
+      <div class="text-center border-bottom border-black mb-3">
+        <h1 class="display-1 page-heading text-danger">
+          <ion-icon name="hand"></ion-icon>
+        </h1>
+      </div>
+
+      <p>
+        One of the city's relentless predators, a Cleaver, follows you from the station.
+      </p>
+      <p>
+        Pulling his well-used signature blade, he charges you. You have a split second to react.
+      </p>
+
+      <div class="btn btn-secondary btn-lg btn-block" {{action 'fightMugger'}}>
+        Fight mugger
+      </div>
+
+      {{#if (gt playerFunds 5)}}    {{!-- to prevent random penalty < 1 --}}
+        <div class="btn btn-secondary btn-lg btn-block" {{action 'offerCash'}}>
+          Offer cash
+        </div>
+      {{/if}}
+
+      {{#if (gt totalCutsOwned 0)}}
+        <div class="btn btn-secondary btn-lg btn-block" {{action 'offerCuts'}}>
+          Offer cuts
+        </div>
+      {{/if}}
+
+    {{else if (gt turnsLost 0)}}
+
+      {{muggings/mugging-defeat turnsLost=turnsLost}}
+
+    {{else if (gt fundsLost 0)}}
+
+      {{muggings/offered-funds fundsLost=fundsLost}}
+
+    {{else if hasLostCuts}}
+
+      {{muggings/offered-cuts cutsLost=cutsLost}}
+
+    {{/if}}
+
+  </div>
+</div>

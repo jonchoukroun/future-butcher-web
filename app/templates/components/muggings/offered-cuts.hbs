@@ -1,0 +1,21 @@
+<div class="text-center border-bottom border-black mb-3">
+  <h1 class="display-1 page-heading text-danger">
+    <i class="far fa-frown"></i>
+  </h1>
+</div>
+
+<p>
+  You offer up {{number-format cutLostAmount decimals=0 thousandsSeparator=","}}
+  {{#if (eq cutLostAmount 1)}}
+    lb
+  {{else}}
+    lbs
+  {{/if}}
+  of {{cutLostName}} and hope the Cleaver doesn't ask for more.
+</p>
+
+<p>Looks like you live to fight another day. Personal protection might be a good investment.</p>
+
+{{#link-to 'market' class="btn btn-secondary btn-lg btn-block"}}
+  {{randomDefeatedButton}}
+{{/link-to}}
