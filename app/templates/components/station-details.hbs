@@ -13,9 +13,15 @@
         <ion-icon name="information-circle-outline"></ion-icon>
       </button>
 
-      {{#if (or (eq station.name 'downtown') (eq station.name 'venice_beach'))}}
+      {{#if (and (eq station.name 'downtown') (eq playerDebt 0))}}
         <button type="button" data-toggle="collapse" data-target="#{{station.name}}-locations" class="btn btn-plain d-inline-flex align-items-center ml-1">
           <i class="far fa-building"></i>
+        </button>
+      {{/if}}
+
+      {{#if (and (eq station.name 'venice_beach') (lt turnsLeft 15))}}
+        <button type="button" data-toggle="collapse" data-target="#{{station.name}}-locations" class="btn btn-plain d-inline-flex align-items-center ml-1">
+          <i class="fas fa-store-alt"></i>
         </button>
       {{/if}}
     </h4>
@@ -32,7 +38,7 @@
       {{#if (or (eq station.name 'downtown') (eq station.name 'venice_beach'))}}
         <div id="{{station.name}}-locations" class="collapse" data-parent="#subway-stations-menu">
           <p class="mb-0">
-            {{#if (eq station.name 'downtown')}}
+            {{#if (and (eq station.name 'downtown') (eq playerDebt 0))}}
               Shavings & Loan Bank
             {{/if}}
 
