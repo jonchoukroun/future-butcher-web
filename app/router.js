@@ -20,6 +20,8 @@ Router.map(function() {
 
   this.route('bank');
 
+  this.route('store');
+
   this.route('high-scores');
 
   this.route('all-scores');
