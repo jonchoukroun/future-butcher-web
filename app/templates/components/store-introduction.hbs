@@ -1,25 +1,13 @@
 <div class="container-fluid px-0">
 
-  {{#if (gt turnsLeft 10)}}
-    <p>
-      "Alls I can offer you today is garden implements and cutting tools. Come back later when I get more stock."
-    </p>
-
+  {{#if (and weaponsAvailable.size (not packsAvailable.size))}}
+    <p>I got weapons only today.</p>
+  {{else if (and packsAvailable.size (not weaponsAvailable.size))}}
+    <p>I got packs only today.</p>
+  {{else if (and packsAvailable.size weaponsAvailable.size)}}
+    <p>You're in luck, I got packs and weapons in stock.</p>
   {{else}}
-    <p>
-      "I got some carrying gear, for all your carrying needs."
-    </p>
+    <p>Sorry, all outta stock today. Come back soon.</p>
   {{/if}}
 
-
-  <div class="btn-group w-100">
-    <div class="btn btn-secondary btn-lg flex-fill">
-      Weapons
-    </div>
-
-    {{#link-to 'market' class="btn btn-secondary btn-lg flex-fill"}}
-      Market
-    {{/link-to}}
-
-  </div>
 </div>
