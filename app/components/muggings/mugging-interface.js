@@ -35,18 +35,15 @@ export default Component.extend({
 
   cutsLost: computed('startingPack', 'socket.stateData.player.pack', function() {
     const startingPack = get(this, 'startingPack');
-    console.log('startingPack', startingPack);
     const currentPack  = get(this, 'socket.stateData.player.pack');
-    console.log('currentPack', currentPack);
-    let lostCuts = new Map();
-    Object.keys(currentPack).map(cut => { lostCuts[cut] = startingPack[cut] - currentPack[cut]; });
-    console.log('prefilter', lostCuts);
-    let filteredCuts = new Map();
-    Object.keys(lostCuts).filter(cut => lostCuts[cut] > 0).map(cut => {
-      filteredCuts[cut] = lostCuts[cut];
-    });
-    console.log('filtered', filteredCuts);
-    return filteredCuts;
+    let lostCuts = new Object();
+    Object.keys(currentPack).map(cut => {
+      const d = startingPack[cut] - currentPack[cut];
+      if (d > 0) {
+        lostCuts[cut] = d;
+      }
+    })
+    return lostCuts;
   }),
 
   hasLostCuts: computed('cutsLost', function() {
