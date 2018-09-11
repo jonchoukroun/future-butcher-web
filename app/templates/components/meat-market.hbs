@@ -24,22 +24,22 @@
 
       {{#if (and (eq currentStation 'downtown') (not isInDebt))}}
         <div class="btn-group w-100">
-          {{#link-to 'bank' class="btn btn-secondary btn-lg flex-fill"}}
+          {{#link-to 'bank' class="btn btn-secondary btn-lg btn-eq-flex"}}
             Bank
           {{/link-to}}
 
-          {{#link-to 'subway' class="btn btn-secondary btn-lg flex-fill"}}
+          {{#link-to 'subway' class="btn btn-secondary btn-lg btn-eq-flex"}}
             Subway
           {{/link-to}}
         </div>
 
       {{else if (and (eq currentStation 'venice_beach') (lte turnsLeft 18))}}
         <div class="btn-group w-100">
-          {{#link-to 'store' class="btn btn-secondary btn-lg flex-fill"}}
+          {{#link-to 'store' class="btn btn-secondary btn-lg btn-eq-flex"}}
             Store
           {{/link-to}}
 
-          {{#link-to 'subway' class="btn btn-secondary btn-lg flex-fill"}}
+          {{#link-to 'subway' class="btn btn-secondary btn-lg btn-eq-flex"}}
             Subway
           {{/link-to}}
         </div>
