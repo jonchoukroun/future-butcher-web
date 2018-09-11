@@ -67,3 +67,8 @@ $brand-black:     #282828;
 .bg-secondary {
   background-color: $brand-secondary !important;
 }
+
+.btn-eq-flex {
+  flex-basis: 0 !important;
+  flex-grow: 1 !important;
+}
