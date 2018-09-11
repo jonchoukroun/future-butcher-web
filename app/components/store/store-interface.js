@@ -14,7 +14,8 @@ export default Component.extend({
   weaponsAvailable: computed('storeInventory', function() {
     const inventory = get(this, 'storeInventory');
     let weapons = new Map();
-    Object.keys(inventory).filter(i => inventory[i].weight).map(w => weapons.set(w, inventory[w]));
+    Object.keys(inventory).filter(i => inventory[i].weight).map(w =>
+      weapons.set(w, inventory[w]));
     return weapons;
   }),
 

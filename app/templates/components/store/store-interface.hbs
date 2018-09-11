@@ -1,0 +1,42 @@
+<div class="container-fluid px-0">
+
+  {{#if (and weaponsAvailable.size (not packsAvailable.size))}}
+
+    <p>"All I got in stock is weapons, I'll be getting more soon."</p>
+
+    <button class="btn-secondary btn-lg btn-block">
+      Weapons
+    </button>
+
+  {{else if (and packsAvailable.size (not weaponsAvailable.size))}}
+
+    <p>"You want to carry more shit? I got you covered."</p>
+
+    <button class="btn-secondary btn-lg btn-block">
+      Weapons
+    </button>
+
+  {{else if (and packsAvailable.size weaponsAvailable.size)}}
+
+    <p>"Personal defense, carry gear - I got it all."</p>
+
+    <div class="btn-group w-100">
+      <div class="btn btn-secondary btn-lg btn-eq-flex">
+        Weapons
+      </div>
+      <div class="btn btn-secondary btn-lg btn-eq-flex">
+        Packs
+      </div>
+    </div>
+
+  {{else}}
+
+    <p>"I don't got any stock right now. Come back soon."</p>
+
+  {{/if}}
+
+  {{#link-to 'market' class="btn btn-secondary btn-lg btn-block"}}
+    Back to market
+  {{/link-to}}
+
+</div>
