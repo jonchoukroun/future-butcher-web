@@ -20,9 +20,12 @@
       {{/if}}
 
       {{#if (and (eq station.name 'venice_beach') (lte turnsLeft 19))}}
-        <button type="button" data-toggle="collapse" data-target="#{{station.name}}-locations" class="btn btn-plain d-inline-flex align-items-center ml-1">
-          <i class="fas fa-store-alt"></i>
-        </button>
+        {{#if (and (eq currentStation 'venice_beach') (eq turnsLeft 19))}}
+        {{else}}
+          <button type="button" data-toggle="collapse" data-target="#{{station.name}}-locations" class="btn btn-plain d-inline-flex align-items-center ml-1">
+            <i class="fas fa-store-alt"></i>
+          </button>
+        {{/if}}
       {{/if}}
     </h4>
 
