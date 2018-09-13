@@ -17,6 +17,10 @@ export default Component.extend({
     return get(this, 'socket.stateData.station.market');
   }),
 
+  packSpace: computed('socket.stateData.player.pack_space', function() {
+    return get(this, 'socket.stateData.player.pack_space');
+  }),
+
   totalCutsOwned: computed('socket.stateData.player.pack', function() {
     return Object.values(get(this, 'socket.stateData.player.pack')).reduce((sum, cut) => {
       return sum += cut;

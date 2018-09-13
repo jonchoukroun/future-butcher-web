@@ -25,6 +25,10 @@ export default Component.extend({
     return get(this, 'socket.stateData.player.funds');
   }),
 
+  packSpace: computed('socket.stateData.player.pack_space', function() {
+    return get(this, 'socket.stateData.player.pack_space');
+  }),
+
   totalCutsOwned: computed('socket.stateData.player.pack', function() {
     let pack = get(this, 'socket.stateData.player.pack');
     return Object.values(pack).reduce((sum, cut) => { return sum + cut; });
@@ -34,8 +38,9 @@ export default Component.extend({
     return Math.floor(get(this, 'playerFunds') / get(this, 'cutPrice'));
   }),
 
-  maxSpace: computed('totalCutsOwned', 'cutsAvailable', function() {
-    return Math.min((20 - get(this, 'totalCutsOwned')), get(this, 'cutsAvailable'));
+  maxSpace: computed('packSpace', 'totalCutsOwned', 'cutsAvailable', function() {
+    return Math.min(
+      (get(this, 'packSpace') - get(this, 'totalCutsOwned')), get(this, 'cutsAvailable'));
   }),
 
   maxCanBuy: computed('maxAfford', 'maxSpace', function() {
