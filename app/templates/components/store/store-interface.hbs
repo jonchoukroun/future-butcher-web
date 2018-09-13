@@ -1,42 +1,97 @@
-<div class="container-fluid px-0">
+{{#if transactionAlert}}
+  {{#liquid-wormhole class="transaction-alert bg-secondary border border-primary"}}
+    <p class="mb-0 text-center text-black font-weight-bold">
+      {{transactionAlert}}
+    </p>
+  {{/liquid-wormhole}}
+{{/if}}
 
-  {{#if (and weaponsAvailable.size (not packsAvailable.size))}}
+{{#if (eq storeScreen 'weapons')}}
 
-    <p>"All I got in stock is weapons, I'll be getting more soon."</p>
+  <div id="storeAccordion" class="accordion">
+    {{#each-in weaponsInventory as |weapon details|}}
+      {{store/item-details item=weapon details=details sendTransactionConfirmation=(action 'confirmTransaction')}}
+    {{/each-in}}
+  </div>
 
-    <button class="btn-secondary btn-lg btn-block">
-      Weapons
-    </button>
+  <div class="container-fluid mt-5">
+    <div class="btn btn-secondary btn-block" {{action 'back'}}>
+      Back
+    </div>
+  </div>
 
-  {{else if (and packsAvailable.size (not weaponsAvailable.size))}}
+{{else if (eq storeScreen 'packs')}}
 
-    <p>"You want to carry more shit? I got you covered."</p>
+  <div id="storeAccordion" class="accordion">
+    {{#each-in packsInventory as |pack details|}}
+      {{store/item-details item=pack details=details sendTransactionConfirmation=(action 'confirmTransaction')}}
+    {{/each-in}}
+  </div>
 
-    <button class="btn-secondary btn-lg btn-block">
-      Weapons
-    </button>
+  <div class="container-fluid mt-5">
+    <div class="btn btn-secondary btn-block" {{action 'back'}}>
+      Back
+    </div>
+  </div>
 
-  {{else if (and packsAvailable.size weaponsAvailable.size)}}
-
-    <p>"Personal defense, carry gear - I got it all."</p>
-
-    <div class="btn-group w-100">
-      <div class="btn btn-secondary btn-lg btn-eq-flex">
-        Weapons
+{{else}}
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-4 d-flex flex-column justify-content-center align-items-center">
+        <div class="display-2">
+          <ion-icon name="person"></ion-icon>
+        </div>
       </div>
-      <div class="btn btn-secondary btn-lg btn-eq-flex">
-        Packs
+      <div class="col-8 d-flex flex-column justify-content-center align-items-start px-0">
+        <p>
+          "Welcome to the last bastion of freedom in the Republic of LA! Where you can find all the tools a Meat Hustler might need."
+        </p>
+        <p>
+        </p>
       </div>
     </div>
+  </div>
 
-  {{else}}
+  <div class="container-fluid px-0">
 
-    <p>"I don't got any stock right now. Come back soon."</p>
+    {{#if (and weaponsInventoryCount (not packsInventoryCount))}}
 
-  {{/if}}
+      <p>"All I got in stock is weapons, I'll be getting more soon."</p>
 
-  {{#link-to 'market' class="btn btn-secondary btn-lg btn-block"}}
-    Back to market
-  {{/link-to}}
+      <button class="btn-secondary btn-lg btn-block" {{action 'showWeaponsStore'}}>
+        Weapons
+      </button>
 
-</div>
+    {{else if (and packsInventoryCount (not weaponsInventoryCount))}}
+
+      <p>"You want to carry more shit? I got you covered."</p>
+
+      <button class="btn-secondary btn-lg btn-block" {{action 'showPacksStore'}}>
+        Packs
+      </button>
+
+    {{else if (and packsInventoryCount weaponsInventoryCount)}}
+
+      <p>"Personal defense, carrying gear - I got it all."</p>
+
+      <div class="btn-group w-100">
+        <div class="btn btn-secondary btn-lg btn-eq-flex" {{action 'showWeaponsStore'}}>
+          Weapons
+        </div>
+        <div class="btn btn-secondary btn-lg btn-eq-flex" {{action 'showPacksStore'}}>
+          Packs
+        </div>
+      </div>
+
+    {{else}}
+
+      <p>"I don't got any stock right now. Come back soon."</p>
+
+    {{/if}}
+
+    {{#link-to 'market' class="btn btn-secondary btn-lg btn-block"}}
+      Back to market
+    {{/link-to}}
+
+  </div>
+{{/if}}
