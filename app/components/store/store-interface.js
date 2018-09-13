@@ -62,6 +62,7 @@ export default Component.extend({
         message = `${payload.item} ${payload.action}.`;
       }
 
+      // needs to kill if this.isDestroyed
       set(this, 'transactionAlert', message);
       later(() => {
         set(this, 'transactionAlert', null);

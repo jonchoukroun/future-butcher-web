@@ -8,7 +8,7 @@ export default Component.extend({
   }),
 
   playerFunds: computed('playerStats.funds', function() {
-    return get(this, 'playerFunds');
+    return get(this, 'playerStatsfunds');
   }),
 
   playerDebt: computed('playerStats.debt', function() {

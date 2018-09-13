@@ -34,20 +34,33 @@ export default Component.extend({
   }),
 
   cutsLost: computed('startingPack', 'socket.stateData.player.pack', function() {
-    const startingPack = get(this, 'startingPack');
-    const currentPack  = get(this, 'socket.stateData.player.pack');
-    let lostCuts = new Object();
-    Object.keys(currentPack).map(cut => {
-      const d = startingPack[cut] - currentPack[cut];
+    const starting_pack = get(this, 'startingPack');
+    const current_pack  = get(this, 'socket.stateData.player.pack');
+
+    let lost_cuts = new Object();
+    Object.keys(current_pack).map(cut => {
+      const d = starting_pack[cut] - current_pack[cut];
       if (d > 0) {
-        lostCuts[cut] = d;
+        lost_cuts[cut] = d;
       }
-    })
-    return lostCuts;
+    });
+
+    return lost_cuts;
   }),
 
   hasLostCuts: computed('cutsLost', function() {
     return Object.entries(get(this, 'cutsLost'));
+  }),
+
+  cutsHarvested: computed('startingPack', 'socket.stateData.player.pack', function() {
+    const starting_pack = get(this, 'startingPack');
+    const current_pack  = get(this, 'socket.stateData.player.pack');
+
+    return Object.keys(current_pack).filter(cut => current_pack[cut] > starting_pack[cut]);
+  }),
+
+  hasHarvestedCuts: computed('cutsHarvested', function() {
+    return get(this, 'cutsHarvested').length;
   }),
 
   actions: {

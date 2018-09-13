@@ -18,7 +18,7 @@ const defeatedButtonText = [
 const victoryQuotes = [
   "You're here to get rich and kick ass - and getting rich can wait.",
   "You drop the Cleaver like day-old shit.",
-  `Nobody fucks with the ${playerName}!.`,
+  `Nobody fucks with the ${playerName}!`,
   `You stomp the Cleaver and shout, "${playerName}, remember the name!"`
 ]
 
