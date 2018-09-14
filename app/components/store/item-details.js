@@ -1,6 +1,7 @@
 import Component from '@ember/component';
 import { computed, get } from '@ember/object';
 import { storeItems, weaponStats } from 'future-butcher-web/fixtures/store-items';
+import { later } from '@ember/runloop';
 
 export default Component.extend({
 
@@ -61,7 +62,7 @@ export default Component.extend({
     const current_weapon = get(this, 'playerWeapon');
 
     let current_weapon_value = 0;
-    if (current_weapon || get(this, 'socket.stateData.station.store')[current_weapon]) {
+    if (current_weapon && get(this, 'socket.stateData.station.store')[current_weapon]) {
       current_weapon_value = get(this, 'socket.stateData.station.store')[current_weapon].price;
     }
 
@@ -111,6 +112,8 @@ export default Component.extend({
         item: get(this, 'itemName'),
         price:  get(this, 'itemPrice')
       })
+
+      this.handleTransactionState();
     })
   },
 
@@ -121,12 +124,22 @@ export default Component.extend({
         item:   get(this, 'itemName'),
         price:  get(this, 'itemPrice')
       })
+
+      this.handleTransactionState();
     })
+  },
+
+  handleTransactionState() {
+    later(() => {
+      get(this, 'sendTransactionLoading')(false);
+    }, 500);
   },
 
   actions: {
 
     buyItem() {
+      get(this, 'sendTransactionLoading')(true);
+
       if (get(this, 'details.weight')) {
         this.buyWeapon();
       } else {
@@ -135,21 +148,29 @@ export default Component.extend({
     },
 
     dropItem() {
+      get(this, 'sendTransactionLoading')(true);
+
       get(this, 'socket').pushCallBack("drop_weapon", {}).then(() => {
         get(this, 'sendTransactionConfirmation')({
           action: "dropped",
           item: get(this, 'itemName')
         })
+
+        this.handleTransactionState();
       })
     },
 
     replaceItem() {
+      get(this, 'sendTransactionLoading')(true);
+
       get(this, 'socket').pushCallBack("replace_weapon", {"weapon": get(this, 'item')}).then(() => {
         get(this, 'sendTransactionConfirmation')({
           action: "replaced",
           item: get(this, 'itemName'),
           price:  get(this, 'itemPrice')
         })
+
+        this.handleTransactionState();
       })
     }
 

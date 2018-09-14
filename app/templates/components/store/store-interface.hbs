@@ -10,7 +10,7 @@
 
   <div id="storeAccordion" class="accordion">
     {{#each-in weaponsInventory as |weapon details|}}
-      {{store/item-details item=weapon details=details sendTransactionConfirmation=(action 'confirmTransaction')}}
+      {{store/item-details item=weapon details=details sendTransactionConfirmation=(action 'confirmTransaction') sendTransactionLoading=(action 'toggleInTransaction')}}
     {{/each-in}}
   </div>
 
@@ -24,13 +24,21 @@
 
   <div id="storeAccordion" class="accordion">
     {{#each-in packsInventory as |pack details|}}
-      {{store/item-details item=pack details=details sendTransactionConfirmation=(action 'confirmTransaction')}}
+      {{store/item-details item=pack details=details sendTransactionConfirmation=(action 'confirmTransaction') sendTransactionLoading=(action 'toggleInTransaction')}}
     {{/each-in}}
   </div>
 
   <div class="container-fluid mt-5">
     <div class="btn btn-secondary btn-block" {{action 'back'}}>
       Back
+    </div>
+  </div>
+
+{{else if inTransaction}}
+
+  <div class="container d-flex align-items-center justify-content-center mt-5">
+    <div class="display-1 transaction-animation">
+      <i class="fas fa-hand-holding-usd"></i>
     </div>
   </div>
 
