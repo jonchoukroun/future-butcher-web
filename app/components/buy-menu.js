@@ -1,6 +1,7 @@
-import Component from '@ember/component'
-import { computed, get, set } from '@ember/object'
-import { htmlSafe } from '@ember/string'
+import Component from '@ember/component';
+import { computed, get, set } from '@ember/object';
+import { htmlSafe } from '@ember/string';
+import { weaponStats } from 'future-butcher-web/fixtures/store-items';
 
 export default Component.extend({
 
@@ -29,18 +30,22 @@ export default Component.extend({
     return get(this, 'socket.stateData.player.pack_space');
   }),
 
-  totalCutsOwned: computed('socket.stateData.player.pack', function() {
-    let pack = get(this, 'socket.stateData.player.pack');
-    return Object.values(pack).reduce((sum, cut) => { return sum + cut; });
+  totalWeightCarried: computed('socket.stateData.player.{pack,weapon}', function() {
+    let weapon = get(this, 'socket.stateData.player.weapon');
+    let weapon_weight = weapon ? weaponStats[weapon].weight : 0;
+
+    return Object.values(get(this, 'socket.stateData.player.pack')).reduce((sum, cut) => {
+      return sum + cut;
+    }) + weapon_weight;
   }),
 
   maxAfford: computed('cutPrice', 'playerFunds', function() {
     return Math.floor(get(this, 'playerFunds') / get(this, 'cutPrice'));
   }),
 
-  maxSpace: computed('packSpace', 'totalCutsOwned', 'cutsAvailable', function() {
+  maxSpace: computed('packSpace', 'totalWeightCarried', 'cutsAvailable', function() {
     return Math.min(
-      (get(this, 'packSpace') - get(this, 'totalCutsOwned')), get(this, 'cutsAvailable'));
+      (get(this, 'packSpace') - get(this, 'totalWeightCarried')), get(this, 'cutsAvailable'));
   }),
 
   maxCanBuy: computed('maxAfford', 'maxSpace', function() {

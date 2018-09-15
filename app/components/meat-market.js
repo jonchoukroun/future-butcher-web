@@ -1,5 +1,6 @@
 import Component from '@ember/component'
 import { computed, get, set } from '@ember/object'
+import { weaponStats } from 'future-butcher-web/fixtures/store-items';
 
 export default Component.extend({
 
@@ -21,10 +22,13 @@ export default Component.extend({
     return get(this, 'socket.stateData.player.pack_space');
   }),
 
-  totalCutsOwned: computed('socket.stateData.player.pack', function() {
+  totalWeightCarried: computed('socket.stateData.player.{pack,weapon}', function() {
+    let weapon = get(this, 'socket.stateData.player.weapon');
+    let weapon_weight = weapon ? weaponStats[weapon].weight : 0;
+
     return Object.values(get(this, 'socket.stateData.player.pack')).reduce((sum, cut) => {
       return sum += cut;
-    });
+    }) + weapon_weight;
   }),
 
   formatCurrency(value) {

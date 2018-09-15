@@ -1,6 +1,7 @@
-import Component from '@ember/component'
-import { computed, get } from '@ember/object'
-import { cutStats } from '../fixtures/cut-stats'
+import Component from '@ember/component';
+import { computed, get } from '@ember/object';
+import { cutStats } from 'future-butcher-web/fixtures/cut-stats';
+import { weaponStats } from 'future-butcher-web/fixtures/store-items';
 
 export default Component.extend({
 
@@ -16,13 +17,17 @@ export default Component.extend({
     return funds >= price;
   }),
 
-  totalCutsOwned: computed('socket.stateData.player.pack', function() {
-    let pack = get(this, 'socket.stateData.player.pack');
-    return Object.values(pack).reduce((sum, cut) => { return sum + cut; });
+  totalWeightCarried: computed('socket.stateData.player.{pack,weapon}', function() {
+    let weapon = get(this, 'socket.stateData.player.weapon');
+    let weapon_weight = weapon ? weaponStats[weapon].weight : 0;
+
+    return Object.values(get(this, 'socket.stateData.player.pack')).reduce((sum, cut) => {
+      return sum + cut;
+    }) + weapon_weight;
   }),
 
-  hasPackSpace: computed('totalCutsOwned', function() {
-    return 20 > get(this, 'totalCutsOwned');
+  hasPackSpace: computed('socket.stateData.player.pack_space', 'totalWeightCarried', function() {
+    return get(this, 'socket.stateData.player.pack_space') > get(this, 'totalWeightCarried');
   }),
 
   cutsOwned: computed('socket.stateData.player.pack', 'cut', function() {

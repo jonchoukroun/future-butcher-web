@@ -21,8 +21,8 @@ export default Component.extend({
     });
   }),
 
-  hasLooseEnds: computed('hasPayableDebt', 'totalCutsOwned', function() {
-    return get(this, 'hasPayableDebt') || get(this, 'totalCutsOwned') > 0;
+  hasLooseEnds: computed('playerDebt', 'totalCutsOwned', function() {
+    return get(this, 'playerDebt') || get(this, 'totalCutsOwned') > 0;
   }),
 
   actions: {
