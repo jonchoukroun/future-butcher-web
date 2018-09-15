@@ -1,7 +1,10 @@
 import Component from '@ember/component';
 import { computed, get, set } from '@ember/object';
+import { later } from '@ember/runloop';
 
 export default Component.extend({
+
+  inFight: false,
 
   init() {
     this._super(...arguments);
@@ -66,20 +69,29 @@ export default Component.extend({
   actions: {
 
     fightMugger() {
+      set(this, 'inFight', true);
       get(this, 'socket').pushCallBack("fight_mugger", {}).then((res) => {
-        console.log('sent fight mugger, handle rest', res.state_data);
+        later(() => {
+          set(this, 'inFight', false);
+        }, 1000);
       })
     },
 
     offerCash() {
+      set(this, 'inFight', true);
       get(this, 'socket').pushCallBack("pay_mugger", {"response": "funds"}).then(res => {
-        console.log('sent pay mugger :funds', res.state_data);
+        later(() => {
+          set(this, 'inFight', false);
+        }, 1000);
       })
     },
 
     offerCuts() {
+      set(this, 'inFight', true);
       get(this, 'socket').pushCallBack("pay_mugger", {"response": "cuts"}).then(res => {
-        console.log('sent pay mugger :cuts', res.state_data);
+        later(() => {
+          set(this, 'inFight', false);
+        }, 1000);
       })
     }
 

@@ -7,7 +7,13 @@ export default Route.extend({
   beforeModel() {
     this._super(...arguments);
 
-    this.handleRouteRedirect(0);
+    this.handleAnimation();
+  },
+
+  handleAnimation() {
+    later(() => {
+      this.handleRouteRedirect(0);
+    }, 700);
   },
 
   handleRouteRedirect(counter) {
@@ -19,16 +25,10 @@ export default Route.extend({
     } else if (state === 'mugging') {
       this.replaceWith('mugging');
     } else if (state === 'in_game') {
-      this.handleAnimation();
+      this.replaceWith('market')
     } else {
       this.replaceWith('home');
     }
-  },
-
-  handleAnimation() {
-    later(() => {
-      this.replaceWith('market');
-    }, 700);
   }
 
 })

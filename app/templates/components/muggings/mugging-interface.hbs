@@ -31,6 +31,13 @@
         </div>
       {{/if}}
 
+    {{else if inFight}}
+
+      <div class="container d-flex align-items-center justify-content-center py-5">
+        <div class="display-1 mugging-animation"><ion-icon name="thunderstorm"></ion-icon></div>
+      </div>
+
+
     {{else if (gt turnsLost 0)}}
 
       {{muggings/mugging-defeat turnsLost=turnsLost}}

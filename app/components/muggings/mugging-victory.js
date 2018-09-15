@@ -26,8 +26,6 @@ export default Component.extend({
       return `${cuts[0]} and ${cuts[1]}`;
     } else {
       cuts.map((el, i) => {
-        console.log('cutsList | el', el);
-        console.log('cutsList | i', i);
         if (i === cuts.length - 1) {
           return "and " + el;
         } else {

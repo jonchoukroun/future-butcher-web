@@ -1,0 +1,20 @@
+@import '../utilities';
+
+.mugging-animation {
+  transform: translate(0, 0);
+  animation: agitate 1s linear;
+}
+
+@keyframes agitate {
+  0%   { transform: translate(0, 20px);}
+  10%  { transform: translate(20px, 10px); }
+  20%  { transform: translate(10px, 0); }
+  30%  { transform: translate(0, 20px); }
+  40%  { transform: translate(0, 0); }
+  50%  { transform: translate(-20px, 10px); }
+  60%  { transform: translate(0, -20px); }
+  70%  { transform: translate(-10px, 10px); }
+  80%  { transform: translate(20px, -10px); }
+  90%  { transform: translate(10px, 10px); }
+  100% { transform: translate(0, 0); }
+}
