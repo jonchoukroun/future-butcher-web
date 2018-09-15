@@ -70,7 +70,7 @@ export default Component.extend({
 
     fightMugger() {
       set(this, 'inFight', true);
-      get(this, 'socket').pushCallBack("fight_mugger", {}).then((res) => {
+      get(this, 'socket').pushCallBack("fight_mugger", {}).then( => {
         later(() => {
           set(this, 'inFight', false);
         }, 1000);
@@ -79,7 +79,7 @@ export default Component.extend({
 
     offerCash() {
       set(this, 'inFight', true);
-      get(this, 'socket').pushCallBack("pay_mugger", {"response": "funds"}).then(res => {
+      get(this, 'socket').pushCallBack("pay_mugger", {"response": "funds"}).then(() => {
         later(() => {
           set(this, 'inFight', false);
         }, 1000);
@@ -88,7 +88,7 @@ export default Component.extend({
 
     offerCuts() {
       set(this, 'inFight', true);
-      get(this, 'socket').pushCallBack("pay_mugger", {"response": "cuts"}).then(res => {
+      get(this, 'socket').pushCallBack("pay_mugger", {"response": "cuts"}).then(() => {
         later(() => {
           set(this, 'inFight', false);
         }, 1000);
