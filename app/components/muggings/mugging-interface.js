@@ -70,7 +70,7 @@ export default Component.extend({
 
     fightMugger() {
       set(this, 'inFight', true);
-      get(this, 'socket').pushCallBack("fight_mugger", {}).then( => {
+      get(this, 'socket').pushCallBack("fight_mugger", {}).then(() => {
         later(() => {
           set(this, 'inFight', false);
         }, 1000);
