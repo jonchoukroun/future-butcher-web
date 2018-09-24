@@ -1,0 +1,78 @@
+<div class="container-fluid full-screen">
+  {{#if (eq screen 'intro')}}
+    <div class="intro-image jumbotron my-3 d-flex flex-column justify-content-center">
+      <h1 class="display-3 mb-md-4 text-center">Republic of Los Angeles</h1>
+      <p class="lead default-text text-center">2055</p>
+    </div>
+  {{/if}}
+
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+
+      {{#if (eq screen 'intro')}}
+        <p class="mt-sm-2 mt-md-5 mt-xl-4">
+          The economy is in ruins after the collapse of HypeCoin. Your only chance for survival is hustling FreshMeat<sup><i class="fas fa-trademark"></i></sup>, the new premium addiction of the wealthiest 1%.
+        </p>
+
+        <p class="mb-md-5">
+          There's unlimited opportunity servicing their demand for fresh, exclusive cuts of human meat.
+        </p>
+
+        <p>...Not that you would ever touch the stuff.</p>
+
+        <div class="btn-group w-100">
+          <div class="btn btn-secondary btn-lg btn-eq-flex" {{action 'skipIntro'}}>Skip</div>
+          <div class="btn btn-secondary btn-lg btn-eq-flex" {{action 'nextScreen'}}>Next</div>
+        </div>
+      {{/if}}
+
+      {{#if (eq screen 'packs')}}
+        <h4 style="margin-top: 10vh; margin-bottom: 5vh;">Today's the day.</h4>
+
+        <p class="mb-md-5">
+          You wake up, ready to hustle. LA is getting too rough and it's time to find your ex down in Mexico.
+        </p>
+
+        <p class="mb-md-5">
+          Before you head out the door, you grab your leather jacket - a gift from the ex. It's perfect for carrying a few pounds of product, but you'll want to pick up something bigger soon.
+        </p>
+
+        <p style="margin-bottom: 5vh;">Just don't draw too much attention.</p>
+
+        <div class="btn btn-secondary btn-lg btn-block" {{action 'nextScreen'}}>Next</div>
+      {{/if}}
+
+      {{#if (eq screen 'tokens')}}
+        <h4 style="margin-top: 10vh; margin-bottom: 5vh;">25 subway tokens</h4>
+
+        <p class="mb-md-5">
+          You count them out again just to be sure. You'll need these tokens to get around town.
+        </p>
+
+        <p style="margin-bottom: 5vh;">
+          Getting into the nicer neighborhoods might be a problem - they've starting charging for protection. As crime goes up in the city, you can expect crazy entrance fees to the best markets.
+        </p>
+
+        <div class="btn btn-secondary btn-lg btn-block" {{action 'nextScreen'}}>Next</div>
+      {{/if}}
+
+      {{#if (eq screen 'start')}}
+        <h4 style="margin-top: 10vh; margin-bottom: 5vh;">One last gift...</h4>
+
+        <p class="mb-md-5">
+          Your ex has a line of credit at the bank downtown. You'll need it to get a loan - can't get anywhere without cash.
+        </p>
+
+        <p style="margin-bottom: 5vh;">
+          Use one of your subway tokens now to get downtown. Don't worry about the protection fee this time.
+        </p>
+
+        {{reset-tutorials sendTutorialSelection=(action 'setTutorialSelection')}}
+
+        <div class="btn btn-secondary btn-lg btn-block" {{action 'startGame'}}>
+          Let's ride
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</div>
