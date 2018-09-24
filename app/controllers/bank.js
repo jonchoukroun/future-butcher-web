@@ -38,7 +38,12 @@ export default Controller.extend({
     let sum = 0;
     const pack = get(this, 'playerPack');
 
-    Object.keys(pack).map(cut => { sum += get(this, 'currentMarket')[cut].price * pack[cut]; });
+    Object.keys(pack).map(cut => {
+      const market_cut = get(this, 'currentMarket')[cut];
+      if (market_cut) {
+        sum += market_cut.price * pack[cut];
+      }
+    });
     return sum * 0.8;
   }),
 
