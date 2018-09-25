@@ -2,27 +2,32 @@ const subwayStations = [
   {
     name:    "downtown",
     display: "Downtown",
-    details: "Lot's of security."
+    cuts_list: "Flank, ribs",
+    description: "Tight security.",
   },
   {
     name:    "hollywood",
     display: "Hollywood",
-    details: "High crime. Great returns."
+    cuts_list: "Ribs, loin, liver",
+    description: "High crime.",
   },
   {
     name:    "beverly_hills",
     display: "Beverly Hills",
-    details: "Lowest crime. Safe and conservative."
+    cuts_list: "Heart, flank",
+    description: "Tightest, most expensive security."
   },
   {
     name:    "compton",
     display: "Compton",
-    details: "Highest crime. Biggest price swings for the toughest hustlers."
+    cuts_list: "Heart, flank, ribs, loin, liver",
+    description: "Anarchy - no protection fee."
   },
   {
     name:    "venice_beach",
     display: "Venice Beach",
-    details: "Relatively safe."
+    cuts_list: "Ribs, loin, liver",
+    description: "Relatively safe."
   }
 ];
 
