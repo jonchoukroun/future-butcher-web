@@ -11,6 +11,7 @@ export default Component.extend({
   buyingCut:        false,
   sellingCut:       false,
   transactionAlert: null,
+  isInDebt:         null,
 
   marketCuts: computed('gameStatus', 'socket.stateData.station.market', function() {
     if (get(this, 'socket.gameStatus') !== 'in_game') { return; }
