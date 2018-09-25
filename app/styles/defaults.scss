@@ -140,7 +140,7 @@ input.form-control:focus {
 
 .btn-disabled {
   background-color: transparent;
-  color: $brand-secondary;
+  color: $brand-secondary !important;
   font-style: italic;
   white-space: normal;
   cursor: not-allowed !important;
