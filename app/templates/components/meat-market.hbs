@@ -22,9 +22,9 @@
   <div class="container cta-container bg-black">
     <div class="row justify-content-center">
 
-      {{#if (and (eq currentStation 'downtown') (not isInDebt))}}
+      {{#if (eq currentStation 'downtown')}}
         <div class="btn-group w-100">
-          {{#link-to 'bank' class="btn btn-secondary btn-lg btn-eq-flex"}}
+          {{#link-to 'bank' class="btn btn-secondary btn-lg btn-eq-flex" classBinding="canVisitBank::btn-disabled"}}
             Bank
           {{/link-to}}
 

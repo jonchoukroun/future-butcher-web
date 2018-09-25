@@ -32,6 +32,17 @@ export default Component.extend({
     }) + weapon_weight;
   }),
 
+  canVisitBank: computed('socket.stateData.player.{funds,debt}', function() {
+    let funds = get(this, 'socket.stateData.player.funds');
+    let debt = get(this, 'socket.stateData.player.debt');
+
+    if (debt && debt > 0) {
+      return funds > debt;
+    }
+
+    return funds > 0;
+  }),
+
   formatCurrency(value) {
     return (value).toLocaleString("en-us",
       { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
