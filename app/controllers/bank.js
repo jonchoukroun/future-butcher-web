@@ -26,7 +26,7 @@ export default Controller.extend({
       this.transitionToRoute('market');
     },
 
-    confirmDebtPaid(payload) {
+    confirmDebtPaid() {
       set(this, 'transactionAlert', "You paid your debt to the Shavings & Bone Bank.");
       later(() => {
         set(this, 'transactionAlert', null);

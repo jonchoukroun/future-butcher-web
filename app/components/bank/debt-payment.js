@@ -14,7 +14,7 @@ export default Component.extend({
     let debt = get(this, 'socket.stateData.player.debt');
     let rate = get(this, 'socket.stateData.player.rate');
 
-    return Math.floor(debt * (1 + rate));
+    return Math.round(debt * (1 + rate));
   }),
 
   actions: {

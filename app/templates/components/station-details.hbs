@@ -14,10 +14,16 @@
       </button>
     </h4>
 
-    {{#if (not (eq currentStation station.name))}}
-      <div class="btn btn-plain ml-auto" {{action 'selectStation'}}>
-        <span><i class="fas fa-arrow-circle-right"></i></span>
-      </div>
+    {{#if (not-eq currentStation station.name)}}
+      {{#if (gt playerFunds entryFee)}}
+        <div class="btn btn-plain ml-auto" {{action 'selectStation'}}>
+          <span><i class="fas fa-arrow-circle-right"></i></span>
+        </div>
+      {{else}}
+        <div class="ml-auto">
+          <span class="display-text text-danger">Too expensive</span>
+        </div>
+      {{/if}}
     {{/if}}
   </div>
 
@@ -25,8 +31,10 @@
     <p class="mb-0">
       {{#if (eq station.name 'compton')}}
         <span class="small">Free entry</span>
+      {{else if (not-eq currentStation station.name)}}
+        <span class="small">Entry fee: ${{number-format entryFee decimals=0 thousandsSeparator=","}}</span>
       {{else}}
-        <span class="small">Entry fee: ${{number-format 1000 decimals=0 thousandsSeparator=","}}</span>
+        <span class="small">You are here</span>
       {{/if}}
     </p>
 
@@ -41,8 +49,13 @@
     {{/if}}
 
     {{#if (eq station.name 'venice_beach')}}
-      <p class="mb-0">
-        <span class="small">Location: Gus's Army Surplus</span>
+      <p class="mb-0 {{if (gt turnsLeft 18) 'disabled'}}">
+        <span class="small">
+          Location: Gus's Army Surplus
+          {{#if (gt turnsLeft 18)}}
+            (Closed)
+          {{/if}}
+        </span>
       </p>
     {{/if}}
   </div>

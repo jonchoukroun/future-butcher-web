@@ -32,6 +32,7 @@ export default Controller.extend({
       this.handleTutorialMessages();
 
       get(this, 'socket').pushCallBack("start_game", {}).then(() => {
+        set(this, 'screen', 'intro');
         this.transitionToRoute('bank');
       })
     }

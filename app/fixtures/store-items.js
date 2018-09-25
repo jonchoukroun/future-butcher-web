@@ -17,7 +17,7 @@ const storeItems = {
   },
   "machete":        {
     display: "Machete",
-    description: "A true all-around beat. Worth every dollar."
+    description: "A true all-around beater. Worth every dollar."
   },
   "mini_fridge":    {
     display: "Mini fridge bolted to a skateboard",

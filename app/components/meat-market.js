@@ -44,6 +44,7 @@ export default Component.extend({
   }),
 
   formatCurrency(value) {
+    if (this.isDestroyed || this.isDestroying) { return; }
     return (value).toLocaleString("en-us",
       { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
   },
