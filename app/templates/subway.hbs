@@ -2,79 +2,12 @@
 
   {{stats-bar sendQuit=(action 'sendToScores')}}
 
-  {{#if isLastTurn}}
-    <div class="row justify-content-cneter mb-3">
-      <div class="col-12 col-sm-10 col-md-6 mt-md-4">
-        <div class="d-flex flex-column">
-          <h3 class="my-3 text-center">
-            You're out of rides!
-          </h3>
+  <div class="row justify-content-center mb-3">
+    <div class="col-12 col-sm-10 col-md-6 mt-md-4">
 
-          {{#if hasLooseEnds}}
-            <p class="px-2">
-              Tie up your loose ends:
-            </p>
-
-            {{#if (gt playerDebt 0)}}
-              <p class="text-center">
-                You owe ${{number-format playerDebt decimals=0 thousandsSeparator=","}}...
-              </p>
-
-              {{#if (gt playerFunds playerDebt)}}
-                <div class="btn btn-secondary my-0" {{action 'payDebt'}}>
-                  Pay your loan
-                </div>
-              {{else}}
-                <p>But you don't have the cash to pay it off, deadbeat.</p>
-              {{/if}}
-            {{/if}}
-
-            {{#if (gt totalCutsOwned 0)}}
-              <p class="text-center">
-                You're carrying {{totalCutsOwned}}
-                {{#if (eq totalCutsOwned 1)}}
-                  lb...
-                {{else}}
-                  lbs...
-                {{/if}}
-              </p>
-
-              {{#link-to 'market' class="btn btn-secondary my-0"}}
-                Sell your inventory
-              {{/link-to}}
-            {{/if}}
-
-            <div class="btn btn-secondary btn-block btn-lg align-self-center" {{action 'retirePlayer'}}>
-              Cross the border anyway
-            </div>
-
-          {{else}}
-
-            <p class="px-2">
-              Are you ready to cross the border and escape the Republic of LA?
-            </p>
-
-            <div class="container">
-              <div class="row justify-content-center">
-                <div class="btn-group w-100">
-                  {{#link-to 'market' class="btn btn-secondary btn-lg flex-fill"}}
-                    Not yet
-                  {{/link-to}}
-
-                  <div class="btn btn-secondary btn-lg flex-fill" {{action 'retirePlayer'}}>
-                    Book it!
-                  </div>
-                </div>
-              </div>
-            </div>
-          {{/if}}
-        </div>
-      </div>
-    </div>
-  {{else}}
-
-    <div class="row justify-content-center mb-3">
-      <div class="col-12 col-sm-10 col-md-6 mt-md-4">
+      {{#if isLastTurn}}
+        {{subway-terminal sendEndGame=(action 'sendEndGame')}}
+      {{else}}
         <div class="d-flex flex-column">
           <div class="text-center border-bottom border-secondary mb-3">
             <h3 class="page-heading text-secondary">
@@ -82,21 +15,19 @@
             </h3>
           </div>
 
-          {{subway-stations sendStation=(action 'navigate')}}
+          <div id="subway-stations-menu">
+            {{subway-stations sendStation=(action 'navigate')}}
+          </div>
 
         </div>
-      </div>
-    </div>
 
-    <div class="row justify-content-center mb-3">
-      <div class="col-12 col-sm-10 col-md-6 mt-md-4 px-0">
-        <div class="container cta-container bg-black">
+        <div class="container cta-container bg-black px-0">
           {{#link-to 'market' class="btn btn-secondary btn-lg btn-block"}}
             Back to market
           {{/link-to}}
         </div>
-      </div>
-    </div>
+      {{/if}}
 
-  {{/if}}
+    </div>
+  </div>
 </div>

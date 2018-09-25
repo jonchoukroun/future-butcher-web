@@ -1,0 +1,55 @@
+{{#if isFirstTurn}}
+  <p>
+    You used 1 subway token to get Downtown. Now take out a loan to get started.
+  </p>
+{{else}}
+  <p>
+    Welcome back, loyal customer. Your current credit gives you access to the following loans:
+  </p>
+{{/if}}
+
+<div class="container-fluid mb-4 mt-5 px-0">
+  {{#each loanOptions as |loan|}}
+    {{#if (gt totalPlayerValue loan.debt)}}
+      {{#if (eq selectedLoan loan.debt)}}
+        {{loan-purchase debt=loan.debt rate=loan.rate isDisabled=false isSelected=true sendLoanSelect=(action 'selectLoan')}}
+      {{else}}
+        {{loan-purchase debt=loan.debt rate=loan.rate isDisabled=false sendLoanSelect=(action 'selectLoan')}}
+      {{/if}}
+
+    {{else}}
+      {{loan-purchase debt=loan.debt rate=loan.rate isDisabled=true sendLoanSelect=(action 'selectLoan')}}
+    {{/if}}
+  {{/each}}
+</div>
+
+<div class="text-center">
+  {{#if isFirstTurn}}
+    {{#if (and debt rate)}}
+      <div class="btn btn-secondary btn-lg btn-block" {{action 'buyLoan'}}>
+        Buy loan
+      </div>
+    {{else}}
+      <div class="btn btn-secondary btn-lg btn-block btn-disabled">
+        Select a loan
+      </div>
+    {{/if}}
+
+  {{else}}
+    <div class="btn-group w-100">
+      {{#link-to 'market' class="btn btn-secondary btn-lg btn-eq-flex"}}
+        Market
+      {{/link-to}}
+
+      {{#if (and debt rate)}}
+        <div class="btn btn-secondary btn-lg btn-eq-flex" {{action 'buyLoan'}}>
+          Buy
+        </div>
+      {{else}}
+        <div class="btn btn-secondary btn-lg btn-disabled btn-eq-flex">
+          Select...
+        </div>
+      {{/if}}
+    </div>
+  {{/if}}
+</div>

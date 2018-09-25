@@ -6,12 +6,22 @@ export default Route.extend({
   beforeModel() {
     this._super(...arguments);
 
-    if (get(this, 'socket.gameStatus') !== 'in_game') {
-      this.replaceWith('home');
-    }
+    this.handleRouteRedirect();
 
     if (get(this, 'isFirstTurn') && get(this, 'hasNoFunds')) {
       this.replaceWith('bank');
+    }
+  },
+
+  handleRouteRedirect() {
+    let state = get(this, 'socket.gameStatus');
+
+    if (state === 'mugging') {
+      this.replaceWith('mugging');
+    } else if (state !== 'in_game') {
+      this.replaceWith('home');
+    } else {
+      return;
     }
   },
 

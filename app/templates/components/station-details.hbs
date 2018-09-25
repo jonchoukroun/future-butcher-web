@@ -1,0 +1,62 @@
+<div class="card bg-black border-0">
+  <div id="{{station.name}}-header" class="card-header d-flex align-items-center px-0">
+    <h4 class="title-text m-0">
+      {{#if (eq currentStation station.name)}}
+        <span class="text-secondary">
+          {{station.display}}
+        </span>
+      {{else}}
+        {{station.display}}
+      {{/if}}
+
+      <button type="button" data-toggle="collapse" data-target="#{{station.name}}-details" class="btn btn-plain d-inline-flex align-items-center ml-1">
+        <ion-icon name="information-circle-outline"></ion-icon>
+      </button>
+    </h4>
+
+    {{#if (not-eq currentStation station.name)}}
+      {{#if (gt playerFunds entryFee)}}
+        <div class="btn btn-plain ml-auto" {{action 'selectStation'}}>
+          <span><i class="fas fa-arrow-circle-right"></i></span>
+        </div>
+      {{else}}
+        <div class="ml-auto">
+          <span class="display-text text-danger">Too expensive</span>
+        </div>
+      {{/if}}
+    {{/if}}
+  </div>
+
+  <div id="{{station.name}}-details" class="collapse" data-parent="#subway-stations-menu">
+    <p class="mb-0">
+      {{#if (eq station.name 'compton')}}
+        <span class="small">Free entry</span>
+      {{else if (not-eq currentStation station.name)}}
+        <span class="small">Entry fee: ${{number-format entryFee decimals=0 thousandsSeparator=","}}</span>
+      {{else}}
+        <span class="small">You are here</span>
+      {{/if}}
+    </p>
+
+    <p class="mb-0">
+      <span class="small">Market: {{station.cuts_list}}</span>
+    </p>
+
+    {{#if (eq station.name 'downtown')}}
+      <p class="mb-0">
+        <span class="small">Location: Shavings & Bone Bank</span>
+      </p>
+    {{/if}}
+
+    {{#if (eq station.name 'venice_beach')}}
+      <p class="mb-0 {{if (gt turnsLeft 18) 'disabled'}}">
+        <span class="small">
+          Location: Gus's Army Surplus
+          {{#if (gt turnsLeft 18)}}
+            (Closed)
+          {{/if}}
+        </span>
+      </p>
+    {{/if}}
+  </div>
+</div>

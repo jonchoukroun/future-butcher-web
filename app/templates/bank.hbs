@@ -4,75 +4,27 @@
 
   <div class="row justify-content-center">
     <div class="col-12 col-sm-10 col-md-6 mt-md-4">
+
+      {{#if transactionAlert}}
+        {{#liquid-wormhole class="transaction-alert bg-secondary border border-primary"}}
+          <p class="mb-0 text-center text-black font-weight-bold">
+            {{transactionAlert}}
+          </p>
+        {{/liquid-wormhole}}
+      {{/if}}
+
       <div class="text-center border-bottom border-black mb-3">
         <h3 class="page-heading text-secondary">
           Shavings & Bone Bank
         </h3>
       </div>
-    </div>
-  </div>
 
-  <div class="row justify-content-center mb-3">
-    <div class="col-12 col-sm-10 col-md-6 mt-md-4">
-      {{#if isFirstTurn}}
-        <p>
-          You used 1 subway token to get Downtown. Now take out a loan to get started.
-        </p>
+      {{#if (gt playerDebt 0)}}
+        {{bank/debt-payment isFirstTurn=isFirstTurn playerFunds=playerFunds playerDebt=playerDebt sendDebtPaidConfirm=(action 'confirmDebtPaid')}}
       {{else}}
-        <p>
-          Welcome back, loyal customer. Your current credit gives you access to the following loans:
-        </p>
+        {{bank/debt-purchase isFirstTurn=isFirstTurn playerFunds=playerFunds sendToMarket=(action 'redirectToMarket')}}
       {{/if}}
 
-      <div class="container-fluid mb-4 mt-5 px-0">
-        {{#each loanOptions as |loan|}}
-          {{#if (gt totalPlayerValue loan.debt)}}
-            {{#if (eq selectedLoan loan.debt)}}
-              {{loan-purchase debt=loan.debt rate=loan.rate isDisabled=false isSelected=true sendLoanSelect=(action 'selectLoan')}}
-            {{else}}
-              {{loan-purchase debt=loan.debt rate=loan.rate isDisabled=false sendLoanSelect=(action 'selectLoan')}}
-            {{/if}}
-
-          {{else}}
-            {{loan-purchase debt=loan.debt rate=loan.rate isDisabled=true sendLoanSelect=(action 'selectLoan')}}
-          {{/if}}
-        {{/each}}
-      </div>
-    </div>
-  </div>
-
-  <div class="row justify-content-center mb-3">
-    <div class="col-12 col-sm-10 col-md-6 mt-5">
-      <div class="text-center">
-        {{#if isFirstTurn}}
-          {{#if (and debt rate)}}
-            <div class="btn btn-secondary btn-lg btn-block" {{action 'buyLoan'}}>
-              Buy loan
-            </div>
-          {{else}}
-            <div class="btn btn-secondary btn-lg btn-block.btn-disabled">
-              Select a loan
-            </div>
-          {{/if}}
-
-        {{else}}
-          <div class="btn-group w-100">
-            {{#link-to 'market' class="btn btn-secondary btn-lg flex-fill"}}
-              Market
-            {{/link-to}}
-
-            {{#if (and debt rate)}}
-              <div class="btn btn-secondary btn-lg flex-fill" {{action 'buyLoan'}}>
-                Buy
-              </div>
-            {{else}}
-              <div class="btn btn-secondary btn-lg btn-disabled flex-fill">
-                Select...
-              </div>
-            {{/if}}
-          </div>
-        {{/if}}
-      </div>
     </div>
   </div>
 </div>

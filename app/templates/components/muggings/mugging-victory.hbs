@@ -1,0 +1,23 @@
+<div class="text-center border-bottom border-black mb-3">
+  <h1 class="display-1 page-heading">
+    <i class="far fa-smile"></i>
+  </h1>
+</div>
+
+<p>
+  {{randomVictoryQuote}}
+</p>
+
+
+<p>
+  {{#if cutsList}}
+    You use your {{playerWeapon}} to harvest the Butcher's {{cutsList}}. Seizing opportunity like a real capitalist!
+  {{else}}
+    Too bad you couldn't harvest any of his organs.
+  {{/if}}
+</p>
+
+
+{{#link-to 'market' class="btn btn-secondary btn-lg btn-block"}}
+  Hit the market
+{{/link-to}}

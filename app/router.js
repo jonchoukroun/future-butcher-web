@@ -16,14 +16,19 @@ Router.map(function() {
 
   this.route('subway');
   this.route('traveling');
+  this.route('mugging');
 
   this.route('bank');
+
+  this.route('store');
 
   this.route('high-scores');
 
   this.route('all-scores');
 
   this.route('unavailable');
+
+  this.route('catch-all', { path: '*'});
 
 });
 

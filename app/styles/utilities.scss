@@ -33,6 +33,10 @@ $brand-black:     #282828;
   color: $brand-danger !important;
 }
 
+.title-text {
+  font-family: 'marvin-visions', sans-serif;
+}
+
 .display-text {
   font-family: 'Space Mono', monospace;
 }
@@ -62,4 +66,9 @@ $brand-black:     #282828;
 
 .bg-secondary {
   background-color: $brand-secondary !important;
+}
+
+.btn-eq-flex {
+  flex-basis: 0 !important;
+  flex-grow: 1 !important;
 }

@@ -20,7 +20,7 @@ export default Route.extend({
     this._super(...arguments);
 
     if (localStorage.getItem('player_score')) {
-      set(controller, 'screen', 'instructions');
+      set(controller, 'screen', 'intro');
       localStorage.removeItem('player_score');
     }
   },

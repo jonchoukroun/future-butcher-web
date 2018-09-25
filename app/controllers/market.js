@@ -8,8 +8,12 @@ export default Controller.extend({
     return get(this, 'socket.stateData.player.debt') > 0;
   }),
 
-  isDowntown: computed('socket.stateData.station.station_name', function() {
-    return get(this, 'socket.stateData.station.station_name') === "downtown";
+  currentStation: computed('socket.stateData.station.station_name', function() {
+    return get(this, 'socket.stateData.station.station_name');
+  }),
+
+  turnsLeft: computed('socket.stateData.rules.turns_left', function() {
+    return get(this, 'socket.stateData.rules.turns_left');
   }),
 
   actions: {

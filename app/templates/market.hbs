@@ -13,7 +13,7 @@
         {{/liquid-wormhole}}
       {{/if}}
 
-      {{meat-market isDowntown=isDowntown isInDebt=isInDebt sendRouteReload=(action 'reloadRoute') sendTransactionAlert=(action 'confirmTransaction')}}
+      {{meat-market currentStation=currentStation turnsLeft=turnsLeft isInDebt=isInDebt sendRouteReload=(action 'reloadRoute') sendTransactionAlert=(action 'confirmTransaction')}}
 
     </div>
   </div>

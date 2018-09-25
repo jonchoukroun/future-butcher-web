@@ -26,20 +26,20 @@ export default Component.extend({
     }
   },
 
-  stateData: computed('socket.stateData', function() {
-    return get(this, 'socket.stateData');
+  currentStation: computed('socket.stateData.station.station_name', function() {
+    return get(this, 'socket.stateData.station.station_name');
   }),
 
-  playerFunds: computed('stateData', function() {
-    return get(this, 'stateData.player.funds');
+  playerFunds: computed('socket.stateData.player.funds', function() {
+    return get(this, 'socket.stateData.player.funds');
   }),
 
-  playerDebt: computed('stateData', function() {
-    return get(this, 'stateData.player.debt');
+  playerDebt: computed('socket.stateData.player.debt', function() {
+    return get(this, 'socket.stateData.player.debt');
   }),
 
-  turnsLeft: computed('stateData.rules.turns_left', function() {
-    return get(this, 'stateData.rules.turns_left');
+  turnsLeft: computed('socket.stateData.rules.turns_left', function() {
+    return get(this, 'socket.stateData.rules.turns_left');
   }),
 
   isFirstTurn: computed('turnsLeft', function() {
@@ -75,11 +75,6 @@ export default Component.extend({
 
     toggleStatsBar(selector) {
       $(selector).slideToggle();
-    },
-
-    payDebt() {
-      let payload = { amount: get(this, 'playerDebt') };
-      get(this, 'socket').pushCallBack("pay_debt", payload);
     },
 
     quitGame() {

@@ -15,6 +15,15 @@ export default Controller.extend({
 
   actions: {
 
+    skipIntro() {
+      set(this, 'screen', 'start');
+    },
+
+    nextScreen() {
+      const screens = ['intro', 'packs', 'tokens', 'start'];
+      set(this, 'screen', screens[screens.indexOf(get(this, 'screen')) + 1])
+    },
+
     setTutorialSelection(selection) {
       set(this, 'isTutorialEnabled', selection);
     },
@@ -23,12 +32,9 @@ export default Controller.extend({
       this.handleTutorialMessages();
 
       get(this, 'socket').pushCallBack("start_game", {}).then(() => {
+        set(this, 'screen', 'intro');
         this.transitionToRoute('bank');
       })
-    },
-
-    nextScreen() {
-      set(this, 'screen', 'instructions');
     }
 
   }

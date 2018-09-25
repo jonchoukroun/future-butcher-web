@@ -1,5 +1,6 @@
 import Component from '@ember/component'
 import { computed, get, set } from '@ember/object'
+import { weaponStats } from 'future-butcher-web/fixtures/store-items';
 
 export default Component.extend({
 
@@ -10,6 +11,7 @@ export default Component.extend({
   buyingCut:        false,
   sellingCut:       false,
   transactionAlert: null,
+  isInDebt:         null,
 
   marketCuts: computed('gameStatus', 'socket.stateData.station.market', function() {
     if (get(this, 'socket.gameStatus') !== 'in_game') { return; }
@@ -17,13 +19,32 @@ export default Component.extend({
     return get(this, 'socket.stateData.station.market');
   }),
 
-  totalCutsOwned: computed('socket.stateData.player.pack', function() {
+  packSpace: computed('socket.stateData.player.pack_space', function() {
+    return get(this, 'socket.stateData.player.pack_space');
+  }),
+
+  totalWeightCarried: computed('socket.stateData.player.{pack,weapon}', function() {
+    let weapon = get(this, 'socket.stateData.player.weapon');
+    let weapon_weight = weapon ? weaponStats[weapon].weight : 0;
+
     return Object.values(get(this, 'socket.stateData.player.pack')).reduce((sum, cut) => {
       return sum += cut;
-    });
+    }) + weapon_weight;
+  }),
+
+  canVisitBank: computed('socket.stateData.player.{funds,debt}', function() {
+    let funds = get(this, 'socket.stateData.player.funds');
+    let debt = get(this, 'socket.stateData.player.debt');
+
+    if (debt && debt > 0) {
+      return funds > debt;
+    }
+
+    return funds > 0;
   }),
 
   formatCurrency(value) {
+    if (this.isDestroyed || this.isDestroying) { return; }
     return (value).toLocaleString("en-us",
       { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
   },

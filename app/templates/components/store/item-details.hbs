@@ -1,0 +1,68 @@
+<div id="{{item}}-item-header" class="card-header px-0 py-1">
+  <div class="d-flex flex-row justify-content-between align-items-center">
+    <h5 class="mb-0">
+      {{itemName}}
+    </h5>
+    <div class="btn btn-secondary btn-sm" data-toggle="collapse" data-target="#{{item}}-item-body">
+      More
+    </div>
+  </div>
+</div>
+
+<div id="{{item}}-item-body" class="collapse" data-parent="#storeAccordion">
+  <div class="card-body px-0">
+    <div class="row">
+      <div class="col-12">
+        <p>{{itemDescription}}</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6 d-flex flex-column justify-content-start align-items-end px-0">
+        <p class="mb-0 {{if (and (not alreadyOwned) (not canAfford)) 'text-danger'}}">
+          {{#if canAfford}}
+            Price: ${{number-format itemPrice decimals=0 thousandsSeparator=","}}
+          {{else if alreadyOwned}}
+            Already owned
+          {{else}}
+            Price: ${{number-format itemPrice decimals=0 thousandsSeparator=","}}
+          {{/if}}
+        </p>
+
+        <p class="mb-0 {{if (and itemWeight (not alreadyOwned) (not canCarry)) 'text-danger'}}">
+          {{#if itemWeight}}
+            Weight: {{number-format itemWeight decimals=0 thousandsSeparator=","}}
+          {{else}}
+            Space: {{number-format itemSpace decimals=0 thousandsSeparator=","}}
+          {{/if}}
+
+          {{#if (eq itemWeight 1)}}
+            lb
+          {{else}}
+            lbs
+          {{/if}}
+        </p>
+      </div>
+
+      <div class="col-6 d-flex align-items-center justify-content-center px-0">
+        <div class="container">
+
+          {{#if (and alreadyOwned isWeapon)}}
+            <div class="btn btn-secondary btn-block {{if isDisabled 'btn-disabled'}}" {{action "dropItem"}}>
+              Drop
+            </div>
+          {{else if (and playerWeapon isWeapon) }}
+            <div class="btn btn-secondary btn-block {{if isDisabled 'btn-disabled'}}" {{action "replaceItem"}}>
+              Replace
+            </div>
+          {{else}}
+            <div class="btn btn-secondary btn-block {{if isDisabled 'btn-disabled'}}" {{action "buyItem"}}>
+              Buy
+            </div>
+          {{/if}}
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
