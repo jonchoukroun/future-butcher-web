@@ -1,5 +1,5 @@
 {{#each stations as |station|}}
-  <li id="subway-stations-menu" class="list-group-item">
+  <li class="list-group-item">
     {{station-details station=station currentStation=currentStation selectStation=(action 'selectStation')}}
   </li>
 {{/each}}
