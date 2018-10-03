@@ -1,78 +1,80 @@
-<div class="container-fluid full-screen">
+<div class="container-fluid full-screen p-0">
   {{#if (eq screen 'intro')}}
-    <div class="intro-image jumbotron my-3 d-flex flex-column justify-content-center">
-      <h1 class="display-3 mb-md-4 text-center">Republic of Los Angeles</h1>
-      <p class="lead default-text text-center">2055</p>
+    <div class="intro-image jumbotron my-xl-3 d-flex flex-column justify-content-center">
+      <h1 class="display-4 mb-md-4 text-center">Republic of Los Angeles</h1>
+      <h2 class="lead default-text text-center">2055</h2>
     </div>
   {{/if}}
 
   <div class="row justify-content-center">
     <div class="col-12 col-md-8 col-lg-6">
+      <div class="container">
+        {{#if (eq screen 'intro')}}
+          <p class="mt-sm-2 mt-md-5 mt-xl-4">
+            The economy is in ruins after the collapse of HypeCoin. It's time to get out of town, but you need cash first. Your only shot is to hustle the new premium addiction of the rich and famous...
+          </p>
 
-      {{#if (eq screen 'intro')}}
-        <p class="mt-sm-2 mt-md-5 mt-xl-4">
-          The economy is in ruins after the collapse of HypeCoin. It's time to get out of town, but you need cash first. Your only shot is to hustle the new premium addiction of the rich and famous...
-        </p>
+          <p>
+            There's unlimited opportunity servicing their demand for fresh, exclusive cuts of human meat.
+          </p>
 
-        <p>
-          There's unlimited opportunity servicing their demand for fresh, exclusive cuts of human meat.
-        </p>
+          <p>...Not that you would ever touch the stuff.</p>
 
-        <p>...Not that you would ever touch the stuff.</p>
+          <div class="btn-group w-100">
+            <div class="btn btn-secondary btn-lg btn-eq-flex" {{action 'skipIntro'}}>Skip</div>
+            <div class="btn btn-secondary btn-lg btn-eq-flex" {{action 'nextScreen'}}>Next</div>
+          </div>
+        {{/if}}
 
-        <div class="btn-group w-100">
-          <div class="btn btn-secondary btn-lg btn-eq-flex" {{action 'skipIntro'}}>Skip</div>
-          <div class="btn btn-secondary btn-lg btn-eq-flex" {{action 'nextScreen'}}>Next</div>
-        </div>
-      {{/if}}
+        {{#if (eq screen 'packs')}}
+          <h3 style="margin-top: 10vh; margin-bottom: 5vh;">Today's the day.</h3>
 
-      {{#if (eq screen 'packs')}}
-        <h4 style="margin-top: 10vh; margin-bottom: 5vh;">Today's the day.</h4>
+          <p class="mb-md-5">
+            You wake up, ready to hustle. LA is getting too rough and it's time to find your ex down in Mexico.
+          </p>
 
-        <p class="mb-md-5">
-          You wake up, ready to hustle. LA is getting too rough and it's time to find your ex down in Mexico.
-        </p>
+          <p class="mb-md-5">
+            Before you head out the door, you grab your leather jacket - a gift from the ex. It's perfect for carrying a few pounds of meat, but you'll want to pick up something bigger soon.
+          </p>
 
-        <p class="mb-md-5">
-          Before you head out the door, you grab your leather jacket - a gift from the ex. It's perfect for carrying a few pounds of meat, but you'll want to pick up something bigger soon.
-        </p>
+          <p style="margin-bottom: 5vh;">Just don't draw too much attention.</p>
 
-        <p style="margin-bottom: 5vh;">Just don't draw too much attention.</p>
+          <div class="btn btn-secondary btn-lg btn-block" {{action 'nextScreen'}}>Next</div>
+        {{/if}}
 
-        <div class="btn btn-secondary btn-lg btn-block" {{action 'nextScreen'}}>Next</div>
-      {{/if}}
+        {{#if (eq screen 'tokens')}}
+          <h3 style="margin-top: 10vh; margin-bottom: 5vh;">25 subway tokens</h3>
 
-      {{#if (eq screen 'tokens')}}
-        <h4 style="margin-top: 10vh; margin-bottom: 5vh;">25 subway tokens</h4>
+          <p class="mb-md-5">
+            You count them out again just to be sure. You'll need these tokens to get around town.
+          </p>
 
-        <p class="mb-md-5">
-          You count them out again just to be sure. You'll need these tokens to get around town.
-        </p>
+          <p style="margin-bottom: 5vh;">
+            Getting into the nicer neighborhoods might be a problem - they've starting charging for protection. As crime goes up in the city, you can expect crazy entrance fees to the best markets.
+          </p>
 
-        <p style="margin-bottom: 5vh;">
-          Getting into the nicer neighborhoods might be a problem - they've starting charging for protection. As crime goes up in the city, you can expect crazy entrance fees to the best markets.
-        </p>
+          <div class="btn btn-secondary btn-lg btn-block" {{action 'nextScreen'}}>Next</div>
+        {{/if}}
 
-        <div class="btn btn-secondary btn-lg btn-block" {{action 'nextScreen'}}>Next</div>
-      {{/if}}
+        {{#if (eq screen 'start')}}
+          <h3 style="margin-top: 10vh; margin-bottom: 5vh;">One more thing...</h3>
 
-      {{#if (eq screen 'start')}}
-        <h4 style="margin-top: 10vh; margin-bottom: 5vh;">One more thing...</h4>
+          <p class="mb-md-5">
+            Your ex has a line of credit at the bank downtown. You'll need cash to hustle the meat markets, and hopefully earn enough to bribe your way across the border into Mexico.
+          </p>
 
-        <p class="mb-md-5">
-          Your ex has a line of credit at the bank downtown. You'll need cash to hustle the meat markets, and hopefully earn enough to bribe your way across the border into Mexico.
-        </p>
+          <p style="margin-bottom: 5vh;">
+            Use a subway token to head downtown and hit the bank for a loan.
+          </p>
 
-        <p style="margin-bottom: 5vh;">
-          Use a subway token to head downtown and hit the bank for a loan.
-        </p>
+          {{reset-tutorials sendTutorialSelection=(action 'setTutorialSelection')}}
 
-        {{reset-tutorials sendTutorialSelection=(action 'setTutorialSelection')}}
+          <div class="btn btn-secondary btn-lg btn-block" {{action 'startGame'}}>
+            Let's ride
+          </div>
+        {{/if}}
 
-        <div class="btn btn-secondary btn-lg btn-block" {{action 'startGame'}}>
-          Let's ride
-        </div>
-      {{/if}}
+      </div>
     </div>
   </div>
 </div>
