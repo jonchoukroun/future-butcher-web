@@ -102,9 +102,7 @@
     .card.card-body.pb-0.bg-black.border-left-0.border-right-0.border-bottom-0
       if isFirstTurn
         p
-          ' You used your first token to get Downtown. Keep your eye on these tokens, you have
-          ' #{turnsLeft}
-          ' left.
+          ' Remember, the clock's ticking. You have 24 hours to hustle.
 
         .row.justify-content-end
           .btn.btn-secondary.btn-sm click='action "closeTurnsTutorial"'
@@ -112,9 +110,7 @@
 
       else
         p
-          ' You have
-          ' #{turnsLeft} subway tokens
-          ' remaining out of 25.
+          ' You have #{turnsLeft} hours remaining.
 
         .row.justify-content-end
           .btn.btn-secondary.btn-sm click='action "toggleStatsBar" "#turnsHelp"'
@@ -131,7 +127,7 @@
       .container.px-0
         .row.align-items-center.justify-content-center.px-2
           p.small.text-center.px-2
-            | Powered by Elixir/Phoenix, Ember.js, and roast lamb.
+            | Powered by Elixir/Phoenix, Ember.js, and backyard-roasted lamb.
           p.small
             ' 2018
             i.far.fa-copyright
