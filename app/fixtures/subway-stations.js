@@ -10,28 +10,28 @@ const subwayStations = [
     name:    "hollywood",
     display: "Hollywood",
     cuts_list: "Ribs, loin, liver",
-    description: "High crime.",
+    description: "Rough, grimy, seedy.",
     base_crimte_rate: 4,
   },
   {
     name:    "beverly_hills",
     display: "Beverly Hills",
     cuts_list: "Heart, flank",
-    description: "Tightest, most expensive security.",
+    description: "Home of the rich & famous. Safest neighborhood.",
     base_crimte_rate: 1,
   },
   {
     name:    "compton",
     display: "Compton",
     cuts_list: "Heart, flank, ribs, loin, liver",
-    description: "Anarchy - no protection fee.",
+    description: "Anarchy - free subway rides and certain death.",
     base_crimte_rate: 5,
   },
   {
     name:    "venice_beach",
     display: "Venice Beach",
     cuts_list: "Ribs, loin, liver",
-    description: "Relatively safe.",
+    description: "Relatively safe, but the palm trees are extinct.",
     base_crimte_rate: 3,
   }
 ];
