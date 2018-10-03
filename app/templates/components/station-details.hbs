@@ -27,8 +27,10 @@
               <span class="ml-auto"><i class="fas fa-arrow-circle-right"></i></span>
             </div>
           {{else}}
-            <div class="ml-auto">
-              <span class="display-text text-danger">Too expensive</span>
+            <div class="btn btn-simple btn-block btn-disabled ml-auto">
+              <span class="display-text text-danger">
+                ${{number-format entryFee decimals=0 thousandsSeparator=","}}
+              </span>
             </div>
           {{/if}}
         {{/if}}
