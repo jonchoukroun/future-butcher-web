@@ -15,9 +15,11 @@
         Pulling his well-used signature blade, he charges you. You have a split second to react.
       </p>
 
-      <div class="btn btn-secondary btn-lg btn-block" {{action 'fightMugger'}}>
-        Fight mugger
-      </div>
+      {{#if (gt turnsLeft 0)}}
+        <div class="btn btn-secondary btn-lg btn-block" {{action 'fightMugger'}}>
+          Fight mugger
+        </div>
+      {{/if}}
 
       {{#if (gt playerFunds 5)}}    {{!-- to prevent random penalty < 1 --}}
         <div class="btn btn-secondary btn-lg btn-block" {{action 'offerCash'}}>

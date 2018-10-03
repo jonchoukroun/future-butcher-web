@@ -20,7 +20,7 @@ export default Controller.extend({
     },
 
     nextScreen() {
-      const screens = ['intro', 'packs', 'tokens', 'start'];
+      const screens = ['intro', 'packs', 'turns', 'start'];
       set(this, 'screen', screens[screens.indexOf(get(this, 'screen')) + 1])
     },
 
