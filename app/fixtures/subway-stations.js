@@ -31,7 +31,7 @@ const subwayStations = [
     name:    "venice_beach",
     display: "Venice Beach",
     cuts_list: "Ribs, loin, liver",
-    description: "Relatively safe, but the palm trees are extinct.",
+    description: "Relatively safe, but the palm trees are dead.",
     base_crimte_rate: 3,
   }
 ];
