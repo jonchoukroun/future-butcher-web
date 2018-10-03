@@ -28,8 +28,12 @@ export default Component.extend({
     return get(this, 'socket.gameStatus') === "mugging";
   }),
 
-  turnsLost: computed('startingTurnsLeft', 'socket.stateData.rules.turns_left', function() {
-    return get(this, 'startingTurnsLeft') - get(this, 'socket.stateData.rules.turns_left');
+  turnsLeft: computed('socket.stateData.rules.turns_left', function() {
+    return get(this, 'socket.stateData.rules.turns_left');
+  }),
+
+  turnsLost: computed('startingTurnsLeft', 'turnsLeft', function() {
+    return get(this, 'startingTurnsLeft') - get(this, 'turnsLeft');
   }),
 
   fundsLost: computed('startingFunds', 'playerFunds', function() {
