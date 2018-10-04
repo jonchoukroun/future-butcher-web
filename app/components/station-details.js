@@ -1,10 +1,21 @@
 import Component from '@ember/component';
-import { computed, get } from '@ember/object';
+import { computed, get, observer } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default Component.extend({
 
+  notifications: service('notification-service'),
+
   turnsLeft: computed('socket.stateData.rules.turns_left', function() {
     return get(this, 'socket.stateData.rules.turns_left');
+  }),
+
+  storeOpen: observer('turnsLeft', 'socket.stateData.station.station_name', function() {
+    let station_name = get(this, 'socket.stateData.station.station_name');
+    if (get(this, 'turnsLeft') === 18 && station_name !== "venice_beach") {
+      const message = "Gus's Army Surplus Store is now open in Venice Beach.";
+      get(this, 'notifications').notifyConfirmation(message)
+    }
   }),
 
   entryFee: computed('turnsLeft', 'station.base_crimte_rate', function() {
