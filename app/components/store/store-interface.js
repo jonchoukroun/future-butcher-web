@@ -36,11 +36,6 @@ export default Component.extend({
     return Object.keys(get(this, 'packsInventory')).length;
   }),
 
-  formatCurrency(value) {
-    return (value).toLocaleString("en-us",
-      { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
-  },
-
   actions: {
 
     showWeaponsStore() {
