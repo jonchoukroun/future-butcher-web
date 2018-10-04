@@ -124,6 +124,9 @@ input.form-control:focus {
 }
 
 .btn-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 10px 0;
   background-color: $brand-black;
   border-color: $brand-secondary;
