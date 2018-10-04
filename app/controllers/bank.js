@@ -1,6 +1,5 @@
 import Controller from '@ember/controller';
-import { computed, get, set } from '@ember/object';
-import { later } from '@ember/runloop';
+import { computed, get } from '@ember/object';
 
 export default Controller.extend({
 
