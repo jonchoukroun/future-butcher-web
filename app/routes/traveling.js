@@ -13,7 +13,7 @@ export default Route.extend({
   handleAnimation() {
     later(() => {
       this.handleRouteRedirect(0);
-    }, 700);
+    }, 600);
   },
 
   handleRouteRedirect(counter) {
