@@ -19,7 +19,7 @@
 
       <div class="col-5 col-lg-4 d-flex align-items-center justify-content-end">
         {{#if (not-eq currentStation station.name)}}
-          {{#if (gt playerFunds entryFee)}}
+          {{#if (gte playerFunds entryFee)}}
             <div class="btn btn-secondary btn-block d-flex" {{action 'selectStation'}}>
               <span>
                 ${{number-format entryFee decimals=0 thousandsSeparator=","}}
