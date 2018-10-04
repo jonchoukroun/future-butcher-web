@@ -5,7 +5,6 @@ import { later } from '@ember/runloop';
 export default Component.extend({
 
   storeScreen:   null,
-  inTransaction: false,
 
   turnsLeft: computed('socket.stateData.rules.turns_left', function() {
     return get(this, 'socket.stateData.rules.turns_left');
@@ -43,10 +42,6 @@ export default Component.extend({
   },
 
   actions: {
-
-    toggleInTransaction(bool) {
-      set(this, 'inTransaction', bool)
-    },
 
     showWeaponsStore() {
       set(this, 'storeScreen', 'weapons');

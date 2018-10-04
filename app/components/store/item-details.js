@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { computed, get } from '@ember/object';
+import { computed, get, set } from '@ember/object';
 import { storeItems, weaponStats } from 'future-butcher-web/fixtures/store-items';
 import { later } from '@ember/runloop';
 
@@ -7,6 +7,8 @@ export default Component.extend({
 
   item:    null,
   details: null,
+
+  inTransaction: false,
 
   classNames: ['card', 'bg-black', 'border-0'],
 
@@ -107,38 +109,31 @@ export default Component.extend({
 
   buyWeapon() {
     get(this, 'socket').pushCallBack("buy_weapon", {"weapon": get(this, 'item')}).then(() => {
-      get(this, 'sendTransactionConfirmation')({
-        action: "bought",
-        item: get(this, 'itemName'),
-        price:  get(this, 'itemPrice')
-      })
-
-      this.handleTransactionState();
+      this.handleTransactionState("bought");
     })
   },
 
   buyPack() {
     get(this, 'socket').pushCallBack("buy_pack", {"pack": get(this, 'item')}).then(() => {
-      get(this, 'sendTransactionConfirmation')({
-        action: "bought",
-        item:   get(this, 'itemName'),
-        price:  get(this, 'itemPrice')
-      })
-
-      this.handleTransactionState();
+      this.handleTransactionState("bought");
     })
   },
 
-  handleTransactionState() {
+  handleTransactionState(action) {
     later(() => {
-      get(this, 'sendTransactionLoading')(false);
-    }, 500);
+      set(this, 'inTransaction', false);
+      get(this, 'sendTransactionConfirmation')({
+        action: action,
+        item: get(this, 'itemName'),
+        price: get(this, 'itemPrice')
+      })
+    }, 300);
   },
 
   actions: {
 
     buyItem() {
-      get(this, 'sendTransactionLoading')(true);
+      set(this, 'inTransaction', true);
 
       if (get(this, 'details.weight')) {
         this.buyWeapon();
@@ -148,29 +143,18 @@ export default Component.extend({
     },
 
     dropItem() {
-      get(this, 'sendTransactionLoading')(true);
+      set(this, 'inTransaction', true);
 
       get(this, 'socket').pushCallBack("drop_weapon", {}).then(() => {
-        get(this, 'sendTransactionConfirmation')({
-          action: "dropped",
-          item: get(this, 'itemName')
-        })
-
-        this.handleTransactionState();
+        this.handleTransactionState("dropped");
       })
     },
 
     replaceItem() {
-      get(this, 'sendTransactionLoading')(true);
+      set(this, 'inTransaction', true);
 
       get(this, 'socket').pushCallBack("replace_weapon", {"weapon": get(this, 'item')}).then(() => {
-        get(this, 'sendTransactionConfirmation')({
-          action: "replaced",
-          item: get(this, 'itemName'),
-          price:  get(this, 'itemPrice')
-        })
-
-        this.handleTransactionState();
+        this.handleTransactionState("replaced");
       })
     }
 

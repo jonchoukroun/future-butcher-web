@@ -1,3 +1,7 @@
+{{#if inFight}}
+  {{transition-animation}}
+{{/if}}
+
 <div class="row justify-content-center">
   <div class="col-12 col-sm-10 col-md-6 mt-md-4">
 
@@ -32,13 +36,6 @@
           Offer cuts
         </div>
       {{/if}}
-
-    {{else if inFight}}
-
-      <div class="container d-flex align-items-center justify-content-center py-5">
-        <div class="display-1 mugging-animation"><ion-icon name="thunderstorm"></ion-icon></div>
-      </div>
-
 
     {{else if (gt turnsLost 0)}}
 

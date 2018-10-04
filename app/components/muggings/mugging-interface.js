@@ -70,32 +70,32 @@ export default Component.extend({
     return get(this, 'cutsHarvested').length;
   }),
 
+  handleFightState() {
+    later(() => {
+      set(this, 'inFight', false);
+    }, 300);
+  },
+
   actions: {
 
     fightMugger() {
       set(this, 'inFight', true);
       get(this, 'socket').pushCallBack("fight_mugger", {}).then(() => {
-        later(() => {
-          set(this, 'inFight', false);
-        }, 1000);
+        this.handleFightState();
       })
     },
 
     offerCash() {
       set(this, 'inFight', true);
       get(this, 'socket').pushCallBack("pay_mugger", {"response": "funds"}).then(() => {
-        later(() => {
-          set(this, 'inFight', false);
-        }, 1000);
+        this.handleFightState();
       })
     },
 
     offerCuts() {
       set(this, 'inFight', true);
       get(this, 'socket').pushCallBack("pay_mugger", {"response": "cuts"}).then(() => {
-        later(() => {
-          set(this, 'inFight', false);
-        }, 1000);
+        this.handleFightState();
       })
     }
 
