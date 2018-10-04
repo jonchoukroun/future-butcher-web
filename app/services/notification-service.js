@@ -11,7 +11,7 @@ export default Service.extend({
     set(this, 'confirmationMessage', message);
     later(() => {
       set(this, 'confirmationMessage', null);
-    }, 1200);
+    }, 1300);
   },
 
   notifyError(message) {

@@ -11,7 +11,6 @@ export default Component.extend({
   showSellForm:     false,
   buyingCut:        false,
   sellingCut:       false,
-  transactionAlert: null,
   isInDebt:         null,
 
   notifications: service('notification-service'),
