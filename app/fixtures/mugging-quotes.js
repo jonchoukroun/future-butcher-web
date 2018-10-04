@@ -4,7 +4,7 @@ const defeatQuotes = [
   "He kicks your ass!",
   "The Butcher drops you like day-old shit.",
   "You started something you couldn't finish. The Butcher, though, easily finishes you.",
-  "Butcher like to kick ass and eat people. Luck for you he wasn't hungry."
+  "The Butcher likes to kick ass and eat people. Lucky for you he wasn't hungry."
 ];
 
 const defeatedButtonText = [

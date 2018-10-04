@@ -3,12 +3,16 @@ import { computed, get } from '@ember/object';
 
 export default Component.extend({
 
+  currentStation: computed('socket.stateData.station.station_name', function() {
+    return get(this, 'socket.stateData.station.station_name');
+  }),
+
   playerStats: computed('socket.stateData.player', function() {
     return get(this, 'socket.stateData.player');
   }),
 
   playerFunds: computed('playerStats.funds', function() {
-    return get(this, 'playerStatsfunds');
+    return get(this, 'playerStats.funds');
   }),
 
   playerDebt: computed('playerStats.debt', function() {

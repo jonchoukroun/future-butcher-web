@@ -9,11 +9,17 @@
 </p>
 
 <p>
-  You wake up, bleeding in the gutter. You lost {{turnsLost}} hours! Better get moving.
+  You wake up, bleeding in the gutter. You lost {{turnsLost}}
+  {{#if (eq turnsLost 1)}}
+    hour!
+  {{else}}
+    hours!
+  {{/if}}
+  Better get moving.
 </p>
 
 <p>
- You're lucky he didn't chop you up and harvest your organs.
+  At least he didn't chop you up and harvest your organs.
 </p>
 
 {{#link-to 'market' class="btn btn-secondary btn-lg btn-block"}}
