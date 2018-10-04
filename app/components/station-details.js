@@ -18,6 +18,14 @@ export default Component.extend({
     }
   }),
 
+  inventoryAdded: observer('turnsLeft', 'socket.stateData.station.station_name', function() {
+    let station_name = get(this, 'socket.stateData.station.station_name');
+    if (get(this, 'turnsLeft') === 12 && station_name !== "venice_beach") {
+      const message = "Word on the street: Gus is now offering meat-hauling items.";
+      get(this, 'notifications').notifyConfirmation(message)
+    }
+  }),
+
   entryFee: computed('turnsLeft', 'station.base_crimte_rate', function() {
     const crime_rate = get(this, 'station.base_crimte_rate');
     const next_turn = 25 - get(this, 'turnsLeft');
