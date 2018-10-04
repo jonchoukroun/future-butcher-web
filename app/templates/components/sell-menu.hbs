@@ -17,14 +17,6 @@
   </h4>
 </div>
 
-{{#if errorMessage}}
-  {{#liquid-wormhole class="error-message bg-black border border-danger text-center"}}
-    <p class="mb-0 text-danger">
-      {{errorMessage}}
-    </p>
-  {{/liquid-wormhole}}
-{{/if}}
-
 <form class="transaction-form align-self-center" {{action 'submitSellCut' on='submit'}}>
   <div class="form-row">
     {{input type="number" value=sellAmount placeholder=cutsOwnedPlaceholder autofocus=true classNames="form-control form-control-lg mt-md-2" key-up="calculateProfit"}}
@@ -41,7 +33,7 @@
 
   {{else}}
     <div class="d-flex justify-content-center">
-      {{#if errorMessage}}
+      {{#if invalidSell}}
         <button class="btn btn-secondary btn-block btn-disabled">
           Sell for ${{number-format estimatedProfit decimals=0 thousandsSeparator=","}}
         </button>

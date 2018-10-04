@@ -17,14 +17,6 @@
   </h4>
 </div>
 
-{{#if errorMessage}}
-  {{#liquid-wormhole class="error-message bg-black border border-danger text-center"}}
-    <p class="mb-0 text-danger">
-      {{errorMessage}}
-    </p>
-  {{/liquid-wormhole}}
-{{/if}}
-
 <form class="transaction-form align-self-center" {{action 'submitBuyCut' on='submit'}}>
   <div class="form-row">
     {{input value=buyAmount type=number placeholder=maxCanBuyPlaceholder autofocus=true classNames="form-control form-control-lg mt-md-2" key-up='calculateCost'}}
@@ -41,7 +33,7 @@
 
   {{else}}
     <div class="d-flex justify-content-center">
-      {{#if errorMessage}}
+      {{#if invalidBuy}}
         <button class="btn btn-secondary btn-disabled btn-block">
           Buy {{buyAmount}} lbs for ${{number-format estimatedCost decimals=0 thousandsSeparator=","}}
         </button>

@@ -1,6 +1,5 @@
 import Controller from '@ember/controller'
-import { computed, get, set } from '@ember/object'
-import { later } from '@ember/runloop'
+import { computed, get } from '@ember/object'
 
 export default Controller.extend({
 
@@ -24,13 +23,6 @@ export default Controller.extend({
 
     sendToScores() {
       this.transitionToRoute('high-scores');
-    },
-
-    confirmTransaction(message) {
-      set(this, 'transactionAlert', message);
-      later(() => {
-        set(this, 'transactionAlert', null);
-      }, 1200);
     }
 
   }

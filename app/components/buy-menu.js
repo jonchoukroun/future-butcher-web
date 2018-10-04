@@ -1,13 +1,18 @@
 import Component from '@ember/component';
-import { computed, get, set } from '@ember/object';
+import { computed, get, observer, set } from '@ember/object';
 import { htmlSafe } from '@ember/string';
 import { weaponStats } from 'future-butcher-web/fixtures/store-items';
+import { inject as service } from '@ember/service';
 
 export default Component.extend({
 
   classNames: ['d-flex', 'flex-column', 'align-items-center', 'justify-content-between'],
 
-  cutName:      null,
+  cutName: null,
+
+  invalidBuy: false,
+
+  notifications: service('notification-service'),
 
   marketData: computed('socket.stateData.station.market', 'cutName', function() {
     let cutName = get(this, 'cutName');
@@ -62,10 +67,10 @@ export default Component.extend({
     return get(this, 'maxCanBuy') * get(this, 'cutPrice');
   }),
 
-  errorMessage: computed('buyAmount', 'maxAfford', 'maxSpace', 'cutsAvailable', function() {
-    let buyAmount = get(this, 'buyAmount');
-    let message;
+  validateEntry() {
+    const buyAmount = get(this, 'buyAmount');
 
+    let message;
     if (buyAmount > get(this, 'maxAfford')) {
       message = "You can't afford that many.";
     } else if (buyAmount > get(this, 'cutsAvailable')) {
@@ -73,11 +78,12 @@ export default Component.extend({
     } else if (buyAmount > get(this, 'maxSpace')) {
       message = "You don't have enough pack space."
     } else {
-      null;
+      message = null;
     }
 
-    return message;
-  }),
+    get(this, 'notifications').notifyError(message);
+    set(this, 'invalidBuy', message);
+  },
 
   buyCut() {
     let payload = {
@@ -86,9 +92,23 @@ export default Component.extend({
     };
 
     get(this, 'socket').pushCallBack("buy_cut", payload).then(() => {
+      this.generateConfirmation(payload);
       get(this, 'sendBuyMenuClose')();
-      get(this, 'sendTransactionConfirmed')("buy", payload, get(this, 'estimatedCost'))
     });
+  },
+
+  generateConfirmation(payload) {
+    const formatted_value = this.formatCurrency(get(this, 'estimatedCost'));
+    const unit = (payload.amount === 1) ? "lb" : "lbs";
+    const message = `Bought ${payload.amount} ${unit} of ${payload.cut} for ${formatted_value}!`
+
+    get(this, 'notifications').notifyConfirmation(message);
+  },
+
+  formatCurrency(value) {
+    if (this.isDestroyed || this.isDestroying) { return; }
+    return (value).toLocaleString("en-us",
+      { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
   },
 
   actions: {
@@ -98,8 +118,10 @@ export default Component.extend({
     },
 
     calculateCost() {
-      let cost = get(this, 'cutPrice') * get(this, 'buyAmount');
+      const cost = get(this, 'cutPrice') * get(this, 'buyAmount');
       set(this, 'estimatedCost', cost);
+
+      this.validateEntry();
     },
 
     clickBuyMax() {
