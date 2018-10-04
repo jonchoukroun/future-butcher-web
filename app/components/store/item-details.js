@@ -1,5 +1,6 @@
 import Component from '@ember/component';
 import { computed, get, set } from '@ember/object';
+import { inject as service } from '@ember/service';
 import { storeItems, weaponStats } from 'future-butcher-web/fixtures/store-items';
 import { later } from '@ember/runloop';
 
@@ -11,6 +12,8 @@ export default Component.extend({
   inTransaction: false,
 
   classNames: ['card', 'bg-black', 'border-0'],
+
+  notifications: service('notification-service'),
 
   isWeapon: computed('details', function() {
     return !!get(this, 'details.weight');
@@ -122,12 +125,28 @@ export default Component.extend({
   handleTransactionState(action) {
     later(() => {
       set(this, 'inTransaction', false);
-      get(this, 'sendTransactionConfirmation')({
-        action: action,
-        item: get(this, 'itemName'),
-        price: get(this, 'itemPrice')
-      })
+
+      let payload = { action: action, item: get(this, 'itemName') }
+      if (action !== "dropped") { payload.price = get(this, 'itemPrice'); }
+      this.confirmTransaction(payload);
     }, 300);
+  },
+
+  confirmTransaction(payload) {
+    let message;
+    if (payload.price) {
+      const price = this.formatCurrency(payload.price);
+      message = `${payload.item} ${payload.action} for ${price}.`;
+    } else {
+      message = `${payload.item} ${payload.action}.`;
+    }
+
+    get(this, 'notifications').notifyConfirmation(message);
+  },
+
+  formatCurrency(value) {
+    return (value).toLocaleString("en-us",
+      { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
   },
 
   actions: {

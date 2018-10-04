@@ -1,5 +1,6 @@
-import Component from '@ember/component'
-import { computed, get, set } from '@ember/object'
+import Component from '@ember/component';
+import { computed, get, set } from '@ember/object';
+import { inject as service } from '@ember/service';
 import { weaponStats } from 'future-butcher-web/fixtures/store-items';
 
 export default Component.extend({
@@ -10,8 +11,9 @@ export default Component.extend({
   showSellForm:     false,
   buyingCut:        false,
   sellingCut:       false,
-  transactionAlert: null,
   isInDebt:         null,
+
+  notifications: service('notification-service'),
 
   marketCuts: computed('gameStatus', 'socket.stateData.station.market', function() {
     if (get(this, 'socket.gameStatus') !== 'in_game') { return; }
@@ -43,25 +45,7 @@ export default Component.extend({
     return funds > 0;
   }),
 
-  formatCurrency(value) {
-    if (this.isDestroyed || this.isDestroying) { return; }
-    return (value).toLocaleString("en-us",
-      { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
-  },
-
   actions: {
-
-    sendTransactionConfirmed(action, payload, value) {
-      let formatted_value = this.formatCurrency(value);
-      let unit = (payload.amount === 1) ? "lb" : "lbs";
-      if (action === "buy") {
-        let message = `Bought ${payload.amount} ${unit} of ${payload.cut} for ${formatted_value}!`
-        get(this, 'sendTransactionAlert')(message);
-      } else {
-        let message = `Sold ${payload.amount} ${unit} of ${payload.cut} for ${formatted_value}!`
-        get(this, 'sendTransactionAlert')(message);
-      }
-    },
 
     openBuyMenu(cut) {
       set(this, 'showBuyForm', true);

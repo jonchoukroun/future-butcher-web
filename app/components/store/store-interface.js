@@ -1,6 +1,5 @@
 import Component from '@ember/component';
 import { computed, get, set } from '@ember/object';
-import { later } from '@ember/runloop';
 
 export default Component.extend({
 
@@ -36,11 +35,6 @@ export default Component.extend({
     return Object.keys(get(this, 'packsInventory')).length;
   }),
 
-  formatCurrency(value) {
-    return (value).toLocaleString("en-us",
-      { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
-  },
-
   actions: {
 
     showWeaponsStore() {
@@ -49,25 +43,6 @@ export default Component.extend({
 
     showPacksStore() {
       set(this, 'storeScreen', 'packs');
-    },
-
-    confirmTransaction(payload) {
-      set(this, 'storeScreen', null);
-
-      let message;
-      if (payload.price) {
-        const price = this.formatCurrency(payload.price);
-        message = `${payload.item} ${payload.action} for ${price}.`;
-      } else {
-        message = `${payload.item} ${payload.action}.`;
-      }
-
-      set(this, 'transactionAlert', message);
-      later(() => {
-        if (!get(this, 'isDestroyed') || !get(this, 'isDestroying')) {
-          set(this, 'transactionAlert', null);
-        }
-      }, 2200)
     },
 
     back() {

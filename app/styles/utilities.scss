@@ -1,21 +1,6 @@
-@font-face {
-  font-family: 'marvin-visions';
-  src: url("fonts/MarvinVisions-Bold.eot") format("eot");
-  src: url("fonts/MarvinVisions-Bold.woff2") format("woff2");
-  src: url("fonts/MarvinVisions-Bold.woff") format("woff");
-}
+@import './defaults';
 
-$brand-primary:   #5ad25a;
-$brand-secondary: #3c6c3c;
-$brand-danger:    #ed4848;
-$brand-black:     #282828;
-
-// muted orange
-// $brand-danger: #d3701e;
-
-// halloween edition
-// $brand-primary: #ed9348;
-// $brand-secondary: #d3701e;
+// Text  -----------------------------------------------------------------------
 
 .text-primary {
   color: $brand-primary !important;
@@ -55,6 +40,9 @@ $brand-black:     #282828;
     font-weight: bold;
   }
 }
+
+
+// Backgrounds -----------------------------------------------------------------
 
 .bg-black {
   background-color: $brand-black;

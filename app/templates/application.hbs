@@ -1,0 +1,25 @@
+<div class="container-fluid p-0">
+  <div class="row align-items-center justify-content-center m-0">
+    <div class="col-12 col-xl-8 p-0">
+
+      {{outlet}}
+
+      {{#if confirmationNotification}}
+        {{#liquid-wormhole class="notification bg-secondary border border-primary"}}
+          <p class="mb-0 text-center text-black font-weight-bold">
+            {{confirmationNotification}}
+          </p>
+        {{/liquid-wormhole}}
+      {{/if}}
+
+      {{#if errorNotification}}
+        {{#liquid-wormhole class="error-message bg-black border border-danger text-center"}}
+          <p class="mb-0 text-danger">
+            {{errorNotification}}
+          </p>
+        {{/liquid-wormhole}}
+      {{/if}}
+
+    </div>
+  </div>
+</div>

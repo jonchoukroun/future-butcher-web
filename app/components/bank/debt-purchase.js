@@ -1,5 +1,6 @@
 import Component from '@ember/component';
 import { computed, get, set } from '@ember/object';
+import { inject as service } from '@ember/service';
 import { loanOptions } from 'future-butcher-web/fixtures/loan-options';
 
 export default Component.extend({
@@ -10,6 +11,8 @@ export default Component.extend({
   isFirstTurn:  null,
   playerFunds:  null,
   playerDebt:   null,
+
+  notifications: service('notification-service'),
 
   init() {
     this._super(...arguments);
@@ -47,6 +50,19 @@ export default Component.extend({
     }
   }),
 
+  confirmLoanBought(payload) {
+    const debt = this.formatCurrency(payload.debt);
+    const rate = Math.floor(payload.rate * 100);
+    const message = `You bought a ${debt} loan with a ${rate}% interest rate.`;
+    get(this, 'notifications').notifyConfirmation(message);
+  },
+
+  formatCurrency(value) {
+    if (this.isDestroyed || this.isDestroying) { return; }
+    return (value).toLocaleString("en-us",
+      { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
+  },
+
   actions: {
 
     selectLoan(debt, rate) {
@@ -58,6 +74,7 @@ export default Component.extend({
     buyLoan() {
       const payload = { debt: get(this, 'debt'), rate: get(this, 'rate') };
       get(this, 'socket').pushCallBack("buy_loan", payload).then(() => {
+        this.confirmLoanBought(payload)
         get(this, 'sendToMarket')();
         set(this, 'debt', null);
         set(this, 'rate', null);

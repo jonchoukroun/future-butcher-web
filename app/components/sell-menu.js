@@ -1,12 +1,17 @@
 import Component from '@ember/component'
+import { computed, get, set } from '@ember/object';
+import { inject as service } from '@ember/service';
 import { htmlSafe } from '@ember/string'
-import { computed, get, set } from '@ember/object'
 
 export default Component.extend({
 
   classNames: ['d-flex', 'flex-column', 'align-items-center', 'justify-content-between'],
 
-  cutName:      null,
+  cutName: null,
+
+  invalidSell: null,
+
+  notifications: service('notification-service'),
 
   cutPrice: computed('socket.stateData.station.market', 'cutName', function() {
     return get(this, 'socket.stateData.station.market')[get(this, 'cutName')].price;
@@ -26,17 +31,17 @@ export default Component.extend({
     return htmlSafe(`You can sell ${owned} ${pluralizedPound}`);
   }),
 
-  errorMessage: computed('sellAmount', 'cutsOwned', function() {
+  validateEntry() {
     let message;
-
     if (get(this, 'sellAmount') > get(this, 'cutsOwned')) {
       message = "You don't own that many.";
     } else {
-      null;
+      message = null;
     }
 
-    return message;
-  }),
+    get(this, 'notifications').notifyError(message);
+    set(this, 'invalidSell', message);
+  },
 
   sellCut() {
     let payload = {
@@ -45,9 +50,23 @@ export default Component.extend({
     };
 
     get(this, 'socket').pushCallBack("sell_cut", payload).then(() => {
+      this.generateConfirmation(payload);
       get(this, 'sendSellMenuClose')();
-      get(this, 'sendTransactionConfirmed')("sell", payload, get(this, 'estimatedProfit'))
     });
+  },
+
+  generateConfirmation(payload) {
+    const formatted_value = this.formatCurrency(get(this, 'estimatedProfit'));
+    const unit = (payload.amount === 1) ? "lb" : "lbs";
+    const message = `Sold ${payload.amount} ${unit} of ${payload.cut} for ${formatted_value}!`
+
+    get(this, 'notifications').notifyConfirmation(message);
+  },
+
+  formatCurrency(value) {
+    if (this.isDestroyed || this.isDestroying) { return; }
+    return (value).toLocaleString("en-us",
+      { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
   },
 
   actions: {
@@ -59,6 +78,8 @@ export default Component.extend({
     calculateProfit() {
       let profit = get(this, 'cutPrice') * get(this, 'sellAmount');
       set(this, 'estimatedProfit', profit);
+
+      this.validateEntry();
     },
 
     clickSellMax() {

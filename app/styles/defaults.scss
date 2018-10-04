@@ -1,11 +1,20 @@
-@import './utilities';
 
-.full-screen {
-  overflow: hidden;
-}
 
-.top-spacer {
-  padding-top: 65px;
+// Color palette ---------------------------------------------------------------
+
+$brand-primary:   #5ad25a;
+$brand-secondary: #3c6c3c;
+$brand-danger:    #ed4848;
+$brand-black:     #282828;
+
+
+// Typography ------------------------------------------------------------------
+
+@font-face {
+  font-family: 'marvin-visions';
+  src: url("fonts/MarvinVisions-Bold.eot") format("eot");
+  src: url("fonts/MarvinVisions-Bold.woff2") format("woff2");
+  src: url("fonts/MarvinVisions-Bold.woff") format("woff");
 }
 
 h3.page-heading {
@@ -13,6 +22,38 @@ h3.page-heading {
   font-size: 1.2rem;
   letter-spacing: 0.35rem;
 }
+
+@media (min-width: 375px) {
+  h3.page-heading {
+    font-size: 1.4rem;
+    letter-spacing: 0.5rem;
+  }
+}
+
+@media (min-width: 414px) {
+  h3.page-heading { letter-spacing: 0.7rem; }
+}
+
+@media (min-width: 768px) {
+  h3.page-heading { letter-spacing: 0.5rem; }
+}
+
+@media (min-width: 992px) {
+  h3.page-heading {
+    font-size: 1.8rem;
+    letter-spacing: 0.7rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  h3.page-heading {
+    font-size: 1.5rem;
+    letter-spacing: 0.83rem;
+  }
+}
+
+
+// Inputs ----------------------------------------------------------------------
 
 input.form-control {
   background-color: $brand-black;
@@ -34,6 +75,9 @@ input.form-control:focus {
   color: $brand-primary;
   font-weight: 800 !important;
 }
+
+
+// Buttons ---------------------------------------------------------------------
 
 .btn-group-lg > .btn {
   border-radius: 2px;
@@ -158,12 +202,23 @@ input.form-control:focus {
   &:active { @extend %steadyState; }
 }
 
-.list-group-item {
-  background-color: transparent;
-  padding-left: 0;
-  padding-right: 0;
-  border: none;
+@media (max-width: 414px) {
+  .btn-secondary.btn-lg.btn-block {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+  }
 }
+
+@media (max-width: 350px) {
+  .btn-secondary.btn-lg.btn-block { font-size: 14px; }
+}
+
+@media (min-width: 768px) {
+  .btn.btn-primary { font-size: 22px; }
+}
+
+
+// Borders ---------------------------------------------------------------------
 
 .border {
   border: 1px solid;
@@ -186,53 +241,57 @@ input.form-control:focus {
   border-color: black !important;
 }
 
-.transaction-alert {
-  position: absolute;
-  width: 100%;
-  top: -7vh;
+
+// Notifications ---------------------------------------------------------------
+
+.notification {
+  position: fixed;
+  top: 10px;
   left: 50%;
-  margin-left: -50%;
-  z-index: 10000;
+  width: 95%;
+  margin-left: -47.5%;
+  padding: 1em;
 }
 
-@media (max-width: 414px) {
-  .btn-secondary.btn-lg.btn-block {
-    padding-left: 0.8rem;
-    padding-right: 0.8rem;
-  }
-}
-
-@media (max-width: 350px) {
-  .btn-secondary.btn-lg.btn-block { font-size: 14px; }
-}
-
-@media (min-width: 375px) {
-  h3.page-heading {
-    font-size: 1.4rem;
-    letter-spacing: 0.5rem;
-  }
-}
-
-@media (min-width: 414px) {
-  h3.page-heading { letter-spacing: 0.7rem; }
+.error-message {
+  @extend .notification;
 }
 
 @media (min-width: 768px) {
-  .btn.btn-primary { font-size: 22px; }
-
-  h3.page-heading { letter-spacing: 0.5rem; }
+  .notification {
+    width: 65%;
+    margin-left: -32.5%;
+  }
 }
 
 @media (min-width: 992px) {
-  h3.page-heading {
-    font-size: 1.8rem;
-    letter-spacing: 0.7rem;
+  .notification {
+    width: 50%;
+    margin-left: -25%;
   }
 }
 
 @media (min-width: 1200px) {
-  h3.page-heading {
-    font-size: 1.5rem;
-    letter-spacing: 0.83rem;
+  .notification {
+    width: 33%;
+    margin-left: -16.5%;
   }
+}
+
+
+// Miscellaneous ---------------------------------------------------------------
+
+.full-screen {
+  overflow: hidden;
+}
+
+.top-spacer {
+  padding-top: 65px;
+}
+
+.list-group-item {
+  background-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+  border: none;
 }

@@ -10,7 +10,7 @@
 
   <div id="storeAccordion" class="accordion">
     {{#each-in weaponsInventory as |weapon details|}}
-      {{store/item-details item=weapon details=details sendTransactionConfirmation=(action 'confirmTransaction')}}
+      {{store/item-details item=weapon details=details}}
     {{/each-in}}
   </div>
 
@@ -24,7 +24,7 @@
 
   <div id="storeAccordion" class="accordion">
     {{#each-in packsInventory as |pack details|}}
-      {{store/item-details item=pack details=details sendTransactionConfirmation=(action 'confirmTransaction')}}
+      {{store/item-details item=pack details=details}}
     {{/each-in}}
   </div>
 

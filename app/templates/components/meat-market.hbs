@@ -1,10 +1,10 @@
 {{#if showBuyForm}}
 
-  {{buy-menu cutName=buyingCut sendBuyMenuClose=(action 'closeBuyMenu') sendTransactionConfirmed=(action 'sendTransactionConfirmed')}}
+  {{buy-menu cutName=buyingCut sendBuyMenuClose=(action 'closeBuyMenu')}}
 
 {{else if showSellForm}}
 
-  {{sell-menu cutName=sellingCut sendSellMenuClose=(action 'closeSellMenu') sendTransactionConfirmed=(action 'sendTransactionConfirmed')}}
+  {{sell-menu cutName=sellingCut sendSellMenuClose=(action 'closeSellMenu')}}
 
 {{else}}
 

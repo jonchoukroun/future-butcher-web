@@ -1,6 +1,5 @@
-import Controller from '@ember/controller'
-import { computed, get, set } from '@ember/object'
-import { later } from '@ember/runloop'
+import Controller from '@ember/controller';
+import { computed, get } from '@ember/object';
 
 export default Controller.extend({
 
@@ -24,13 +23,6 @@ export default Controller.extend({
 
     redirectToMarket() {
       this.transitionToRoute('market');
-    },
-
-    confirmDebtPaid() {
-      set(this, 'transactionAlert', "You paid your debt to the Shavings & Bone Bank.");
-      later(() => {
-        set(this, 'transactionAlert', null);
-      }, 1200);
     }
 
   }
