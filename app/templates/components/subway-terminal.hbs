@@ -13,12 +13,12 @@
         You owe ${{number-format playerDebt decimals=0 thousandsSeparator=","}}...
       </p>
 
-      {{#if (gt playerFunds playerDebt)}}
-        <div class="btn btn-secondary my-0" {{action 'payDebt'}}>
-          Pay your loan
-        </div>
+      {{#if (and (gt playerFunds playerDebt) (eq currentStation 'downtown'))}}
+        {{#link-to 'bank' class="btn btn-secondary my-0"}}
+          Pay your debt
+        {{/link-to}}
       {{else}}
-        <p>But you don't have the cash to pay it off, deadbeat.</p>
+        <p>But you can't pay it off, deadbeat.</p>
       {{/if}}
     {{/if}}
 
@@ -37,9 +37,6 @@
       {{/link-to}}
     {{/if}}
 
-    {{#link-to 'market' class="btn btn-secondary btn-lg btn-block align-self-center mb-2"}}
-      Back
-    {{/link-to}}
     <div class="btn btn-secondary btn-block btn-lg align-self-center" {{action 'retirePlayer'}}>
       Cross the border anyway
     </div>

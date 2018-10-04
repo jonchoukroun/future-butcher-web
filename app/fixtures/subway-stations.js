@@ -2,14 +2,14 @@ const subwayStations = [
   {
     name:    "downtown",
     display: "Downtown",
-    cuts_list: "Flank, ribs",
+    cuts_list: "Heart, flank, ribs",
     description: "Tight security.",
     base_crimte_rate: 2,
   },
   {
     name:    "hollywood",
     display: "Hollywood",
-    cuts_list: "Ribs, loin, liver",
+    cuts_list: "Loin, liver",
     description: "Rough, grimy, seedy.",
     base_crimte_rate: 4,
   },
