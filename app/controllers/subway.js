@@ -60,7 +60,7 @@ export default Controller.extend({
     },
 
     sendEndGame(payload) {
-      this.endGame(payload);
+      this.endGame(payload, 'high-scores');
     },
 
     payDebt() {
