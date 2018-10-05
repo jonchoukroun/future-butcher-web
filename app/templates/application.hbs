@@ -22,12 +22,12 @@
 
       {{#if pinnedNotification}}
         {{#liquid-wormhole class="pinned-message bg-secondary border border-primary"}}
-          <div class="text-right" {{action 'unpinNotification'}}>
+          <div class="text-right" {{action 'unpinNotification' on='click'}}>
             <p class="mb-0 text-center text-black font-weight-bold">
               {{pinnedNotification}}
             </p>
 
-            <p class="mt-3 mb-0">Close</p>
+            <div class="btn btn-simple p-0" {{action 'unpinNotification'}}>Close</div>
           </div>
         {{/liquid-wormhole}}
       {{/if}}
