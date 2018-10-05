@@ -26,8 +26,8 @@ export default Component.extend({
     }
   }),
 
-  entryFee: computed('turnsLeft', 'station.base_crimte_rate', function() {
-    const crime_rate = get(this, 'station.base_crimte_rate');
+  entryFee: computed('turnsLeft', 'station.base_crime_rate', function() {
+    const crime_rate = get(this, 'station.base_crime_rate');
     const next_turn = 25 - get(this, 'turnsLeft');
     let fee = (2 * (5 - crime_rate)) * Math.pow(next_turn, 2) - (100 * crime_rate) + 500
     return Math.round(fee);
