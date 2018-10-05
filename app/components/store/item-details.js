@@ -134,14 +134,20 @@ export default Component.extend({
 
   confirmTransaction(payload) {
     let message;
+
     if (payload.price) {
       const price = this.formatCurrency(payload.price);
-      message = `${payload.item} ${payload.action} for ${price}.`;
+
+      if (payload.action === "replaced") {
+        message = `Replaced your weapon with ${payload.item} for ${price}.`
+      } else {
+        message = `${payload.item} ${payload.action} for ${price}.`;
+      }
     } else {
       message = `${payload.item} ${payload.action}.`;
     }
 
-    get(this, 'notifications').notifyConfirmation(message);
+    get(this, 'notifications').renderNotification(message);
   },
 
   formatCurrency(value) {

@@ -81,7 +81,7 @@ export default Component.extend({
       message = null;
     }
 
-    get(this, 'notifications').notifyError(message);
+    get(this, 'notifications').renderError(message);
     set(this, 'invalidBuy', message);
   },
 
@@ -102,7 +102,7 @@ export default Component.extend({
     const unit = (payload.amount === 1) ? "lb" : "lbs";
     const message = `Bought ${payload.amount} ${unit} of ${payload.cut} for ${formatted_value}!`
 
-    get(this, 'notifications').notifyConfirmation(message);
+    get(this, 'notifications').renderNotification(message);
   },
 
   formatCurrency(value) {

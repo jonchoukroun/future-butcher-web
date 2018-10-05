@@ -23,7 +23,7 @@ export default Component.extend({
   confirmDebtPaid(debt) {
     const formatted_debt = this.formatCurrency(debt);
     const message = `You paid your ${formatted_debt} debt to the Shavings & Bone Bank.`;
-    get(this, 'notifications').notifyConfirmation(message);
+    get(this, 'notifications').renderNotification(message);
   },
 
   formatCurrency(value) {

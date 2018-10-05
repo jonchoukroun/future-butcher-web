@@ -15,6 +15,18 @@ export default Controller.extend({
 
   errorNotification: computed('notifications.errorMessage', function() {
     return get(this, 'notifications.errorMessage');
-  })
+  }),
+
+  pinnedNotification: computed('notifications.pinnedMessage', function() {
+    return get(this, 'notifications.pinnedMessage');
+  }),
+
+  actions: {
+
+    unpinNotification() {
+      get(this, 'notifications').unpinNotification();
+    }
+
+  }
 
 });

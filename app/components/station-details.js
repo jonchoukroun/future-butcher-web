@@ -14,7 +14,7 @@ export default Component.extend({
     let station_name = get(this, 'socket.stateData.station.station_name');
     if (get(this, 'turnsLeft') === 18 && station_name !== "venice_beach") {
       const message = "Gus's Army Surplus Store is now open in Venice Beach.";
-      get(this, 'notifications').notifyConfirmation(message)
+      get(this, 'notifications').pinNotification(message)
     }
   }),
 
@@ -22,7 +22,7 @@ export default Component.extend({
     let station_name = get(this, 'socket.stateData.station.station_name');
     if (get(this, 'turnsLeft') === 12 && station_name !== "venice_beach") {
       const message = "Word on the street: Gus is now offering meat-hauling items.";
-      get(this, 'notifications').notifyConfirmation(message)
+      get(this, 'notifications').pinNotification(message)
     }
   }),
 

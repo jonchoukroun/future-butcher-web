@@ -54,7 +54,7 @@ export default Component.extend({
     const debt = this.formatCurrency(payload.debt);
     const rate = Math.floor(payload.rate * 100);
     const message = `You bought a ${debt} loan with a ${rate}% interest rate.`;
-    get(this, 'notifications').notifyConfirmation(message);
+    get(this, 'notifications').renderNotification(message);
   },
 
   formatCurrency(value) {

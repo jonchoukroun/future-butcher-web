@@ -260,6 +260,10 @@ input.form-control:focus {
   @extend .notification;
 }
 
+.pinned-message {
+  @extend .notification;
+}
+
 @media (min-width: 768px) {
   .notification {
     width: 65%;
