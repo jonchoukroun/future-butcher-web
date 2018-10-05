@@ -8,7 +8,7 @@ export default Route.extend({
 
     this.handleRouteRedirect();
 
-    if (get(this, 'isFirstTurn') && get(this, 'hasNoFunds')) {
+    if (get(this, 'isFirstTurn') && get(this, 'hasNoDebt')) {
       this.replaceWith('bank');
     }
   },
@@ -29,8 +29,8 @@ export default Route.extend({
     return get(this, 'socket.stateData.rules.turns_left') === 24;
   }),
 
-  hasNoFunds: computed('socket.stateData.player.funds', function() {
-    return !get(this, 'socket.stateData.player.funds') > 0
+  hasNoDebt: computed('socket.stateData.player.debt', function() {
+    return !get(this, 'socket.stateData.player.debt') > 0
   })
 
 })
