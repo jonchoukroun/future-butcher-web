@@ -6,6 +6,7 @@ export default Controller.extend({
 
   confirmationMessage: null,
   errorMessage:        null,
+  pinnedNotification:  null,
 
   notifications: service('notification-service'),
 
