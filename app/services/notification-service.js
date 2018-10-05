@@ -6,16 +6,25 @@ export default Service.extend({
 
   confirmationMessage: null,
   errorMessage: null,
+  pinnedMessage: null,
 
-  notifyConfirmation(message) {
+  renderNotification(message) {
     set(this, 'confirmationMessage', message);
     later(() => {
       set(this, 'confirmationMessage', null);
     }, 1300);
   },
 
-  notifyError(message) {
+  renderError(message) {
     set(this, 'errorMessage', message);
+  },
+
+  pinNotification(message) {
+    set(this, 'pinnedMessage', message);
+  },
+
+  unpinNotification() {
+    set(this, 'pinnedMessage', null);
   }
 
 });
