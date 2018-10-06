@@ -10,11 +10,27 @@ $brand-black:     #282828;
 
 // Typography ------------------------------------------------------------------
 
+@import url('https://fonts.googleapis.com/css?family=Baumans|Michroma|Space+Mono');
 @font-face {
   font-family: 'marvin-visions';
   src: url("fonts/MarvinVisions-Bold.eot") format("eot");
   src: url("fonts/MarvinVisions-Bold.woff2") format("woff2");
   src: url("fonts/MarvinVisions-Bold.woff") format("woff");
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'marvin-visions', sans-serif;
+  letter-spacing: 1px;
+}
+
+p {
+  font-family: 'Space Mono', monospace;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 320px) {
+  p { font-size: 13px; }
 }
 
 h3.page-heading {
