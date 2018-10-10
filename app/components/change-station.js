@@ -9,7 +9,7 @@ export default Component.extend({
 
   click() {
     let payload = { destination: "koreatown" };
-    get(this, 'socket').pushCallBack("change_station", payload);
+    this.socket.pushCallBack("change_station", payload);
   }
 
 })

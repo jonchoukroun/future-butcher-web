@@ -1,87 +1,91 @@
 import Component from '@ember/component';
-import { computed, get, set } from '@ember/object';
-import { inject as service } from '@ember/service';
+import { computed } from '@ember-decorators/object';
+import { service } from '@ember-decorators/service';
+import { action } from '@ember-decorators/component';
+
 import { loanOptions } from 'future-butcher-web/fixtures/loan-options';
 
-export default Component.extend({
+export default class DebtPurchaseComponent extends Component {
 
-  debt:         null,
-  rate:         null,
-  selectedLoan: null,
-  isFirstTurn:  null,
-  playerFunds:  null,
-  playerDebt:   null,
+  debt         = null;
+  rate         = null;
+  selectedLoan = null;
+  isFirstTurn  = null;
+  playerFunds  = null;
+  playerDebt   = null;
 
-  notifications: service('notification-service'),
+  @service('notification-service') notifications;
 
-  init() {
+  constructor() {
     this._super(...arguments);
 
-    set(this, 'loanOptions', loanOptions);
-  },
+    this.set('loanOptions', loanOptions);
+  }
 
-  playerPack: computed('socket.stateData.player.pack', function() {
-    return get(this, 'socket.stateData.player.pack');
-  }),
+  @computed('socket.stateData.player.pack')
+  get playerPack() {
+    return this.get('socket.stateData.player.pack');
+  }
 
-  currentMarket: computed('socket.stateData.station.market', function() {
-    return get(this, 'socket.stateData.station.market');
-  }),
+  @computed('socket.stateData.station.market')
+  get currentMarket() {
+    return this.get('socket.stateData.station.market');
+  }
 
-  estimatedCutsValue: computed('currentMarket', 'playerPack', function() {
+  @computed('currentMarket', 'playerPack')
+  get estimatedCutsValue() {
     let sum = 0;
-    const pack = get(this, 'playerPack');
+    const pack = this.get('playerPack');
 
     Object.keys(pack).map(cut => {
-      const market_cut = get(this, 'currentMarket')[cut];
+      const market_cut = this.get('currentMarket')[cut];
       if (market_cut) {
         sum += market_cut.price * pack[cut];
       }
     });
     return sum * 0.8;
-  }),
+  }
 
-  totalPlayerValue: computed('estimatedCutsValue', 'playerFunds', function() {
-    const value = get(this, 'estimatedCutsValue') + get(this, 'playerFunds');
+  @computed('estimatedCutsValue', 'playerFunds')
+  get totalPlayerValue() {
+    const value = this.get('estimatedCutsValue') + this.get('playerFunds');
     if (value > 0) {
       return value;
     } else {
       return 5001;
     }
-  }),
+  }
 
   confirmLoanBought(payload) {
     const debt = this.formatCurrency(payload.debt);
     const rate = Math.floor(payload.rate * 100);
     const message = `You bought a ${debt} loan with a ${rate}% interest rate.`;
-    get(this, 'notifications').renderNotification(message);
-  },
+    this.get('notifications').renderNotification(message);
+  }
 
   formatCurrency(value) {
     if (this.isDestroyed || this.isDestroying) { return; }
     return (value).toLocaleString("en-us",
       { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
-  },
-
-  actions: {
-
-    selectLoan(debt, rate) {
-      set(this, 'selectedLoan', debt);
-      set(this, 'debt', debt);
-      set(this, 'rate', rate);
-    },
-
-    buyLoan() {
-      const payload = { debt: get(this, 'debt'), rate: get(this, 'rate') };
-      get(this, 'socket').pushCallBack("buy_loan", payload).then(() => {
-        this.confirmLoanBought(payload)
-        get(this, 'sendToMarket')();
-        set(this, 'debt', null);
-        set(this, 'rate', null);
-        set(this, 'selectedLoan', null);
-      })
-    }
-
   }
 
-});
+  @action
+  selectLoan(debt, rate) {
+    this.set('selectedLoan', debt);
+    this.set('debt', debt);
+    this.set('rate', rate);
+  }
+
+  @action
+  buyLoan() {
+    const payload = { debt: this.get('debt'), rate: this.get('rate') };
+    this.get('socket').pushCallBack("buy_loan", payload).then(() => {
+      this.confirmLoanBought(payload)
+      this.get('sendToMarket')();
+      this.set('debt', null);
+      this.set('rate', null);
+      this.set('selectedLoan', null);
+    })
+  }
+
+}

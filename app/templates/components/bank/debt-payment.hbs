@@ -2,7 +2,7 @@
   <p>Come back here to pay off your debt when you have enough cash.</p>
   <p>Don't take too long, that interest accrues fast!</p>
 
-  {{#link-to 'market' class="btn btn-secondary btn-lg btn-block"}}
+  {{#link-to "market" class="btn btn-secondary btn-lg btn-block"}}
     Hit the market
   {{/link-to}}
 {{else}}
@@ -13,9 +13,9 @@
   <p>Are you ready to pay?</p>
 
   <div class="btn-group w-100">
-    <div class="btn btn-secondary btn-lg btn-eq-flex" {{action 'payDebt'}}>Pay in full</div>
+    <button class="btn btn-secondary btn-lg btn-eq-flex" {{action "payDebt"}}>Pay in full</button>
 
-    {{#link-to 'market' class="btn btn-secondary btn-lg btn-eq-flex"}}
+    {{#link-to "market" class="btn btn-secondary btn-lg btn-eq-flex"}}
       Not yet
     {{/link-to}}
   </div>

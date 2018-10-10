@@ -1,6 +1,8 @@
-<div class="btn btn-secondary btn-sm align-self-end" {{action 'clickBack'}}>
+<button
+  class="btn btn-secondary btn-sm align-self-end"
+  {{action "clickBack"}}>
   <i class="fas fa-times"></i>
-</div>
+</button>
 
 <div class="d-flex flex-row">
   <h4>
@@ -17,16 +19,27 @@
   </h4>
 </div>
 
-<form class="transaction-form align-self-center" {{action 'submitBuyCut' on='submit'}}>
+<form
+  class="transaction-form align-self-center"
+  {{action "submitBuyCut" on="submit"}}>
+
   <div class="form-row">
-    {{input value=buyAmount type=number placeholder=maxCanBuyPlaceholder autofocus=true classNames="form-control form-control-lg mt-md-2" key-up='calculateCost'}}
+    {{input
+      value=buyAmount
+      type=number
+      placeholder=maxCanBuyPlaceholder
+      autofocus="true"
+      classNames="form-control form-control-lg mt-md-2"
+      key-up=(action "calculateCost")}}
   </div>
 
   {{#if (not buyAmount)}}
     <div class="d-flex flex-column align-items-center justify-content-center">
-      <div class="btn btn-secondary btn-block" {{action 'clickBuyMax'}}>
+      <button
+        class="btn btn-secondary btn-block"
+        {{action "clickBuyMax"}}>
         Buy {{maxCanBuy}} lbs for ${{number-format maxCanBuyCost decimals=0 thousandsSeparator=","}}
-      </div>
+      </button>
 
       <p class="small">Or enter a different amount.</p>
     </div>
@@ -38,7 +51,7 @@
           Buy {{buyAmount}} lbs for ${{number-format estimatedCost decimals=0 thousandsSeparator=","}}
         </button>
       {{else}}
-        <button type='submit' class="btn btn-secondary btn-block">
+        <button type="submit" class="btn btn-secondary btn-block">
           Buy {{buyAmount}} lbs for ${{number-format estimatedCost decimals=0 thousandsSeparator=","}}
         </button>
       {{/if}}

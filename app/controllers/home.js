@@ -1,17 +1,8 @@
 import Controller from '@ember/controller'
-import { get, set } from '@ember/object'
 
 export default Controller.extend({
 
   screen: 'intro',
-
-  handleTutorialMessages() {
-    if (get(this, 'isTutorialEnabled')) {
-      localStorage.removeItem('closed-debt-tutorial');
-      localStorage.removeItem('closed-funds-tutorial');
-      localStorage.removeItem('closed-turns-tutorial');
-    }
-  },
 
   actions: {
 
@@ -21,7 +12,7 @@ export default Controller.extend({
 
     nextScreen() {
       const screens = ['intro', 'packs', 'turns', 'start'];
-      set(this, 'screen', screens[screens.indexOf(get(this, 'screen')) + 1])
+      set(this, 'screen', screens[screens.indexOf(this.screen) + 1])
     },
 
     setTutorialSelection(selection) {
@@ -31,7 +22,7 @@ export default Controller.extend({
     startGame() {
       this.handleTutorialMessages();
 
-      get(this, 'socket').pushCallBack("start_game", {}).then(() => {
+      this.socket.pushCallBack("start_game", {}).then(() => {
         set(this, 'screen', 'intro');
         this.transitionToRoute('bank');
       })

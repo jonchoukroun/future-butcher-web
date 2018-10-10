@@ -20,13 +20,13 @@ export default Component.extend({
   actions: {
 
     toggleTutorials() {
-      if (get(this, 'isEnabled')) {
+      if (this.isEnabled) {
         set(this, 'isEnabled', false);
       } else {
         set(this, 'isEnabled', true);
       }
 
-      get(this, 'sendTutorialSelection')(get(this, 'isEnabled'));
+      this.sendTutorialSelection(this.isEnabled);
     }
 
   }

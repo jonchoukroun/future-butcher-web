@@ -6,8 +6,8 @@ export default Component.extend({
   didReceiveAttrs() {
     this._super(...arguments);
 
-    if (!get(this, 'scores')) {
-      get(this, 'socket').getScores().then((response) => {
+    if (!this.scores) {
+      this.socket.getScores().then((response) => {
         set(this, 'scores', response.state_data);
       })
     }

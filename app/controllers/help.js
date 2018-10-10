@@ -8,7 +8,7 @@ export default Controller.extend({
     quitGame() {
       let payload = { hash_id: localStorage.getItem('player_hash'), score: 0 };
 
-      get(this, 'socket').pushCallBack('end_game', payload).then(() => {
+      this.socket.pushCallBack('end_game', payload).then(() => {
         this.transitionToRoute('high-scores');
       });
     }

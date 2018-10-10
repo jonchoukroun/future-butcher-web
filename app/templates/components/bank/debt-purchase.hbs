@@ -12,13 +12,26 @@
   {{#each loanOptions as |loan|}}
     {{#if (gt totalPlayerValue loan.debt)}}
       {{#if (eq selectedLoan loan.debt)}}
-        {{loan-purchase debt=loan.debt rate=loan.rate isDisabled=false isSelected=true sendLoanSelect=(action 'selectLoan')}}
+        {{loan-purchase
+          debt=loan.debt
+          rate=loan.rate
+          isDisabled=false
+          isSelected=true
+          sendLoanSelect=(action "selectLoan")}}
       {{else}}
-        {{loan-purchase debt=loan.debt rate=loan.rate isDisabled=false sendLoanSelect=(action 'selectLoan')}}
+        {{loan-purchase
+          debt=loan.debt
+          rate=loan.rate
+          isDisabled=false
+          sendLoanSelect=(action "selectLoan")}}
       {{/if}}
 
     {{else}}
-      {{loan-purchase debt=loan.debt rate=loan.rate isDisabled=true sendLoanSelect=(action 'selectLoan')}}
+      {{loan-purchase
+        debt=loan.debt
+        rate=loan.rate
+        isDisabled=true
+        sendLoanSelect=(action "selectLoan")}}
     {{/if}}
   {{/each}}
 </div>
@@ -26,29 +39,34 @@
 <div class="text-center">
   {{#if isFirstTurn}}
     {{#if (and debt rate)}}
-      <div class="btn btn-secondary btn-lg btn-block" {{action 'buyLoan'}}>
+      <button
+        class="btn btn-secondary btn-lg btn-block"
+        {{action "buyLoan"}}>
         Buy loan
-      </div>
+      </button>
     {{else}}
-      <div class="btn btn-secondary btn-lg btn-block btn-disabled">
+      <button
+        class="btn btn-secondary btn-lg btn-block btn-disabled">
         Select a loan
-      </div>
+      </button>
     {{/if}}
 
   {{else}}
     <div class="btn-group w-100">
-      {{#link-to 'market' class="btn btn-secondary btn-lg btn-eq-flex"}}
+      {{#link-to "market" class="btn btn-secondary btn-lg btn-eq-flex"}}
         Market
       {{/link-to}}
 
       {{#if (and debt rate)}}
-        <div class="btn btn-secondary btn-lg btn-eq-flex" {{action 'buyLoan'}}>
+        <button
+          class="btn btn-secondary btn-lg btn-eq-flex"
+          {{action "buyLoan"}}>
           Buy
-        </div>
+        </button>
       {{else}}
-        <div class="btn btn-secondary btn-lg btn-disabled btn-eq-flex">
+        <button class="btn btn-secondary btn-lg btn-disabled btn-eq-flex">
           Select...
-        </div>
+        </button>
       {{/if}}
     </div>
   {{/if}}

@@ -1,6 +1,6 @@
 <div class="container-fluid full-screen top-spacer">
 
-  {{stats-bar sendQuit=(action 'sendToScores')}}
+  {{stats-bar sendQuit=(action "sendToScores")}}
 
   <div class="row justify-content-center">
     <div class="col-12 col-sm-10 col-md-6 mt-md-4">
@@ -14,7 +14,7 @@
       {{#if (gt playerDebt 0)}}
         {{bank/debt-payment isFirstTurn=isFirstTurn playerFunds=playerFunds playerDebt=playerDebt}}
       {{else}}
-        {{bank/debt-purchase isFirstTurn=isFirstTurn playerFunds=playerFunds sendToMarket=(action 'redirectToMarket')}}
+        {{bank/debt-purchase isFirstTurn=isFirstTurn playerFunds=playerFunds sendToMarket=(action "redirectToMarket")}}
       {{/if}}
 
     </div>
