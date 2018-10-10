@@ -1,0 +1,322 @@
+// =========================== Future Butcher Theme ===========================
+// ============================================================================
+
+
+// Color palette ---------------------------------------------------------------
+
+$brand-primary:   #62d162;
+$brand-secondary: #4f874f;
+$brand-danger:    #ea7d62;
+$brand-black:     #091409;
+$brand-warning:   #f9e784;
+
+// Typography ------------------------------------------------------------------
+
+@import url('https://fonts.googleapis.com/css?family=Baumans|Michroma|Space+Mono');
+@font-face {
+  font-family: 'marvin-visions';
+  src: url("fonts/MarvinVisions-Bold.eot") format("eot");
+  src: url("fonts/MarvinVisions-Bold.woff2") format("woff2");
+  src: url("fonts/MarvinVisions-Bold.woff") format("woff");
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'marvin-visions', sans-serif;
+  letter-spacing: 1px;
+}
+
+p {
+  font-family: 'Space Mono', monospace;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 320px) {
+  p { font-size: 13px; }
+}
+
+h3.page-heading {
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  letter-spacing: 0.35rem;
+}
+
+@media (min-width: 375px) {
+  h3.page-heading {
+    font-size: 1.4rem;
+    letter-spacing: 0.5rem;
+  }
+}
+
+@media (min-width: 414px) {
+  h3.page-heading { letter-spacing: 0.7rem; }
+}
+
+@media (min-width: 768px) {
+  h3.page-heading { letter-spacing: 0.5rem; }
+}
+
+@media (min-width: 992px) {
+  h3.page-heading {
+    font-size: 1.8rem;
+    letter-spacing: 0.7rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  h3.page-heading {
+    font-size: 1.5rem;
+    letter-spacing: 0.83rem;
+  }
+}
+
+
+// Inputs ----------------------------------------------------------------------
+
+input.form-control {
+  background-color: $brand-black;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-color: $brand-secondary;
+  border-radius: 0;
+  font-family: 'Space Mono', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  transition: all 0.5s ease-out;
+}
+
+input.form-control:focus {
+  @extend input, .form-control;
+  border-color: $brand-primary;
+  box-shadow: none;
+  color: $brand-primary;
+  font-weight: 800 !important;
+}
+
+
+// Buttons ---------------------------------------------------------------------
+
+.btn-group-lg > .btn {
+  border-radius: 2px;
+}
+
+.btn-primary {
+  margin: 10px 0;
+  background-color: $brand-black;
+  border-color: $brand-secondary;
+  border-radius: 4px;
+  border-width: 2px;
+  color: $brand-primary;
+  font-family: 'Michroma';
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: all 0.6s ease;
+  transition-property: background-color, border-color, color, box-shadow, transform;
+}
+
+%brightenState {
+  background-color: $brand-secondary !important;
+  border-color: $brand-primary !important;
+  color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.btn-primary:active {
+  background-color: transparent;
+  border: none;
+}
+
+.btn-primary:focus {
+  box-shadow: none;
+}
+
+.btn-primary:hover {
+  @extend %brightenState;
+  transform: translateY(-2px);
+  box-shadow: 1px 1px 7px 3px $brand-secondary;
+}
+
+.btn-primary:active:focus {
+  box-shadow: 0 0 0 0.2rem $brand-secondary !important;
+}
+
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+  background-color: $brand-black;
+  border-color: $brand-secondary;
+  border-radius: 4px;
+  border-width: 2px;
+  color: $brand-primary;
+  font-family: 'Michroma';
+  font-weight: 900;
+  font-size: 1em;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.2s ease-out;
+  white-space: normal;
+}
+
+.btn-secondary:active {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  color: $brand-primary !important;
+  box-shadow: 0 0 3px 5px $brand-secondary !important;
+}
+
+.btn-secondary:focus {
+  box-shadow: none;
+}
+
+.btn-secondary:hover {
+  @extend %brightenState;
+  transform: translateY(-2px);
+  box-shadow: 1px 1px 7px 3px $brand-secondary;
+}
+
+.btn-secondary:visited {
+  @extend .btn-secondary;
+}
+
+.btn-plain {
+  padding: 0;
+  background-color: $brand-black;
+  border: none;
+  font-family: 'marvin-visions', sans-serif;
+  font-size: 1.7rem;
+  color: $brand-primary;
+}
+
+.btn-simple {
+  font-family: 'Space Mono', monospace;
+  font-weight: bold;
+}
+
+%steadyState {
+  transform: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+  color: $brand-secondary !important;
+  border-color: $brand-secondary !important;
+}
+
+.btn-disabled {
+  background-color: transparent;
+  color: $brand-secondary !important;
+  font-style: italic;
+  white-space: normal;
+  cursor: not-allowed !important;
+
+  &:hover  { @extend %steadyState; }
+  &:active { @extend %steadyState; }
+}
+
+.disabled {
+  color: $brand-secondary;
+  font-style: italic;
+  cursor: not-allowed !important;
+
+  &:hover  { @extend %steadyState; }
+  &:active { @extend %steadyState; }
+}
+
+@media (max-width: 414px) {
+  .btn-secondary.btn-lg.btn-block {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+  }
+}
+
+@media (max-width: 350px) {
+  .btn-secondary.btn-lg.btn-block { font-size: 14px; }
+}
+
+@media (min-width: 768px) {
+  .btn.btn-primary { font-size: 22px; }
+}
+
+
+// Borders ---------------------------------------------------------------------
+
+.border {
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+.border-primary {
+  border-color: $brand-primary !important;
+}
+
+.border-secondary {
+  border-color: $brand-secondary !important;
+}
+
+.border-danger {
+  border-color: $brand-danger !important;
+}
+
+.border-black {
+  border-color: black !important;
+}
+
+
+// Notifications ---------------------------------------------------------------
+
+.notification {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  width: 95%;
+  margin-left: -47.5%;
+  padding: 1em;
+}
+
+.error-message {
+  @extend .notification;
+}
+
+.pinned-message {
+  @extend .notification;
+}
+
+@media (min-width: 768px) {
+  .notification {
+    width: 65%;
+    margin-left: -32.5%;
+  }
+}
+
+@media (min-width: 992px) {
+  .notification {
+    width: 50%;
+    margin-left: -25%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .notification {
+    width: 33%;
+    margin-left: -16.5%;
+  }
+}
+
+
+// Miscellaneous ---------------------------------------------------------------
+
+.full-screen {
+  overflow: hidden;
+}
+
+.top-spacer {
+  padding-top: 65px;
+}
+
+.list-group-item {
+  background-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+  border: none;
+}
