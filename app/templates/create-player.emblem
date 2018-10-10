@@ -1,6 +1,0 @@
-.container-fluid.full-screen
-  .row.justify-content-center
-    .col-12.col-lg-8
-      = title-screen class="text-block mt-5 py-2"
-
-      = sign-up sendJoin=(action 'signInPlayer')
