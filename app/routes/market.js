@@ -1,20 +1,14 @@
-import Route from '@ember/routing/route'
-import { computed, get } from '@ember/object'
+import Route from '@ember/routing/route';
 
-export default Route.extend({
+export default class MarketRoute extends Route {
 
   beforeModel() {
     this._super(...arguments);
-
     this.handleRouteRedirect();
-
-    if (get(this, 'isFirstTurn') && get(this, 'hasNoDebt')) {
-      this.replaceWith('bank');
-    }
-  },
+  }
 
   handleRouteRedirect() {
-    let state = get(this, 'socket.gameStatus');
+    let state = this.get('socket.gameStatus');
 
     if (state === 'mugging') {
       this.replaceWith('mugging');
@@ -23,14 +17,6 @@ export default Route.extend({
     } else {
       return;
     }
-  },
+  }
 
-  isFirstTurn: computed('socket.stateData.rules.turns_left', function() {
-    return get(this, 'socket.stateData.rules.turns_left') === 24;
-  }),
-
-  hasNoDebt: computed('socket.stateData.player.debt', function() {
-    return !get(this, 'socket.stateData.player.debt') > 0
-  })
-
-})
+}
