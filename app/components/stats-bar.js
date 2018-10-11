@@ -4,10 +4,8 @@ import { attribute, classNames } from '@ember-decorators/component';
 import { service } from '@ember-decorators/service';
 import $ from 'jquery';
 
-@classNames('fixed-top', 'row', 'justify-content-center', 'm-0', 'p-0', 'bg-black')
+@classNames('fixed-top', 'full-width-bar', 'row', 'justify-content-center', 'm-0', 'p-0', 'bg-black')
 export default class StatsBarComponent extends Component {
-
-  @attribute id = "stats-bar";
 
   @service router;
 
