@@ -12,7 +12,7 @@ $brand-warning:   #f9e784;
 
 // Typography ------------------------------------------------------------------
 
-@import url('https://fonts.googleapis.com/css?family=Baumans|Michroma|Space+Mono');
+@import url('https://fonts.googleapis.com/css?family=Baumans|Jura:700|Michroma|Space+Mono');
 @font-face {
   font-family: 'marvin-visions';
   src: url("fonts/MarvinVisions-Bold.eot") format("eot");
@@ -33,6 +33,11 @@ p {
   font-family: 'Michroma';
   font-size: 1rem;
   letter-spacing: 1px;
+}
+
+// Because Michroma doesn't include '%'
+.percent {
+  font-family: 'Jura';
 }
 
 @media (max-width: 320px) {
@@ -100,6 +105,11 @@ input.form-control:focus {
 
 
 // Buttons ---------------------------------------------------------------------
+
+button {
+  background: inherit;
+  color: inherit;
+}
 
 .btn-group-lg > .btn {
   border-radius: 2px;
