@@ -19,40 +19,4 @@
     </p>
   </div>
 
-  <div class="container cta-container bg-black">
-    <div class="row justify-content-center">
-
-      {{#if (eq currentStation 'downtown')}}
-        <div class="btn-group w-100">
-          {{#link-to 'bank' class="btn btn-secondary btn-lg btn-eq-flex" classBinding="canVisitBank::btn-disabled"}}
-            Bank
-          {{/link-to}}
-
-          {{#link-to 'subway' class="btn btn-secondary btn-lg btn-eq-flex"}}
-            Subway
-          {{/link-to}}
-        </div>
-
-      {{else if (and (eq currentStation 'venice_beach') (lte turnsLeft 18))}}
-        <div class="btn-group w-100">
-          {{#link-to 'store' class="btn btn-secondary btn-lg btn-eq-flex"}}
-            Store
-          {{/link-to}}
-
-          {{#link-to 'subway' class="btn btn-secondary btn-lg btn-eq-flex"}}
-            Subway
-          {{/link-to}}
-        </div>
-
-      {{else}}
-        <div class="col-12 text-center px-0">
-          {{#link-to 'subway' class="btn btn-secondary btn-lg btn-block"}}
-            Subway
-          {{/link-to}}
-        </div>
-      {{/if}}
-
-    </div>
-  </div>
-
 {{/if}}
