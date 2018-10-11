@@ -1,32 +1,24 @@
-import Controller from '@ember/controller'
+import Controller from '@ember/controller';
+import { action } from '@ember-decorators/object';
 
-export default Controller.extend({
+export default class HomeController extends Controller {
 
-  screen: 'intro',
+  screen = "intro";
 
-  actions: {
-
-    skipIntro() {
-      set(this, 'screen', 'start');
-    },
-
-    nextScreen() {
-      const screens = ['intro', 'packs', 'turns', 'start'];
-      set(this, 'screen', screens[screens.indexOf(this.screen) + 1])
-    },
-
-    setTutorialSelection(selection) {
-      set(this, 'isTutorialEnabled', selection);
-    },
-
-    startGame() {
-      this.handleTutorialMessages();
-
-      this.socket.pushCallBack("start_game", {}).then(() => {
-        set(this, 'screen', 'intro');
-        this.transitionToRoute('bank');
-      })
-    }
-
+  @action
+  skipIntro() {
+    this.set('screen', 'start');
   }
-})
+
+  @action
+  nextScreen() {
+    const screens = ['intro', 'packs', 'turns', 'start'];
+    this.set('screen', screens[screens.indexOf(this.screen) + 1])
+  }
+
+  @action
+  sendToBank() {
+    this.transitionToRoute('bank');
+  }
+
+}
