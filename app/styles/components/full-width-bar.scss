@@ -1,20 +1,20 @@
 @import '../theme';
 
-#stats-bar {
+.full-width-bar {
   z-index: 1000;
   padding-left: 1em;
   padding-right: 1em;
 }
 
 @media (min-width: 992px) {
-  #stats-bar {
+  .full-width-bar {
     padding-left: 15em;
     padding-right: 15em;
   }
 }
 
 @media (min-width: 1200px) {
-  #stats-bar {
+  .full-width-bar {
     padding-left: 20em;
     padding-right: 20em;
   }
