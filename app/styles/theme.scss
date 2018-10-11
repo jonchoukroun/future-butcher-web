@@ -20,13 +20,16 @@ $brand-warning:   #f9e784;
   src: url("fonts/MarvinVisions-Bold.woff") format("woff");
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2 {
   font-family: 'marvin-visions', sans-serif;
   letter-spacing: 1px;
 }
 
+h3, h4, h5, h6 {
+  font-family: 'Michroma';
+}
+
 p {
-  // font-family: 'Space Mono', monospace;
   font-family: 'Michroma';
   font-size: 1rem;
   letter-spacing: 1px;
@@ -81,7 +84,7 @@ input.form-control {
   border-left: none;
   border-color: $brand-secondary;
   border-radius: 0;
-  font-family: 'Space Mono', sans-serif;
+  font-family: 'Michroma', sans-serif;
   font-size: 1rem;
   letter-spacing: 1px;
   transition: all 0.5s ease-out;
@@ -192,7 +195,7 @@ input.form-control:focus {
 }
 
 .btn-simple {
-  font-family: 'Space Mono', monospace;
+  font-family: 'Michroma', monospace;
   font-weight: bold;
 }
 
