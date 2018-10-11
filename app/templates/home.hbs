@@ -1,78 +1,23 @@
 <div class="container-fluid full-screen p-0">
-  {{#if (eq screen 'intro')}}
-    <div class="intro-image jumbotron my-xl-3 d-flex flex-column justify-content-center">
-      <h1 class="display-4 mb-md-4 text-center">Los Angeles</h1>
-      <h2 class="lead title-text text-center">2055</h2>
-    </div>
+  {{#if (eq screen "intro")}}
+    {{home/intro-screen
+      sendSkipIntro=(action "skipIntro")
+      sendNextScreen=(action "nextScreen")}}
   {{/if}}
 
-  <div class="row justify-content-center">
-    <div class="col-12 col-md-8 col-lg-6">
-      <div class="container">
-        {{#if (eq screen 'intro')}}
-          <p class="mt-sm-2 mt-md-5 mt-xl-4">
-            The economy is in ruins after the collapse of HypeCoin. It's time to get out of town, but you need cash first.</p>
-          <p>
-            Your only shot is to hustle the new premium addiction of the rich and famous. There's unlimited opportunity servicing their demand for fresh, exclusive cuts of <b>human meat</b>.
-          </p>
+  {{#if (eq screen "packs")}}
+    {{home/packs-screen
+      sendNextScreen=(action "nextScreen")}}
+  {{/if}}
 
-          <p>...Not that you would ever touch the stuff.</p>
+  {{#if (eq screen "turns")}}
+    {{home/turns-screen
+      sendNextScreen=(action "nextScreen")}}
+  {{/if}}
 
-          <div class="btn-group w-100">
-            <div class="btn btn-secondary btn-lg btn-eq-flex" {{action 'skipIntro'}}>Skip</div>
-            <div class="btn btn-secondary btn-lg btn-eq-flex" {{action 'nextScreen'}}>Next</div>
-          </div>
-        {{/if}}
-
-        {{#if (eq screen 'packs')}}
-          <h3 style="margin-top: 10vh; margin-bottom: 5vh;">Today's the day...</h3>
-
-          <p class="mb-md-5">
-            You wake up in <b>Downtown LA</b>, ready to hustle. The city is getting too rough and it's time to find your ex down in Mexico.
-          </p>
-
-          <p class="mb-md-5">
-            Before you head out the door, you grab your leather jacket - a gift from the ex. It's perfect for carrying a few pounds of meat, but you'll want to pick up something bigger soon.
-          </p>
-
-          <p style="margin-bottom: 5vh;">Just don't draw too much attention.</p>
-
-          <div class="btn btn-secondary btn-lg btn-block" {{action 'nextScreen'}}>Next</div>
-        {{/if}}
-
-        {{#if (eq screen 'turns')}}
-          <h3 style="margin-top: 10vh; margin-bottom: 5vh;">Clock's ticking...</h3>
-
-          <p class="mb-md-5">
-            You have <b>24 hours</b> before the city becomes complete carnage - better not waste any time.
-          </p>
-
-          <p style="margin-bottom: 5vh;">
-            Traveling anywhere in LA takes an hour, but keep cash on hand for subway fares. Nicer neighborhoods always charge more for protection, but that's where you'll find the best meat markets.
-          </p>
-
-          <div class="btn btn-secondary btn-lg btn-block" {{action 'nextScreen'}}>Next</div>
-        {{/if}}
-
-        {{#if (eq screen 'start')}}
-          <h3 style="margin-top: 10vh; margin-bottom: 5vh;">One more thing...</h3>
-
-          <p class="mb-md-5">
-            Your ex has a line of credit at the bank downtown. You'll need cash to hustle the meat markets and earn enough to bribe your way across the border to Mexico.
-          </p>
-
-          <p style="margin-bottom: 5vh;">
-            Hit the <b>Shavings & Loan Bank</b> for a starter loan now.
-          </p>
-
-          {{reset-tutorials sendTutorialSelection=(action 'setTutorialSelection')}}
-
-          <div class="btn btn-secondary btn-lg btn-block" {{action 'startGame'}}>
-            Let's ride
-          </div>
-        {{/if}}
-
-      </div>
-    </div>
-  </div>
+  {{#if (eq screen "start")}}
+    {{home/start-screen
+      sendNextScreen=(action "nextScreen")
+      sendBankTransition=(action "sendToBank")}}
+  {{/if}}
 </div>
