@@ -22,7 +22,7 @@ export default class IntroScreenComponent extends HomeScreenComponent {
 
     this.socket.pushCallBack("start_game", {}).then(() => {
       this.set('screen', 'intro');
-      this.get('sendBankTransition')();
+      this.get('sendMarketTransition')();
     })
   }
 

@@ -17,8 +17,8 @@ export default class HomeController extends Controller {
   }
 
   @action
-  sendToBank() {
-    this.transitionToRoute('bank');
+  sendToMarket() {
+    this.transitionToRoute('market');
   }
 
 }
