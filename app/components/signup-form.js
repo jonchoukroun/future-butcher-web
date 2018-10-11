@@ -2,7 +2,7 @@ import Component from '@ember/component';
 import { action, computed } from '@ember-decorators/object';
 import { classNames } from '@ember-decorators/component';
 
-@classNames('.signup-form', 'mt-5')
+@classNames('signup-component', 'mt-5')
 export default class SignupFormComponent extends Component {
 
   inputLength = null;
@@ -51,7 +51,7 @@ export default class SignupFormComponent extends Component {
     socketService.openSocket().then((socket) => {
       socketService.joinChannel(socket, { name: name }).then(() => {
         this.set('isNameTaken', false);
-        this.sendJoin();
+        this.get('sendJoin')();
       }).catch(() => {
         this.set('isNameTaken', true);
       })
