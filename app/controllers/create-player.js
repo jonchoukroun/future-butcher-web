@@ -8,4 +8,4 @@ export default class CreatePlayerController extends Controller {
     this.transitionToRoute('home');
   }
 
-};
+}

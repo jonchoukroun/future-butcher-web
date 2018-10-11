@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import { action, computed } from '@ember-decorators/object';
-import { attribute, classNames } from '@ember-decorators/component';
+import { classNames } from '@ember-decorators/component';
 import { service } from '@ember-decorators/service';
 import $ from 'jquery';
 
@@ -18,17 +18,14 @@ export default class StatsBarComponent extends Component {
     const route      = this.get('router.currentRouteName');
 
     if (first_turn && !localStorage.getItem('closed-turns-tutorial') && route === "subway") {
-      console.log('should see turnsHelp')
       $('#turnsHelp').slideToggle();
     }
 
     if (first_turn && !localStorage.getItem('closed-funds-tutorial') && funds > 0) {
-      console.log('should see funds help')
       $('#fundsHelp').slideToggle();
     }
 
     if (this.get('isSecondTurn') && !localStorage.getItem('closed-debt-tutorial') && debt > 0) {
-      console.log('should see debt help');
       $('#debtHelp').slideToggle();
     }
   }
