@@ -1,12 +1,11 @@
 import Route from '@ember/routing/route'
-import { get } from '@ember/object'
 
-export default Route.extend({
+export default class CreatePlayerRoute extends Route {
 
   beforeModel() {
     this._super(...arguments);
 
-    if (get(this, 'socket.gameChannel')) {
+    if (this.get('socket.gameChannel')) {
       this.replaceWith('home');
     }
 
@@ -14,4 +13,4 @@ export default Route.extend({
     localStorage.removeItem('player_hash');
   }
 
-})
+}
