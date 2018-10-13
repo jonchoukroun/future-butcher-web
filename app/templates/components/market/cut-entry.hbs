@@ -1,0 +1,53 @@
+<div class="border-bottom border-secondary">
+  <div class="d-flex align-items-end cut-header">
+    <h4 class="mb-1 ml-2 mr-auto">{{cut}}</h4>
+
+    {{#if (gt cutsOwned 0)}}
+      <h5 class="cuts-owned mb-1 mr-2">
+        {{cutsOwned}}
+      </h5>
+      <span class="small">
+        {{#if (eq cutsOwned 1)}}
+          lb
+        {{else}}
+          lbs
+        {{/if}}
+      </span>
+    {{/if}}
+  </div>
+</div>
+
+{{#if (eq quantity 0)}}
+  <div class="cut-header text-right">
+    <h5 class="text-secondary my-2">No current demand</h5>
+  </div>
+
+{{else}}
+  <div class="d-flex flex-row align-items-end mb-3">
+    <div class="flex-grow-1 pr-2 pr-md-3 pr-lg-4 pr-xl-5">
+      <p class="display-text mb-0 text-right">
+        {{format-money price precision=0}}
+      </p>
+
+      <p class="display-text small mb-0 text-right font-italic">
+        {{format-money medianPrice precision=0}}
+      </p>
+    </div>
+
+    <div class="btn-group ml-auto">
+      {{#if (and canAffordCut hasPackSpace)}}
+        <button class="btn btn-secondary mb-0" {{action "openBuyMenu"}}>Buy</button>
+      {{else}}
+        <div class="btn btn-secondary btn-disabled mb-0">Buy</div>
+      {{/if}}
+
+      {{#if (gt cutsOwned 0)}}
+        <button class="btn btn-secondary mb-0" {{action "openSellMenu"}}>Sell</button>
+      {{else}}
+        <div class="btn btn-secondary btn-disabled mb-0">Sell</div>
+      {{/if}}
+
+    </div>
+  </div>
+
+{{/if}}
