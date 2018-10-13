@@ -1,21 +1,22 @@
 <div class="row justify-content-center">
   <div class="col-12 col-md-8 col-lg-6">
     <div class="container">
-      <h3 style="margin-top: 10vh; margin-bottom: 5vh;">One more thing...</h3>
+      <h3 class="home-screen-header">One more thing...</h3>
 
       <p class="mb-md-5">
         Before leaving, your ex hooked up a $5000 loan from the bank. You'll need cash to hustle the meat markets and earn enough to bribe your way across the border to Mexico.
       </p>
 
-      <p style="margin-bottom: 5vh;">
+      <p class="home-screen-bottom">
         But this loan comes at a price. It's accruing interest, 15% each hour! Better pay it off quick if you want a chance at making real money.
       </p>
 
-      {{reset-tutorials sendTutorialSelection=(action 'setTutorialSelection')}}
+      {{reset-tutorials sendTutorialSelection=(action "setTutorialSelection")}}
 
       <button
         class="btn btn-secondary btn-lg btn-block"
-        {{action 'startGame'}}>
+        {{action "startGame"}}
+      >
         Let's ride
       </button>
 

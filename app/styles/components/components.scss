@@ -1,10 +1,25 @@
-@import './title-screen';
-@import './signup-form';
-@import './subway-stations';
 @import './scrolling-scores';
-@import './loan-purchase';
 @import './full-width-bar';
-@import './cut-entry';
-@import './store-interface';
 @import './mugging-interface';
 @import './transition-animation';
+
+// home ------------------------------------------------------------------------
+
+@import './title-screen';
+@import './signup-form';
+@import './home-screen';
+
+
+// subway ----------------------------------------------------------------------
+
+@import './subway-stations';
+
+
+// market ----------------------------------------------------------------------
+
+@import './cut-entry';
+
+
+// store -----------------------------------------------------------------------
+
+@import './store-interface';

@@ -1,139 +1,145 @@
 import Component from '@ember/component';
-import { computed, get, set } from '@ember/object';
+import { action, computed } from '@ember-decorators/object';
+import { service } from '@ember-decorators/service';
+import { classNames } from '@ember-decorators/component';
 import { htmlSafe } from '@ember/string';
-import { weaponStats } from 'future-butcher-web/fixtures/store-items';
-import { inject as service } from '@ember/service';
 
-export default Component.extend({
+@classNames('d-flex', 'flex-column', 'align-items-center', 'justify-content-between')
+export default class BuyMenu extends Component {
 
-  classNames: ['d-flex', 'flex-column', 'align-items-center', 'justify-content-between'],
+  cutName;
+  invalidBuy = false;
 
-  cutName: null,
+  @service('notification-service') notifications;
 
-  invalidBuy: false,
+  @computed('socket.stateData.station.market', 'cutName')
+  get marketData() {
+    let cutName = this.get('cutName');
+    return this.get('socket.stateData.station.market')[cutName];
+  }
 
-  notifications: service('notification-service'),
+  @computed('marketData')
+  get cutPrice() {
+    return this.get('marketData.price');
+  }
 
-  marketData: computed('socket.stateData.station.market', 'cutName', function() {
-    let cutName = get(this, 'cutName');
-    return get(this, 'socket.stateData.station.market')[cutName];
-  }),
+  @computed('marketData')
+  get cutsAvailable() {
+    return this.get('marketData.quantity');
+  }
 
-  cutPrice: computed('marketData', function() {
-    return get(this, 'marketData.price');
-  }),
+  @computed('socket.stateData.player.funds')
+  get playerFunds() {
+    return this.get('socket.stateData.player.funds');
+  }
 
-  cutsAvailable: computed('marketData', function() {
-    return get(this, 'marketData.quantity');
-  }),
+  @computed('socket.stateData.player.pack_space')
+  get packSpace() {
+    return this.get('socket.stateData.player.pack_space');
+  }
 
-  playerFunds: computed('socket.stateData.player.funds', function() {
-    return get(this, 'socket.stateData.player.funds');
-  }),
-
-  packSpace: computed('socket.stateData.player.pack_space', function() {
-    return get(this, 'socket.stateData.player.pack_space');
-  }),
-
-  totalWeightCarried: computed('socket.stateData.player.{pack,weapon}', function() {
-    let weapon = get(this, 'socket.stateData.player.weapon');
-    let weapon_weight = weapon ? weaponStats[weapon].weight : 0;
-
-    return Object.values(get(this, 'socket.stateData.player.pack')).reduce((sum, cut) => {
+  @computed('socket.stateData.player.{pack,weapon}')
+  get totalWeightCarried() {
+    return Object.values(this.get('socket.stateData.player.pack')).reduce((sum, cut) => {
       return sum + cut;
-    }) + weapon_weight;
-  }),
+    });
+  }
 
-  maxAfford: computed('cutPrice', 'playerFunds', function() {
-    return Math.floor(get(this, 'playerFunds') / get(this, 'cutPrice'));
-  }),
+  @computed('cutPrice', 'playerFunds')
+  get maxAfford() {
+    return Math.floor(this.get('playerFunds') / this.get('cutPrice'));
+  }
 
-  maxSpace: computed('packSpace', 'totalWeightCarried', 'cutsAvailable', function() {
+  @computed('packSpace', 'totalWeightCarried', 'cutsAvailable')
+  get maxSpace() {
     return Math.min(
-      (get(this, 'packSpace') - get(this, 'totalWeightCarried')), get(this, 'cutsAvailable'));
-  }),
+      (this.get('packSpace') - this.get('totalWeightCarried')), this.get('cutsAvailable'));
+  }
 
-  maxCanBuy: computed('maxAfford', 'maxSpace', function() {
-    return Math.min(get(this, 'maxAfford'), get(this, 'maxSpace'));
-  }),
+  @computed('maxAfford', 'maxSpace')
+  get maxCanBuy() {
+    return Math.min(this.get('maxAfford'), this.get('maxSpace'));
+  }
 
-  maxCanBuyPlaceholder: computed('maxCanBuy', function() {
-    const max = get(this, 'maxCanBuy');
+  @computed('maxCanBuy')
+  get maxCanBuyPlaceholder() {
+    const max = this.get('maxCanBuy');
     const pluralizedPound = (max === 1 ? "lb" : "lbs");
     return htmlSafe(`You can buy ${max} ${pluralizedPound}`);
-  }),
+  }
 
-  maxCanBuyCost: computed('maxCanBuy', 'cutPrice', function() {
-    return get(this, 'maxCanBuy') * get(this, 'cutPrice');
-  }),
+  @computed('maxCanBuy', 'cutPrice')
+  get maxCanBuyCost() {
+    return this.get('maxCanBuy') * this.get('cutPrice');
+  }
 
   validateEntry() {
-    const buyAmount = get(this, 'buyAmount');
+    const buyAmount = this.get('buyAmount');
 
     let message;
-    if (buyAmount > get(this, 'maxAfford')) {
+    if (buyAmount > this.get('maxAfford')) {
       message = "You can't afford that many.";
-    } else if (buyAmount > get(this, 'cutsAvailable')) {
+    } else if (buyAmount > this.get('cutsAvailable')) {
       message = "Not that many cuts for sale.";
-    } else if (buyAmount > get(this, 'maxSpace')) {
+    } else if (buyAmount > this.get('maxSpace')) {
       message = "You don't have enough pack space."
     } else {
       message = null;
     }
 
-    get(this, 'notifications').renderError(message);
-    set(this, 'invalidBuy', message);
-  },
+    this.get('notifications').renderError(message);
+    this.set('invalidBuy', message);
+  }
 
   buyCut() {
-    let payload = {
-      cut: get(this, 'cutName'),
-      amount: get(this, 'buyAmount')
+    const payload = {
+      cut: this.get('cutName'),
+      amount: this.get('buyAmount')
     };
 
-    get(this, 'socket').pushCallBack("buy_cut", payload).then(() => {
+    this.get('socket').pushCallBack("buy_cut", payload).then(() => {
       this.generateConfirmation(payload);
-      get(this, 'sendBuyMenuClose')();
+      this.get('sendBuyMenuClose')();
     });
-  },
+  }
 
   generateConfirmation(payload) {
-    const formatted_value = this.formatCurrency(get(this, 'estimatedCost'));
+    const formatted_value = this.formatCurrency(this.get('estimatedCost'));
     const unit = (payload.amount === 1) ? "lb" : "lbs";
     const message = `Bought ${payload.amount} ${unit} of ${payload.cut} for ${formatted_value}!`
 
-    get(this, 'notifications').renderNotification(message);
-  },
+    this.get('notifications').renderNotification(message);
+  }
 
   formatCurrency(value) {
     if (this.isDestroyed || this.isDestroying) { return; }
     return (value).toLocaleString("en-us",
       { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
-  },
-
-  actions: {
-
-    clickBack() {
-      get(this, 'sendBuyMenuClose')();
-    },
-
-    calculateCost() {
-      const cost = get(this, 'cutPrice') * get(this, 'buyAmount');
-      set(this, 'estimatedCost', cost);
-
-      this.validateEntry();
-    },
-
-    clickBuyMax() {
-      set(this, 'buyAmount', get(this, 'maxCanBuy'));
-      set(this, 'estimatedCost', get(this, 'maxCanBuyCost'));
-      this.buyCut();
-    },
-
-    submitBuyCut() {
-      this.buyCut();
-    }
   }
 
+  @action
+  clickBack() {
+    this.get('sendBuyMenuClose')();
+  }
 
-})
+  @action
+  calculateCost() {
+    const cost = this.get('cutPrice') * this.get('buyAmount');
+    this.set('estimatedCost', cost);
+
+    this.validateEntry();
+  }
+
+  @action
+  clickBuyMax() {
+    this.set('buyAmount', this.get('maxCanBuy'));
+    this.set('estimatedCost', this.get('maxCanBuyCost'));
+    this.buyCut();
+  }
+
+  @action
+  submitBuyCut() {
+    this.buyCut();
+  }
+
+}
