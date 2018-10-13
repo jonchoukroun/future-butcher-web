@@ -1,14 +1,13 @@
-import Route from '@ember/routing/route'
-import { get } from '@ember/object'
+import Route from '@ember/routing/route';
 
-export default Route.extend({
+export default class SubwayRoute extends Route {
 
   beforeModel() {
     this._super(...arguments);
 
-    if (get(this, 'socket.gameStatus') !== 'in_game') {
+    if (this.get('socket.gameStatus') !== 'in_game') {
       this.replaceWith('home');
     }
-  },
+  }
 
-})
+}

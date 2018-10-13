@@ -2,22 +2,26 @@
   {{#if (eq screen "intro")}}
     {{home/intro-screen
       sendSkipIntro=(action "skipIntro")
-      sendNextScreen=(action "nextScreen")}}
+      sendNextScreen=(action "nextScreen")
+    }}
   {{/if}}
 
   {{#if (eq screen "packs")}}
     {{home/packs-screen
-      sendNextScreen=(action "nextScreen")}}
+      sendNextScreen=(action "nextScreen")
+    }}
   {{/if}}
 
   {{#if (eq screen "turns")}}
     {{home/turns-screen
-      sendNextScreen=(action "nextScreen")}}
+      sendNextScreen=(action "nextScreen")
+    }}
   {{/if}}
 
   {{#if (eq screen "start")}}
     {{home/start-screen
       sendNextScreen=(action "nextScreen")
-      sendMarketTransition=(action "sendToMarket")}}
+      sendMarketTransition=(action "sendToMarket")
+    }}
   {{/if}}
 </div>

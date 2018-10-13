@@ -1,52 +1,28 @@
+{{stats-bar sendQuit=(action "sendToScores")}}
+
 <div class="container-fluid full-screen top-spacer">
-
-  {{stats-bar sendQuit=(action 'sendToScores')}}
-
   <div class="row justify-content-center mb-3">
     <div class="col-12 col-sm-10 col-md-6 mt-md-4">
 
       {{#if isLastTurn}}
-        {{subway-terminal sendEndGame=(action 'sendEndGame')}}
-
-      {{else if gameOverState}}
-        <div class="d-flex flex-column align-items-center">
-          <h1 class="display-4 title-text text-danger">Game Over!</h1>
-
-          <h5 class="mt-5">
-            You're stuck in Compton, without enough cash or cuts to make your way out.
-          </h5>
-
-          <p class="mt-3">
-            Try again, and this time keep an eye on your travel budget.
-          </p>
-
-          <div class="btn btn-secondary btn-lg btn-block" {{action 'startOver'}}>
-            Start Over
-          </div>
-
-        </div>
+        {{subway/subway-terminal sendEndGame=(action "sendEndGame")}}
 
       {{else}}
         <div class="d-flex flex-column">
           <div class="text-center border-bottom border-secondary mb-3">
-            <h3 class="page-heading text-secondary">
-              &nbsp;Destinations
-            </h3>
+            <h3 class="page-heading text-secondary">Destinations</h3>
           </div>
 
           <div id="subway-stations-menu">
-            {{subway-stations sendStation=(action 'navigate')}}
+            {{subway/subway-stations sendStation=(action "navigate")}}
           </div>
 
         </div>
 
-        <div class="container cta-container bg-black px-0">
-          {{#link-to 'market' class="btn btn-secondary btn-lg btn-block"}}
-            Back to market
-          {{/link-to}}
-        </div>
       {{/if}}
 
     </div>
   </div>
 </div>
+
+{{nav-bar}}

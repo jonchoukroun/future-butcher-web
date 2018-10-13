@@ -13,12 +13,14 @@
     value=playerName
     key-up=(action "validatePlayerName")
     autofocus="true"
-    classNames="form-control form-control-lg mt-md-3"}}
+    classNames="form-control form-control-lg mt-md-3"
+  }}
 
   {{#if validInput}}
     <button
       class="btn btn-primary btn-lg btn-block"
-      {{action "createPlayer" value}}>
+      {{action "createPlayer" value}}
+    >
       New Game
     </button>
   {{else}}

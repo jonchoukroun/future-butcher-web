@@ -1,27 +1,47 @@
-<div class="col-12 col-md-8 col-lg-6 px-0 p-2 py-sm-2 px-sm-4 px-md-1 border-bottom border-secondary">
+<div
+  class="col-12 col-md-8 col-lg-6 px-0 p-2 py-sm-2 px-sm-4 px-md-1 border-bottom border-secondary"
+>
   <div class="d-flex align-items-center justify-content-between mx-1">
-    <button class="btn btn-simple px-0" {{action "toggleStatsBar" "#fundsHelp"}}>
+    <button
+      class="btn btn-simple px-0"
+      {{action "toggleStatsBar" "#fundsHelp"}}
+    >
       {{format-money playerFunds precision=0}}
       <i class="fas fa-caret-down ml-1 ml-md-3"></i>
     </button>
 
-    <button class="btn btn-simple px-0 text-danger" {{action "toggleStatsBar" "#debtHelp"}}>
+    <button
+      class="btn btn-simple px-0 text-danger"
+      {{action "toggleStatsBar" "#debtHelp"}}
+    >
       {{format-money playerDebt precision=0}}
       <i class="fas fa-caret-down ml-1 ml-md-3"></i>
     </button>
 
-    <button class="btn btn-simple px-0" {{action "toggleStatsBar" "#turnsHelp"}}>
+    <button
+      class="btn btn-simple px-0"
+      {{action "toggleStatsBar" "#turnsHelp"}}
+    >
       {{turnsLeft}}
       <i class="fas fa-caret-down ml-1 ml-md-3"></i>
     </button>
 
-    <button class="btn btn-simple px-0" {{action "toggleStatsBar" "#gameHelp"}}>
+    <button
+      class="btn btn-simple px-0"
+      {{action "toggleStatsBar" "#gameHelp"}}
+    >
       <i class="fas fa-cog"></i>
     </button>
   </div>
 
-  <div id="fundsHelp" class="collapse" data-parent="#stats-bar">
-    <div class="card card-body pb-0 bg-black border-left-0 border-right-0 border-bottom-0">
+  <div
+    id="fundsHelp"
+    class="collapse"
+    data-parent="#stats-bar"
+  >
+    <div
+      class="card card-body pb-0 bg-black border-left-0 border-right-0 border-bottom-0"
+    >
       {{#if isFirstTurn}}
         <p>
           Congratulations, you now have
@@ -32,7 +52,10 @@
         <p>Remember: buy low, sell high!</p>
 
         <div class="row justify-content-end">
-          <button class="btn btn-secondary btn-sm" {{action "closeFundsTutorial"}}>
+          <button
+            class="btn btn-secondary btn-sm"
+            {{action "closeFundsTutorial"}}
+          >
             Close
           </button>
         </div>
@@ -49,7 +72,10 @@
         </p>
 
         <div class="row justify-content-end">
-          <button class="btn btn-secondary btn-sm" {{action "toggleStatsBar" "#fundsHelp"}}>
+          <button
+            class="btn btn-secondary btn-sm"
+            {{action "toggleStatsBar" "#fundsHelp"}}
+          >
             Close
           </button>
         </div>
@@ -58,8 +84,14 @@
     </div>
   </div>
 
-  <div id="debtHelp" class="collapse" data-parent="#stats-bar">
-    <div class="card card-body pb-0 bg-black border-left-0 border-right-0 border-bottom-0">
+  <div
+    id="debtHelp"
+    class="collapse"
+    data-parent="#stats-bar"
+  >
+    <div
+      class="card card-body pb-0 bg-black border-left-0 border-right-0 border-bottom-0"
+    >
       {{#if (gt playerDebt 0)}}
 
         {{#if isSecondTurn}}
@@ -69,7 +101,10 @@
           </p>
 
           <div class="row justify-content-end">
-            <button class="btn btn-secondary btn-sm" {{action "closeDebtTutorial"}}>
+            <button
+              class="btn btn-secondary btn-sm"
+              {{action "closeDebtTutorial"}}
+            >
               Close
             </button>
           </div>
@@ -88,7 +123,10 @@
           {{/if}}
 
           <div class="row justify-content-end">
-            <button class="btn btn-secondary btn-sm" {{action "toggleStatsBar" "#debtHelp"}}>
+            <button
+              class="btn btn-secondary btn-sm"
+              {{action "toggleStatsBar" "#debtHelp"}}
+            >
               Close
             </button>
           </div>
@@ -98,7 +136,10 @@
         <p>You've paid your debt.</p>
 
         <div class="row justify-content-end">
-          <button class="btn btn-secondary btn-sm" {{action "toggleStatsBar" "#debtHelp"}}>
+          <button
+            class="btn btn-secondary btn-sm"
+            {{action "toggleStatsBar" "#debtHelp"}}
+          >
             Close
           </button>
         </div>
@@ -106,15 +147,24 @@
     </div>
   </div>
 
-  <div id="turnsHelp" class="collapse" data-parent="#stats-bar">
-    <div class="card card-body pb-0 bg-black border-left-0 border-right-0 border-bottom-0">
+  <div
+    id="turnsHelp"
+    class="collapse"
+    data-parent="#stats-bar"
+  >
+    <div
+      class="card card-body pb-0 bg-black border-left-0 border-right-0 border-bottom-0"
+    >
       {{#if isFirstTurn}}
         <p>
           Remember, the clock's ticking. You have 24 hours to hustle before it's time to cross the border.
         </p>
 
         <div class="row justify-content-end">
-          <button class="btn btn-secondary btn-sm" {{action "closeTurnsTutorial"}}>
+          <button
+            class="btn btn-secondary btn-sm"
+            {{action "closeTurnsTutorial"}}
+          >
             Close
           </button>
         </div>
@@ -124,7 +174,10 @@
         <p>You have {{turnsLeft}} hours remaining.</p>
 
         <div class="row justify-content-end">
-          <button class="btn btn-secondary btn-sm" {{action "toggleStatsBar" "#turnsHelp"}}>
+          <button
+            class="btn btn-secondary btn-sm"
+            {{action "toggleStatsBar" "#turnsHelp"}}
+          >
             Close
           </button>
         </div>
@@ -133,11 +186,22 @@
     </div>
   </div>
 
-  <div id="gameHelp" class="collapse" data-parent="#stats-bar">
-    <div class="card card-body pb-0 bg-black border-left-0 border-right-0 border-bottom-0">
-      <div class="d-flex align-items-center justify-content-around my-3">
+  <div
+    id="gameHelp"
+    class="collapse"
+    data-parent="#stats-bar"
+  >
+    <div
+      class="card card-body pb-0 bg-black border-left-0 border-right-0 border-bottom-0"
+    >
+      <div
+        class="d-flex align-items-center justify-content-around my-3"
+      >
         <div class="btn-group w-100">
-          <button class="btn btn-secondary btn-sm btn-eq-flex" {{action "quitGame"}}>
+          <button
+            class="btn btn-secondary btn-sm btn-eq-flex"
+            {{action "quitGame"}}
+          >
             Quit Game
           </button>
 
@@ -162,7 +226,10 @@
         </div>
 
         <div class="row justify-content-end">
-          <button class="btn btn-secondary btn-sm" {{action "toggleStatsBar" "#gameHelp"}}>
+          <button
+            class="btn btn-secondary btn-sm"
+            {{action "toggleStatsBar" "#gameHelp"}}
+          >
             Close
           </button>
         </div>
