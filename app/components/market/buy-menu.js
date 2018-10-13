@@ -5,6 +5,7 @@ import { classNames } from '@ember-decorators/component';
 import { htmlSafe } from '@ember/string';
 
 @classNames('d-flex', 'flex-column', 'align-items-center', 'justify-content-between')
+
 export default class BuyMenu extends Component {
 
   cutName;
@@ -14,7 +15,7 @@ export default class BuyMenu extends Component {
 
   @computed('socket.stateData.station.market', 'cutName')
   get marketData() {
-    let cutName = this.get('cutName');
+    const cutName = this.get('cutName');
     return this.get('socket.stateData.station.market')[cutName];
   }
 

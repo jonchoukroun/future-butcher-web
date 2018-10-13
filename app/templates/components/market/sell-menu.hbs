@@ -1,12 +1,16 @@
-<div class="btn btn-secondary align-self-end" {{action 'clickBack'}}>
+<button
+  class="btn btn-secondary align-self-end"
+  {{action "clickBack"}}
+>
   <i class="fas fa-times"></i>
-</div>
+</button>
 
 <div class="d-flex flex-row">
   <h4>
-    {{uc-words cutName}}
+    <span class="text-capitalize">{{cutName}}</span>
     <span class="small">in pack:</span>
-    {{number-format cutsOwned decimals=0 thousandsSeparator=","}}
+
+    {{format-number cutsOwned precision=0}}
     <span class="small">
       {{#if (eq cutsOwned 1)}}
         lb
@@ -17,16 +21,27 @@
   </h4>
 </div>
 
-<form class="transaction-form align-self-center" {{action 'submitSellCut' on='submit'}}>
+<form
+  class="transaction-form align-self-center"
+  {{action "submitSellCut" on="submit"}}
+>
   <div class="form-row">
-    {{input type="number" value=sellAmount placeholder=cutsOwnedPlaceholder autofocus=true classNames="form-control form-control-lg mt-md-2" key-up="calculateProfit"}}
+    {{input
+      type="number"
+      value=sellAmount
+      placeholder=cutsOwnedPlaceholder
+      autofocus="true"
+      classNames="form-control form-control-lg mt-md-2"
+      key-up=(action "calculateProfit")
+    }}
   </div>
 
   {{#if (not sellAmount)}}
     <div class="d-flex flex-column align-items-center justify-content-center">
-      <div class="btn btn-secondary btn-block" {{action 'clickSellMax'}}>
-        Sell all {{cutsOwned}} for ${{number-format cutsOwnedProfit decimals=0 thousandsSeparator=","}}
-      </div>
+      <button class="btn btn-secondary btn-block" {{action "clickSellMax"}}>
+        Sell all {{cutsOwned}} for
+        {{format-money cutsOwnedProfit precision=0}}
+      </button>
 
       <p class="small">Or enter a different amount.</p>
     </div>
@@ -35,11 +50,11 @@
     <div class="d-flex justify-content-center">
       {{#if invalidSell}}
         <button class="btn btn-secondary btn-block btn-disabled">
-          Sell for ${{number-format estimatedProfit decimals=0 thousandsSeparator=","}}
+          Sell for {{format-money estimatedProfit precision=0}}
         </button>
       {{else}}
         <button class="btn btn-secondary btn-block" type="submit">
-          Sell for ${{number-format estimatedProfit decimals=0 thousandsSeparator=","}}
+          Sell for {{format-money estimatedProfit precision=0}}
         </button>
       {{/if}}
     </div>

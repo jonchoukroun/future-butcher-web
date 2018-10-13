@@ -1,97 +1,102 @@
-import Component from '@ember/component'
-import { computed, get, set } from '@ember/object';
-import { inject as service } from '@ember/service';
-import { htmlSafe } from '@ember/string'
+import Component from '@ember/component';
+import { action, computed } from '@ember-decorators/object';
+import { service } from '@ember-decorators/service';
+import { classNames } from '@ember-decorators/component';
+import { htmlSafe } from '@ember/string';
 
-export default Component.extend({
+@classNames('d-flex', 'flex-column', 'align-items-center', 'justify-content-between')
 
-  classNames: ['d-flex', 'flex-column', 'align-items-center', 'justify-content-between'],
+export default class SellMenuComponent extends Component {
 
-  cutName: null,
+  cutName;
+  invalidSell;
 
-  invalidSell: null,
+  @service('notification-service') notifications;
 
-  notifications: service('notification-service'),
+  @computed('socket.stateData.station.market', 'cutName')
+  get cutPrice() {
+    return this.get('socket.stateData.station.market')[this.get('cutName')].price;
+  }
 
-  cutPrice: computed('socket.stateData.station.market', 'cutName', function() {
-    return get(this, 'socket.stateData.station.market')[get(this, 'cutName')].price;
-  }),
+  @computed('socket.stateData.player.pack', 'cutName')
+  get cutsOwned() {
+    return this.get('socket.stateData.player.pack')[this.get('cutName')];
+  }
 
-  cutsOwned: computed('socket.stateData.player.pack', 'cutName', function() {
-    return get(this, 'socket.stateData.player.pack')[get(this, 'cutName')];
-  }),
+  @computed('cutsOwned', 'cutPrice')
+  get cutsOwnedProfit() {
+    return this.get('cutPrice') * this.get('cutsOwned');
+  }
 
-  cutsOwnedProfit: computed('cutsOwned', 'cutPrice', function() {
-    return get(this, 'cutPrice') * get(this, 'cutsOwned');
-  }),
-
-  cutsOwnedPlaceholder: computed('cutsOwned', function() {
-    const owned = get(this, 'cutsOwned');
+  @computed('cutsOwned')
+  get cutsOwnedPlaceholder() {
+    const owned = this.get('cutsOwned');
     const pluralizedPound = (owned === 1 ? "lb" : "lbs");
     return htmlSafe(`You can sell ${owned} ${pluralizedPound}`);
-  }),
+  }
 
   validateEntry() {
     let message;
-    if (get(this, 'sellAmount') > get(this, 'cutsOwned')) {
+    if (this.get('sellAmount') > this.get('cutsOwned')) {
       message = "You don't own that many.";
     } else {
       message = null;
     }
 
-    get(this, 'notifications').renderError(message);
-    set(this, 'invalidSell', message);
-  },
+    this.get('notifications').renderError(message);
+    this.set('invalidSell', message);
+  }
 
   sellCut() {
-    let payload = {
-      cut: get(this, 'cutName'),
-      amount: get(this, 'sellAmount')
+    const payload = {
+      cut: this.get('cutName'),
+      amount: this.get('sellAmount')
     };
 
-    get(this, 'socket').pushCallBack("sell_cut", payload).then(() => {
+    this.get('socket').pushCallBack("sell_cut", payload).then(() => {
       this.generateConfirmation(payload);
-      get(this, 'sendSellMenuClose')();
+      this.get('sendSellMenuClose')();
     });
-  },
+  }
 
   generateConfirmation(payload) {
-    const formatted_value = this.formatCurrency(get(this, 'estimatedProfit'));
+    const formatted_value = this.formatCurrency(this.get('estimatedProfit'));
     const unit = (payload.amount === 1) ? "lb" : "lbs";
-    const message = `Sold ${payload.amount} ${unit} of ${payload.cut} for ${formatted_value}!`
+    const message = `Sold ${payload.amount} ${unit} of ${payload.cut} for ${formatted_value}!`;
 
-    get(this, 'notifications').renderNotification(message);
-  },
+    this.get('notifications').renderNotification(message);
+  }
 
   formatCurrency(value) {
     if (this.isDestroyed || this.isDestroying) { return; }
     return (value).toLocaleString("en-us",
       { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
-  },
+  }
 
-  actions: {
+  @action
+  clickBack() {
+    this.get('sendSellMenuClose')();
+  }
 
-    clickBack() {
-      get(this, 'sendSellMenuClose')();
-    },
+  @action
+  calculateProfit() {
+    const profit = this.get('cutPrice') * this.get('sellAmount');
+    this.set('estimatedProfit', profit);
 
-    calculateProfit() {
-      let profit = get(this, 'cutPrice') * get(this, 'sellAmount');
-      set(this, 'estimatedProfit', profit);
+    this.validateEntry();
+  }
 
-      this.validateEntry();
-    },
+  @action
+  clickSellMax() {
+    this.set('sellAmount', this.get('cutsOwned'));
+    this.set('estimatedProfit', this.get('cutsOwnedProfit'));
+    this.sellCut();
+  }
 
-    clickSellMax() {
-      set(this, 'sellAmount', get(this, 'cutsOwned'));
-      set(this, 'estimatedProfit', get(this, 'cutsOwnedProfit'));
-      this.sellCut();
-    },
-
-    submitSellCut() {
-      this.sellCut();
-    }
+  @action
+  submitSellCut() {
+    this.sellCut();
   }
 
 
-})
+}
