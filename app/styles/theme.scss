@@ -13,11 +13,21 @@ $brand-warning:   #f9e784;
 // Typography ------------------------------------------------------------------
 
 @import url('https://fonts.googleapis.com/css?family=Baumans|Jura:700|Michroma|Space+Mono');
+
 @font-face {
   font-family: 'marvin-visions';
   src: url("fonts/MarvinVisions-Bold.eot") format("eot");
   src: url("fonts/MarvinVisions-Bold.woff2") format("woff2");
   src: url("fonts/MarvinVisions-Bold.woff") format("woff");
+}
+
+@font-face {
+    font-family: 'digital-7';
+    src: url("fonts/digital-7.woff2") format('woff2'),
+         url("fonts/digital-7.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+
 }
 
 h1, h2 {
