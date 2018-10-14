@@ -6,24 +6,33 @@
       class="btn btn-simple px-0"
       {{action "toggleStatsBar" "#fundsHelp"}}
     >
-      {{format-money playerFunds precision=0}}
-      <i class="fas fa-caret-down ml-1 ml-md-3"></i>
+      <h4 class="digital-text m-0">
+        {{format-money playerFunds precision=0}}
+
+        <i class="fas fa-caret-down ml-1 ml-md-3"></i>
+      </h4>
     </button>
 
     <button
       class="btn btn-simple px-0 text-danger"
       {{action "toggleStatsBar" "#debtHelp"}}
     >
-      {{format-money playerDebt precision=0}}
-      <i class="fas fa-caret-down ml-1 ml-md-3"></i>
+      <h4 class="digital-text m-0">
+        {{format-money playerDebt precision=0}}
+
+        <i class="fas fa-caret-down ml-1 ml-md-3"></i>
+      </h4>
     </button>
 
     <button
       class="btn btn-simple px-0"
       {{action "toggleStatsBar" "#turnsHelp"}}
     >
-      {{turnsLeft}}
-      <i class="fas fa-caret-down ml-1 ml-md-3"></i>
+      <h4 class="digital-text m-0">
+        {{timeLeft}}
+
+        <i class="fas fa-caret-down ml-1 ml-md-3"></i>
+      </h4>
     </button>
 
     <button

@@ -45,9 +45,27 @@ export default class StatsBarComponent extends Component {
     return this.get('socket.stateData.player.debt');
   }
 
+
   @computed('socket.stateData.rules.turns_left')
   get turnsLeft() {
     return this.get('socket.stateData.rules.turns_left');
+  }
+
+  @computed('turnsLeft')
+  get timeLeft() {
+    const current_turn = 24 - this.get('turnsLeft');
+
+    let time = (5 + current_turn) % 12;
+    if (time === 0) {
+      time = 12;
+    }
+
+    let unit = "am";
+    if (current_turn >= 7 && current_turn <= 18) {
+      unit = "pm";
+    }
+
+    return `${time}:00 ${unit}`;
   }
 
   @computed('turnsLeft')
