@@ -1,14 +1,22 @@
 <div class="row justify-content-center">
   <div class="col-12 col-md-8 col-lg-6">
     <div class="container">
-      <h3 class="home-screen-header">One more thing...</h3>
+      <h4 class="home-screen-header">One more thing...</h4>
 
-      <p class="mb-md-5">
-        Before leaving, your ex hooked up a $5000 loan from the bank. You'll need cash to hustle the meat markets and earn enough to bribe your way across the border to Mexico.
+      <p class="mt-sm-2 mt-md-5 mt-xl-4">
+        Don't worry about how, but you hooked up a
+        {{format-money 5000 precision=0}}
+        loan from the bank.
+      </p>
+
+      <p>
+        The current rate for booking passage with the coyote is
+        {{format-money current_rate precision=0}}.
+        Anything less and you'll be stuck here as LA explodes into anarchy.
       </p>
 
       <p class="home-screen-bottom">
-        But this loan comes at a price. It's accruing interest, 15% each hour! Better pay it off quick if you want a chance at making real money.
+        So turn that loan into real money, to pay off the coyote - and maybe something left over for Mexico. And pay back your loan. Nobody likes a deadbeat - except for the coroner!
       </p>
 
       {{reset-tutorials sendTutorialSelection=(action "setTutorialSelection")}}

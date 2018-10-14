@@ -12,7 +12,7 @@ export default class HomeController extends Controller {
 
   @action
   nextScreen() {
-    const screens = ['intro', 'packs', 'turns', 'start'];
+    const screens = ['intro', 'turns', 'start'];
     this.set('screen', screens[screens.indexOf(this.screen) + 1])
   }
 
