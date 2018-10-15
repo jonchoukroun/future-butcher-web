@@ -1,13 +1,11 @@
 import Controller from '@ember/controller';
+import { action } from '@ember-decorators/object';
 
-export default Controller.extend({
+export default class CreatePlayerController extends Controller {
 
-  actions: {
-
-    signInPlayer() {
-      this.transitionToRoute('home');
-    }
-
+  @action
+  signInPlayer() {
+    this.transitionToRoute('home');
   }
 
-});
+}

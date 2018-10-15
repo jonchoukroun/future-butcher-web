@@ -1,30 +1,45 @@
-import Controller from '@ember/controller'
-import { computed, get } from '@ember/object'
+import Controller from '@ember/controller';
+import { action, computed, observes } from '@ember-decorators/object';
+import { service } from '@ember-decorators/service';
 
-export default Controller.extend({
+export default class MarketController extends Controller {
 
-  isInDebt: computed('socket.stateData.player.debt', function() {
-    return get(this, 'socket.stateData.player.debt') > 0;
-  }),
+  @service('notification-service') notifications;
 
-  currentStation: computed('socket.stateData.station.station_name', function() {
-    return get(this, 'socket.stateData.station.station_name');
-  }),
+  @observes('socket.stateData.station.{station_name,turns_left}')
+  announceStoreOpen() {
+    const current_station = this.get('socket.stateData.station.station_name');
+    const turns_left = this.get('socket.stateData.station.station_name');
 
-  turnsLeft: computed('socket.stateData.rules.turns_left', function() {
-    return get(this, 'socket.stateData.rules.turns_left');
-  }),
-
-  actions: {
-
-    reloadRoute() {
-      this.transitionToRoute('market');
-    },
-
-    sendToScores() {
-      this.transitionToRoute('high-scores');
+    if (current_station !== "bell_gardens" && turns_left === 21) {
+      const message = "Gus's Army Surplus Store is now open in Bell Gardens.";
+      this.get('notifications').pinNotification(message)
     }
-
   }
 
-})
+  @computed('socket.stateData.player.debt')
+  get isInDebt() {
+    return this.get('socket.stateData.player.debt') > 0;
+  }
+
+  @computed('socket.stateData.station.station_name')
+  get currentStation() {
+    return this.get('socket.stateData.station.station_name');
+  }
+
+  @computed('socket.stateData.rules.turns_left')
+  get turnsLeft() {
+    return this.get('socket.stateData.rules.turns_left');
+  }
+
+  @action
+  reloadRoute() {
+    this.transitionToRoute('market');
+  }
+
+  @action
+  sendToScores() {
+    this.transitionToRoute('high-scores');
+  }
+
+}

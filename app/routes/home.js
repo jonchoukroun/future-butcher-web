@@ -1,7 +1,6 @@
 import Route from '@ember/routing/route'
-import { get, set } from '@ember/object'
 
-export default Route.extend({
+export default class HomeRoute extends Route {
 
   beforeModel() {
     this._super(...arguments);
@@ -14,50 +13,50 @@ export default Route.extend({
     } else {
       this.handleJoinChannel(playerName, playerHash);
     }
-  },
+  }
 
   setupController(controller) {
     this._super(...arguments);
 
     if (localStorage.getItem('player_score')) {
-      set(controller, 'screen', 'intro');
+      controller.set('screen', 'intro');
       localStorage.removeItem('player_score');
     }
-  },
-
+  }
 
   handleJoinChannel(name, hash_id) {
-    get(this, 'socket').openSocket().then((socket) => {
-      if (get(this, 'socket.gameChannel.state') === "joined") {
+    this.socket.openSocket().then((socket) => {
+      if (this.get('socket.gameChannel.state') === "joined") {
         this.initializeGame(name);
       } else {
         this.joinGameChannel(socket, name, hash_id);
       }
     })
-  },
+  }
 
   joinGameChannel(socket, name, hash_id) {
-    if (!name || !hash_id) { return this.replaceWith('create-player'); }
+    if (!name || !hash_id) {
+      return this.replaceWith('create-player');
+    }
 
-    const socketService = get(this, 'socket');
+    const socketService = this.socket;
     socketService.joinChannel(socket, { name: name, hash_id: hash_id }).then(() => {
       this.initializeGame(name);
-    })
-  },
+    });
+  }
 
   initializeGame(name) {
-    const socketService = get(this, 'socket');
+    const socketService = this.socket;
 
-    socketService.pushCallBack("new_game", {})
-      .catch((response) => {
-        this.handleExistingGame(socketService, response.reason, name);
-      })
-  },
+    socketService.pushCallBack("new_game", {}).catch((response) => {
+      this.handleExistingGame(socketService, response.reason, name);
+    });
+  }
 
   handleExistingGame(socketService, reason, name) {
     if (reason.indexOf(":already_started") > -1) {
       socketService.restoreGameState(name).then(() => {
-        if (get(socketService, 'gameStatus') === "initialized") {
+        if (socketService.get('gameStatus') === "initialized") {
           return;
         } else {
           return this.replaceWith('market');
@@ -66,4 +65,4 @@ export default Route.extend({
     }
   }
 
-})
+}

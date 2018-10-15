@@ -1,12 +1,22 @@
-@import '../defaults';
+@import '../theme';
 
-#title-image {
+.title-image {
+  animation: slideDown 1s ease-in forwards;
 
-  img {
-    width: 100%;
-    transform: translateY(-100vh);
-    animation: slideDown 1s ease-in forwards;
+  .title-future {
+    font-size: 26vw;
+    line-height: 19vw;
+    margin: 0;
   }
+
+  .title-butcher {
+    @extend .title-future;
+  }
+}
+
+.headline {
+  visibility: hidden;
+  animation: appear 0.3s 0.8s ease-in forwards;
 }
 
 @keyframes slideDown {
@@ -14,4 +24,24 @@
   75%  { transform: translateY(1vh); }
   85%  { transform: translateY(-2vh); }
   100% { transform: translateY(0); }
+}
+
+@keyframes appear {
+  from { visibility: hidden; }
+  to   { visibility: visible; }
+}
+
+@media (min-width: 992px) {
+  .title-image .title-future {
+    font-size: 18vw;
+    line-height: 13vw;
+  }
+
+}
+
+@media (min-width: 1200px) {
+  .title-image .title-future {
+    font-size: 12vw;
+    line-height: 8.75vw;
+  }
 }

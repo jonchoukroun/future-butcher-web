@@ -1,0 +1,9 @@
+{{#each stations as |station|}}
+  <li class="list-group-item">
+    {{subway/station-details
+      station=station
+      currentStation=currentStation
+      selectStation=(action "selectStation")
+    }}
+  </li>
+{{/each}}

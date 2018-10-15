@@ -1,22 +1,19 @@
-import Component from '@ember/component'
-import { get, set } from '@ember/object'
+import Component from '@ember/component';
+import { classNames, tagName } from '@ember-decorators/component';
 
-export default Component.extend({
+@tagName('ol')
+@classNames('display-text', 'scrolling-scores')
+
+export default class ScrollingScoresComponent extends Component {
 
   didReceiveAttrs() {
     this._super(...arguments);
 
-    if (!get(this, 'scores')) {
-      get(this, 'socket').getScores().then((response) => {
-        set(this, 'scores', response.state_data);
+    if (!this.scores) {
+      this.socket.getScores().then((response) => {
+        this.set('scores', response.state_data);
       })
     }
-  },
+  }
 
-  tagName: 'ol',
-
-  elementId: 'scrolling-scores',
-
-  classNames: ['display-text']
-
-})
+}

@@ -1,15 +1,15 @@
-#subway-stations .list-group-item {
+.subway-stations .list-group-item {
   opacity: 0;
   overflow: hidden;
   transform: translateX(-400px);
   animation: fadeIn 0.5s forwards, openMenu 0.2s ease-out forwards;
 }
 
-#subway-stations .list-group-item:nth-child(1) { animation-delay: 0.4s; }
-#subway-stations .list-group-item:nth-child(2) { animation-delay: 0.3s; }
-#subway-stations .list-group-item:nth-child(3) { animation-delay: 0.2s; }
-#subway-stations .list-group-item:nth-child(4) { animation-delay: 0.1s; }
-#subway-stations .list-group-item:nth-child(5) { animation-delay: 0; }
+.subway-stations .list-group-item:nth-child(1) { animation-delay: 0.4s; }
+.subway-stations .list-group-item:nth-child(2) { animation-delay: 0.3s; }
+.subway-stations .list-group-item:nth-child(3) { animation-delay: 0.2s; }
+.subway-stations .list-group-item:nth-child(4) { animation-delay: 0.1s; }
+.subway-stations .list-group-item:nth-child(5) { animation-delay: 0; }
 
 @keyframes openMenu {
   from { transform: translateX(-400px); }

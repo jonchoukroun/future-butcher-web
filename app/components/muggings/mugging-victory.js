@@ -1,22 +1,26 @@
 import Component from '@ember/component';
-import { computed, get } from '@ember/object';
+import { computed } from '@ember-decorators/object';
+
 import { storeItems } from 'future-butcher-web/fixtures/store-items';
 import { victoryQuotes } from 'future-butcher-web/fixtures/mugging-quotes';
 
-export default Component.extend({
+export default class MuggingVictoryComponent extends Component {
 
-  cutsHarvested: null,
+  cutsHarvested;
 
-  playerWeapon: computed('socket.stateData.player.weapon', function() {
-    return storeItems[get(this, 'socket.stateData.player.weapon')].display;
-  }),
+  @computed('socket.stateData.player.weapon')
+  get playerWeapon() {
+    return storeItems[this.get('socket.stateData.player.weapon')].display;
+  }
 
-  randomVictoryQuote: computed(function() {
+  @computed()
+  randomVictoryQuote() {
     return victoryQuotes[Math.floor(Math.random() * Math.floor(victoryQuotes.length))];
-  }),
+  }
 
-  cutsList: computed('cutsHarvested', function() {
-    let cuts = get(this, 'cutsHarvested');
+  @computed('cutsHarvested')
+  get cutsList() {
+    let cuts = this.get('cutsHarvested');
 
     if (!cuts.length) { return null;}
 
@@ -33,6 +37,6 @@ export default Component.extend({
         }
       }).join(", ");
     }
-  })
+  }
 
-});
+}

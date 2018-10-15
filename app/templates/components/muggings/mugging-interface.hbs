@@ -13,28 +13,27 @@
       </div>
 
       <p>
-        One of the city's relentless predators, a Butcher, follows you from the station.
+        One of the city's relentless muggers,
+        {{muggerName}}, follows you from the station.
       </p>
+
       <p>
-        Pulling his well-used signature blade, he charges you. You have a split second to react.
+        Pulling a well-used blade, he charges you. You have a split second to react.
       </p>
 
       {{#if (gt turnsLeft 0)}}
-        <div class="btn btn-secondary btn-lg btn-block" {{action 'fightMugger'}}>
+        <button class="btn btn-secondary btn-lg btn-block" {{action "fightMugger"}}>
           Fight mugger
-        </div>
+        </button>
       {{/if}}
 
-      {{#if (gt playerFunds 5)}}    {{!-- to prevent random penalty < 1 --}}
-        <div class="btn btn-secondary btn-lg btn-block" {{action 'offerCash'}}>
-          Offer cash
-        </div>
-      {{/if}}
+      {{#if (or (gte playerFunds 500) (gte totalCutsOwned 1))}}
+        <button class="btn btn-secondary btn-lg btn-block" {{action "bribeMugger"}}>
+          Bribe player
+        </button>
 
-      {{#if (gt totalCutsOwned 0)}}
-        <div class="btn btn-secondary btn-lg btn-block" {{action 'offerCuts'}}>
-          Offer cuts
-        </div>
+      {{else}}
+        <button class="btn btn-secondary btn-lg btn-block">Oh shit!</button>
       {{/if}}
 
     {{else if (gt turnsLost 0)}}
@@ -43,15 +42,15 @@
 
     {{else if (gt fundsLost 0)}}
 
-      {{muggings/offered-funds fundsLost=fundsLost}}
+      {{muggings/offered-funds fundsLost=fundsLost muggerName=muggerName}}
 
     {{else if hasLostCuts}}
 
-      {{muggings/offered-cuts cutsLost=cutsLost}}
+      {{muggings/offered-cuts cutsLost=cutsLost muggerName=muggerName}}
 
     {{else}}
 
-      {{muggings/mugging-victory cutsHarvested=cutsHarvested}}
+      {{muggings/mugging-victory cutsHarvested=cutsHarvested muggerName=muggerName}}
 
     {{/if}}
 

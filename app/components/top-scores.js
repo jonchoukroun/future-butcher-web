@@ -1,24 +1,28 @@
-import Component from '@ember/component'
-import { computed, get, set } from '@ember/object'
+import Component from '@ember/component';
+import { computed } from '@ember-decorators/object';
 
-export default Component.extend({
+export default class TopScoresComponent extends Component {
 
-  scores: computed('socket.stateData', function() {
-    return get(this, 'socket.stateData');
-  }),
+  @computed('socket.stateData')
+  get scores() {
+    return this.get('socket.stateData');
+  }
 
-  highestScore: computed('scores', function() {
-    return get(this, 'scores.firstObject');
-  }),
+  @computed('scores')
+  get highestScore() {
+    return this.get('scores.firstObject');
+  }
 
-  playerScoreIndex: computed('scores', 'playerScore', function() {
-    return Object.values(get(this, 'scores')).map(i => i.score).indexOf(get(this, 'playerScore'));
-  }),
+  @computed('scores', 'playerScore')
+  get playerScoreIndex() {
+    return Object.values(this.get('scores')).map(i => i.score).indexOf(this.get('playerScore'));
+  }
 
-  higherScores: computed('scores', 'playerScoreIndex', function() {
-    const scores = get(this, 'scores');
+  @computed('scores', 'playerScoreIndex')
+  get higherScores() {
+    const scores = this.get('scores');
     return [2, 1].map(n => {
-      let rank = get(this, 'playerScoreIndex') - n;
+      let rank = this.get('playerScoreIndex') - n;
       if (rank < 0) { return; }
 
       let obj = new Object;
@@ -28,12 +32,13 @@ export default Component.extend({
 
       return obj;
     }).filter(el => el !== undefined);
-  }),
+  }
 
-  lowerScores: computed('scores', 'playerScoreIndex', function() {
-    const scores = get(this, 'scores');
+  @computed('scores', 'playerScoreIndex')
+  get lowerScores() {
+    const scores = this.get('scores');
     return [1, 2].map(n => {
-      let rank = get(this, 'playerScoreIndex') + n;
+      let rank = this.get('playerScoreIndex') + n;
 
       let obj = new Object;
       obj.player = scores[rank].player;
@@ -42,22 +47,24 @@ export default Component.extend({
 
       return obj;
     });
-  }),
+  }
 
-  isHighestScore: computed('playerScore', 'highestScore', function() {
-    return get(this, 'playerScore') === get(this, 'highestScore.score') &&
-      get(this, 'playerName') === get(this, 'highestScore.player');
-  }),
+  @computed('playerScore', 'highestScore')
+  get isHighestScore() {
+    return this.get('playerScore') === this.get('highestScore.score') &&
+      this.get('playerName') === this.get('highestScore.player');
+  }
 
-  isBelowTopScores: computed('playerScore', 'lowestScore', function() {
-    return get(this, 'playerScore') < get(this, 'lowestScore');
-  }),
+  @computed('playerScore', 'lowestScore')
+  get isBelowTopScores() {
+    return this.get('playerScore') < this.get('lowestScore');
+  }
 
   didReceiveAttrs() {
     this._super(...arguments);
 
-    set(this, 'playerName', localStorage.getItem('player_name'));
-    set(this, 'playerScore', parseInt(localStorage.getItem('player_score')));
+    this.set('playerName', localStorage.getItem('player_name'));
+    this.set('playerScore', parseInt(localStorage.getItem('player_score')));
   }
 
-})
+}

@@ -18,8 +18,6 @@ Router.map(function() {
   this.route('traveling');
   this.route('mugging');
 
-  this.route('bank');
-
   this.route('store');
 
   this.route('high-scores');

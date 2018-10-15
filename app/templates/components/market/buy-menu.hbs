@@ -1,0 +1,69 @@
+<button
+  class="btn btn-secondary btn-sm align-self-end"
+  {{action "clickBack"}}
+>
+  <i class="fas fa-times"></i>
+</button>
+
+<div class="d-flex flex-row">
+  <h4>
+    <span class="text-capitalize">{{cutName}}</span>
+    <span class="small">in stock:</span>
+
+    {{format-number cutsAvailable precision=0}}
+    <span class="small">
+      {{#if (eq cutsAvailable 1)}}
+        lb
+      {{else}}
+        lbs
+      {{/if}}
+    </span>
+  </h4>
+</div>
+
+<form
+  class="transaction-form align-self-center"
+  {{action "submitBuyCut" on="submit"}}
+>
+
+  <div class="form-row">
+    {{input
+      value=buyAmount
+      type=number
+      placeholder=maxCanBuyPlaceholder
+      autofocus="true"
+      classNames="form-control form-control-lg mt-md-2"
+      key-up=(action "calculateCost")
+    }}
+  </div>
+
+  {{#if (not buyAmount)}}
+    <div class="d-flex flex-column align-items-center justify-content-center">
+      <button
+        class="btn btn-secondary btn-block"
+        {{action "clickBuyMax"}}
+      >
+        Buy {{maxCanBuy}} lbs for
+        {{format-money maxCanBuyCost precision=0}}
+      </button>
+
+      <p class="small">Or enter a different amount.</p>
+    </div>
+
+  {{else}}
+    <div class="d-flex justify-content-center">
+      {{#if invalidBuy}}
+        <button class="btn btn-secondary btn-disabled btn-block">
+          Buy {{buyAmount}} lbs for
+          {{format-money estimatedCost precision=0}}
+        </button>
+      {{else}}
+        <button type="submit" class="btn btn-secondary btn-block">
+          Buy {{buyAmount}} lbs for
+          {{format-money estimatedCost precision=0}}
+        </button>
+      {{/if}}
+    </div>
+  {{/if}}
+
+</form>

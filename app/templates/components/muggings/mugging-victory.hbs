@@ -11,13 +11,13 @@
 
 <p>
   {{#if cutsList}}
-    You use your {{playerWeapon}} to harvest the Butcher's {{cutsList}}. Seizing opportunity like a real capitalist!
+    You use your {{playerWeapon}} to harvest {{muggerName}}'s {{cutsList}}. Seizing opportunity like a real capitalist!
   {{else}}
     Too bad you couldn't harvest any of his organs.
   {{/if}}
 </p>
 
 
-{{#link-to 'market' class="btn btn-secondary btn-lg btn-block"}}
+{{#link-to "market" class="btn btn-secondary btn-lg btn-block"}}
   Hit the market
 {{/link-to}}

@@ -6,44 +6,18 @@
   background-repeat: no-repeat;
 
   h1, h2 {
-    text-shadow: 0 10px 20px $brand-secondary, 0 6px 6px $brand-secondary;
+    text-shadow: 0 6px 6px $brand-secondary;
   }
 
   h1 {
-    font-size: 3em;
+    font-size: 5em;
     letter-spacing: normal;
   }
 
   h2 {
     font-weight: bold;
-    font-size: 1.5em;
+    font-size: 4em;
     letter-spacing: 0.5rem;
-  }
-}
-
-@media (max-width: 320px) {
-  .intro-image {
-    height: 30vh;
-  }
-
-  .instructions {
-    h1 {
-      font-size: 2em;
-      letter-spacing: 3px;}
-  }
-}
-
-@media (min-width: 375px) {
-  .intro-image {
-    height: 30vh;
-    h2 { font-size: 1.7em; }
-  }
-}
-
-@media (min-width: 414px) {
-  .intro-image {
-    h1 { font-size: 4em; }
-    h2 { font-size: 2em; }
   }
 }
 
@@ -51,7 +25,7 @@
   .intro-image {
     background-position: center;
 
-    h1 { font-size: 5em; }
-    h2 { font-size: 2.5em; }
+    h1 { font-size: 7em; }
+    h2 { font-size: 5em; }
   }
 }

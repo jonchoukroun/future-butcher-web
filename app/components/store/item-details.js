@@ -1,136 +1,118 @@
 import Component from '@ember/component';
-import { computed, get, set } from '@ember/object';
-import { inject as service } from '@ember/service';
-import { storeItems, weaponStats } from 'future-butcher-web/fixtures/store-items';
+import { action, computed } from '@ember-decorators/object';
+import { service } from '@ember-decorators/service';
 import { later } from '@ember/runloop';
+import { classNames } from '@ember-decorators/component';
 
-export default Component.extend({
+import { storeItems } from 'future-butcher-web/fixtures/store-items';
 
-  item:    null,
-  details: null,
+@classNames('card', 'bg-black', 'border-0')
 
-  inTransaction: false,
+export default class ItemDetailsComponent extends Component {
 
-  classNames: ['card', 'bg-black', 'border-0'],
+  item;
+  details;
 
-  notifications: service('notification-service'),
+  inTransaction = false;
 
-  isWeapon: computed('details', function() {
-    return !!get(this, 'details.weight');
-  }),
+  @service('notification-service') notifications;
 
-  itemName: computed('item', function() {
-    return storeItems[get(this, 'item')].display;
-  }),
+  @computed('item')
+  get itemName() {
+    return storeItems[this.get('item')].display;
+  }
 
-  itemDescription: computed('item', function() {
-    return storeItems[get(this, 'item')].description;
-  }),
+  @computed('details.price')
+  get itemPrice() {
+    return this.get('details.price');
+  }
 
-  itemPrice: computed('details.price', function() {
-    return get(this, 'details.price');
-  }),
-
-  itemWeight: computed('details.weight', function() {
-    return get(this, 'details.weight');
-  }),
-
-  itemSpace: computed('details.pack_space', function() {
-    return get(this, 'details.pack_space');
-  }),
-
-  playerFunds: computed('socket.stateData.player.funds', function() {
-    return get(this, 'socket.stateData.player.funds');
-  }),
-
-  playerWeapon: computed('socket.stateData.player.weapon', function() {
-    return get(this, 'socket.stateData.player.weapon');
-  }),
-
-  packSpace: computed('socket.stateData.player.pack_space', function() {
-    return get(this, 'socket.stateData.player.pack_space');
-  }),
-
-  alreadyOwned: computed('playerWeapon', 'packSpace', 'item', 'details', function() {
-    if (get(this, 'details.pack_space')) {
-      return get(this, 'packSpace') === get(this, 'details.pack_space')
-    } else {
-      return get(this, 'playerWeapon') === get(this, 'item')
+  @computed('details.cuts')
+  get canHarvest() {
+    let cuts = this.get('details.cuts');
+    if (cuts.length > 0) {
+      cuts = cuts.join(", ").split(" ");
+      cuts.splice(cuts.length - 1, 0, "and");
+      return cuts.join(" ");
     }
-  }),
+  }
 
-  canAfford: computed('isWeapon', 'alreadyOwned', 'playerFunds', 'playerWeapon', 'details.price', function() {
-    if (get(this, 'alreadyOwned')) { return; }
+  @computed('details.pack_space')
+  get itemSpace() {
+    return this.get('details.pack_space');
+  }
+
+  @computed('socket.stateData.player.funds')
+  get playerFunds() {
+    return this.get('socket.stateData.player.funds');
+  }
+
+  @computed('socket.stateData.player.weapon')
+  get playerWeapon() {
+    return this.get('socket.stateData.player.weapon');
+  }
+
+  @computed('socket.stateData.player.pack_space')
+  get packSpace() {
+    return this.get('socket.stateData.player.pack_space');
+  }
+
+  @computed('playerWeapon', 'packSpace', 'item', 'details')
+  get alreadyOwned() {
+    if (this.get('details.pack_space')) {
+      return this.get('packSpace') === this.get('details.pack_space')
+    } else {
+      return this.get('playerWeapon') === this.get('item')
+    }
+  }
+
+  @computed('alreadyOwned', 'playerFunds', 'playerWeapon', 'details.price')
+  get canBuy() {
+    if (this.get('alreadyOwned')) { return false; }
 
     let available_funds;
-    const player_funds = get(this, 'playerFunds');
-    const current_weapon = get(this, 'playerWeapon');
+    const player_funds = this.get('playerFunds');
+    const current_weapon = this.get('playerWeapon');
 
     let current_weapon_value = 0;
-    if (current_weapon && get(this, 'socket.stateData.station.store')[current_weapon]) {
-      current_weapon_value = get(this, 'socket.stateData.station.store')[current_weapon].price;
+    if (current_weapon && this.get('socket.stateData.station.store')[current_weapon]) {
+      current_weapon_value = this.get('socket.stateData.station.store')[current_weapon].price;
     }
 
-    if (get(this, 'isWeapon') && current_weapon_value) {
+    if (!this.get('itemSpace') && current_weapon_value) {
       available_funds = player_funds + current_weapon_value;
     } else {
       available_funds = player_funds;
     }
 
-    return get(this, 'details.price') <= available_funds;
-  }),
-
-  totalWeightCarried: computed('playerWeapon', 'socket.stateData.player.pack', function() {
-    const pack = get(this, 'socket.stateData.player.pack');
-    const current_weapon = weaponStats[get(this, 'playerWeapon')];
-
-    let weapon_weight = 0;
-    if (current_weapon) {
-      weapon_weight = current_weapon.weight;
-    }
-
-    return Object.values(pack).reduce((cut, sum) => { return sum + cut; }) + weapon_weight;
-  }),
-
-  canCarry: computed('isWeapon', 'totalWeightCarried', 'packSpace', 'details.weight', function() {
-    if (!get(this, 'isWeapon')) { return true; }
-
-    return get(this, 'packSpace') >= get(this, 'details.weight') + get(this, 'totalWeightCarried');
-  }),
-
-  isDisabled: computed('isWeapon', 'canAfford', 'canCarry', 'alreadyOwned', function() {
-    if (!get(this, 'isWeapon') && get(this, 'alreadyOwned')) {
-      return true;
-    }
-
-    if ((!get(this, 'canAfford') || !get(this, 'canCarry')) && !get(this, 'alreadyOwned')) {
-      return true;
-    }
-
-    return false;
-  }),
+    return this.get('details.price') <= available_funds;
+  }
 
   buyWeapon() {
-    get(this, 'socket').pushCallBack("buy_weapon", {"weapon": get(this, 'item')}).then(() => {
+    let action = "buy_weapon";
+    if (this.get('playerWeapon')) {
+      action = "replace_weapon";
+    }
+    this.get('socket').pushCallBack(action, {"weapon": this.get('item')}).then(() => {
       this.handleTransactionState("bought");
     })
-  },
+  }
 
   buyPack() {
-    get(this, 'socket').pushCallBack("buy_pack", {"pack": get(this, 'item')}).then(() => {
+    this.get('socket').pushCallBack("buy_pack", {"pack": this.get('item')}).then(() => {
       this.handleTransactionState("bought");
     })
-  },
+  }
 
   handleTransactionState(action) {
     later(() => {
-      set(this, 'inTransaction', false);
+      this.set('inTransaction', false);
 
-      let payload = { action: action, item: get(this, 'itemName') }
-      if (action !== "dropped") { payload.price = get(this, 'itemPrice'); }
+      let payload = { action: action, item: this.get('itemName') }
+      if (action !== "dropped") { payload.price = this.get('itemPrice'); }
       this.confirmTransaction(payload);
     }, 300);
-  },
+  }
 
   confirmTransaction(payload) {
     let message;
@@ -147,42 +129,32 @@ export default Component.extend({
       message = `${payload.item} ${payload.action}.`;
     }
 
-    get(this, 'notifications').renderNotification(message);
-  },
+    this.get('notifications').renderNotification(message);
+  }
 
   formatCurrency(value) {
     return (value).toLocaleString("en-us",
       { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
-  },
-
-  actions: {
-
-    buyItem() {
-      set(this, 'inTransaction', true);
-
-      if (get(this, 'details.weight')) {
-        this.buyWeapon();
-      } else {
-        this.buyPack();
-      }
-    },
-
-    dropItem() {
-      set(this, 'inTransaction', true);
-
-      get(this, 'socket').pushCallBack("drop_weapon", {}).then(() => {
-        this.handleTransactionState("dropped");
-      })
-    },
-
-    replaceItem() {
-      set(this, 'inTransaction', true);
-
-      get(this, 'socket').pushCallBack("replace_weapon", {"weapon": get(this, 'item')}).then(() => {
-        this.handleTransactionState("replaced");
-      })
-    }
-
   }
 
-});
+  @action
+  buyItem() {
+    this.set('inTransaction', true);
+
+    if (this.get('details.damage')) {
+      this.buyWeapon();
+    } else {
+      this.buyPack();
+    }
+  }
+
+  @action
+  dropItem() {
+    this.set('inTransaction', true);
+
+    this.get('socket').pushCallBack("drop_weapon", {}).then(() => {
+      this.handleTransactionState("dropped");
+    })
+  }
+
+}

@@ -1,15 +1,18 @@
 import Component from '@ember/component';
-import { computed } from '@ember/object';
+import { computed } from '@ember-decorators/object';
+
 import { defeatQuotes, defeatedButtonText } from 'future-butcher-web/fixtures/mugging-quotes';
 
-export default Component.extend({
+export default class MuggingDefeatComponent extends Component {
 
-  randomDefeatQuote: computed(function() {
+  @computed()
+  randomDefeatQuote() {
     return defeatQuotes[Math.floor(Math.random() * Math.floor(defeatQuotes.length))];
-  }),
+  }
 
-  randomDefeatedButton: computed(function() {
+  @computed()
+  randomDefeatedButton() {
     return defeatedButtonText[Math.floor(Math.random() * Math.floor(defeatedButtonText.length))];
-  })
+  }
 
-});
+}

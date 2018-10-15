@@ -97,7 +97,7 @@ export default Service.extend({
 
   _validateCallback(callback) {
     const validCallbacks = [
-      "new_game", "start_game", "end_game", "change_station", "buy_cut", "sell_cut", "pay_debt", "buy_loan", "fight_mugger", "pay_mugger", "buy_weapon", "drop_weapon", "replace_weapon", "buy_pack"
+      "new_game", "start_game", "end_game", "change_station", "buy_cut", "sell_cut", "pay_debt", "buy_loan", "fight_mugger", "bribe_mugger", "buy_weapon", "drop_weapon", "replace_weapon", "buy_pack"
     ];
     return validCallbacks.includes(callback);
   },

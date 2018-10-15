@@ -1,0 +1,21 @@
+<div class="col-12 col-md-8 col-lg-6 px-0 p-2 py-sm-2 px-sm-4 px-md-1">
+  {{#if (eq currentRoute "subway")}}
+    {{#link-to "market" class="btn btn-secondary btn-lg btn-block"}}
+      {{#if (eq currentStation "bell_gardens")}}
+        Back to Store
+      {{else}}
+        Back to Market
+      {{/if}}
+    {{/link-to}}
+
+  {{else}}
+    {{#link-to "subway" class="btn btn-secondary btn-lg btn-block"}}
+      {{#if (eq turnsLeft 0)}}
+        Cross the border
+      {{else}}
+        Hit the Subway
+      {{/if}}
+    {{/link-to}}
+
+  {{/if}}
+</div>

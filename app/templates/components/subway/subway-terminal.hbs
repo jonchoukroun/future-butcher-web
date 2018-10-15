@@ -1,0 +1,76 @@
+<div class="d-flex flex-column">
+  <h3 class="my-5 text-center">
+    Time's Up!
+  </h3>
+
+  {{#if hasLooseEnds}}
+    <p class="px-2">
+      Tie up your loose ends:
+    </p>
+
+    {{#if (gt playerDebt 0)}}
+      <p class="text-center">
+        You still owe
+        {{format-money playerDebt precision=0}}
+        ...
+      </p>
+
+      {{#if (gt playerFunds playerDebt)}}
+        <button
+          class="btn btn-secondary my-0"
+          {{action "payDebt"}}
+        >
+          Pay your debt
+        </button>
+
+      {{else}}
+        <p>But you can't pay it off, deadbeat.</p>
+      {{/if}}
+    {{/if}}
+
+    {{#if (gt totalCutsOwned 0)}}
+      <p class="text-center mt-4">
+        You're still carrying {{totalCutsOwned}}
+        {{#if (eq totalCutsOwned 1)}}
+          lb...
+        {{else}}
+          lbs...
+        {{/if}}
+      </p>
+
+      {{#link-to "market" class="btn btn-secondary my-0"}}
+        Sell your inventory
+      {{/link-to}}
+    {{/if}}
+
+    <button
+      class="btn btn-secondary btn-block btn-lg align-self-center mt-5"
+      {{action "retirePlayer"}}
+    >
+      Cross the border anyway
+    </button>
+
+  {{else}}
+
+    <p class="px-2">
+      Are you ready to bribe the <span class="font-italic">coyote</span> and escape LA?
+    </p>
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="btn-group w-100">
+          {{#link-to "market" class="btn btn-secondary btn-lg btn-eq-flex"}}
+            Not yet
+          {{/link-to}}
+
+          <button
+            class="btn btn-secondary btn-lg btn-eq-flex"
+            {{action "retirePlayer"}}
+          >
+            Book it!
+          </button>
+        </div>
+      </div>
+    </div>
+  {{/if}}
+</div>

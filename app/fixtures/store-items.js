@@ -34,25 +34,7 @@ const storeItems = {
   "suitcase":       {
     display: "Suitcase",
     description: "Perfect if you want to lug around a few more pounds of... stuff."
-  },
-}
-
-const weaponStats = {
-  "hedge_clippers": {
-    weight: 3
-  },
-  "hockey_stick":   {
-    weight: 5
-  },
-  "brass_knuckles": {
-    weight: 1
-  },
-  "box_cutter":     {
-    weight: 1
-  },
-  "machete":        {
-    weight: 2
-  },
+  }
 };
 
-export { storeItems, weaponStats };
+export { storeItems };
