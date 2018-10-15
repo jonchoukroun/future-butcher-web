@@ -6,12 +6,12 @@ import { defeatQuotes, defeatedButtonText } from 'future-butcher-web/fixtures/mu
 export default class MuggingDefeatComponent extends Component {
 
   @computed()
-  randomDefeatQuote() {
+  get randomDefeatQuote() {
     return defeatQuotes[Math.floor(Math.random() * Math.floor(defeatQuotes.length))];
   }
 
   @computed()
-  randomDefeatedButton() {
+  get randomDefeatedButton() {
     return defeatedButtonText[Math.floor(Math.random() * Math.floor(defeatedButtonText.length))];
   }
 
