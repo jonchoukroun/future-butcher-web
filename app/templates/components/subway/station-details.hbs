@@ -13,7 +13,7 @@
 
   <div class="col-5 col-lg-4 d-flex align-items-center justify-content-end">
     {{#if (and (eq station.name "bell_gardens") (gt turnsLeft 20))}}
-      <p class="small">Closed</p>
+      <p class="small mb-0">Closed</p>
 
     {{else if (not-eq currentStation station.name)}}
       {{#if sufficientTurns}}

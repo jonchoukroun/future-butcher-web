@@ -28,7 +28,9 @@
       class="btn btn-simple px-0"
       {{action "toggleStatsBar" "#turnsHelp"}}
     >
-      <h4 class="digital-text m-0">
+      <h4
+        class="digital-text m-0 {{if (lte turnsLeft 5) "text-warning"}}"
+      >
         {{timeLeft}}
 
         <i class="fas fa-caret-down ml-1 ml-md-3"></i>
@@ -62,7 +64,7 @@
 
         <div class="row justify-content-end">
           <button
-            class="btn btn-secondary btn-sm"
+            class="btn btn-simple btn-sm"
             {{action "closeFundsTutorial"}}
           >
             Close
@@ -74,15 +76,15 @@
           You have
           {{format-money playerFunds precision=0}}
           to buy meat from the
-          {{~#link-to "market" class="link-text"}}
+          {{#link-to "market" class="link-text"~}}
             market
-          {{/link-to~}}
+          {{~/link-to~}}
           , then sell it for a profit.
         </p>
 
         <div class="row justify-content-end">
           <button
-            class="btn btn-secondary btn-sm"
+            class="btn btn-simple btn-sm"
             {{action "toggleStatsBar" "#fundsHelp"}}
           >
             Close
@@ -107,9 +109,13 @@
           {{#if (gt playerFunds playerDebt)}}
             <p>You made money real quick!</p>
 
-            <button class="btn btn-secondary btn-sm" {{action payDebt}}>
-              Pay off your debt
-            </button>
+            <div class="row justify-content-center">
+              <div class="col-12 col-md-8 col-xl-6">
+                <button class="btn btn-secondary btn-sm btn-block" {{action payDebt}}>
+                  Pay off your debt
+                </button>
+              </div>
+            </div>
 
           {{else}}
             <p>
@@ -120,7 +126,7 @@
 
           <div class="row justify-content-end">
             <button
-              class="btn btn-secondary btn-sm"
+              class="btn btn-simple btn-sm"
               {{action "closeDebtTutorial"}}
             >
               Close
@@ -135,14 +141,18 @@
           </p>
 
           {{#if (gt playerFunds playerDebt)}}
-            <button class="btn btn-secondary btn-sm" {{action payDebt}}>
-              Pay it off
-            </button>
+            <div class="row justify-content-center">
+              <div class="col-12 col-md-8 col-xl-6">
+                <button class="btn btn-secondary btn-sm btn-block" {{action payDebt}}>
+                  Pay it off
+                </button>
+              </div>
+            </div>
           {{/if}}
 
           <div class="row justify-content-end">
             <button
-              class="btn btn-secondary btn-sm"
+              class="btn btn-simple btn-sm"
               {{action "toggleStatsBar" "#debtHelp"}}
             >
               Close
@@ -155,7 +165,7 @@
 
         <div class="row justify-content-end">
           <button
-            class="btn btn-secondary btn-sm"
+            class="btn btn-simple btn-sm"
             {{action "toggleStatsBar" "#debtHelp"}}
           >
             Close
@@ -180,20 +190,20 @@
 
         <div class="row justify-content-end">
           <button
-            class="btn btn-secondary btn-sm"
+            class="btn btn-simple btn-sm"
             {{action "closeTurnsTutorial"}}
           >
-            Close
+            simple
           </button>
         </div>
 
 
       {{else}}
-        <p>You have {{turnsLeft}} hours remaining.</p>
+        <p>You have {{turnsLeft}} hours left.</p>
 
         <div class="row justify-content-end">
           <button
-            class="btn btn-secondary btn-sm"
+            class="btn btn-simple btn-sm"
             {{action "toggleStatsBar" "#turnsHelp"}}
           >
             Close
@@ -245,7 +255,7 @@
 
         <div class="row justify-content-end">
           <button
-            class="btn btn-secondary btn-sm"
+            class="btn btn-simple btn-sm"
             {{action "toggleStatsBar" "#gameHelp"}}
           >
             Close
