@@ -7,6 +7,17 @@
       {{#if isLastTurn}}
         {{subway/subway-terminal sendEndGame=(action "sendEndGame")}}
 
+      {{else if helpScreenVisible}}
+        {{subway/subway-help}}
+
+        <div class="row d-flex justify-content-center mt-3">
+          <div class="col-4 d-flex align-items-center justify-content-center">
+            <button class="btn btn-secondary" {{action "toggleHelpScreen"}}>
+              Back
+            </button>
+          </div>
+        </div>
+
       {{else}}
         <div class="d-flex flex-column">
           <div class="text-center border-bottom border-secondary mb-3">
@@ -17,6 +28,13 @@
             {{subway/subway-stations sendStation=(action "navigate")}}
           </div>
 
+          <div class="row d-flex justify-content-center mt-3">
+            <div class="col-4 d-flex align-items-center justify-content-center">
+              <button class="btn btn-simple" {{action "toggleHelpScreen"}}>
+                <h2 class="m-0"><i class="fas fa-question-circle"></i></h2>
+              </button>
+            </div>
+          </div>
         </div>
 
       {{/if}}

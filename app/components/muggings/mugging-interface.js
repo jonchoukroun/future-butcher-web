@@ -1,48 +1,59 @@
 import Component from '@ember/component';
-import { computed, get, set } from '@ember/object';
+import { action, computed } from '@ember-decorators/object';
 import { later } from '@ember/runloop';
 
-export default Component.extend({
+import { muggerNames } from 'future-butcher-web/fixtures/mugger-names';
 
-  inFight: false,
+export default class MuggingInterfaceComponent extends Component {
 
-  init() {
-    this._super(...arguments);
+  inFight = false;
 
-    set(this, 'startingFunds', get(this, 'socket.stateData.player.funds'));
-    set(this, 'startingPack', get(this, 'socket.stateData.player.pack'));
-    set(this, 'startingTurnsLeft', get(this, 'socket.stateData.rules.turns_left'));
-  },
+  constructor() {
+    super(...arguments);
 
-  playerFunds: computed('socket.stateData.player.funds', function() {
-    return get(this, 'socket.stateData.player.funds');
-  }),
+    this.set('muggerName', this.getRandomName());
 
-  totalCutsOwned: computed('socket.stateData.player.pack', function() {
-    return Object.values(get(this, 'socket.stateData.player.pack')).reduce((cut, acc) => {
+    this.set('startingFunds', this.get('socket.stateData.player.funds'));
+    this.set('startingPack', this.get('socket.stateData.player.pack'));
+    this.set('startingTurnsLeft', this.get('socket.stateData.rules.turns_left'));
+  }
+
+  @computed('socket.gameStatus')
+  get inProgress() {
+    return this.get('socket.gameStatus') === "mugging";
+  }
+
+  @computed('socket.stateData.player.funds')
+  get playerFunds() {
+    return this.get('socket.stateData.player.funds');
+  }
+
+  @computed('socket.stateData.player.pack')
+  get totalCutsOwned() {
+    return Object.values(this.get('socket.stateData.player.pack')).reduce((cut, acc) => {
       return cut + acc;
     });
-  }),
+  }
 
-  inProgress: computed('socket.gameStatus', function() {
-    return get(this, 'socket.gameStatus') === "mugging";
-  }),
+  @computed('socket.stateData.rules.turns_left')
+  get turnsLeft() {
+    return this.get('socket.stateData.rules.turns_left');
+  }
 
-  turnsLeft: computed('socket.stateData.rules.turns_left', function() {
-    return get(this, 'socket.stateData.rules.turns_left');
-  }),
+  @computed('startingTurnsLeft', 'turnsLeft')
+  get turnsLost() {
+    return this.get('startingTurnsLeft') - this.get('turnsLeft');
+  }
 
-  turnsLost: computed('startingTurnsLeft', 'turnsLeft', function() {
-    return get(this, 'startingTurnsLeft') - get(this, 'turnsLeft');
-  }),
+  @computed('startingFunds', 'playerFunds')
+  get fundsLost() {
+    return this.get('startingFunds') - this.get('playerFunds');
+  }
 
-  fundsLost: computed('startingFunds', 'playerFunds', function() {
-    return get(this, 'startingFunds') - get(this, 'playerFunds');
-  }),
-
-  cutsLost: computed('startingPack', 'socket.stateData.player.pack', function() {
-    const starting_pack = get(this, 'startingPack');
-    const current_pack  = get(this, 'socket.stateData.player.pack');
+  @computed('startingPack', 'socket.stateData.player.pack')
+  get cutsLost() {
+    const starting_pack = this.get('startingPack');
+    const current_pack  = this.get('socket.stateData.player.pack');
 
     let lost_cuts = new Object();
     Object.keys(current_pack).map(cut => {
@@ -53,52 +64,50 @@ export default Component.extend({
     });
 
     return lost_cuts;
-  }),
+  }
 
-  hasLostCuts: computed('cutsLost', function() {
-    return Object.entries(get(this, 'cutsLost'));
-  }),
+  @computed('cutsLost')
+  get hasLostCuts() {
+    return Object.entries(this.get('cutsLost'));
+  }
 
-  cutsHarvested: computed('startingPack', 'socket.stateData.player.pack', function() {
-    const starting_pack = get(this, 'startingPack');
-    const current_pack  = get(this, 'socket.stateData.player.pack');
+  @computed('startingPack', 'socket.stateData.player.pack')
+  get cutsHarvested() {
+    const starting_pack = this.get('startingPack');
+    const current_pack  = this.get('socket.stateData.player.pack');
 
     return Object.keys(current_pack).filter(cut => current_pack[cut] > starting_pack[cut]);
-  }),
+  }
 
-  hasHarvestedCuts: computed('cutsHarvested', function() {
-    return get(this, 'cutsHarvested').length;
-  }),
+  @computed('cutsHarvested')
+  get hasHarvestedCuts() {
+    return this.get('cutsHarvested').length;
+  }
+
+  getRandomName() {
+    return muggerNames[Math.floor(Math.random() * Math.floor(muggerNames.length))];
+  }
 
   handleFightState() {
     later(() => {
-      set(this, 'inFight', false);
+      this.set('inFight', false);
     }, 300);
-  },
-
-  actions: {
-
-    fightMugger() {
-      set(this, 'inFight', true);
-      get(this, 'socket').pushCallBack("fight_mugger", {}).then(() => {
-        this.handleFightState();
-      })
-    },
-
-    offerCash() {
-      set(this, 'inFight', true);
-      get(this, 'socket').pushCallBack("pay_mugger", {"response": "funds"}).then(() => {
-        this.handleFightState();
-      })
-    },
-
-    offerCuts() {
-      set(this, 'inFight', true);
-      get(this, 'socket').pushCallBack("pay_mugger", {"response": "cuts"}).then(() => {
-        this.handleFightState();
-      })
-    }
-
   }
 
-});
+  @action
+  fightMugger() {
+    this.set('inFight', true);
+    this.get('socket').pushCallBack("fight_mugger", {}).then(() => {
+      this.handleFightState();
+    })
+  }
+
+  @action
+  bribeMugger() {
+    this.set('inFight', true);
+    this.get('socket').pushCallBack("bribe_mugger", {}).then(() => {
+      this.handleFightState();
+    })
+  }
+
+}

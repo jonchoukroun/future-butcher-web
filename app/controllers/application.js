@@ -1,32 +1,33 @@
 import Controller from '@ember/controller';
-import { computed, get } from '@ember/object';
-import { inject as service } from '@ember/service';
+import { action, computed } from '@ember-decorators/object';
+import { service } from '@ember-decorators/service';
 
-export default Controller.extend({
+export default class ApplicationController extends Controller {
 
-  confirmationMessage: null,
-  errorMessage:        null,
+  confirmationMessage;
+  errorMessage;
+  pinnedMessage;
 
-  notifications: service('notification-service'),
+  @service('notification-service') notifications;
 
-  confirmationNotification: computed('notifications.confirmationMessage', function() {
-    return get(this, 'notifications.confirmationMessage');
-  }),
-
-  errorNotification: computed('notifications.errorMessage', function() {
-    return get(this, 'notifications.errorMessage');
-  }),
-
-  pinnedNotification: computed('notifications.pinnedMessage', function() {
-    return get(this, 'notifications.pinnedMessage');
-  }),
-
-  actions: {
-
-    unpinNotification() {
-      get(this, 'notifications').unpinNotification();
-    }
-
+  @computed('notifications.confirmationMessage')
+  get confirmationNotification() {
+    return this.get('notifications.confirmationMessage');
   }
 
-});
+  @computed('notifications.errorMessage')
+  get errorNotification() {
+    return this.get('notifications.errorMessage');
+  }
+
+  @computed('notifications.pinnedMessage')
+  get pinnedNotification() {
+    return this.get('notifications.pinnedMessage');
+  }
+
+  @action
+  unpinNotification() {
+    this.get('notifications').unpinNotification();
+  }
+
+}

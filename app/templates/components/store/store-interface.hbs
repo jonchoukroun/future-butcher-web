@@ -1,12 +1,4 @@
-{{#if transactionAlert}}
-  {{#liquid-wormhole class="transaction-alert bg-secondary border border-primary"}}
-    <p class="mb-0 text-center text-black font-weight-bold">
-      {{transactionAlert}}
-    </p>
-  {{/liquid-wormhole}}
-{{/if}}
-
-{{#if (eq storeScreen 'weapons')}}
+{{#if (eq storeScreen "weapons")}}
 
   <div id="storeAccordion" class="accordion">
     {{#each-in weaponsInventory as |weapon details|}}
@@ -15,12 +7,12 @@
   </div>
 
   <div class="container-fluid mt-5">
-    <div class="btn btn-secondary btn-block" {{action 'back'}}>
+    <button class="btn btn-secondary btn-block" {{action "back"}}>
       Back
-    </div>
+    </button>
   </div>
 
-{{else if (eq storeScreen 'packs')}}
+{{else if (eq storeScreen "packs")}}
 
   <div id="storeAccordion" class="accordion">
     {{#each-in packsInventory as |pack details|}}
@@ -29,22 +21,28 @@
   </div>
 
   <div class="container-fluid mt-5">
-    <div class="btn btn-secondary btn-block" {{action 'back'}}>
+    <button class="btn btn-secondary btn-block" {{action "back"}}>
       Back
-    </div>
+    </button>
   </div>
 
 {{else}}
   <div class="container-fluid">
+    <div class="d-flex flex-row justify-content-center my-2">
+      <h2 class="text-secondary">Gus's Army Surplus</h2>
+    </div>
+
     <div class="row">
       <div class="col-4 d-flex flex-column justify-content-center align-items-center">
         <div class="display-2">
           <ion-icon name="person"></ion-icon>
         </div>
       </div>
-      <div class="col-8 d-flex flex-column justify-content-center align-items-start px-0">
+      <div
+        class="col-8 d-flex flex-column justify-content-center align-items-start px-0"
+      >
         <p>
-          "Welcome to the last bastion of freedom in the Republic of LA! Where you can find all the tools a Meat Hustler might need."
+          "Welcome to the last bastion of freedom in LA! We carry all the gear a Meat Hustler like you might need."
         </p>
         <p>
         </p>
@@ -54,44 +52,17 @@
 
   <div class="container-fluid px-0">
 
-    {{#if (and weaponsInventoryCount (not packsInventoryCount))}}
+    <p>"It's a dangerous world. Carrying some protection might let you turn the tables on a mugger."</p>
 
-      <p>"All I got in stock is weapons, I'll be getting more soon."</p>
+    <button class="btn btn-secondary btn-block mb-5" {{action "showWeaponsStore"}}>
+      See Weapons
+    </button>
 
-      <button class="btn-secondary btn-lg btn-block" {{action 'showWeaponsStore'}}>
-        Weapons
-      </button>
+    <p>"The items will let you carry more weight, but they'll definitely attract more attention from muggers."</p>
 
-    {{else if (and packsInventoryCount (not weaponsInventoryCount))}}
-
-      <p>"You want to carry more shit? I got you covered. Uh, Butcher's hunting people carrying big packs is probably just a myth."</p>
-
-      <button class="btn-secondary btn-lg btn-block" {{action 'showPacksStore'}}>
-        Packs
-      </button>
-
-    {{else if (and packsInventoryCount weaponsInventoryCount)}}
-
-      <p>"Personal defense, carrying gear - I got it all."</p>
-
-      <div class="btn-group w-100">
-        <div class="btn btn-secondary btn-lg btn-eq-flex" {{action 'showWeaponsStore'}}>
-          Weapons
-        </div>
-        <div class="btn btn-secondary btn-lg btn-eq-flex" {{action 'showPacksStore'}}>
-          Packs
-        </div>
-      </div>
-
-    {{else}}
-
-      <p>"I don't got any stock right now. Come back soon."</p>
-
-    {{/if}}
-
-    {{#link-to 'market' class="btn btn-secondary btn-lg btn-block"}}
-      Back to market
-    {{/link-to}}
+    <button class="btn btn-secondary btn-block" {{action "showPacksStore"}}>
+      See Packs
+    </button>
 
   </div>
 {{/if}}

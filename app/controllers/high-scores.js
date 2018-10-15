@@ -1,12 +1,11 @@
-import Controller from '@ember/controller'
+import Controller from '@ember/controller';
+import { action } from '@ember-decorators/object';
 
-export default Controller.extend({
+export default class HighScoresController extends Controller {
 
-  actions: {
-
-    startNewGame() {
-      this.transitionToRoute('home');
-    }
+  @action
+  startNewGame() {
+    this.transitionToRoute('home');
   }
 
-});
+}

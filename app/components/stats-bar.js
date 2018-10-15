@@ -108,6 +108,11 @@ export default class StatsBarComponent extends Component {
   }
 
   @action
+  payDebt() {
+    this.get('socket').pushCallBack("pay_debt");
+  }
+
+  @action
   quitGame() {
     let payload = { hash_id: localStorage.getItem('player_hash'), score: 0 };
     this.endGame(payload);

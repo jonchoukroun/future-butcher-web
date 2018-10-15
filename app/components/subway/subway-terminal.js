@@ -36,6 +36,11 @@ export default class SubwayTerminalComponent extends Component {
   }
 
   @action
+  payDebt() {
+    this.get('socket').pushCallBack("pay_debt", {});
+  }
+
+  @action
   retirePlayer() {
     let score = this.get('playerDebt') === 0 ?
       this.get('socket.stateData.player.funds') : null;

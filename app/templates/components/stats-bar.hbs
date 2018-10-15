@@ -104,10 +104,19 @@
       {{#if (gt playerDebt 0)}}
 
         {{#if isSecondTurn}}
-          <p>
-            Your debt went up by 15<span class="percent"></span>.
-            Keep an eye on what you owe, you can't win if you're a deadbeat.
-          </p>
+          {{#if (gt playerFunds playerDebt)}}
+            <p>You made money real quick!</p>
+
+            <button class="btn btn-secondary btn-sm" {{action payDebt}}>
+              Pay off your debt
+            </button>
+
+          {{else}}
+            <p>
+              Your debt went up by 15<span class="percent">%</span>.
+              Keep an eye on what you owe, you can't win if you're a deadbeat.
+            </p>
+          {{/if}}
 
           <div class="row justify-content-end">
             <button
@@ -126,7 +135,7 @@
           </p>
 
           {{#if (gt playerFunds playerDebt)}}
-            <button class="btn btn-secondary btn-sm">
+            <button class="btn btn-secondary btn-sm" {{action payDebt}}>
               Pay it off
             </button>
           {{/if}}

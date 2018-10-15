@@ -9,7 +9,6 @@ export default class IntroScreenComponent extends HomeScreenComponent {
     this.get('socket').getScores().then((response) => {
       const lowest_score = response.state_data[99].score;
       this.set('current_rate', lowest_score);
-      localStorage.setItem('lowest-score', lowest_score);
     });
   }
 
