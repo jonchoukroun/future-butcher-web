@@ -14,7 +14,7 @@ export default class MuggingVictoryComponent extends Component {
   }
 
   @computed()
-  randomVictoryQuote() {
+  get randomVictoryQuote() {
     return victoryQuotes[Math.floor(Math.random() * Math.floor(victoryQuotes.length))];
   }
 
