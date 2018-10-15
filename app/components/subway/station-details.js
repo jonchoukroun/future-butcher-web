@@ -11,6 +11,11 @@ export default class StationDetailsComponent extends Component {
     return this.get('socket.stateData.rules.turns_left');
   }
 
+  @computed('turnsLeft')
+  get sufficientTurns() {
+    return this.get('turnsLeft') >= this.get('station.travel_time');
+  }
+
   @computed('socket.stateData.player.funds')
   get playerFunds() {
     return this.get('socket.stateData.player.funds');
