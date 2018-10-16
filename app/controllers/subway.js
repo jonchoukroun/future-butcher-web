@@ -35,7 +35,7 @@ export default class SubwayController extends Controller {
   }
 
   endGame(payload, redirect) {
-    this.get('socket').pushCallBack('end_game', payload).then(() => {
+    this.get('socket').pushCallBack("end_game", payload).then(() => {
       this.transitionToRoute(redirect);
     });
   }
