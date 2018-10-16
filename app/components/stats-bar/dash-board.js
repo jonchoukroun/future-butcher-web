@@ -17,16 +17,16 @@ export default class StatsBarComponent extends Component {
     const debt       = this.get('playerDebt');
     const route      = this.get('router.currentRouteName');
 
-    if (first_turn && !localStorage.getItem('closed-turns-tutorial') && route === "subway") {
-      $('#turnsHelp').slideToggle();
+    if (first_turn && !localStorage.getItem('closed-navigation-tutorial') && route === "subway") {
+      $('#navigationDetails').slideToggle();
     }
 
     if (first_turn && !localStorage.getItem('closed-funds-tutorial') && funds > 0) {
-      $('#fundsHelp').slideToggle();
+      $('#fundsDetails').slideToggle();
     }
 
     if (this.get('isSecondTurn') && !localStorage.getItem('closed-debt-tutorial') && debt > 0) {
-      $('#debtHelp').slideToggle();
+      $('#debtDetails').slideToggle();
     }
   }
 
@@ -75,7 +75,8 @@ export default class StatsBarComponent extends Component {
 
   @computed('turnsLeft')
   get isSecondTurn() {
-    return this.get('turnsLeft') === 23;
+    const turns_left = this.get('turnsLeft');
+    return turns_left < 24 && turns_left >= 19;
   }
 
   endGame(payload) {
@@ -85,37 +86,26 @@ export default class StatsBarComponent extends Component {
   }
 
   @action
-  closeTurnsTutorial() {
-    localStorage.setItem('closed-turns-tutorial', true);
-    $('#turnsHelp').slideToggle();
+  closeNavigationTutorial() {
+    localStorage.setItem('closed-navigation-tutorial', true);
+    $('#navigationDetails').slideToggle();
   }
 
   @action
   closeFundsTutorial() {
     localStorage.setItem('closed-funds-tutorial', true);
-    $('#fundsHelp').slideToggle();
+    $('#fundsDetails').slideToggle();
   }
 
   @action
   closeDebtTutorial() {
     localStorage.setItem('closed-debt-tutorial', true);
-    $('#debtHelp').slideToggle();
+    $('#debtDetails').slideToggle();
   }
 
   @action
   toggleStatsBar(selector) {
     $(selector).slideToggle();
-  }
-
-  @action
-  payDebt() {
-    this.get('socket').pushCallBack("pay_debt");
-  }
-
-  @action
-  quitGame() {
-    let payload = { hash_id: localStorage.getItem('player_hash'), score: 0 };
-    this.endGame(payload);
   }
 
 }

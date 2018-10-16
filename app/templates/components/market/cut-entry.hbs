@@ -17,34 +17,36 @@
   </div>
 </div>
 
-{{#unless price}}
-  <div class="cut-header text-right">
-    <h5 class="text-secondary my-2">No current demand</h5>
-  </div>
-
-{{else}}
+{{#if price}}
   <div class="d-flex flex-row align-items-end mb-3">
     <div class="flex-grow-1 pr-2 pr-md-3 pr-lg-4 pr-xl-5">
-      <p class="mb-0 text-right">
+      <p
+        class="mb-0 text-right {{if (not quantity) "text-warning"}}"
+      >
         {{format-money price precision=0}}
       </p>
 
       <p class="small mb-0 text-right font-italic">
-        {{format-money medianPrice precision=0}}
+        Average: {{format-money medianPrice precision=0}}
       </p>
     </div>
 
     <div class="btn-group ml-auto">
-      {{#if quantity}}
-        {{#if (and canAffordCut hasPackSpace)}}
-          <button class="btn btn-secondary mb-0" {{action "openBuyMenu"}}>Buy</button>
-        {{else}}
-          <div class="btn btn-secondary btn-disabled mb-0">Buy</div>
-        {{/if}}
-
+      {{#if (and canAffordCut hasPackSpace)}}
+        <button
+          class="btn btn-secondary mb-0"
+          {{action "openBuyMenu"}}
+        >
+          Buy
+        </button>
       {{else}}
-        <div class="btn btn-black"></div>
-
+        {{#if quantity}}
+          <div class="btn btn-secondary btn-disabled mb-0">Buy</div>
+        {{else}}
+          <div class="btn btn-secondary btn-disabled border-0 mb-0">
+            <span class="text-black">buy</span>
+          </div>
+        {{/if}}
       {{/if}}
 
       {{#if (gt cutsOwned 0)}}
@@ -56,4 +58,8 @@
     </div>
   </div>
 
-{{/unless}}
+{{else}}
+  <div class="cut-header text-right">
+    <h5 class="text-secondary my-2">No current demand</h5>
+  </div>
+{{/if}}

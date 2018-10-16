@@ -1,0 +1,44 @@
+<div
+  class="card card-body pb-0 bg-black border-left-0 border-right-0 border-bottom-0"
+>
+  <div
+    class="d-flex align-items-center justify-content-around my-3"
+  >
+    <div class="btn-group w-100">
+      <button
+        class="btn btn-secondary btn-sm btn-eq-flex"
+        {{action "quitGame"}}
+      >
+        Quit Game
+      </button>
+
+      {{#link-to "all-scores" class="btn btn-secondary btn-sm btn-eq-flex"}}
+        High Scores
+      {{/link-to}}
+    </div>
+  </div>
+
+  <div class="container px-0">
+    <div class="row align-items-center justify-content-center px-2">
+      <p class="small text-center px-2">
+        Powered by Elixir/Phoenix, Ember.js, and backyard-roasted lamb.
+      </p>
+
+      <p class="small">
+        2018
+        <i class="far fa-copyright"></i>
+        &nbsp;
+        Jon Choukroun
+      </p>
+    </div>
+
+    <div class="row justify-content-end">
+      <button
+        class="btn btn-simple btn-sm"
+        {{action "toggleStatsBar" "#gameDetails"}}
+      >
+        Close
+      </button>
+    </div>
+  </div>
+</div>

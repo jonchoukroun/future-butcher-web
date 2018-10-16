@@ -1,0 +1,42 @@
+<div
+  class="card card-body pb-0 bg-black border-left-0 border-right-0 border-bottom-0"
+>
+  {{#if isFirstTurn}}
+    <p>
+      The clock's ticking. You have 24 hours to hustle before it's time to cross the border.
+    </p>
+
+    <p>
+      {{#if ownedCut}}
+        You can usually find high prices for your
+        {{ownedCut}}
+        in Beverly Hills, but keep an eye on the clock when making long trips.
+      {{else}}
+        Navigate to a new neighborhood below, but keep an eye on the clock.
+      {{/if}}
+    </p>
+
+    <div class="row justify-content-end">
+      <button
+        class="btn btn-simple btn-sm"
+        {{action "closeNavigationTutorial"}}
+      >
+        Close
+      </button>
+    </div>
+
+
+  {{else}}
+    <p>You have {{turnsLeft}} hours left.</p>
+
+    <div class="row justify-content-end">
+      <button
+        class="btn btn-simple btn-sm"
+        {{action "closeNavigationDetails"}}
+      >
+        Close
+      </button>
+    </div>
+
+  {{/if}}
+</div>
