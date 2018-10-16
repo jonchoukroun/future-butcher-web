@@ -79,12 +79,6 @@ export default class StatsBarComponent extends Component {
     return turns_left < 24 && turns_left >= 19;
   }
 
-  endGame(payload) {
-    this.get('socket').pushCallBack('end_game', payload).then(() => {
-      this.get('sendQuit')();
-    });
-  }
-
   @action
   closeNavigationTutorial() {
     localStorage.setItem('closed-navigation-tutorial', true);
@@ -106,6 +100,11 @@ export default class StatsBarComponent extends Component {
   @action
   toggleStatsBar(selector) {
     $(selector).slideToggle();
+  }
+
+  @action
+  quitGame() {
+    this.get('sendQuit')();
   }
 
 }

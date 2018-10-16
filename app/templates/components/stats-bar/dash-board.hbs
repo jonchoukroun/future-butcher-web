@@ -91,6 +91,7 @@
     data-parent="#stats-bar"
   >
     {{stats-bar/game-details
+      sendQuit=(action "quitGame")
       sendToggleStatsBar=(action "toggleStatsBar")
     }}
   </div>

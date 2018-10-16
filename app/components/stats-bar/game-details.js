@@ -11,7 +11,10 @@ export default class GameDetailsComponent extends Component {
   @action
   quitGame() {
     let payload = { hash_id: localStorage.getItem('player_hash'), score: 0 };
-    this.endGame(payload);
+
+    this.get('socket').pushCallBack('end_game', payload).then(() => {
+      this.get('sendQuit')();
+    });
   }
 
 }
