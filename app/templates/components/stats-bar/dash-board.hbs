@@ -1,0 +1,97 @@
+<div
+  class="col-12 col-md-8 col-lg-6 px-0 p-2 py-sm-2 px-sm-4 px-md-1 border-bottom border-secondary"
+>
+  <div class="d-flex align-items-center justify-content-between mx-1">
+    <button
+      class="btn btn-simple px-0"
+      {{action "toggleStatsBar" "#fundsDetails"}}
+    >
+      <h4 class="digital-text m-0">
+        {{format-money playerFunds precision=0}}
+
+        <i class="fas fa-caret-down ml-1 ml-md-3"></i>
+      </h4>
+    </button>
+
+    <button
+      class="btn btn-simple px-0 text-danger"
+      {{action "toggleStatsBar" "#debtDetails"}}
+    >
+      <h4 class="digital-text m-0">
+        {{format-money playerDebt precision=0}}
+
+        <i class="fas fa-caret-down ml-1 ml-md-3"></i>
+      </h4>
+    </button>
+
+    <button
+      class="btn btn-simple px-0"
+      {{action "toggleStatsBar" "#navigationDetails"}}
+    >
+      <h4
+        class="digital-text m-0 {{if (lte turnsLeft 5) "text-warning"}}"
+      >
+        {{timeLeft}}
+
+        <i class="fas fa-caret-down ml-1 ml-md-3"></i>
+      </h4>
+    </button>
+
+    <button
+      class="btn btn-simple px-0"
+      {{action "toggleStatsBar" "#gameDetails"}}
+    >
+      <i class="fas fa-cog"></i>
+    </button>
+  </div>
+
+  <div
+    id="fundsDetails"
+    class="collapse"
+    data-parent="#stats-bar"
+  >
+    {{stats-bar/funds-details
+      isFirstTurn=isFirstTurn
+      playerFunds=playerFunds
+      sendCloseFundsTutorial=(action "closeFundsTutorial")
+      sendToggleStatsBar=(action "toggleStatsBar")
+    }}
+  </div>
+
+  <div
+    id="debtDetails"
+    class="collapse"
+    data-parent="#stats-bar"
+  >
+    {{stats-bar/debt-details
+      isSecondTurn=isSecondTurn
+      playerDebt=playerDebt
+      playerFunds=playerFunds
+      sendCloseDebtTutorial=(action "closeDebtTutorial")
+      sendToggleStatsBar=(action "toggleStatsBar")
+    }}
+  </div>
+
+  <div
+    id="navigationDetails"
+    class="collapse"
+    data-parent="#stats-bar"
+  >
+    {{stats-bar/navigation-details
+      turnsLeft=turnsLeft
+      isFirstTurn=isFirstTurn
+      sendCloseNavigationTutorial=(action "closeNavigationTutorial")
+      sendToggleStatsBar=(action "toggleStatsBar")
+    }}
+  </div>
+
+  <div
+    id="gameDetails"
+    class="collapse"
+    data-parent="#stats-bar"
+  >
+    {{stats-bar/game-details
+      sendToggleStatsBar=(action "toggleStatsBar")
+    }}
+  </div>
+</div>

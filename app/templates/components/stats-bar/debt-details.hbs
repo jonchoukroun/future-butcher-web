@@ -1,0 +1,80 @@
+<div
+  class="card card-body pb-0 bg-black border-left-0 border-right-0 border-bottom-0"
+>
+  {{#if (gt playerDebt 0)}}
+
+    {{#if isSecondTurn}}
+      {{#if (gt playerFunds playerDebt)}}
+        <p>You made money real quick!</p>
+
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-8 col-xl-6">
+            <button class="btn btn-secondary btn-sm btn-block" {{action payDebt}}>
+              Pay your debt with FlayPal
+            </button>
+          </div>
+        </div>
+
+      {{else}}
+        <p>
+          You just accrued
+          {{secondTurnHours}} hours
+          worth of debt!
+          Keep an eye on what you owe, you can't win if you're a deadbeat.
+        </p>
+
+        <p>
+          When you have the cash, pay it off here using FlayPal.
+        </p>
+      {{/if}}
+
+      <div class="row justify-content-end">
+        <button
+          class="btn btn-simple btn-sm"
+          {{action "closeDebtTutorial"}}
+        >
+          Close
+        </button>
+      </div>
+
+    {{else}}
+      <p>
+        You owe
+        {{format-money playerDebt precision=0}}
+        on your loan. Hurry up, it's got a
+        15<span class="percent">%</span> interest rate.
+      </p>
+
+      {{#if (gt playerFunds playerDebt)}}
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-8 col-xl-6">
+            <button class="btn btn-secondary btn-sm btn-block" {{action payDebt}}>
+              Pay it off with FlayPal
+            </button>
+          </div>
+        </div>
+      {{/if}}
+
+      <div class="row justify-content-end">
+        <button
+          class="btn btn-simple btn-sm"
+          {{action "toggleStatsBar"}}
+        >
+          Close
+        </button>
+      </div>
+    {{/if}}
+
+  {{else}}
+    <p>You've paid your debt.</p>
+
+    <div class="row justify-content-end">
+      <button
+        class="btn btn-simple btn-sm"
+        {{action "toggleStatsBar"}}
+      >
+        Close
+      </button>
+    </div>
+  {{/if}}
+</div>

@@ -1,0 +1,43 @@
+<div
+  class="card card-body pb-0 bg-black border-left-0 border-right-0 border-bottom-0"
+>
+  {{#if isFirstTurn}}
+    <p>
+      Congratulations, you now have
+      {{format-money playerFunds precision=0}}
+      to buy cuts in the market.
+    </p>
+
+    <p>Remember: buy low, sell high! Use the average price as a guide.</p>
+
+    <div class="row justify-content-end">
+      <button
+        class="btn btn-simple btn-sm"
+        {{action "closeFundsTutorial"}}
+      >
+        Close
+      </button>
+    </div>
+
+  {{else}}
+    <p>
+      You have
+      {{format-money playerFunds precision=0}}
+      to buy meat from the
+      {{#link-to "market" class="link-text"~}}
+        market
+      {{~/link-to~}}
+      , then sell it for a profit.
+    </p>
+
+    <div class="row justify-content-end">
+      <button
+        class="btn btn-simple btn-sm"
+        {{action "toggleStatsBar"}}
+      >
+        Close
+      </button>
+    </div>
+
+  {{/if}}
+</div>
