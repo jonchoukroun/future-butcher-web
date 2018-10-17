@@ -3,7 +3,7 @@ import { action, computed } from '@ember-decorators/object';
 import { cutStats } from 'future-butcher-web/fixtures/cut-stats';
 import { classNames } from '@ember-decorators/component';
 
-@classNames('cut-entry', 'mb-1')
+@classNames('cut-entry')
 export default class CutEntryComponent extends Component {
 
   cut;
