@@ -8,7 +8,7 @@ const surgeMessages = {
     "The doomsday cult supplying the neighborhood with flank just drank the koolaid! Anyone with flank is gonna get rich."
   ],
 
-  ribMessages: [
+  ribsMessages: [
     "A new study shows eating ribs reduces crows feet. Celebrities are out in full force!"
   ],
 
