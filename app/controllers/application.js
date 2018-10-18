@@ -25,6 +25,11 @@ export default class ApplicationController extends Controller {
     return this.get('notifications.pinnedMessage');
   }
 
+  @computed('notifications.stackPosition')
+  get stackPosition() {
+    return this.get('notifications.stackPosition');
+  }
+
   @action
   unpinNotification() {
     this.get('notifications').unpinNotification();

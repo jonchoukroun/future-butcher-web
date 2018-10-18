@@ -205,6 +205,12 @@ button {
   @extend .btn-secondary;
 }
 
+.btn-warning {
+  @extend .btn-secondary;
+  border-color: $brand-warning;
+  color: $brand-warning;
+}
+
 .btn-plain {
   padding: 0;
   background-color: $brand-black;

@@ -1,30 +1,47 @@
 import Service from '@ember/service';
-import { set } from '@ember/object';
 import { later } from '@ember/runloop';
 
-export default Service.extend({
+export default class NotificationService extends Service {
 
-  confirmationMessage: null,
-  errorMessage: null,
-  pinnedMessage: null,
+  confirmationMessage;
+  errorMessage;
+  pinnedMessage;
+  messageQueue = [];
 
   renderNotification(message) {
-    set(this, 'confirmationMessage', message);
+    this.set('confirmationMessage', message);
     later(() => {
-      set(this, 'confirmationMessage', null);
+      this.set('confirmationMessage', null);
     }, 1300);
-  },
-
-  renderError(message) {
-    set(this, 'errorMessage', message);
-  },
-
-  pinNotification(message) {
-    set(this, 'pinnedMessage', message);
-  },
-
-  unpinNotification() {
-    set(this, 'pinnedMessage', null);
   }
 
-});
+  renderError(message) {
+    this.set('errorMessage', message);
+  }
+
+  pinNotification(message) {
+    if (this.get('pinnedMessage')) {
+      let messageQueue = this.get('messageQueue');
+      messageQueue.push(message)
+      this.set('messageQueue', messageQueue)
+    } else {
+      this.set('pinnedMessage', message);
+    }
+  }
+
+  unpinNotification() {
+    this.set('pinnedMessage', null);
+
+    later(() => {
+      if (this.get('messageQueue').length) {
+        let messageQueue = this.get('messageQueue');
+        const next_message = messageQueue.shift();
+
+        this.pinNotification(next_message);
+        this.set('messageQueue', messageQueue);
+      }
+    }, 400);
+
+  }
+
+}

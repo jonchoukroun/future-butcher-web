@@ -18,7 +18,12 @@
       {{else}}
         <p>
           You just accrued
-          {{secondTurnHours}} hours
+          {{secondTurnHours}}
+          {{#if (eq secondTurnHours 1)}}
+            hour
+          {{else}}
+            hours
+          {{/if}}
           worth of debt!
           Keep an eye on what you owe, you can't win if you're a deadbeat.
         </p>

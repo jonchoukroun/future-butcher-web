@@ -1,14 +1,27 @@
 import Component from '@ember/component';
 import { action, computed } from '@ember-decorators/object';
-import { cutStats } from 'future-butcher-web/fixtures/cut-stats';
 import { classNames } from '@ember-decorators/component';
 
-@classNames('cut-entry', 'mb-1')
+import { cutStats } from 'future-butcher-web/fixtures/cut-stats';
+
+@classNames('cut-entry')
+
 export default class CutEntryComponent extends Component {
 
   cut;
   price;
   quantity;
+
+  @computed('cut', 'price')
+  get isSurgePrice() {
+    let cut = ["heart", "flank", "ribs"].filter(cut => cut === this.get('cut'))[0];
+
+    if (cut) {
+      return this.get('price') >= cutStats[this.get('cut')].surgeMinimum;
+    }
+
+    return false;
+  }
 
   @computed('price', 'socket.stateData.player.funds')
   get canAffordCut() {
@@ -36,7 +49,7 @@ export default class CutEntryComponent extends Component {
 
   @computed('cut')
   get medianPrice() {
-    return cutStats[this.get('cut')];
+    return cutStats[this.get('cut')].median;
   }
 
   @action
