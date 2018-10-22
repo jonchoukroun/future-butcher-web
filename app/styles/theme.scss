@@ -5,13 +5,15 @@
 
 // brand color palette ---------------------------------------------------------------
 
-$brand-primary:  #A0DAE8;
-$brand-accent:   #bd3bb7;
-$brand-dark:     #02020C;
-$brand-light:    #D2D2DC;
-$brand-grey:     #9999A8;
-$brand-danger:   #C64556;
-$brand-warning:  #E2D4B7;
+$brand-primary:    #A0DAE8;
+$brand-accent:     #bd3bb7;
+$brand-accent-alt: #a53e6c;
+$brand-dark:       #191922;
+$brand-dark-alt:   #3c1728;
+$brand-light:      #D2D2DC;
+$brand-grey:       #9999A8;
+$brand-danger:     #C64556;
+$brand-warning:    #E2D4B7;
 
 $terminal-black: #282828;
 $terminal-green: rgba(102, 255, 102, 0.85);
@@ -169,10 +171,11 @@ button {
   color: $brand-dark;
   border-color: $brand-dark;
 
-  &:hover {
-    background-color: $brand-primary;
-    color: $brand-dark;
-    border-color: $brand-dark;
+  &:hover, &:active, &:focus {
+    background-color: $brand-primary !important;
+    color: $brand-dark !important;
+    border-color: $brand-dark !important;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22) !important;
   }
 }
 
@@ -181,10 +184,10 @@ button {
   color: $brand-primary;
   border-color: $brand-primary;
 
-  &:hover {
-    background-color: inherit;
-    color: $brand-primary;
-    border-color: $brand-primary;
+  &:hover, &:active, &:focus {
+    background-color: inherit !important;
+    color: $brand-primary !important;
+    border-color: $brand-primary !important;
   }
 }
 
@@ -192,6 +195,12 @@ button {
   @extend .btn-secondary;
   color: rgba($brand-primary, 0.5);
   font-style: italic;
+
+  &:hover, &:active, &:focus {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24) !important;
+    transform: translateY(0) !important;
+    color: rgba($brand-primary, 0.5) !important;
+  }
 }
 
 .btn-simple {
@@ -199,6 +208,11 @@ button {
   background-color: transparent;
   color: $brand-primary;
   font-family: 'Michroma', sans-serif;
+
+  &:hover, &:active, &:focus {
+    border: none !important;
+    box-shadow: none !important;
+  }
 }
 
 .btn-terminal {
@@ -206,6 +220,17 @@ button {
   background-color: $brand-warning;
   border-color: $brand-dark;
   color: $brand-dark;
+}
+
+.btn-terminal-disabled {
+  @extend .btn-terminal;
+  color: rgba($brand-dark, 0.5);
+
+  &:hover, &:active, &:focus {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24) !important;
+    transform: translateY(0) !important;
+    color: rgba($brand-dark, 0.5) !important;
+  }
 }
 
 
@@ -238,6 +263,7 @@ button {
   width: 95%;
   margin-left: -47.5%;
   padding: 1em;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 .error-message {

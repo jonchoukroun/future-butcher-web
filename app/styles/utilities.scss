@@ -14,6 +14,14 @@
   color: $brand-primary !important;
 }
 
+.text-accent {
+  color: $brand-accent !important;
+}
+
+.text-accent-alt {
+  color: $brand-accent-alt !important;
+}
+
 .text-danger {
   color: $brand-danger !important;
 }
@@ -73,6 +81,10 @@
   background-color: $brand-primary !important;
 }
 
+.bg-opaque {
+  background-color: rgba(0,0,0,0.82) !important;
+}
+
 
 // Spacing ---------------------------------------------------------------------
 
@@ -91,4 +103,8 @@
 
 .border-light {
   border-color: $brand-light !important;
+}
+
+.border-primary {
+  border-color: $brand-primary !important;
 }

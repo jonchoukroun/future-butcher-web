@@ -1,3 +1,9 @@
+h2.store-title {
+  background: -webkit-linear-gradient($brand-accent-alt, $brand-dark);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .transaction-animation {
   opacity: 0;
   animation: fadeIn 0.5s ease-in forwards;

@@ -12,14 +12,16 @@
     {{/if}}
   </div>
 
-  <form class="signup-form d-flex flex-column align-items-center">
-    {{input
-      type="text"
-      value=playerName
-      key-up=(action "validatePlayerName")
-      autofocus="true"
-      classNames="form-control form-control-lg input-dark mt-md-3"
-    }}
+  <form class="signup-form d-flex flex-column justify-content-end align-items-center">
+    <div class="form-group mx-3">
+      {{input
+        type="text"
+        value=playerName
+        key-up=(action "validatePlayerName")
+        autofocus="true"
+        classNames="form-control form-control-lg input-dark mt-md-3"
+      }}
+    </div>
 
     {{#if playerName}}
       {{#if validInput}}
@@ -30,7 +32,7 @@
           New Game
         </button>
       {{else}}
-        <p class="text-terminal font-italic text-warning">{{invalidButtonText}}</p>
+        <p class="text-terminal font-italic">{{invalidButtonText}}</p>
       {{/if}}
     {{/if}}
   </form>

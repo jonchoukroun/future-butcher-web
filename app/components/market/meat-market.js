@@ -47,6 +47,10 @@ export default class MeatMarketComponent extends Component {
     return funds > 0;
   }
 
+  clearErrors() {
+    this.set('notifications.errorMessage', null);
+  }
+
   @action
   openBuyMenu(cut) {
     this.set('showBuyForm', true);
@@ -55,6 +59,7 @@ export default class MeatMarketComponent extends Component {
 
   @action
   closeBuyMenu() {
+    this.clearErrors();
     this.$('.buy-menu').addClass('terminal-close');
     later(() => {
       this.set('showBuyForm', false);
@@ -72,6 +77,7 @@ export default class MeatMarketComponent extends Component {
 
   @action
   closeSellMenu() {
+    this.clearErrors();
     this.$('.sell-menu').addClass('terminal-close');
     later(() => {
       this.set('showSellForm', false);
