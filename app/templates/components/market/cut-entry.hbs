@@ -1,6 +1,6 @@
-<div class="border-bottom border-secondary">
+<div class="border-bottom border-light">
   <div class="d-flex align-items-end cut-header">
-    <h4 class="mb-1 ml-2 mr-auto text-capitalize">{{cut}}</h4>
+    <h4 class="mb-1 ml-2 mr-auto text-capitalize text-danger">{{cut}}</h4>
 
     {{#if (gt cutsOwned 0)}}
       <h5 class="cuts-owned mb-1 mr-2">
@@ -51,7 +51,7 @@
           </button>
 
         {{else}}
-          <button class="btn btn-secondary btn-disabled btn-eq-flex mt-1 mb-0">
+          <button class="btn btn-secondary btn-secondary-disabled btn-eq-flex mt-1 mb-0">
             Buy
           </button>
 
@@ -66,7 +66,7 @@
           </button>
 
         {{else}}
-          <button class="btn btn-secondary btn-disabled btn-eq-flex mt-1 mb-0">
+          <button class="btn btn-secondary btn-secondary-disabled btn-eq-flex mt-1 mb-0">
             Sell
           </button>
 

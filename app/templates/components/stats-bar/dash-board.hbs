@@ -1,5 +1,5 @@
 <div
-  class="col-12 col-md-8 col-lg-6 px-0 p-2 py-sm-2 px-sm-4 px-md-1 border-bottom border-secondary"
+  class="col-12 col-md-8 col-lg-6 px-0 p-2 py-sm-2 px-sm-4 px-md-1 bg-dark text-primary"
 >
   <div class="d-flex align-items-center justify-content-between mx-1">
     <button
@@ -14,10 +14,10 @@
     </button>
 
     <button
-      class="btn btn-simple px-0 text-danger"
+      class="btn btn-simple px-0 text-main"
       {{action "toggleStatsBar" "#debtDetails"}}
     >
-      <h4 class="digital-text m-0">
+      <h4 class="digital-text text-danger m-0">
         {{format-money playerDebt precision=0}}
 
         <i class="fas fa-caret-down ml-1 ml-md-3"></i>

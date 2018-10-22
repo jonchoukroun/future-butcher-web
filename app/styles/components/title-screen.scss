@@ -1,5 +1,3 @@
-@import '../theme';
-
 .title-image {
   animation: slideDown 1s ease-in forwards;
 
@@ -7,6 +5,9 @@
     font-size: 26vw;
     line-height: 19vw;
     margin: 0;
+    background: -webkit-linear-gradient($brand-accent, $brand-dark);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   .title-butcher {

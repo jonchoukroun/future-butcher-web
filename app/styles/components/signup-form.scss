@@ -1,7 +1,4 @@
-@import '../theme';
-
 .signup-component {
-
   .signup-label {
     opacity: 0;
     animation: fadeIn 1.5s ease-out 1s forwards;
@@ -9,6 +6,8 @@
   }
 
   form.signup-form {
+    background-color: $terminal-black;
+
     transform: scaleY(0);
     animation: openUp 0.75s ease-out 1s forwards;
     transition: all;

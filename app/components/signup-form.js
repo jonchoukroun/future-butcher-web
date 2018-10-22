@@ -2,7 +2,7 @@ import Component from '@ember/component';
 import { action, computed } from '@ember-decorators/object';
 import { classNames } from '@ember-decorators/component';
 
-@classNames('signup-component', 'mt-5')
+@classNames('signup-component')
 export default class SignupFormComponent extends Component {
 
   inputLength = null;

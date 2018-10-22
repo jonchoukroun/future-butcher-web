@@ -4,7 +4,7 @@ import { service } from '@ember-decorators/service';
 import { classNames } from '@ember-decorators/component';
 import { htmlSafe } from '@ember/string';
 
-@classNames('d-flex', 'flex-column', 'align-items-center', 'justify-content-between')
+@classNames('sell-menu', 'd-flex', 'flex-column', 'align-items-center', 'justify-content-between')
 
 export default class SellMenuComponent extends Component {
 

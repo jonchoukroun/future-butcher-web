@@ -6,7 +6,7 @@ import { classNames } from '@ember-decorators/component';
 
 import { storeItems } from 'future-butcher-web/fixtures/store-items';
 
-@classNames('card', 'bg-black', 'border-0')
+@classNames('card', 'bg-light-accent', 'border-0')
 
 export default class ItemDetailsComponent extends Component {
 

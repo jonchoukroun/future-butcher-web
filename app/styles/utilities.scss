@@ -2,16 +2,16 @@
 
 // Text  -----------------------------------------------------------------------
 
+.text-dark {
+  color: $brand-dark !important;
+}
+
+.text-light {
+  color: $brand-light !important;
+}
+
 .text-primary {
   color: $brand-primary !important;
-}
-
-.text-secondary {
-  color: $brand-secondary !important;
-}
-
-.text-black {
-  color: $brand-black;
 }
 
 .text-danger {
@@ -20,6 +20,11 @@
 
 .text-warning {
   color: $brand-warning !important;
+}
+
+.text-terminal {
+  color: $terminal-green;
+  font-family: 'Space Mono', monospace;
 }
 
 .title-text {
@@ -39,7 +44,7 @@
 }
 
 .link-text {
-  color: $brand-primary;
+  color: inherit;
   text-decoration: underline;
   transition: all 0.3s ease-in;
 
@@ -52,19 +57,38 @@
 
 // Backgrounds -----------------------------------------------------------------
 
-.bg-black {
-  background-color: $brand-black;
+.bg-terminal {
+  background-color: $terminal-black !important;
+}
+
+.bg-dark {
+  background-color: $brand-dark !important;
+}
+
+.bg-light {
+  background-color: $brand-light !important;
 }
 
 .bg-primary {
   background-color: $brand-primary !important;
 }
 
-.bg-secondary {
-  background-color: $brand-secondary !important;
-}
+
+// Spacing ---------------------------------------------------------------------
 
 .btn-eq-flex {
   flex-basis: 0 !important;
   flex-grow: 1 !important;
+}
+
+
+// Borders ---------------------------------------------------------------------
+
+.border-terminal {
+  border-width: 8px !important;
+  border-color: $brand-warning !important;
+}
+
+.border-light {
+  border-color: $brand-light !important;
 }

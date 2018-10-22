@@ -1,28 +1,14 @@
 // =========================== Future Butcher Theme ===========================
 // ============================================================================
 
-// Variables ===================================================================
 
-// brand color palette ---------------------------------------------------------------
+// Color palette ---------------------------------------------------------------
 
-$brand-primary:  #A0DAE8;
-$brand-accent:   #bd3bb7;
-$brand-dark:     #02020C;
-$brand-light:    #D2D2DC;
-$brand-grey:     #9999A8;
-$brand-danger:   #C64556;
-$brand-warning:  #E2D4B7;
-
-$terminal-black: #282828;
-$terminal-green: rgba(102, 255, 102, 0.85);
-
-
-// Misc ------------------------------------------------------------------------
-
-$standard-radius: .25rem;
-
-
-// Customization ===============================================================
+$brand-primary:   #62d162;
+$brand-secondary: #4f874f;
+$brand-danger:    #ea7d62;
+$brand-black:     #091409;
+$brand-warning:   #f9e784;
 
 // Typography ------------------------------------------------------------------
 
@@ -107,27 +93,23 @@ h3.page-heading {
 // Inputs ----------------------------------------------------------------------
 
 input.form-control {
-  background-color: $terminal-black;
+  background-color: $brand-black;
   border-top: none;
   border-right: none;
   border-left: none;
-  border-radius: $standard-radius;
+  border-color: $brand-secondary;
+  border-radius: 0;
   font-family: 'Michroma', sans-serif;
   font-size: 1rem;
   letter-spacing: 1px;
   transition: all 0.5s ease-out;
 }
 
-.input-dark {
-  background-color: $terminal-black !important;
-  border: none;
-  border-radius: 0 !important;
-}
-
 input.form-control:focus {
   @extend input, .form-control;
+  border-color: $brand-primary;
   box-shadow: none;
-  color: $terminal-green;
+  color: $brand-primary;
   font-weight: 800 !important;
 }
 
@@ -139,73 +121,151 @@ button {
   color: inherit;
 }
 
-.btn-sm  {
-  font-size: 0.75rem;
-}
-
-.btn-default {
-  padding: .5rem 1rem;
-  border-radius: $standard-radius;
-  font-family: 'Michroma';
-  background-color: transparent;
-  color: $brand-primary;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-
-  &:hover {
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-    transform: translateY(-2px);
-  }
-}
-
-.btn-disabled {
-  @extend .btn-default;
-  color: $brand-grey;
+.btn-group-lg > .btn {
+  border-radius: 2px;
 }
 
 .btn-primary {
-  @extend .btn-default;
-  background-color: $brand-primary;
-  color: $brand-dark;
-  border-color: $brand-dark;
+  margin: 10px 0;
+  background-color: $brand-black;
+  border-color: $brand-secondary;
+  border-radius: 4px;
+  border-width: 2px;
+  color: $brand-primary;
+  font-family: 'Michroma';
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: all 0.6s ease;
+  transition-property: background-color, border-color, color, box-shadow, transform;
+}
 
-  &:hover {
-    background-color: $brand-primary;
-    color: $brand-dark;
-    border-color: $brand-dark;
-  }
+%brightenState {
+  background-color: $brand-secondary !important;
+  border-color: $brand-primary !important;
+  color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.btn-primary:active {
+  background-color: transparent;
+  border: none;
+}
+
+.btn-primary:focus {
+  box-shadow: none;
+}
+
+.btn-primary:hover {
+  @extend %brightenState;
+  transform: translateY(-2px);
+  box-shadow: 1px 1px 7px 3px $brand-secondary;
+}
+
+.btn-primary:active:focus {
+  box-shadow: 0 0 0 0.2rem $brand-secondary !important;
 }
 
 .btn-secondary {
-  @extend .btn-default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+  background-color: $brand-black;
+  border-color: $brand-secondary;
+  border-radius: 4px;
+  border-width: 2px;
   color: $brand-primary;
-  border-color: $brand-primary;
-
-  &:hover {
-    background-color: inherit;
-    color: $brand-primary;
-    border-color: $brand-primary;
-  }
+  font-family: 'Michroma';
+  font-weight: 900;
+  font-size: 1em;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.2s ease-out;
+  white-space: normal;
 }
 
-.btn-secondary-disabled {
+.btn-secondary:active {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  color: $brand-primary !important;
+  box-shadow: 0 0 3px 5px $brand-secondary !important;
+}
+
+.btn-secondary:focus {
+  box-shadow: none;
+}
+
+.btn-secondary:hover {
+  @extend %brightenState;
+  transform: translateY(-2px);
+  box-shadow: 1px 1px 7px 3px $brand-secondary;
+}
+
+.btn-secondary:visited {
   @extend .btn-secondary;
-  color: rgba($brand-primary, 0.5);
-  font-style: italic;
+}
+
+.btn-warning {
+  @extend .btn-secondary;
+  border-color: $brand-warning;
+  color: $brand-warning;
+}
+
+.btn-plain {
+  padding: 0;
+  background-color: $brand-black;
+  border: none;
+  font-family: 'marvin-visions', sans-serif;
+  font-size: 1.7rem;
+  color: $brand-primary;
 }
 
 .btn-simple {
-  border: none;
-  background-color: transparent;
-  color: $brand-primary;
-  font-family: 'Michroma', sans-serif;
+  font-family: 'Michroma', monospace;
+  font-weight: bold;
 }
 
-.btn-terminal {
-  @extend .btn-default;
-  background-color: $brand-warning;
-  border-color: $brand-dark;
-  color: $brand-dark;
+%steadyState {
+  transform: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+  color: $brand-secondary !important;
+  border-color: $brand-secondary !important;
+}
+
+.btn-disabled {
+  background-color: transparent;
+  color: $brand-secondary !important;
+  font-style: italic;
+  white-space: normal;
+  cursor: not-allowed !important;
+
+  &:hover  { @extend %steadyState; }
+  &:active { @extend %steadyState; }
+}
+
+.disabled {
+  color: $brand-secondary;
+  font-style: italic;
+  cursor: not-allowed !important;
+
+  &:hover  { @extend %steadyState; }
+  &:active { @extend %steadyState; }
+}
+
+@media (max-width: 414px) {
+  .btn-secondary.btn-lg.btn-block {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+  }
+}
+
+@media (max-width: 350px) {
+  .btn-secondary.btn-lg.btn-block { font-size: 14px; }
+}
+
+@media (min-width: 768px) {
+  .btn.btn-primary { font-size: 22px; }
 }
 
 
@@ -213,11 +273,15 @@ button {
 
 .border {
   border: 1px solid;
-  border-radius: $standard-radius;
+  border-radius: 5px;
 }
 
 .border-primary {
   border-color: $brand-primary !important;
+}
+
+.border-secondary {
+  border-color: $brand-secondary !important;
 }
 
 .border-danger {

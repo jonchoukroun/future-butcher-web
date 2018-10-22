@@ -1,6 +1,7 @@
 import Component from '@ember/component';
 import { action, computed } from '@ember-decorators/object';
 import { service } from '@ember-decorators/service';
+import { later } from '@ember/runloop';
 
 export default class MeatMarketComponent extends Component {
 
@@ -54,20 +55,29 @@ export default class MeatMarketComponent extends Component {
 
   @action
   closeBuyMenu() {
-    this.set('showBuyForm', false);
-    this.set('buyingCut', null);
+    this.$('.buy-menu').addClass('terminal-close');
+    later(() => {
+      this.set('showBuyForm', false);
+      this.set('buyingCut', null);
+      this.$('.buy-menu').removeClass('terminal-close');
+    }, 300);
   }
 
   @action
   openSellMenu(cut) {
+    console.log('open sell', cut);
     this.set('showSellForm', true);
     this.set('sellingCut', cut);
   }
 
   @action
   closeSellMenu() {
-    this.set('showSellForm', false);
-    this.set('sellingCut', null);
+    this.$('.sell-menu').addClass('terminal-close');
+    later(() => {
+      this.set('showSellForm', false);
+      this.set('sellingCut', null);
+      this.$('.sell-menu').removeClass('terminal-close');
+    }, 300);
   }
 
 }
