@@ -2,7 +2,9 @@
   class="intro-image jumbotron my-xl-3 d-flex flex-column justify-content-center"
 >
   <h1 class="display-4 mb-md-4 text-center">Los Angeles</h1>
-  <h2 class="lead title-text text-center">2055</h2>
+  <h2 class="text-right">
+    {{currentDate}}
+  </h2>
 </div>
 
 <div class="row justify-content-center">
@@ -24,14 +26,14 @@
           class="btn btn-primary btn-lg btn-eq-flex"
           {{action "skipIntro"}}
         >
-          Skip
+          <span class="letter-spacing-max">Skip</span>
         </button>
 
         <button
           class="btn btn-primary btn-lg btn-eq-flex"
           {{action "nextScreen"}}
         >
-          Next
+          <span class="letter-spacing-max">Next</span>
         </button>
       </div>
     </div>

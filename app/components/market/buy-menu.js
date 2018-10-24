@@ -93,6 +93,9 @@ export default class BuyMenu extends Component {
   }
 
   buyCut() {
+    // set loading state
+    // clear errors
+
     const payload = {
       cut: this.get('cutName'),
       amount: this.get('buyAmount')
@@ -101,6 +104,7 @@ export default class BuyMenu extends Component {
     this.get('socket').pushCallBack("buy_cut", payload).then(() => {
       this.generateConfirmation(payload);
       this.get('sendBuyMenuClose')();
+      // finally, remove leading state
     });
   }
 
@@ -141,6 +145,11 @@ export default class BuyMenu extends Component {
   @action
   submitBuyCut() {
     this.buyCut();
+  }
+
+  didInsertElement() {
+    super.didInsertElement();
+    this.$('#buy-input').focus();
   }
 
 }

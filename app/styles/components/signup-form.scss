@@ -1,4 +1,7 @@
 .signup-component {
+  transform: scale(0);
+  animation: openUp 0.75s ease-out 1s forwards;
+
   .card {
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   }
@@ -11,16 +14,13 @@
 
   form.signup-form {
     background-color: $terminal-black;
-
-    transform: scaleY(0);
-    animation: openUp 0.75s ease-out 1s forwards;
     transition: all;
 
     input {
-      text-align: right;
-      margin-bottom: 1.5em;
+      text-align: left;
     }
   }
+
 }
 
 @keyframes fadeIn {
@@ -29,13 +29,10 @@
 }
 @keyframes openUp {
   0% {
-    transform: scaleY(0);
-  }
-  50% {
-    transform: scaleY(1);
+    transform: scale(0);
   }
   100% {
-    transform: scaleY(1)
+    transform: scale(1)
   }
 }
 

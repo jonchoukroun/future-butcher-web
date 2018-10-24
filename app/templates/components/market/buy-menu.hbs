@@ -9,9 +9,9 @@
   </div>
 
   <div class="d-flex flex-row">
-    <h4 class="text-terminal">
+    <h4 class="terminal-text">
       <span class="text-capitalize">{{cutName}}</span>
-      <span class="small">in stock:</span>
+      <span class="small">available:</span>
 
       {{format-number cutsAvailable precision=0}}
       <span class="small">
@@ -28,17 +28,28 @@
     class="transaction-form align-self-center"
     {{action "submitBuyCut" on="submit"}}
   >
+    <div class="form-group row mb-3">
+      <label
+        for="buy-input"
+        class="col-1 col-form-label"
+      >
+        <h4>
+          <i class="fas fa-angle-right"></i>
+        </h4>
+      </label>
 
-    <div class="form-row">
-      {{input
-        value=buyAmount
-        type="text"
-        pattern="[0-9]*"
-        placeholder=maxCanBuyPlaceholder
-        autofocus="true"
-        classNames="form-control form-control-lg mt-md-2"
-        key-up=(action "calculateCost")
-      }}
+      <div class="col d-flex align-items-center pl-0">
+        {{input
+          id="buy-input"
+          value=buyAmount
+          type="text"
+          pattern="[0-9]*"
+          placeholder=maxCanBuyPlaceholder
+          autofocus="true"
+          classNames="form-control form-control-lg mt-md-2"
+          key-up=(action "calculateCost")
+        }}
+      </div>
     </div>
 
     {{#if (not buyAmount)}}
@@ -47,7 +58,13 @@
           class="btn btn-terminal btn-block"
           {{action "clickBuyMax"}}
         >
-          Buy {{maxCanBuy}} lbs for
+          Buy {{maxCanBuy}}
+          {{#if (eq maxCanBuy 1)}}
+            lb
+          {{else}}
+            lbs
+          {{/if}}
+          for
           {{format-money maxCanBuyCost precision=0}}
         </button>
       </div>
@@ -68,6 +85,6 @@
       </div>
     {{/if}}
 
-    <p class="small text-terminal text-center mt-2">Or enter a different amount.</p>
+    <p class="small terminal-text text-center mt-2">Or enter a different amount.</p>
   </form>
 </div>

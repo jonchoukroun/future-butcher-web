@@ -1,6 +1,7 @@
 .intro-image {
+  height: 23vh;
   background-color: $brand-dark;
-  background-image: url("https://s3-us-west-1.amazonaws.com/futurebutcher.com/assets/background-dusk.jpeg");
+  background-image: url("https://s3-us-west-1.amazonaws.com/futurebutcher.com/assets/background-night.jpeg");
   background-size: cover;
   background-position: top left;
   background-repeat: no-repeat;
@@ -11,22 +12,26 @@
   }
 
   h1 {
-    font-size: 4.5em;
+    font-family: 'digital-7', monospace;
+    font-size: 4rem;
+    text-transform: uppercase;
     letter-spacing: normal;
   }
 
   h2 {
+    font-family: 'digital-7', monospace;
+    font-size: 1.5rem;
     font-weight: bold;
-    font-size: 3em;
     letter-spacing: 0.5rem;
   }
 }
 
 @media (min-width: 576px) {
   .intro-image {
+    height: 30vh;
     background-position: center;
 
-    h1 { font-size: 7em; }
-    h2 { font-size: 4.5em; }
+    h1 { font-size: 7rem; }
+    h2 { font-size: 2.5rem; }
   }
 }

@@ -14,8 +14,8 @@ body {
   padding: 0;
   font-size: 12px;
   background-color: $brand-dark;
-  background: linear-gradient(180deg, $brand-dark 55%, $brand-dark-alt 100%);
-  color: $brand-light;
+  background: linear-gradient(180deg, $brand-black 55%, $brand-dark 155%);
+  color: $brand-primary;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

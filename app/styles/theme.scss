@@ -5,18 +5,14 @@
 
 // brand color palette ---------------------------------------------------------------
 
-$brand-primary:    #A0DAE8;
-$brand-accent:     #bd3bb7;
-$brand-accent-alt: #a53e6c;
-$brand-dark:       #191922;
-$brand-dark-alt:   #3c1728;
-$brand-light:      #D2D2DC;
-$brand-grey:       #9999A8;
-$brand-danger:     #C64556;
-$brand-warning:    #E2D4B7;
-
+$brand-primary:  #4CAD54;
+$brand-white:    #d1d1d5;
+$brand-grey:     #8C8E96;
+$brand-black:    #040718;
+$brand-dark:     #341149;
+$brand-danger:   #A83F5D;
+$brand-warning:  #F7DBA7;
 $terminal-black: #282828;
-$terminal-green: rgba(102, 255, 102, 0.85);
 
 
 // Misc ------------------------------------------------------------------------
@@ -56,7 +52,7 @@ h3, h4, h5, h6 {
 }
 
 p {
-  font-family: 'Michroma';
+  font-family: 'Michroma', sans-serif;
   font-size: 1rem;
   letter-spacing: 1px;
 }
@@ -114,7 +110,7 @@ input.form-control {
   border-right: none;
   border-left: none;
   border-radius: $standard-radius;
-  font-family: 'Michroma', sans-serif;
+  font-family: 'Space Mono', monospace;
   font-size: 1rem;
   letter-spacing: 1px;
   transition: all 0.5s ease-out;
@@ -129,7 +125,7 @@ input.form-control {
 input.form-control:focus {
   @extend input, .form-control;
   box-shadow: none;
-  color: $terminal-green;
+  color: $brand-primary;
   font-weight: 800 !important;
 }
 
@@ -146,10 +142,12 @@ button {
 }
 
 .btn-default {
-  padding: .5rem 1rem;
+  padding: .25rem 0.5rem;
+  background-color: transparent;
   border-radius: $standard-radius;
   font-family: 'Michroma';
-  background-color: transparent;
+  font-size: 1rem;
+  text-transform: uppercase;
   color: $brand-primary;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -167,9 +165,10 @@ button {
 
 .btn-primary {
   @extend .btn-default;
-  background-color: $brand-primary;
-  color: $brand-dark;
-  border-color: $brand-dark;
+  background-color: transparent;
+  color: $brand-primary;
+  border-color: $brand-primary;
+  border-width: 2px;
 
   &:hover, &:active, &:focus {
     background-color: $brand-primary !important;
@@ -268,6 +267,7 @@ button {
 
 .error-message {
   @extend .notification;
+  top: 70px;
 }
 
 .pinned-message {
@@ -299,6 +299,7 @@ button {
 // Miscellaneous ---------------------------------------------------------------
 
 .full-screen {
+  height: 100vh;
   overflow: hidden;
 }
 

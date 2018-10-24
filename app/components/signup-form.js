@@ -58,4 +58,9 @@ export default class SignupFormComponent extends Component {
     })
   }
 
+  didInsertElement() {
+    super.didInsertElement();
+    this.$('#player-name').focus();
+  }
+
 }

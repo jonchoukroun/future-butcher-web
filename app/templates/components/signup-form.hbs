@@ -1,26 +1,40 @@
 <div class="card px-2 py-4 bg-terminal border border-terminal">
   <div class="signup-label">
     {{#if isNameTaken}}
-      <h4 class="text-terminal">
+      <h4 class="terminal-text">
         That name is already taken!
       </h4>
 
     {{else}}
-      <h4 class="text-terminal">
+      <h4 class="terminal-text">
         Enter a unique name
       </h4>
     {{/if}}
   </div>
 
-  <form class="signup-form d-flex flex-column justify-content-end align-items-center">
-    <div class="form-group mx-3">
-      {{input
-        type="text"
-        value=playerName
-        key-up=(action "validatePlayerName")
-        autofocus="true"
-        classNames="form-control form-control-lg input-dark mt-md-3"
-      }}
+  <form
+    class="signup-form d-flex flex-column justify-content-end align-items-center"
+  >
+    <div class="form-group row mx-3 mt-md-3 mb-3">
+      <label
+        for="player-name"
+        class="col-1 col-form-label"
+      >
+        <h4>
+          <i class="fas fa-angle-right"></i>
+        </h4>
+      </label>
+
+      <div class="col d-flex align-items-center pl-0">
+        {{input
+          id="player-name"
+          type="text"
+          value=playerName
+          key-up=(action "validatePlayerName")
+          autofocus="true"
+          classNames="form-control form-control-lg input-dark"
+        }}
+      </div>
     </div>
 
     {{#if playerName}}
@@ -32,7 +46,7 @@
           New Game
         </button>
       {{else}}
-        <p class="text-terminal font-italic">{{invalidButtonText}}</p>
+        <p class="terminal-text font-italic">{{invalidButtonText}}</p>
       {{/if}}
     {{/if}}
   </form>

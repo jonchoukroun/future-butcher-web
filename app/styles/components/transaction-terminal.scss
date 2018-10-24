@@ -6,10 +6,12 @@
   top: 20vh;
   animation: terminalOpen 0.3s ease-in forwards;
 
+  div.bg-terminal { width: 100%; }
+
   input.form-control {
     border: none;
     margin-bottom: 1rem;
-    text-align: right;
+    text-align: left;
   }
 }
 

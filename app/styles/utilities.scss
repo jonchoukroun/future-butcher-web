@@ -7,19 +7,11 @@
 }
 
 .text-light {
-  color: $brand-light !important;
+  color: $brand-white !important;
 }
 
 .text-primary {
   color: $brand-primary !important;
-}
-
-.text-accent {
-  color: $brand-accent !important;
-}
-
-.text-accent-alt {
-  color: $brand-accent-alt !important;
 }
 
 .text-danger {
@@ -28,11 +20,6 @@
 
 .text-warning {
   color: $brand-warning !important;
-}
-
-.text-terminal {
-  color: $terminal-green;
-  font-family: 'Space Mono', monospace;
 }
 
 .title-text {
@@ -47,8 +34,17 @@
   font-family: 'Michroma', monospace;
 }
 
+.terminal-text {
+  font-family: 'Space Mono', monospace;
+}
+
 .digital-text {
   font-family: 'digital-7';
+}
+
+.digital-text-large {
+  @extend .digital-text;
+  font-size: 1.5rem;
 }
 
 .link-text {
@@ -69,12 +65,16 @@
   background-color: $terminal-black !important;
 }
 
+.bg-black {
+  background-color: $brand-black !important;
+}
+
 .bg-dark {
   background-color: $brand-dark !important;
 }
 
 .bg-light {
-  background-color: $brand-light !important;
+  background-color: $brand-white !important;
 }
 
 .bg-primary {
@@ -93,6 +93,16 @@
   flex-grow: 1 !important;
 }
 
+.letter-spacing-min {
+  letter-spacing: 0.4rem;
+  margin-right: -0.4rem;
+}
+
+.letter-spacing-max {
+  letter-spacing: 0.8rem;
+  margin-right: -0.8rem;
+}
+
 
 // Borders ---------------------------------------------------------------------
 
@@ -101,8 +111,12 @@
   border-color: $brand-warning !important;
 }
 
+.border-dark {
+  border-color: $brand-dark !important;
+}
+
 .border-light {
-  border-color: $brand-light !important;
+  border-color: $brand-white !important;
 }
 
 .border-primary {

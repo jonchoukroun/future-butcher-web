@@ -9,7 +9,7 @@
   </div>
 
   <div class="d-flex flex-row">
-    <h4 class="text-terminal">
+    <h4 class="terminal-text">
       <span class="text-capitalize">{{cutName}}</span>
       <span class="small">in pack:</span>
 
@@ -28,16 +28,28 @@
     class="transaction-form align-self-center"
     {{action "submitSellCut" on="submit"}}
   >
-    <div class="form-row">
-      {{input
-        value=sellAmount
-        type="text"
-        pattern="[0-9]*"
-        placeholder=cutsOwnedPlaceholder
-        autofocus="true"
-        classNames="form-control form-control-lg mt-md-2"
-        key-up=(action "calculateProfit")
-      }}
+    <div class="form-group row mb-3">
+      <label
+        for="sell-input"
+        class="col-1 col-for-label"
+      >
+        <h4>
+          <i class="fas fa-angle-right"></i>
+        </h4>
+      </label>
+
+      <div class="col d-flex align-items-center pl-0">
+        {{input
+          id="sell-input"
+          value=sellAmount
+          type="text"
+          pattern="[0-9]*"
+          placeholder=cutsOwnedPlaceholder
+          autofocus="true"
+          classNames="form-control form-control-lg mt-md-2"
+          key-up=(action "calculateProfit")
+        }}
+      </div>
     </div>
 
     {{#if (not sellAmount)}}
@@ -62,6 +74,6 @@
       </div>
     {{/if}}
 
-    <p class="small text-terminal text-center mt-2">Or enter a different amount.</p>
+    <p class="small terminal-text text-center mt-2">Or enter a different amount.</p>
   </form>
 </div>

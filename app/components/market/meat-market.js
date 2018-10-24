@@ -70,7 +70,6 @@ export default class MeatMarketComponent extends Component {
 
   @action
   openSellMenu(cut) {
-    console.log('open sell', cut);
     this.set('showSellForm', true);
     this.set('sellingCut', cut);
   }

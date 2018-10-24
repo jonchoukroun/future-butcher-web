@@ -98,5 +98,9 @@ export default class SellMenuComponent extends Component {
     this.sellCut();
   }
 
+  didInsertElement() {
+    super.didInsertElement();
+    this.$('#sell-input').focus()
+  }
 
 }
