@@ -55,6 +55,7 @@ export default class SellMenuComponent extends Component {
 
     this.get('socket').pushCallBack("sell_cut", payload).then(() => {
       this.generateConfirmation(payload);
+      this.set('sellAmount', null);
       this.get('sendSellMenuClose')();
     });
   }
