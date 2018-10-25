@@ -36,3 +36,17 @@
 .sell-menu {
   @extend .transaction-terminal;
 }
+
+@media (min-width: 768px) {
+  .transaction-terminal {
+    width: 45vw;
+    left: 27.5vw;
+  }
+}
+
+@media (min-width: 1200px) {
+  .transaction-terminal {
+    width: 33vw;
+    left: 33.5vw;
+  }
+}

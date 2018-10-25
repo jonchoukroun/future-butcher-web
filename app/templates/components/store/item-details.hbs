@@ -22,30 +22,36 @@
   class="collapse border-bottom border-black"
   data-parent="#storeAccordion"
 >
-  <div class="card-body px-0 pt-0">
+  <div class="card-body px-0 pt-3">
     <div class="row">
       <div class="col d-flex flex-column justify-content-center">
         {{#if alreadyOwned}}
-          <p class="small disabled">Already owned</p>
+          <p class="disabled">Already owned</p>
         {{else if canBuy}}
-          <p class="small">Price: {{format-money itemPrice precision=0}}</p>
+          <p>
+            Price:
+            <span class="digital-text-large">{{format-money itemPrice precision=0}}</span>
+          </p>
         {{else}}
-          <p class="small text-danger">Price: {{format-money itemPrice precision=0}}</p>
+            <p class="text-danger">
+              Price:
+            <span class="digital-text-large">{{format-money itemPrice precision=0}}</span>
+          </p>
         {{/if}}
 
         {{#if itemSpace}}
-          <p class="small">Capacity: {{itemSpace}} lbs</p>
+          <p>Capacity: {{itemSpace}} lbs</p>
         {{else}}
           {{#if canHarvest}}
-            <p class="small">Can harvest: {{canHarvest}}.</p>
+            <p>Can harvest: {{canHarvest}}.</p>
           {{else}}
-            <p class="small">No harvest ability.</p>
+            <p>No harvest ability.</p>
           {{/if}}
         {{/if}}
 
       </div>
 
-      <div class="col d-flex align-items-center justify-content-center">
+      <div class="col-4 d-flex align-items-center justify-content-center">
         {{#if alreadyOwned}}
           <button
             class="btn btn-secondary btn-block"

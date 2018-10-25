@@ -3,8 +3,10 @@
     <div class="col-12 col-lg-8">
       {{title-screen class="text-block mt-5 py-2"}}
 
-      <div class="mt-5 mx-lg-5 pb-5">
-        {{signup-form sendJoin=(action "signInPlayer")}}
+      <div class="d-flex flex-row justify-content-center">
+        <div class="col-12 col-md-10 mt-5 pb-5">
+          {{signup-form sendJoin=(action "signInPlayer")}}
+        </div>
       </div>
     </div>
   </div>

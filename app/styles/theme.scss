@@ -17,7 +17,7 @@ $terminal-black: #282828;
 
 // Misc ------------------------------------------------------------------------
 
-$standard-radius: .25rem;
+$standard-radius: .45rem;
 
 
 // Customization ===============================================================
@@ -192,6 +192,7 @@ button {
 
 .btn-secondary-disabled {
   @extend .btn-secondary;
+  border-color: rgba($brand-primary, 0.5);
   color: rgba($brand-primary, 0.5);
   font-style: italic;
 
