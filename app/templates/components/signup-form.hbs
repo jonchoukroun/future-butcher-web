@@ -28,11 +28,11 @@
       <div class="col d-flex align-items-center pl-0">
         {{input
           id="player-name"
+          classNames="form-control form-control-lg input-dark"
           type="text"
+          autofocus="true"
           value=playerName
           key-up=(action "validatePlayerName")
-          autofocus="true"
-          classNames="form-control form-control-lg input-dark"
         }}
       </div>
     </div>
