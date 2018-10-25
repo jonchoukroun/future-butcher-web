@@ -1,6 +1,9 @@
 {{#if (eq storeScreen "weapons")}}
 
-  <div id="storeAccordion" class="accordion">
+  <div
+    id="storeAccordion"
+    class="accordion"
+  >
     {{#each-in weaponsInventory as |weapon details|}}
       {{store/item-details item=weapon details=details}}
     {{/each-in}}
@@ -59,7 +62,10 @@
       "It's a dangerous world. A little protection can turn the tables on a mugger."
     </p>
 
-    <button class="btn btn-secondary btn-block mb-4" {{action "showWeaponsStore"}}>
+    <button
+      class="btn btn-secondary btn-block mb-4"
+      {{action "showWeaponsStore"}}
+    >
       <span class="letter-spacing-max">See Weapons</span>
     </button>
 
@@ -67,7 +73,10 @@
       "Carry more meat with these items. Muggers will notice you more, too."
     </p>
 
-      <button class="btn btn-secondary btn-block" {{action "showPacksStore"}}>
+    <button
+      class="btn btn-secondary btn-block"
+      {{action "showPacksStore"}}
+    >
       <span class="letter-spacing-max">See Packs</span>
     </button>
 
