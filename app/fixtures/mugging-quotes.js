@@ -12,7 +12,7 @@ const defeatedButtonText = [
   "Ain't got time to bleed",
   "Get back on the saddle",
   "Get back in the game",
-  "Dust yourself off and go",
+  "Dust yourself off",
 ];
 
 const victoryQuotes = [

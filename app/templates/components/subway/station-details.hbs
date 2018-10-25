@@ -1,22 +1,21 @@
 <div class="row">
   <div class="col-7 col-lg-8 d-flex align-items-center justify-content-start">
-    <h2 class="title-text m-0">
+    <h5 class="m-0">
       {{#if (eq currentStation station.name)}}
-        <span class="text-secondary">
-          {{station.display}}
-        </span>
+        {{station.display}}
       {{else}}
         {{station.display}}
       {{/if}}
-    </h2>
+    </h5>
   </div>
 
   <div class="col-5 col-lg-4 d-flex align-items-center justify-content-end">
     {{#if (and (eq station.name "bell_gardens") (gt turnsLeft 20))}}
-      <p class="text-accent-alt mb-0">Closed</p>
+      <button class="btn btn-simple btn-simple-disabled btn-block">Closed</button>
 
     {{else if (eq currentStation station.name)}}
-      <p class="text-accent-alt mb-0">Here</p>
+      <button class="btn btn-simple btn-simple-disabled btn-block">Here</button>
+
     {{else if (not-eq currentStation station.name)}}
       {{#if sufficientTurns}}
         <button
@@ -34,9 +33,7 @@
         </button>
 
       {{else}}
-        <button class="btn btn-secondary btn-block btn-secondary-disabled">
-          Too far
-        </button>
+        <button class="btn btn-simple btn-block btn-simple-disabled">Too far</button>
 
       {{/if}}
     {{/if}}

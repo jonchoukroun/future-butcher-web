@@ -1,7 +1,9 @@
 <div class="d-flex flex-column">
-  <h3 class="my-5 text-center">
-    Time's Up!
-  </h3>
+  <div class="border-bottom border-dark my-5">
+    <h4 class="text-center text-uppercase">
+      <span class="letter-spacing-min">Time's Up!</span>
+    </h4>
+  </div>
 
   {{#if hasLooseEnds}}
     <p class="px-2">
@@ -49,7 +51,7 @@
       class="btn btn-secondary btn-block btn-lg align-self-center mt-5"
       {{action "retirePlayer"}}
     >
-      Cross the border anyway
+      <span class="letter-spacing-min">Cross the border</span>
     </button>
 
   {{else}}

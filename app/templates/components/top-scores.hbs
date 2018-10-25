@@ -1,8 +1,10 @@
 <div class="container mt-3">
   <div class="row justify-content-center px-0">
     <div class="col-12 col-sm-10 col-md-6">
-      <span class="border-bottom border-secondary mb-4">
-        <h2 class="end-text text-center">The End</h2>
+      <span class="border-bottom border-dark mb-4">
+        <h4 class="text-uppercase text-center">
+          <span class="letter-spacing-min">The End</span>
+        </h4>
       </span>
 
       {{#if isHighestScore}}
@@ -42,7 +44,7 @@
 
       {{else}}
         <div class="m-2 py-3 border-bottom border-black text-center">
-          <h6 class="text-secondary">Reigning Champ:</h6>
+          <h6 class="text-danger">Reigning Champ:</h6>
 
           <h5 class="m1">
             {{highestScore.player}}:
@@ -76,8 +78,8 @@
 
             {{/each}}
 
-            <div class="row justify-content-center bg-secondary my-1 py-1">
-              <h6 class="m-1 text-black">
+            <div class="row justify-content-center my-1 py-1">
+              <h6 class="m-1 text-danger">
                 <b>
                   You: {{format-money playerScore precision=0}}
                 </b>
@@ -112,7 +114,7 @@
             </div>
 
           {{else}}
-            <h6 class="text-secondary text-center">
+            <h6 class="text-danger text-center">
               Your score:
             </h6>
 
