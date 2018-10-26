@@ -2,7 +2,10 @@
   {{transition-animation}}
 {{/if}}
 
-<div id="{{item}}-item-header" class="card-header px-0 py-2 border-bottom border-dark">
+<div
+  id="{{item}}-item-header"
+  class="card-header px-0 py-2 border-bottom border-dark"
+>
   <div class="d-flex flex-row justify-content-between align-items-center">
     <h5 class="text-capitalize mb-0">
       <span class="letter-spacing-min">{{itemName}}</span>
@@ -33,8 +36,8 @@
             <span class="digital-text-large">{{format-money itemPrice precision=0}}</span>
           </p>
         {{else}}
-            <p class="text-danger">
-              Price:
+          <p class="text-danger">
+            Price:
             <span class="digital-text-large">{{format-money itemPrice precision=0}}</span>
           </p>
         {{/if}}
