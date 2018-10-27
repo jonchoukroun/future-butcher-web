@@ -54,6 +54,11 @@ h5 {
   text-align: center;
 }
 
+p {
+  font-family: 'Michroma', sans-serif;
+  font-size: 1rem;
+}
+
 .page-title {
   margin-bottom: 1em;
   border-bottom: 1px solid $brand-dark;
@@ -121,15 +126,17 @@ button {
 
 .btn-primary {
   @extend .btn-default;
+  font-size: 1.2rem;
+  text-transform: uppercase;
   background-color: transparent;
   color: $brand-primary;
   border-color: $brand-primary;
   border-width: 2px;
 
   &:hover, &:active, &:focus {
-    background-color: $brand-primary !important;
-    color: $brand-dark !important;
-    border-color: $brand-dark !important;
+    background-color: $brand-secondary !important;
+    color: $brand-black !important;
+    border-color: $brand-primary !important;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22) !important;
   }
 }

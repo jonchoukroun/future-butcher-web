@@ -10,12 +10,16 @@
   color: $brand-primary !important;
 }
 
+.text-secondary {
+  color: $brand-secondary !important;
+}
+
 .text-danger {
   color: $brand-danger !important;
 }
 
 .digital-text {
-  font-family: 'digital-7';
+  font-family: 'Digital 7' !important;
 }
 
 .terminal-text {

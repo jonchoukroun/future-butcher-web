@@ -1,28 +1,17 @@
 .intro-image {
-  height: 23vh;
+  height: 22vh;
+  // width: 100vw;
   background-color: $brand-dark;
   background-image: url("https://s3-us-west-1.amazonaws.com/futurebutcher.com/assets/background-night.jpeg");
   background-size: cover;
   background-position: top left;
   background-repeat: no-repeat;
 
-  h1, h2 {
+  h2 {
+    font-family: 'Michroma', sans-serif;
+    text-transform: uppercase;
     color: $brand-primary;
     text-shadow: 0 6px 6px rgba(0,0,0,0.3);
-  }
-
-  h1 {
-    font-family: 'digital-7', monospace;
-    font-size: 4rem;
-    text-transform: uppercase;
-    letter-spacing: normal;
-  }
-
-  h2 {
-    font-family: 'digital-7', monospace;
-    font-size: 1.5rem;
-    font-weight: bold;
-    letter-spacing: 0.5rem;
   }
 }
 

@@ -1,32 +1,35 @@
 <div
   class="intro-image jumbotron my-xl-3 d-flex flex-column justify-content-end"
 >
-  <h2 class="text-right">
-    One more thing...
-  </h2>
+  <h2 class="mb-md-4 digital-text text-center">+ $5,000</h2>
 </div>
 
-<div class="row justify-content-center">
+<div class="row justify-content-center mx-0">
   <div class="col-12 col-md-8 col-lg-6">
     <div class="container pb-5">
       <p class="mt-sm-2 mt-md-5 mt-xl-4">
-        Don't sweat the details, but you hooked up a
+        You hooked up a
         {{format-money 5000 precision=0}}
-        loan from the bank.
+        loan from the bank - with an hourly interest rate of
+        5<span class="percent">%</span>.
+        Yeah, it's rough. Welcome to the People's Republic of LA.
       </p>
 
       <p>
-        The current rate for booking passage with the <span class="font-italic">coyote</span> is
+        Booking passage with the <span class="font-italic">coyote</span> costs
         {{format-money current_rate precision=0}}.
-        Anything less and you'll be stuck here as LA explodes into anarchy.
-      </p>
-
-      <p class="home-screen-bottom">
-        Your debt will grow by 15<span class="percent">%</span>
-        each hour. Yeah, it's rough - welcome to the People's Republic of LA. Better pay it quick.
+        Anything less and you'll be stranded as LA explodes into anarchy.
       </p>
 
       {{home/reset-tutorials sendTutorialSelection=(action "setTutorialSelection")}}
+
+    </div>
+  </div>
+</div>
+
+<div class="fixed-bottom container bg-black">
+  <div class="row justify-content-center pb-3">
+    <div class="col-12 col-md-8 col-lg-6">
 
       <button
         class="btn btn-primary btn-lg btn-block"
