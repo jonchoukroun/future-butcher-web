@@ -20,11 +20,7 @@
 
       {{else}}
         <div class="d-flex flex-column">
-          <div class="text-center border-bottom border-dark mb-3">
-            <h5 class="page-heading text-primary text-uppercase">
-              <span class="letter-spacing-min">Destinations</span>
-            </h5>
-          </div>
+          <h5 class="page-title">Destinations</h5>
 
           <div id="subway-stations-menu">
             {{subway/subway-stations sendStation=(action "navigate")}}

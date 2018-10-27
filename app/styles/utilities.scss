@@ -1,13 +1,9 @@
 @import './theme';
 
-// Text  -----------------------------------------------------------------------
+// Text ------------------------------------------------------------------------
 
 .text-dark {
   color: $brand-dark !important;
-}
-
-.text-light {
-  color: $brand-white !important;
 }
 
 .text-primary {
@@ -18,33 +14,13 @@
   color: $brand-danger !important;
 }
 
-.text-warning {
-  color: $brand-warning !important;
-}
-
-.title-text {
-  font-family: 'marvin-visions', sans-serif;
-}
-
-.display-text {
-  font-family: 'Space Mono', monospace;
-}
-
-.button-text {
-  font-family: 'Michroma', monospace;
-}
-
-.terminal-text {
-  font-family: 'Space Mono', monospace;
-}
-
 .digital-text {
   font-family: 'digital-7';
 }
 
-.digital-text-large {
-  @extend .digital-text;
-  font-size: 1.5rem;
+.terminal-text {
+  font-family: 'Space Mono', monospace;
+  text-shadow: 0px 0px 5px $brand-primary;
 }
 
 .link-text {
@@ -58,6 +34,11 @@
   }
 }
 
+// Because Michroma doesn't include '%'
+.percent {
+  font-family: 'Jura';
+}
+
 
 // Backgrounds -----------------------------------------------------------------
 
@@ -67,22 +48,6 @@
 
 .bg-black {
   background-color: $brand-black !important;
-}
-
-.bg-dark {
-  background-color: $brand-dark !important;
-}
-
-.bg-light {
-  background-color: $brand-white !important;
-}
-
-.bg-primary {
-  background-color: $brand-primary !important;
-}
-
-.bg-opaque {
-  background-color: rgba(0,0,0,0.82) !important;
 }
 
 
@@ -108,17 +73,17 @@
 
 .border-terminal {
   border-width: 8px !important;
-  border-color: $brand-warning !important;
+  border-color: $brand-secondary !important;
 }
 
 .border-dark {
   border-color: $brand-dark !important;
 }
 
-.border-light {
-  border-color: $brand-white !important;
-}
-
 .border-primary {
   border-color: $brand-primary !important;
+}
+
+.border-secondary {
+  border-color: $brand-secondary !important;
 }
