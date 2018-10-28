@@ -54,6 +54,12 @@ h5 {
   text-align: center;
 }
 
+h6 {
+  font-family: 'Michroma', sans-serif;
+  letter-spacing: 0.5rem;
+  text-transform: uppercase;
+}
+
 p {
   font-family: 'Michroma', sans-serif;
   font-size: 1rem;
@@ -145,6 +151,7 @@ button {
   @extend .btn-default;
   color: $brand-primary;
   border-color: $brand-primary;
+  font-size: 1rem;
 
   &:hover, &:active, &:focus {
     background-color: inherit !important;
@@ -163,6 +170,7 @@ button {
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24) !important;
     transform: translateY(0) !important;
     color: rgba($brand-primary, 0.5) !important;
+    border-color: rgba($brand-primary, 0.5) !important;
   }
 }
 
