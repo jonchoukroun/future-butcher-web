@@ -34,7 +34,7 @@ export default class SignupFormComponent extends Component {
   validatePlayerName() {
     this.evaluateNewCharInput();
 
-    if (this.get('playerName').length >= 3) {
+    if (this.get('playerName').trim().length >= 3) {
       this.set('validInput', true);
     } else {
       this.set('validInput', false);
