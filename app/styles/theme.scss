@@ -6,7 +6,7 @@
 // brand color palette ---------------------------------------------------------------
 
 $brand-primary:   #4CAD54;
-$brand-secondary: rgba($brand-primary, 0.45);
+$brand-secondary: rgba($brand-primary, 0.5);
 $brand-white:     #d1d1d5;
 $brand-grey:      #8C8E96;
 $brand-black:     #040718;
@@ -65,8 +65,10 @@ p {
   font-size: 1rem;
 }
 
-.page-title {
+h5.page-title {
+  display: inline;
   margin-bottom: 1em;
+  padding-bottom: 0.25em;
   border-bottom: 1px solid $brand-dark;
 }
 
@@ -112,7 +114,8 @@ button {
 .btn-default {
   background-color: transparent;
   border-radius: $standard-radius;
-  font-family: 'Space Mono', monospace;
+  font-family: 'Digital 7', monospace;
+  // font-family: 'Space Mono';
   font-size: 1.5rem;
   text-transform: capitalize;
   color: $brand-primary;
@@ -132,7 +135,8 @@ button {
 
 .btn-primary {
   @extend .btn-default;
-  font-size: 1.2rem;
+  font-size: 1.75rem;
+  line-height: 1.75rem;
   text-transform: uppercase;
   background-color: transparent;
   color: $brand-primary;
@@ -151,7 +155,8 @@ button {
   @extend .btn-default;
   color: $brand-primary;
   border-color: $brand-primary;
-  font-size: 1rem;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
 
   &:hover, &:active, &:focus {
     background-color: inherit !important;
@@ -178,7 +183,9 @@ button {
   border: 1px solid rgba($brand-primary, 0.25);
   background-color: transparent;
   color: $brand-primary;
-  font-family: 'Michroma', sans-serif;
+  font-family: 'Digital 7', monospace;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
 
   &:hover, &:active, &:focus {
     border-color: $brand-primary !important;
@@ -202,6 +209,20 @@ button {
 .btn-plain {
   @extend .btn-simple;
   border: none;
+  color: $brand-secondary;
+
+  &:hover {
+    color: $brand-primary;
+  }
+}
+
+.btn-plain-danger {
+  @extend .btn-plain;
+  color: rgba($brand-danger, 0.45);
+
+  &:hover {
+    color: $brand-danger;
+  }
 }
 
 .btn-plain-disabled {
@@ -293,13 +314,8 @@ button {
 
 // Miscellaneous ---------------------------------------------------------------
 
-// .full-screen {
-//   height: 100vh;
-//   overflow: hidden;
-// }
-
 .top-spacer {
-  padding-top: 55px;
+  padding-top: 75px;
 }
 
 .list-group-item {
