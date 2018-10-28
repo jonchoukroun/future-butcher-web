@@ -2,9 +2,15 @@
   position: fixed;
   left: 0;
   width: 100vw;
+  margin: 0;
+  padding: 0 !important;
   z-index: 1000;
   padding-left: 1em;
   padding-right: 1em;
+}
+
+.dash-board {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 @media (min-width: 992px) {

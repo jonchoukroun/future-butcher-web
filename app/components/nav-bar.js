@@ -3,7 +3,7 @@ import { computed } from '@ember-decorators/object';
 import { service } from '@ember-decorators/service';
 import { classNames } from '@ember-decorators/component';
 
-@classNames('nav-bar', 'row', 'justify-content-center', 'm-0', 'p-0')
+@classNames('nav-bar', 'row', 'justify-content-center', 'bg-black')
 export default class NavBarComponent extends Component {
 
   @service router;
