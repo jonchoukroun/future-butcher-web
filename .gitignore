@@ -24,3 +24,5 @@
 
 # macosx bullshit
 .DS_store
+
+ngrok
