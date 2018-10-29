@@ -1,14 +1,12 @@
 <div class="container mt-3">
   <div class="row justify-content-center px-0">
     <div class="col-12 col-sm-10 col-md-6">
-      <span class="border-bottom border-dark mb-4">
-        <h4 class="text-uppercase text-center">
-          <span class="letter-spacing-min">The End</span>
-        </h4>
-      </span>
+      <div class="d-flex w-100 mb-0 mb-lg-1 justify-content-center">
+        <h5 class="page-title">Game Over</h5>
+      </div>
 
       {{#if isHighestScore}}
-        <h5 class="text-center">You set a new record!</h5>
+        <h6 class="text-center">You set a new record!</h6>
 
         <h3 class="mx-5 digital-text text-danger text-center">
           {{format-money playerScore precision=0}}
@@ -22,7 +20,7 @@
 
         <div class="my-2 mx-1 py-3 container">
           <div class="row justify-content-center">
-            <h5>Runners up</h5>
+            <h6>Runners up</h6>
           </div>
 
           {{#each lowerScores as |score|}}
@@ -44,7 +42,7 @@
 
       {{else}}
         <div class="m-2 py-3 border-bottom border-black text-center">
-          <h6 class="text-danger">Reigning Champ:</h6>
+          <h6>Reigning Champ:</h6>
 
           <h3 class="m1 text-danger">
             {{highestScore.player}}:

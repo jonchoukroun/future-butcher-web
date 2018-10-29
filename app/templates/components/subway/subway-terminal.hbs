@@ -1,8 +1,6 @@
 <div class="d-flex flex-column">
-  <div class="border-bottom border-dark my-5">
-    <h4 class="text-center text-uppercase">
-      <span class="letter-spacing-min">Time's Up!</span>
-    </h4>
+  <div class="d-flex w-100 mb-0 mb-lg-1 justify-content-center">
+    <h5 class="page-title">Time's up!</h5>
   </div>
 
   {{#if hasLooseEnds}}
@@ -11,7 +9,7 @@
     </p>
 
     {{#if (gt playerDebt 0)}}
-      <p class="text-center">
+      <p class="px-2">
         You still owe
         {{format-money playerDebt precision=0}}
         ...
@@ -33,7 +31,7 @@
     {{/if}}
 
     {{#if (gt totalCutsOwned 0)}}
-      <p class="text-center mt-4">
+      <p class="mt-4 px-2">
         You're still carrying {{totalCutsOwned}}
         {{#if (eq totalCutsOwned 1)}}
           lb...
