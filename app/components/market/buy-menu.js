@@ -121,6 +121,8 @@ export default class BuyMenu extends Component {
 
   @action
   clickBack() {
+    this.set('buyAmount', null);
+    this.get('notifications').renderError(null);
     this.get('sendBuyMenuClose')();
   }
 

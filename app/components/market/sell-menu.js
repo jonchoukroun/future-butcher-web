@@ -76,6 +76,8 @@ export default class SellMenuComponent extends Component {
 
   @action
   clickBack() {
+    this.set('sellAmount', null);
+    this.get('notifications').renderError(null);
     this.get('sendSellMenuClose')();
   }
 

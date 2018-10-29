@@ -261,18 +261,6 @@ button {
   border-radius: $standard-radius;
 }
 
-.border-primary {
-  border-color: $brand-primary !important;
-}
-
-.border-danger {
-  border-color: $brand-danger !important;
-}
-
-.border-black {
-  border-color: black !important;
-}
-
 
 // Notifications ---------------------------------------------------------------
 
@@ -284,11 +272,15 @@ button {
   margin-left: -47.5%;
   padding: 1em;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22) !important;
+
+  p {
+    font-weight: 900;
+  }
 }
 
 .error-message {
   @extend .notification;
-  top: 70px;
+  top: 100px;
 }
 
 .pinned-message {

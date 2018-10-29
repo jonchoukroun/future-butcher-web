@@ -12,7 +12,7 @@ export default class NotificationService extends Service {
     this.set('confirmationMessage', message);
     later(() => {
       this.set('confirmationMessage', null);
-    }, 1300);
+    }, 1500);
   }
 
   renderError(message) {
