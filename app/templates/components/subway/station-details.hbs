@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-8 d-flex align-items-center justify-content-start">
-    <h6 class="m-0">
+    <h6 class="m-0 text-uppercase">
       {{#if (eq currentStation station.name)}}
         {{station.display}}
       {{else}}
@@ -19,7 +19,7 @@
     {{else if (not-eq currentStation station.name)}}
       {{#if sufficientTurns}}
         <button
-          class="btn btn-secondary btn-block d-flex"
+          class="btn btn-secondary btn-block"
           {{action "selectStation"}}
         >
           {{station.travel_time}}
@@ -28,8 +28,6 @@
           {{else}}
             hrs
           {{/if}}
-
-          <span class="ml-auto"><i class="fas fa-arrow-circle-right"></i></span>
         </button>
 
       {{else}}
