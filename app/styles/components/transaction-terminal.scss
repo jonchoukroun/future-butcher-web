@@ -37,6 +37,10 @@
   @extend .transaction-terminal;
 }
 
+.pack-inventory {
+  @extend .transaction-terminal;
+}
+
 @media (min-width: 768px) {
   .transaction-terminal {
     width: 45vw;

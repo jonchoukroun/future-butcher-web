@@ -12,6 +12,12 @@
   }}
 {{/if}}
 
+{{#if showInventory}}
+  {{market/pack-inventory
+    sendInventoryClose=(action "closeInventory")
+  }}
+{{/if}}
+
 {{#each-in marketCuts as |cut market|}}
   {{market/cut-entry
     cut=cut
@@ -22,9 +28,15 @@
   }}
 {{/each-in}}
 
-<div class="flex-row mt-3 mx-1 mx-md-5 pt-2 px-2 border-top border-black">
-  <p class="small text-right mb-1">
-    <b>Total:</b>
-    {{totalWeightCarried}}/{{packSpace}} lbs
-  </p>
+<div class="flex-row border-top border-black">
+  <a
+    href="#"
+    class="link-text"
+    {{action "openInventory"}}
+  >
+    <p class="small text-right mb-1">
+      <b>Total cuts carried:</b>
+      {{totalWeightCarried}}/{{packSpace}} lbs
+    </p>
+  </a>
 </div>

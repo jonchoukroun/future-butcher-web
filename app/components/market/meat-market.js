@@ -49,6 +49,8 @@ export default class MeatMarketComponent extends Component {
 
   @action
   openBuyMenu(cut) {
+    this.set('showInventory', false);
+    this.set('showSellForm', false);
     this.set('showBuyForm', true);
     this.set('buyingCut', cut);
   }
@@ -65,6 +67,8 @@ export default class MeatMarketComponent extends Component {
 
   @action
   openSellMenu(cut) {
+    this.set('showInventory', false);
+    this.set('showBuyForm', false);
     this.set('showSellForm', true);
     this.set('sellingCut', cut);
   }
@@ -76,6 +80,22 @@ export default class MeatMarketComponent extends Component {
       this.set('showSellForm', false);
       this.set('sellingCut', null);
       this.$('.sell-menu').removeClass('terminal-close');
+    }, 300);
+  }
+
+  @action
+  openInventory() {
+    this.set('showBuyForm', false);
+    this.set('showSellForm', false);
+    this.set('showInventory', true);
+  }
+
+  @action
+  closeInventory() {
+    this.$('.pack-inventory').addClass('terminal-close');
+    later(() => {
+      this.set('showInventory', false);
+      this.$('.pack-inventory').removeClass('terminal-close');
     }, 300);
   }
 

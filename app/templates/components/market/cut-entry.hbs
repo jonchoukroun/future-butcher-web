@@ -1,13 +1,13 @@
-<div class="border-bottom border-dark">
+<div class="border-bottom border-dark mb-1">
   <div class="d-flex align-items-end cut-header">
-    <h6 class="mb-1 ml-2 mr-auto text-uppercase text-accent-alt">
+    <h6 class="mb-1 ml-2 mr-auto text-uppercase">
       <span class="letter-spacing-max">{{cut}}</span>
     </h6>
 
     {{#if (gt cutsOwned 0)}}
-      <h5 class="cuts-owned mb-1 mr-2">
+      <h6 class="cuts-owned mb-1 mr-2">
         {{cutsOwned}}
-      </h5>
+      </h6>
       <span class="small">
         {{#if (eq cutsOwned 1)}}
           lb

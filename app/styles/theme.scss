@@ -50,14 +50,11 @@ h1 {
 h5 {
   font-family: 'Michroma', sans-serif;
   letter-spacing: 0.5rem;
-  text-transform: uppercase;
-  text-align: center;
 }
 
 h6 {
   font-family: 'Michroma', sans-serif;
   letter-spacing: 0.5rem;
-  text-transform: uppercase;
 }
 
 p {
@@ -70,6 +67,7 @@ h5.page-title {
   margin-bottom: 1em;
   padding-bottom: 0.25em;
   border-bottom: 1px solid $brand-dark;
+  text-transform: uppercase;
 }
 
 // Inputs ----------------------------------------------------------------------
