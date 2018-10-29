@@ -6,9 +6,10 @@ export default class IntroScreenComponent extends HomeScreenComponent {
   @computed()
   get currentDate() {
     const now   = new Date(Date.now());
-    const month = now.getMonth();
-    const date  = now.getDate();
-    return new Date(2055, month - 1, date, 5, 0).toDateString()
+    const date_string = new Date(2055, now.getMonth(), now.getDate(), 5, 0).toDateString();
+    let date_array = date_string.split(' ');
+    date_array.shift();
+    return date_array.join(' ');
   }
 
   @action
