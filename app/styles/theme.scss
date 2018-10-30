@@ -81,7 +81,13 @@ input.form-control {
   font-family: 'Space Mono', monospace;
   font-size: 1rem;
   letter-spacing: 1px;
+  color: $brand-secondary;
   transition: all 0.5s ease-out;
+
+  &::-webkit-input-placeholder { color: $brand-secondary; }
+  &::-moz-placeholder          { color: $brand-secondary; }
+  &:-moz-placeholder           { color: $brand-secondary; }
+  &:-ms-input-placeholder      { color: $brand-secondary; }
 }
 
 .input-dark {
@@ -93,7 +99,7 @@ input.form-control {
 input.form-control:focus {
   @extend input, .form-control;
   box-shadow: none;
-  color: $brand-primary;
+  color: $brand-primary !important;
   font-weight: 800 !important;
 }
 
@@ -280,7 +286,7 @@ button {
 
 .error-message {
   @extend .notification;
-  top: 100px;
+  top: 20vh;
 }
 
 .pinned-message {
