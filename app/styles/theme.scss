@@ -220,12 +220,24 @@ button {
   }
 }
 
+.btn-plain-bright {
+  @extend .btn-plain;
+  color: rgba($brand-primary, 0.9);
+
+  &:hover {
+    color: $brand-primary;
+    font-weight: bold;
+    text-shadow: 1px 1px 6px $brand-secondary;
+  }
+}
+
 .btn-plain-danger {
   @extend .btn-plain;
-  color: rgba($brand-danger, 0.45);
+  color: rgba($brand-danger, 0.9);
 
   &:hover {
     color: $brand-danger;
+    text-shadow: 1px 1px 6px rgba($brand-danger, 0.45);
   }
 }
 
