@@ -44,10 +44,12 @@
         <div class="m-2 py-3 border-bottom border-black text-center">
           <h6>Reigning Champ:</h6>
 
-          <h3 class="m1 text-danger">
+          <h5 class="m1 text-danger">
             {{highestScore.player}}:
-            <span class="digital-text">{{format-money highestScore.score precision=0}}</span>
-          </h3>
+            <span class="digital-text-large">
+              {{format-money highestScore.score precision=0}}
+            </span>
+          </h5>
         </div>
 
         <div class="my-2 py-3 px-0 container">
