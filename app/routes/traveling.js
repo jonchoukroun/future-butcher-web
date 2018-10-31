@@ -35,26 +35,26 @@ export default class TravelingRoute extends Route {
 
   handleSurgeNotifications() {
     const current_station = this.get('socket.stateData.station.station_name');
+    if (current_station !== "beverly_hills") { return; }
+
     const flank = this.get('socket.stateData.station.market.flank.price');
     const heart = this.get('socket.stateData.station.market.heart.price');
     const ribs  = this.get('socket.stateData.station.market.ribs.price');
     const pack  = this.get('socket.stateData.player.pack');
 
-    if (current_station !== "beverly_hills") { return; }
-
-    if (flank >= cutStats.flank.surgeMinimum && pack.get('flank') > 0) {
+    if (flank >= cutStats.flank.surgeMinimum && pack.flank > 0) {
       const flank_messages = surgeMessages.flankMessages;
       const message = flank_messages[Math.floor(Math.random() * Math.floor(flank_messages.length))];
       this.get('notifications').pinNotification(message);
     }
 
-    if (heart >= cutStats.heart.surgeMinimum && pack.get('heart') > 0) {
+    if (heart >= cutStats.heart.surgeMinimum && pack.heart > 0) {
       const heart_messages = surgeMessages.heartMessages;
       const message = heart_messages[Math.floor(Math.random() * Math.floor(heart_messages.length))];
       this.get('notifications').pinNotification(message);
     }
 
-    if (ribs >= cutStats.ribs.surgeMinimum && pack.get('ribs') > 0) {
+    if (ribs >= cutStats.ribs.surgeMinimum && pack.ribs > 0) {
       const ribs_messages = surgeMessages.ribsMessages;
       const message = ribs_messages[Math.floor(Math.random() * Math.floor(ribs_messages.length))];
       this.get('notifications').pinNotification(message);
