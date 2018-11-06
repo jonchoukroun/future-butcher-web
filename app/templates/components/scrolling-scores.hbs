@@ -1,18 +1,17 @@
 {{#each scores as |score|}}
-  <li class="display-text">
-    <div class="row justify-content-around">
-      <div class="col-6 px-0 text-left">
-        <h6 class="m-1 default-text">
+  <li class="container-fluid">
+    <div class="d-flex flex-row align-items-center justify-content-between">
+      <div class="col pl-1">
+        <p class="terminal-text text-truncate">
           {{score.player}}
-        </h6>
+        </p>
       </div>
 
-      <div class="col-4 pl-0 text-right">
-        <h6 class="m-1 display-text">
+      <div class="col">
+        <p class="terminal-text text-right text-truncate">
           {{format-money score.score precision=0}}
-        </h6>
+        </p>
       </div>
-
     </div>
   </li>
 {{/each}}

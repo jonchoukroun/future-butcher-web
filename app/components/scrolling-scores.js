@@ -2,7 +2,7 @@ import Component from '@ember/component';
 import { classNames, tagName } from '@ember-decorators/component';
 
 @tagName('ol')
-@classNames('display-text', 'scrolling-scores')
+@classNames('scrolling-scores')
 
 export default class ScrollingScoresComponent extends Component {
 
