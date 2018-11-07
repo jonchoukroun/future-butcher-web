@@ -15,6 +15,16 @@ const surgeMessages = {
     "Local gangs are at war and stopped supplying ribs. Looks like you're the only hustler who can service this demand!"
   ],
 
+  brainsMessages: [
+    "There's a zombie LARP event in town. Brains are in high demand.",
+    "Dr. Jake convinces wealthy housewives eating brains improves gut health. Prices skyrocket."
+  ],
+
+  liverMessages: [
+    "It's the Hannibal Lecter Club's annual convention. Liver and Chianti prices are outta control.",
+    "Locally grown onion is tasting pretty good, so farmer's markets are stocking up on liver."
+  ]
+
 }
 
 export { surgeMessages }
