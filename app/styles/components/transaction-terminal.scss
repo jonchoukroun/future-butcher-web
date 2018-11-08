@@ -3,7 +3,7 @@
   z-index: 1000;
   width: 90vw;
   left: 5vw;
-  top: 20vh;
+  top: 60px;
   animation: terminalOpen 0.3s ease-in forwards;
 
   div.bg-terminal { width: 100%; }
@@ -45,6 +45,7 @@
   .transaction-terminal {
     width: 45vw;
     left: 27.5vw;
+    top: 20vh;
   }
 }
 
