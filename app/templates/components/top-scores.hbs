@@ -12,7 +12,7 @@
           {{format-money playerScore precision=0}}
         </h3>
 
-        <div class="m-4 py-3 border-top border-black">
+        <div class="m-4 border-top border-black">
           <p>
             You made enough money to leave behind crumbling LA and retire in luxury.
           </p>
@@ -41,7 +41,7 @@
         </div>
 
       {{else}}
-        <div class="m-2 py-3 border-bottom border-black text-center">
+        <div class="m-2 border-bottom border-black text-center">
           <h6>Reigning Champ:</h6>
 
           <h5 class="m1 text-danger">
@@ -52,7 +52,7 @@
           </h5>
         </div>
 
-        <div class="my-2 py-3 px-0 container-fluid">
+        <div class="my-2 px-0 container-fluid">
           {{#if (gt playerScoreIndex 0)}}
             {{#each higherScores as |score|}}
               <div class="row justify-content-around">
@@ -107,7 +107,7 @@
 
             {{/each}}
 
-            <div class="mt-4 py-3 border-top border-black">
+            <div class="mt-4 border-top border-black">
               <p class="text-center">
                 You have enough to bribe the <span class="font-italic">coyote</span>, can you do even better next time?
               </p>
