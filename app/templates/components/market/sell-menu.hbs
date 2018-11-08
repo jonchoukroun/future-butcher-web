@@ -1,9 +1,9 @@
 <div class="bg-terminal py-3 border border-terminal">
   <div class="container-fluid">
-    <div class="row d-flex justify-content-between align-items-center mb-5">
+    <div class="row d-flex justify-content-between align-items-center mb-4">
       <div class="col-8">
         <h4 class="terminal-text text-capitalize mb-0 ml-3">
-          Sell {{cutName}}
+          Sell {{cutName}}?
         </h4>
       </div>
 
@@ -19,35 +19,31 @@
     </div>
 
     <div class="row">
-      <div class="col d-flex align-items-end">
-        <h6 class="terminal-text">Pack:</h6>
+      <div class="col-5 offset-1 col-lg-4 d-flex align-items-end">
+        <p class="terminal-text mb-2">In Pack:</p>
       </div>
 
-      <div class="col d-flex align-items-end">
-        <h6 class="terminal-text">
+      <div class="col-4 d-flex align-items-end">
+        <p class="terminal-text mb-2">
           {{format-number cutsOwned precision=0}}
           {{#if (eq cutsOwned 1)}}
             lb
           {{else}}
             lbs
           {{/if}}
-        </h6>
+        </p>
       </div>
     </div>
 
     <div class="row mb-2">
-      <div class="col d-flex align-items-end">
-        <h6 class="terminal-text">Total:</h6>
+      <div class="col-5 offset-1 col-lg-4 d-flex align-items-end">
+        <p class="terminal-text mb-2">Price:</p>
       </div>
 
-      <div class="col d-flex align-items-end">
-        <h6 class="terminal-text">
-          {{#if sellAmount}}
-            {{format-money estimatedProfit precision=0}}
-          {{else}}
-            {{format-money cutsOwnedProfit precision=0}}
-          {{/if}}
-        </h6>
+      <div class="col-4 d-flex align-items-end">
+        <p class="terminal-text mb-2">
+          {{format-money cutPrice precision=0}}
+        </p>
       </div>
     </div>
 
@@ -113,7 +109,16 @@
         </div>
       {{/if}}
 
-      <p class="small terminal-text text-center mt-2">Or enter a different amount.</p>
+      <p
+        class="terminal-text text-center mt-2"
+      >
+        Your revenue:
+        {{#if sellAmount}}
+          {{format-money estimatedProfit precision=0}}
+        {{else}}
+          {{format-money cutsOwnedProfit precision=0}}
+        {{/if}}
+      </p>
     </form>
   </div>
 </div>
