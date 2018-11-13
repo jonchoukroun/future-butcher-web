@@ -12,29 +12,29 @@
           {{format-money playerScore precision=0}}
         </h3>
 
-        <div class="m-4 border-top border-black">
+        <div class="my-3">
           <p>
             You made enough money to leave behind crumbling LA and retire in luxury.
           </p>
         </div>
 
         <div class="my-2 mx-1 py-3 container">
-          <div class="row justify-content-center">
-            <h6>Runners up</h6>
+          <div class="row justify-content-center px-0">
+            <h6 class="text-uppercase border-bottom border-dark pb-1">Runners up</h6>
           </div>
 
           {{#each lowerScores as |score|}}
             <div class="row justify-content-around">
               <div class="col-2 text-right">
-                <p class="m-1">{{score.rank}}</p>
+                <p class="m-1 terminal-text">{{score.rank}}</p>
               </div>
 
               <div class="col-5 px-0 text-left text-truncate">
-                <p class="m-1">{{score.player}}</p>
+                <p class="m-1 terminal-text">{{score.player}}</p>
               </div>
 
               <div class="col-4 pl-0 text-right text-truncate">
-                <p class="m-1">{{format-money score.score precision=0}}</p>
+                <p class="m-1 terminal-text">{{format-money score.score precision=0}}</p>
               </div>
             </div>
           {{/each}}
@@ -52,24 +52,24 @@
           </h5>
         </div>
 
-        <div class="my-2 px-0 container-fluid">
+        <div class="my-2 container-fluid">
           {{#if (gt playerScoreIndex 0)}}
             {{#each higherScores as |score|}}
               <div class="row justify-content-around">
                 <div class="col-2 pl-0 text-right">
-                  <p class="m-1">
+                  <p class="m-1 terminal-text">
                     {{score.rank}}.
                   </p>
                 </div>
 
                 <div class="col-5 px-0 text-left text-truncate">
-                  <p class="m-1">
+                  <p class="m-1 terminal-text">
                     {{score.player}}
                   </p>
                 </div>
 
-                <div class="col-5 px-0 text-right text-truncate">
-                  <p class="m-1">
+                <div class="col-5 pl-0 text-right text-truncate">
+                  <p class="m-1 terminal-text">
                     {{format-money score.score precision=0}}
                   </p>
                 </div>
@@ -89,17 +89,17 @@
             {{#each lowerScores as |score|}}
               <div class="row justify-content-around">
                 <div class="col-2 pl-0 text-right">
-                  <p class="m-1">
+                  <p class="m-1 terminal-text">
                     {{score.rank}}.
                   </p>
                 </div>
-                <div class="col-6 px-0 text-left text-truncate">
-                  <p class="m-1">
+                <div class="col-5 px-0 text-left text-truncate">
+                  <p class="m-1 terminal-text">
                     {{score.player}}
                   </p>
                 </div>
-                <div class="col-4 px-0 text-right text-truncate">
-                  <p class="m-1">
+                <div class="col-5 pl-0 text-right text-truncate">
+                  <p class="m-1 terminal-text">
                     {{format-money score.score precision=0}}
                   </p>
                 </div>

@@ -4,19 +4,19 @@ ol.scrolling-scores {
 
 
   li {
-    list-style-type: decimal-leading-zero;
+    display: list-item;
+    list-style-type: decimal;
     list-style-position: outside;
     color: $brand-primary;
     font-family: 'Space Mono', monospace;
+  }
+
+  p {
+    text-overflow: ellipsis;
   }
 }
 
 @keyframes scrollUp {
   from { transform: translateY(20vh); }
   to   { transform: translateY(-1270vh); }
-}
-
-@media (max-width: 767px) {
-  #scrolling-scores .list-group-item .container-fluid      { padding: 0; }
-  #scrolling-scores .list-group-item .container-fluid .row { padding: 0; }
 }

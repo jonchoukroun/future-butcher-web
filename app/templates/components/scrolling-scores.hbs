@@ -1,14 +1,14 @@
 {{#each scores as |score|}}
-  <li class="container-fluid">
+  <li>
     <div class="d-flex flex-row align-items-center justify-content-between">
       <div class="col pl-1">
-        <p class="terminal-text text-truncate">
+        <p class="terminal-text">
           {{score.player}}
         </p>
       </div>
 
       <div class="col">
-        <p class="terminal-text text-right text-truncate">
+        <p class="terminal-text text-right">
           {{format-money score.score precision=0}}
         </p>
       </div>
