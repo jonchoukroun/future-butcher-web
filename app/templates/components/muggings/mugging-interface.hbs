@@ -23,13 +23,13 @@
 
       {{#if (gt turnsLeft 0)}}
         <button class="btn btn-secondary btn-lg btn-block" {{action "fightMugger"}}>
-          Fight mugger
+          Fight
         </button>
       {{/if}}
 
-      {{#if (or (gte playerFunds 500) (gte totalCutsOwned 1))}}
+      {{#if (or (gte playerFunds 500) (gt totalCutsOwned 0))}}
         <button class="btn btn-secondary btn-lg btn-block" {{action "bribeMugger"}}>
-          Bribe player
+          Bribe
         </button>
 
       {{else}}
