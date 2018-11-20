@@ -6,9 +6,9 @@
 
       {{#if confirmationNotification}}
         {{#liquid-wormhole
-          class="notification bg-secondary border border-primary"
+          class="notification bg-black border border-primary"
         }}
-          <p class="mb-0 text-center text-black font-weight-bold">
+          <p class="mb-0 text-center text-primary font-weight-bold">
             {{confirmationNotification}}
           </p>
         {{/liquid-wormhole}}
@@ -16,9 +16,9 @@
 
       {{#if errorNotification}}
         {{#liquid-wormhole
-          class="error-message bg-black border border-danger text-center"
+          class="error-message bg-danger border border-danger text-center"
         }}
-          <p class="mb-0 text-danger">
+          <p class="mb-0 text-dark">
             {{errorNotification}}
           </p>
         {{/liquid-wormhole}}
@@ -26,15 +26,15 @@
 
       {{#if pinnedNotification}}
         {{#liquid-wormhole
-          class="pinned-message bg-secondary border border-primary"
+          class="pinned-message bg-black border border-primary"
         }}
           <div class="text-right">
-            <p class="mb-0 text-center text-black font-weight-bold">
+            <p class="mb-0 text-center text-primary font-weight-bold">
               {{pinnedNotification}}
             </p>
 
             <button
-              class="btn btn-simple mt-3 p-0"
+              class="btn btn-simple mt-3"
               {{action "unpinNotification"}}
             >
               Close

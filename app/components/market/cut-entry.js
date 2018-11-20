@@ -14,7 +14,8 @@ export default class CutEntryComponent extends Component {
 
   @computed('cut', 'price')
   get isSurgePrice() {
-    let cut = ["heart", "flank", "ribs"].filter(cut => cut === this.get('cut'))[0];
+    let cut = ["heart", "flank", "ribs", "liver", "brains"].filter(cut =>
+      cut === this.get('cut'))[0];
 
     if (cut) {
       return this.get('price') >= cutStats[this.get('cut')].surgeMinimum;

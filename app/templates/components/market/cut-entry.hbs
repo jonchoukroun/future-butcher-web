@@ -1,11 +1,13 @@
-<div class="border-bottom border-secondary">
+<div class="border-bottom border-dark mb-1">
   <div class="d-flex align-items-end cut-header">
-    <h4 class="mb-1 ml-2 mr-auto text-capitalize">{{cut}}</h4>
+    <h6 class="mb-1 ml-2 mr-auto text-uppercase">
+      <span class="letter-spacing-max">{{cut}}</span>
+    </h6>
 
     {{#if (gt cutsOwned 0)}}
-      <h5 class="cuts-owned mb-1 mr-2">
+      <h6 class="cuts-owned mb-1 mr-2">
         {{cutsOwned}}
-      </h5>
+      </h6>
       <span class="small">
         {{#if (eq cutsOwned 1)}}
           lb
@@ -19,12 +21,12 @@
 
 <div class="d-flex flex-row align-items-end mb-3">
   {{#if price}}
-    <div class="flex-grow-1 pr-2 pr-md-3 pr-lg-5 pr-xl-5">
-      <p
-        class="mt-1 mb-0 text-right {{if isSurgePrice "text-warning"}}"
+    <div class="flex-grow-1 pr-3 pr-lg-4">
+      <h4
+        class="mt-1 mb-0 digital-text letter-spacing-min text-right"
       >
         {{format-money price precision=0}}
-      </p>
+      </h4>
 
       <p class="small mb-0 text-right font-italic">
         Average: {{format-money medianPrice precision=0}}
@@ -37,7 +39,7 @@
           class="btn btn-secondary btn-block mt-1 mb-0"
           {{action "openSellMenu"}}
         >
-          Get rich
+          Sell
         </button>
       </div>
     {{else}}
@@ -51,7 +53,7 @@
           </button>
 
         {{else}}
-          <button class="btn btn-secondary btn-disabled btn-eq-flex mt-1 mb-0">
+          <button class="btn btn-secondary btn-secondary-disabled btn-eq-flex mt-1 mb-0">
             Buy
           </button>
 
@@ -66,7 +68,7 @@
           </button>
 
         {{else}}
-          <button class="btn btn-secondary btn-disabled btn-eq-flex mt-1 mb-0">
+          <button class="btn btn-secondary btn-secondary-disabled btn-eq-flex mt-1 mb-0">
             Sell
           </button>
 
@@ -75,8 +77,8 @@
     {{/if}}
 
   {{else}}
-    <div class="flex-grow-1 pr-2 pr-md-3 pr-lg-5 pr-xl-5">
-      <p class="mb-1 font-italic text-right text-secondary">No current demand</p>
+    <div class="flex-grow-1">
+      <p class="mb-1 font-italic text-right text-dark">No current demand</p>
     </div>
   {{/if}}
 </div>

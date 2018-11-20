@@ -2,7 +2,7 @@ import Component from '@ember/component';
 import { action, computed } from '@ember-decorators/object';
 import { classNames } from '@ember-decorators/component';
 
-@classNames('signup-component', 'mt-5')
+@classNames('signup-component')
 export default class SignupFormComponent extends Component {
 
   inputLength = null;
@@ -34,7 +34,7 @@ export default class SignupFormComponent extends Component {
   validatePlayerName() {
     this.evaluateNewCharInput();
 
-    if (this.get('playerName').length >= 3) {
+    if (this.get('playerName').trim().length >= 3) {
       this.set('validInput', true);
     } else {
       this.set('validInput', false);
@@ -56,6 +56,11 @@ export default class SignupFormComponent extends Component {
         this.set('isNameTaken', true);
       })
     })
+  }
+
+  didInsertElement() {
+    super.didInsertElement();
+    this.$('#player-name').focus();
   }
 
 }

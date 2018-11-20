@@ -1,19 +1,19 @@
-<div class="col-12 col-md-8 col-lg-4 px-0 p-2 py-sm-2 px-sm-4 px-md-1">
+<div class="col-12 col-md-8 col-lg-4 px-0 p-2 pb-3 px-sm-4 px-md-1">
   {{#if (eq currentRoute "subway")}}
-    {{#link-to "market" class="btn btn-secondary btn-lg btn-block"}}
+    {{#link-to "market" class="btn btn-primary btn-lg btn-block"}}
       {{#if (eq currentStation "bell_gardens")}}
-        Back to Store
+        <span class="letter-spacing-min">Back to Store</span>
       {{else}}
-        Back to Market
+        <span class="letter-spacing-min">Back to Market</span>
       {{/if}}
     {{/link-to}}
 
   {{else}}
-    {{#link-to "subway" class="btn btn-secondary btn-lg btn-block"}}
+    {{#link-to "subway" class="btn btn-primary btn-lg btn-block"}}
       {{#if (eq turnsLeft 0)}}
-        Cross the border
+        <span class="letter-spacing-min">Cross the border</span>
       {{else}}
-        Hit the Subway
+        <span class="letter-spacing-min">Hit the Subway</span>
       {{/if}}
     {{/link-to}}
 

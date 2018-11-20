@@ -1,6 +1,9 @@
 {{#if (eq storeScreen "weapons")}}
 
-  <div id="storeAccordion" class="accordion">
+  <div
+    id="storeAccordion"
+    class="accordion"
+  >
     {{#each-in weaponsInventory as |weapon details|}}
       {{store/item-details item=weapon details=details}}
     {{/each-in}}
@@ -28,15 +31,17 @@
 
 {{else}}
   <div class="container-fluid p-0">
-    <div class="text-center mt-2">
-      <h2 class="text-warning mb-1">Bell Gardens</h2>
-      <p class="small text-secondary">Home of Gus's Army Surplus</p>
+    <div
+      class="d-flex flex-column w-100 mb-0 mb-lg-1 justify-content-center align-items-center"
+    >
+      <h5 class="page-title mb-0">Bell Gardens</h5>
+      <p class="small text-danger">Home of Gus's Army Surplus</p>
     </div>
 
     <div class="row">
       <div class="col-4 d-flex flex-column justify-content-center align-items-center">
         <div class="display-2">
-          <ion-icon name="person"></ion-icon>
+          <i class="fas fa-user"></i>
         </div>
       </div>
       <div
@@ -57,16 +62,22 @@
       "It's a dangerous world. A little protection can turn the tables on a mugger."
     </p>
 
-    <button class="btn btn-secondary btn-block mb-4" {{action "showWeaponsStore"}}>
-      See Weapons
+    <button
+      class="btn btn-secondary btn-block mb-4"
+      {{action "showWeaponsStore"}}
+    >
+      <span class="letter-spacing-max">See Weapons</span>
     </button>
 
     <p>
       "Carry more meat with these items. Muggers will notice you more, too."
     </p>
 
-    <button class="btn btn-secondary btn-block" {{action "showPacksStore"}}>
-      See Packs
+    <button
+      class="btn btn-secondary btn-block"
+      {{action "showPacksStore"}}
+    >
+      <span class="letter-spacing-max">See Packs</span>
     </button>
 
   </div>

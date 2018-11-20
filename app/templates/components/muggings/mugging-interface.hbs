@@ -7,8 +7,8 @@
 
     {{#if inProgress}}
       <div class="text-center border-bottom border-black mb-3">
-        <h1 class="display-1 page-heading text-danger">
-          <ion-icon name="hand"></ion-icon>
+        <h1 class="display-1 text-danger">
+          <i class="fas fa-user-ninja"></i>
         </h1>
       </div>
 
@@ -23,13 +23,13 @@
 
       {{#if (gt turnsLeft 0)}}
         <button class="btn btn-secondary btn-lg btn-block" {{action "fightMugger"}}>
-          Fight mugger
+          Fight
         </button>
       {{/if}}
 
-      {{#if (or (gte playerFunds 500) (gte totalCutsOwned 1))}}
+      {{#if (or (gte playerFunds 500) (gt totalCutsOwned 0))}}
         <button class="btn btn-secondary btn-lg btn-block" {{action "bribeMugger"}}>
-          Bribe player
+          Bribe
         </button>
 
       {{else}}

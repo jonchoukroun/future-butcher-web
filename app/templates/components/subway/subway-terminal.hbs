@@ -1,7 +1,7 @@
 <div class="d-flex flex-column">
-  <h3 class="my-5 text-center">
-    Time's Up!
-  </h3>
+  <div class="d-flex w-100 mb-0 mb-lg-1 justify-content-center">
+    <h5 class="page-title">Time's up!</h5>
+  </div>
 
   {{#if hasLooseEnds}}
     <p class="px-2">
@@ -9,7 +9,7 @@
     </p>
 
     {{#if (gt playerDebt 0)}}
-      <p class="text-center">
+      <p class="px-2">
         You still owe
         {{format-money playerDebt precision=0}}
         ...
@@ -31,7 +31,7 @@
     {{/if}}
 
     {{#if (gt totalCutsOwned 0)}}
-      <p class="text-center mt-4">
+      <p class="mt-4 px-2">
         You're still carrying {{totalCutsOwned}}
         {{#if (eq totalCutsOwned 1)}}
           lb...
@@ -49,7 +49,7 @@
       class="btn btn-secondary btn-block btn-lg align-self-center mt-5"
       {{action "retirePlayer"}}
     >
-      Cross the border anyway
+      <span class="letter-spacing-min">Cross the border</span>
     </button>
 
   {{else}}

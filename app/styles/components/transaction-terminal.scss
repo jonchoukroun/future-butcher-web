@@ -1,0 +1,57 @@
+.transaction-terminal {
+  position: fixed;
+  z-index: 1000;
+  width: 90vw;
+  left: 5vw;
+  top: 60px;
+  animation: terminalOpen 0.3s ease-in forwards;
+
+  div.bg-terminal { width: 100%; }
+
+  input.form-control {
+    border: none;
+    margin-bottom: 0.5rem;
+    text-align: left;
+  }
+}
+
+.terminal-close {
+  animation: terminalClose 0.3s ease-out forwards;
+}
+
+@keyframes terminalOpen {
+  from { transform: scale(0); }
+  to   { transform: scale(1); }
+}
+
+@keyframes terminalClose {
+  from { transform: scale(1); }
+  to   { transform: scale(0); }
+}
+
+.buy-menu {
+  @extend .transaction-terminal;
+}
+
+.sell-menu {
+  @extend .transaction-terminal;
+}
+
+.pack-inventory {
+  @extend .transaction-terminal;
+}
+
+@media (min-width: 768px) {
+  .transaction-terminal {
+    width: 45vw;
+    left: 27.5vw;
+    top: 20vh;
+  }
+}
+
+@media (min-width: 1200px) {
+  .transaction-terminal {
+    width: 33vw;
+    left: 33.5vw;
+  }
+}

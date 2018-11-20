@@ -1,8 +1,8 @@
-<div class="container-fluid full-screen">
+<div class="container-fluid">
 
   {{top-scores}}
 
-  <div class="row justify-content-center">
+  <div class="row justify-content-center mt-3">
     <div class="col-12 col-sm-10 col-md-6 text-center">
       <p class="mb-1">
         Thanks for playing!
@@ -13,20 +13,23 @@
           href="https://jonchoukroun.typeform.com/to/xtMxpW"
           class="link-text"
         >
-          Help improve Future Butcher
+          Give feedback (it's quick).
         </a>
       </p>
     </div>
   </div>
+</div>
 
-  <div class="row justify-content-center mb-3">
-    <div class="col-12 col-sm-10 col-md-6">
+<div class="container-fluid">
+  <div class="nav-bar row justify-content-center bg-black">
+    <div class="col-12 col-md-8 col-lg-4 px-0 p-2 pb-3 px-sm-4 px-md-1">
       <button
-        class="btn btn-secondary btn-block btn-lg"
+        class="btn btn-secondary btn-lg btn-block"
         {{action "startNewGame"}}
       >
-        Start Over
+        <span class="letter-spacing-max">Start Over</span>
       </button>
+
     </div>
   </div>
 </div>

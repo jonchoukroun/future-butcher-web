@@ -1,9 +1,15 @@
 .subway-stations .list-group-item {
-  padding-top: 0;
+  padding-top: 5px;
   opacity: 0;
   overflow: hidden;
   transform: translateX(-400px);
   animation: fadeIn 0.5s forwards, openMenu 0.2s ease-out forwards;
+
+  h2 {
+    // background: -webkit-linear-gradient($brand-primary, $brand-accent-alt);
+    // -webkit-background-clip: text;
+    // -webkit-text-fill-color: transparent;
+  }
 }
 
 .subway-stations .list-group-item:nth-child(1) { animation-delay: 0.4s; }

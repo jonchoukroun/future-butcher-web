@@ -1,28 +1,41 @@
 // =========================== Future Butcher Theme ===========================
 // ============================================================================
 
+// Variables ===================================================================
 
-// Color palette ---------------------------------------------------------------
+// brand color palette ---------------------------------------------------------------
 
-$brand-primary:   #62d162;
-$brand-secondary: #4f874f;
-$brand-danger:    #ea7d62;
-$brand-black:     #091409;
-$brand-warning:   #f9e784;
+$brand-primary:   #4CAD54;
+$brand-secondary: rgba($brand-primary, 0.5);
+$brand-white:     #d1d1d5;
+$brand-grey:      #8C8E96;
+$brand-black:     #040718;
+$brand-dark:      #341149;
+$brand-danger:    #A83F5D;
+$terminal-black:  #282828;
+
+
+// Misc ------------------------------------------------------------------------
+
+$standard-radius: 2px;
+$rounded-radius:  .9rem;
+
+
+// Customization ===============================================================
 
 // Typography ------------------------------------------------------------------
 
 @import url('https://fonts.googleapis.com/css?family=Baumans|Jura:700|Michroma|Space+Mono');
 
 @font-face {
-  font-family: 'marvin-visions';
+  font-family: 'Marvin Visions';
   src: url("fonts/MarvinVisions-Bold.eot") format("eot");
   src: url("fonts/MarvinVisions-Bold.woff2") format("woff2");
   src: url("fonts/MarvinVisions-Bold.woff") format("woff");
 }
 
 @font-face {
-    font-family: 'digital-7';
+    font-family: 'Digital 7';
     src: url("fonts/digital-7.woff2") format('woff2'),
          url("fonts/digital-7.woff") format('woff');
     font-weight: normal;
@@ -30,86 +43,63 @@ $brand-warning:   #f9e784;
 
 }
 
-h1, h2 {
-  font-family: 'marvin-visions', sans-serif;
-  letter-spacing: 1px;
+h1 {
+  font-family: 'Marvin Visions';
 }
 
-h3, h4, h5, h6 {
-  font-family: 'Michroma';
+h5 {
+  font-family: 'Michroma', sans-serif;
+  letter-spacing: 0.5rem;
+}
+
+h6 {
+  font-family: 'Michroma', sans-serif;
+  letter-spacing: 0.5rem;
 }
 
 p {
-  font-family: 'Michroma';
+  font-family: 'Michroma', sans-serif;
   font-size: 1rem;
-  letter-spacing: 1px;
 }
 
-// Because Michroma doesn't include '%'
-.percent {
-  font-family: 'Jura';
-}
-
-@media (max-width: 320px) {
-  p { font-size: 13px; }
-}
-
-h3.page-heading {
+h5.page-title {
+  display: inline;
+  margin-bottom: 1em;
+  padding-bottom: 0.25em;
+  border-bottom: 1px solid $brand-dark;
   text-transform: uppercase;
-  font-size: 1.2rem;
-  letter-spacing: 0.35rem;
 }
-
-@media (min-width: 375px) {
-  h3.page-heading {
-    font-size: 1.4rem;
-    letter-spacing: 0.5rem;
-  }
-}
-
-@media (min-width: 414px) {
-  h3.page-heading { letter-spacing: 0.7rem; }
-}
-
-@media (min-width: 768px) {
-  h3.page-heading { letter-spacing: 0.5rem; }
-}
-
-@media (min-width: 992px) {
-  h3.page-heading {
-    font-size: 1.8rem;
-    letter-spacing: 0.7rem;
-  }
-}
-
-@media (min-width: 1200px) {
-  h3.page-heading {
-    font-size: 1.5rem;
-    letter-spacing: 0.83rem;
-  }
-}
-
 
 // Inputs ----------------------------------------------------------------------
 
 input.form-control {
-  background-color: $brand-black;
+  background-color: $terminal-black;
   border-top: none;
   border-right: none;
   border-left: none;
-  border-color: $brand-secondary;
-  border-radius: 0;
-  font-family: 'Michroma', sans-serif;
+  border-radius: $standard-radius;
+  font-family: 'Space Mono', monospace;
   font-size: 1rem;
   letter-spacing: 1px;
+  color: $brand-secondary;
   transition: all 0.5s ease-out;
+
+  &::-webkit-input-placeholder { color: $brand-secondary; }
+  &::-moz-placeholder          { color: $brand-secondary; }
+  &:-moz-placeholder           { color: $brand-secondary; }
+  &:-ms-input-placeholder      { color: $brand-secondary; }
+}
+
+.input-dark {
+  background-color: $terminal-black !important;
+  border: none;
+  border-radius: 0 !important;
 }
 
 input.form-control:focus {
   @extend input, .form-control;
-  border-color: $brand-primary;
   box-shadow: none;
-  color: $brand-primary;
+  color: $brand-primary !important;
   font-weight: 800 !important;
 }
 
@@ -121,151 +111,164 @@ button {
   color: inherit;
 }
 
-.btn-group-lg > .btn {
-  border-radius: 2px;
+.btn-sm  {
+  font-size: 0.75rem;
 }
 
-.btn-primary {
-  margin: 10px 0;
-  background-color: $brand-black;
-  border-color: $brand-secondary;
-  border-radius: 4px;
-  border-width: 2px;
-  color: $brand-primary;
-  font-family: 'Michroma';
-  font-weight: 900;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  transition: all 0.6s ease;
-  transition-property: background-color, border-color, color, box-shadow, transform;
-}
-
-%brightenState {
-  background-color: $brand-secondary !important;
-  border-color: $brand-primary !important;
-  color: rgba(0, 0, 0, 0.5) !important;
-}
-
-.btn-primary:active {
+.btn-default {
   background-color: transparent;
-  border: none;
-}
-
-.btn-primary:focus {
-  box-shadow: none;
-}
-
-.btn-primary:hover {
-  @extend %brightenState;
-  transform: translateY(-2px);
-  box-shadow: 1px 1px 7px 3px $brand-secondary;
-}
-
-.btn-primary:active:focus {
-  box-shadow: 0 0 0 0.2rem $brand-secondary !important;
-}
-
-.btn-secondary {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 10px 0;
-  background-color: $brand-black;
-  border-color: $brand-secondary;
-  border-radius: 4px;
-  border-width: 2px;
+  border-radius: $standard-radius;
+  font-family: 'Digital 7', monospace;
+  // font-family: 'Space Mono';
+  font-size: 1.5rem;
+  text-transform: capitalize;
   color: $brand-primary;
-  font-family: 'Michroma';
-  font-weight: 900;
-  font-size: 1em;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  transition: all 0.2s ease-out;
-  white-space: normal;
-}
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 
-.btn-secondary:active {
-  background-color: transparent !important;
-  border-color: transparent !important;
-  color: $brand-primary !important;
-  box-shadow: 0 0 3px 5px $brand-secondary !important;
-}
-
-.btn-secondary:focus {
-  box-shadow: none;
-}
-
-.btn-secondary:hover {
-  @extend %brightenState;
-  transform: translateY(-2px);
-  box-shadow: 1px 1px 7px 3px $brand-secondary;
-}
-
-.btn-secondary:visited {
-  @extend .btn-secondary;
-}
-
-.btn-warning {
-  @extend .btn-secondary;
-  border-color: $brand-warning;
-  color: $brand-warning;
-}
-
-.btn-plain {
-  padding: 0;
-  background-color: $brand-black;
-  border: none;
-  font-family: 'marvin-visions', sans-serif;
-  font-size: 1.7rem;
-  color: $brand-primary;
-}
-
-.btn-simple {
-  font-family: 'Michroma', monospace;
-  font-weight: bold;
-}
-
-%steadyState {
-  transform: none !important;
-  box-shadow: none !important;
-  background-color: transparent !important;
-  color: $brand-secondary !important;
-  border-color: $brand-secondary !important;
-}
-
-.btn-disabled {
-  background-color: transparent;
-  color: $brand-secondary !important;
-  font-style: italic;
-  white-space: normal;
-  cursor: not-allowed !important;
-
-  &:hover  { @extend %steadyState; }
-  &:active { @extend %steadyState; }
-}
-
-.disabled {
-  color: $brand-secondary;
-  font-style: italic;
-  cursor: not-allowed !important;
-
-  &:hover  { @extend %steadyState; }
-  &:active { @extend %steadyState; }
-}
-
-@media (max-width: 414px) {
-  .btn-secondary.btn-lg.btn-block {
-    padding-left: 0.8rem;
-    padding-right: 0.8rem;
+  &:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    transform: translateY(-2px);
   }
 }
 
-@media (max-width: 350px) {
-  .btn-secondary.btn-lg.btn-block { font-size: 14px; }
+.btn-disabled {
+  @extend .btn-default;
+  color: $brand-grey;
 }
 
-@media (min-width: 768px) {
-  .btn.btn-primary { font-size: 22px; }
+.btn-primary {
+  @extend .btn-default;
+  font-size: 1.75rem;
+  line-height: 1.75rem;
+  text-transform: uppercase;
+  background-color: transparent;
+  color: $brand-primary;
+  border-color: $brand-primary;
+  border-width: 2px;
+
+  &:hover, &:active, &:focus {
+    background-color: $brand-secondary !important;
+    color: $brand-black !important;
+    border-color: $brand-primary !important;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22) !important;
+  }
+}
+
+.btn-secondary {
+  @extend .btn-default;
+  color: $brand-primary;
+  border-color: $brand-primary;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+
+  &:hover, &:active, &:focus {
+    background-color: inherit !important;
+    color: $brand-primary !important;
+    border-color: $brand-primary !important;
+  }
+}
+
+.btn-secondary-disabled {
+  @extend .btn-secondary;
+  border-color: rgba($brand-primary, 0.5);
+  color: rgba($brand-primary, 0.5);
+  font-style: italic;
+
+  &:hover, &:active, &:focus {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24) !important;
+    transform: translateY(0) !important;
+    color: rgba($brand-primary, 0.5) !important;
+    border-color: rgba($brand-primary, 0.5) !important;
+  }
+}
+
+.btn-simple {
+  border: 1px solid rgba($brand-primary, 0.25);
+  background-color: transparent;
+  color: $brand-primary;
+  font-family: 'Digital 7', monospace;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+
+  &:hover, &:active, &:focus {
+    border-color: $brand-primary !important;
+    box-shadow: none !important;
+  }
+}
+
+.btn-simple-disabled {
+  @extend .btn-simple;
+  color: rgba($brand-primary, 0.5);
+  font-style: italic;
+
+  &:hover, &:active, &:focus {
+    border-color: rgba($brand-primary, 0.25) !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24) !important;
+    transform: translateY(0) !important;
+    color: rgba($brand-primary, 0.5) !important;
+  }
+}
+
+.btn-plain {
+  @extend .btn-simple;
+  border: none;
+  color: $brand-secondary;
+
+  &:hover {
+    color: $brand-primary;
+  }
+}
+
+.btn-plain-bright {
+  @extend .btn-plain;
+  color: rgba($brand-primary, 0.9);
+
+  &:hover {
+    color: $brand-primary;
+    font-weight: bold;
+    text-shadow: 1px 1px 6px $brand-secondary;
+  }
+}
+
+.btn-plain-danger {
+  @extend .btn-plain;
+  color: rgba($brand-danger, 0.9);
+
+  &:hover {
+    color: $brand-danger;
+    text-shadow: 1px 1px 6px rgba($brand-danger, 0.45);
+  }
+}
+
+.btn-plain-disabled {
+  @extend .btn-simple-disabled;
+}
+
+.btn-terminal {
+  @extend .btn-default;
+  background-color: rgba($brand-primary, 0.75);
+  border-radius: 2px;
+  border-color: none;
+  color: $brand-black;
+}
+
+.btn-terminal-disabled {
+  @extend .btn-terminal;
+  color: rgba($brand-dark, 0.5);
+
+  &:hover, &:active, &:focus {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24) !important;
+    transform: translateY(0) !important;
+    color: rgba($brand-dark, 0.5) !important;
+  }
+}
+
+
+// Cards -----------------------------------------------------------------------
+
+.card.card-body {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22) !important;
 }
 
 
@@ -273,23 +276,7 @@ button {
 
 .border {
   border: 1px solid;
-  border-radius: 5px;
-}
-
-.border-primary {
-  border-color: $brand-primary !important;
-}
-
-.border-secondary {
-  border-color: $brand-secondary !important;
-}
-
-.border-danger {
-  border-color: $brand-danger !important;
-}
-
-.border-black {
-  border-color: black !important;
+  border-radius: $standard-radius;
 }
 
 
@@ -302,10 +289,16 @@ button {
   width: 95%;
   margin-left: -47.5%;
   padding: 1em;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22) !important;
+
+  p {
+    font-weight: 900;
+  }
 }
 
 .error-message {
   @extend .notification;
+  top: 20vh;
 }
 
 .pinned-message {
@@ -336,12 +329,8 @@ button {
 
 // Miscellaneous ---------------------------------------------------------------
 
-.full-screen {
-  overflow: hidden;
-}
-
 .top-spacer {
-  padding-top: 65px;
+  padding-top: 75px;
 }
 
 .list-group-item {

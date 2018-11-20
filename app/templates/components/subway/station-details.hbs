@@ -1,24 +1,25 @@
 <div class="row">
-  <div class="col-7 col-lg-8 d-flex align-items-center justify-content-start">
-    <h2 class="title-text m-0">
+  <div class="col-8 d-flex align-items-center justify-content-start">
+    <h6 class="m-0 text-uppercase">
       {{#if (eq currentStation station.name)}}
-        <span class="text-secondary">
-          {{station.display}}
-        </span>
+        {{station.display}}
       {{else}}
         {{station.display}}
       {{/if}}
-    </h2>
+    </h6>
   </div>
 
-  <div class="col-5 col-lg-4 d-flex align-items-center justify-content-end">
+  <div class="col-4 d-flex align-items-center justify-content-end">
     {{#if (and (eq station.name "bell_gardens") (gt turnsLeft 20))}}
-      <p class="small mb-0">Closed</p>
+      <button class="btn btn-simple btn-simple-disabled btn-block">Closed</button>
+
+    {{else if (eq currentStation station.name)}}
+      <button class="btn btn-simple btn-simple-disabled btn-block">Here</button>
 
     {{else if (not-eq currentStation station.name)}}
       {{#if sufficientTurns}}
         <button
-          class="btn btn-secondary btn-block d-flex"
+          class="btn btn-secondary btn-block"
           {{action "selectStation"}}
         >
           {{station.travel_time}}
@@ -27,14 +28,10 @@
           {{else}}
             hrs
           {{/if}}
-
-          <span class="ml-auto"><i class="fas fa-arrow-circle-right"></i></span>
         </button>
 
       {{else}}
-        <button class="btn btn-secondary btn-block btn-disabled">
-          Too far
-        </button>
+        <button class="btn btn-simple btn-block btn-simple-disabled">Too far</button>
 
       {{/if}}
     {{/if}}

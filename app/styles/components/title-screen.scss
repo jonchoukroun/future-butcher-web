@@ -1,17 +1,15 @@
-@import '../theme';
-
 .title-image {
   animation: slideDown 1s ease-in forwards;
+}
 
-  .title-future {
-    font-size: 26vw;
-    line-height: 19vw;
-    margin: 0;
-  }
-
-  .title-butcher {
-    @extend .title-future;
-  }
+h1.main-title {
+  font-size: 26.5vw;
+  line-height: 19.33vw; // 1:1.36 font-size
+  margin: 0;
+  color: $brand-danger;
+  background: -webkit-linear-gradient($brand-danger, $brand-black);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .headline {
@@ -31,17 +29,23 @@
   to   { visibility: visible; }
 }
 
-@media (min-width: 992px) {
-  .title-image .title-future {
-    font-size: 18vw;
-    line-height: 13vw;
+@media (min-width: 768px) {
+  h1.main-title {
+    font-size: 27.8vw;
+    line-height: 20vw;
   }
+}
 
+@media (min-width: 992px) {
+  h1.main-title {
+    font-size: 18.4vw;
+    line-height: 13.3vw;
+  }
 }
 
 @media (min-width: 1200px) {
-  .title-image .title-future {
-    font-size: 12vw;
-    line-height: 8.75vw;
+  h1.main-title {
+    font-size: 12.25vw;
+    line-height: 8.9vw;
   }
 }

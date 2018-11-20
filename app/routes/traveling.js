@@ -35,25 +35,40 @@ export default class TravelingRoute extends Route {
 
   handleSurgeNotifications() {
     const current_station = this.get('socket.stateData.station.station_name');
-    const flank = this.get('socket.stateData.station.market.flank.price');
-    const heart = this.get('socket.stateData.station.market.heart.price');
-    const ribs  = this.get('socket.stateData.station.market.ribs.price');
-
     if (current_station !== "beverly_hills") { return; }
 
-    if (flank >= cutStats.flank.surgeMinimum) {
-      const flank_messages = surgeMessages.flankMessages;
-      const message = flank_messages[Math.floor(Math.random() * Math.floor(flank_messages.length))];
+    const brains = this.get('socket.stateData.station.market.brains.price');
+    const heart  = this.get('socket.stateData.station.market.heart.price');
+    const flank  = this.get('socket.stateData.station.market.flank.price');
+    const ribs   = this.get('socket.stateData.station.market.ribs.price');
+    const liver  = this.get('socket.stateData.station.market.liver.price');
+    const pack   = this.get('socket.stateData.player.pack');
+
+    if (brains >= cutStats.brains.surgeMinimum && pack.brains > 0) {
+      const messages = surgeMessages.brainsMessages;
+      const message = messages[Math.floor(Math.random() * Math.floor(messages.length))];
       this.get('notifications').pinNotification(message);
     }
 
-    if (heart >= cutStats.heart.surgeMinimum) {
+    if (heart >= cutStats.heart.surgeMinimum && pack.heart > 0) {
       const heart_messages = surgeMessages.heartMessages;
       const message = heart_messages[Math.floor(Math.random() * Math.floor(heart_messages.length))];
       this.get('notifications').pinNotification(message);
     }
 
-    if (ribs >= cutStats.ribs.surgeMinimum) {
+    if (flank >= cutStats.flank.surgeMinimum && pack.flank > 0) {
+      const flank_messages = surgeMessages.flankMessages;
+      const message = flank_messages[Math.floor(Math.random() * Math.floor(flank_messages.length))];
+      this.get('notifications').pinNotification(message);
+    }
+
+    if (liver >= cutStats.liver.surgeMinimum && pack.liver > 0) {
+      const liver_messages = surgeMessages.liverMessages;
+      const message = liver_messages[Math.floor(Math.random() * Math.floor(liver_messages.length))];
+      this.get('notifications').pinNotification(message);
+    }
+
+    if (ribs >= cutStats.ribs.surgeMinimum && pack.ribs > 0) {
       const ribs_messages = surgeMessages.ribsMessages;
       const message = ribs_messages[Math.floor(Math.random() * Math.floor(ribs_messages.length))];
       this.get('notifications').pinNotification(message);

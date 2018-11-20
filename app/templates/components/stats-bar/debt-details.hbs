@@ -1,5 +1,5 @@
 <div
-  class="card card-body pb-0 bg-black border-left-0 border-right-0 border-bottom-0"
+  class="card card-body pb-2 bg-black border-left-0 border-right-0 border-bottom-0"
 >
   {{#if (gt playerDebt 0)}}
 
@@ -7,10 +7,10 @@
       {{#if (gt playerFunds playerDebt)}}
         <p>You made money real quick!</p>
 
-        <div class="row justify-content-center">
-          <div class="col-12 col-md-8 col-xl-6">
+        <div class="row justify-content-center mb-3">
+          <div class="col-12">
             <button class="btn btn-secondary btn-sm btn-block" {{action payDebt}}>
-              Pay your debt with FlayPal
+              Pay debt with FlayPal
             </button>
           </div>
         </div>
@@ -51,8 +51,8 @@
       </p>
 
       {{#if (gt playerFunds playerDebt)}}
-        <div class="row justify-content-center">
-          <div class="col-12 col-md-8 col-xl-6">
+        <div class="row justify-content-center mb-3">
+          <div class="col-12">
             <button class="btn btn-secondary btn-sm btn-block" {{action payDebt}}>
               Pay it off with FlayPal
             </button>

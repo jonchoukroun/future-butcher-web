@@ -1,31 +1,26 @@
 .intro-image {
-  background-color: $brand-black;
-  background-image: url("https://s3-us-west-1.amazonaws.com/futurebutcher.com/assets/downtown-bridge.jpg");
+  height: 22vh;
+  // width: 100vw;
+  background-color: $brand-dark;
+  background-image: url("https://s3-us-west-1.amazonaws.com/futurebutcher.com/assets/background-night.jpeg");
   background-size: cover;
   background-position: top left;
   background-repeat: no-repeat;
 
-  h1, h2 {
-    text-shadow: 0 6px 6px $brand-secondary;
-  }
-
-  h1 {
-    font-size: 4.5em;
-    letter-spacing: normal;
-  }
-
   h2 {
-    font-weight: bold;
-    font-size: 3em;
-    letter-spacing: 0.5rem;
+    font-family: 'Michroma', sans-serif;
+    text-transform: uppercase;
+    color: $brand-primary;
+    text-shadow: 0 6px 6px rgba(0,0,0,0.3);
   }
 }
 
 @media (min-width: 576px) {
   .intro-image {
+    height: 30vh;
     background-position: center;
 
-    h1 { font-size: 7em; }
-    h2 { font-size: 4.5em; }
+    h1 { font-size: 7rem; }
+    h2 { font-size: 2.5rem; }
   }
 }

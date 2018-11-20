@@ -1,14 +1,22 @@
-.scrolling-scores {
+ol.scrolling-scores {
   z-index: 0;
-  animation: scrollUp 220s linear;
+  animation: scrollUp 250s linear;
+
+
+  li {
+    display: list-item;
+    list-style-type: decimal;
+    list-style-position: outside;
+    color: $brand-primary;
+    font-family: 'Space Mono', monospace;
+  }
+
+  p {
+    text-overflow: ellipsis;
+  }
 }
 
 @keyframes scrollUp {
   from { transform: translateY(20vh); }
   to   { transform: translateY(-1270vh); }
-}
-
-@media (max-width: 767px) {
-  #scrolling-scores .list-group-item .container-fluid      { padding: 0; }
-  #scrolling-scores .list-group-item .container-fluid .row { padding: 0; }
 }

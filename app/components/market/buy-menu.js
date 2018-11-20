@@ -4,7 +4,7 @@ import { service } from '@ember-decorators/service';
 import { classNames } from '@ember-decorators/component';
 import { htmlSafe } from '@ember/string';
 
-@classNames('d-flex', 'flex-column', 'align-items-center', 'justify-content-between')
+@classNames('buy-menu', 'd-flex', 'flex-column', 'align-items-center', 'justify-content-between')
 
 export default class BuyMenu extends Component {
 
@@ -100,6 +100,7 @@ export default class BuyMenu extends Component {
 
     this.get('socket').pushCallBack("buy_cut", payload).then(() => {
       this.generateConfirmation(payload);
+      this.set('buyAmount', null);
       this.get('sendBuyMenuClose')();
     });
   }
@@ -120,6 +121,8 @@ export default class BuyMenu extends Component {
 
   @action
   clickBack() {
+    this.set('buyAmount', null);
+    this.get('notifications').renderError(null);
     this.get('sendBuyMenuClose')();
   }
 
@@ -141,6 +144,11 @@ export default class BuyMenu extends Component {
   @action
   submitBuyCut() {
     this.buyCut();
+  }
+
+  didInsertElement() {
+    super.didInsertElement();
+    this.$('#buy-input').focus();
   }
 
 }

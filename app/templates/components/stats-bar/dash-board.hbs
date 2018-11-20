@@ -1,9 +1,9 @@
 <div
-  class="col-12 col-md-8 col-lg-6 px-0 p-2 py-sm-2 px-sm-4 px-md-1 border-bottom border-secondary"
+  class="dash-board col-12 col-md-8 col-lg-4 px-0 pt-3 text-primary bg-black"
 >
   <div class="d-flex align-items-center justify-content-between mx-1">
     <button
-      class="btn btn-simple px-0"
+      class="btn btn-plain-bright px-0"
       {{action "toggleStatsBar" "#fundsDetails"}}
     >
       <h4 class="digital-text m-0">
@@ -14,10 +14,10 @@
     </button>
 
     <button
-      class="btn btn-simple px-0 text-danger"
+      class="btn btn-plain-danger px-0 text-main"
       {{action "toggleStatsBar" "#debtDetails"}}
     >
-      <h4 class="digital-text m-0">
+      <h4 class="digital-text  m-0">
         {{format-money playerDebt precision=0}}
 
         <i class="fas fa-caret-down ml-1 ml-md-3"></i>
@@ -25,7 +25,7 @@
     </button>
 
     <button
-      class="btn btn-simple px-0"
+      class="btn btn-plain-bright px-0"
       {{action "toggleStatsBar" "#navigationDetails"}}
     >
       <h4
@@ -38,7 +38,7 @@
     </button>
 
     <button
-      class="btn btn-simple px-0"
+      class="btn btn-plain-bright px-0"
       {{action "toggleStatsBar" "#gameDetails"}}
     >
       <i class="fas fa-cog"></i>

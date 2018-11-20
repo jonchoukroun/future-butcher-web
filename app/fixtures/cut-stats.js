@@ -1,23 +1,23 @@
 const cutStats = {
-  "ribs": {
-    median: 2255,
-    surgeMinimum: 8000
-  },
-  "loin": {
-    median: 918,
-    surgeMinimum: null
-  },
-  "liver": {
-    median: 38,
-    surgeMinimum: null
+  "brains": {
+    median: 58750,
+    surgeMinimum: 150000
   },
   "heart": {
-    median: 20000,
+    median: 19500,
     surgeMinimum: 50000
   },
   "flank": {
-    median: 9500,
+    median: 9275,
     surgeMinimum: 20000
+  },
+  "ribs": {
+    median: 1799,
+    surgeMinimum: 8000
+  },
+  "liver": {
+    median: 1799,
+    surgeMinimum: 8000
   }
 }
 

@@ -1,8 +1,8 @@
 .cut-entry {
   margin-bottom: 3vh;
+
   h4 {
     font-size: 1.2rem;
-    letter-spacing: 7px;
     text-transform: uppercase;
   }
 
@@ -18,9 +18,4 @@
   .cut-header h5 { font-size: 15px; }
 
   .cut-entry p.display-text { font-size: 12px; }
-
-  .cut-entry .btn-group .btn-secondary {
-    margin-top: 5px;
-    font-size: 14px;
-  }
 }
