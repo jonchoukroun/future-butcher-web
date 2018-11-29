@@ -3,7 +3,7 @@ import { action, computed } from '@ember-decorators/object';
 
 export default class NavigationDetailsComponent extends Component {
 
-  isFirstTurn;
+  isFirstTurn = this.isFirstTurn !== undefined ? this.isFirstTurn : false;
 
   @computed('socket.stateData.player.pack')
   get ownedCut() {

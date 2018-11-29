@@ -1,13 +1,11 @@
 import Controller from '@ember/controller';
+import { action } from '@ember-decorators/object';
 
-export default Controller.extend({
+export default class MuggingController extends Controller {
 
-  actions: {
-
-    sendToScores() {
-      this.transitionToRoute('high-scores');
-    }
-
+  @action
+  sendToScores() {
+    this.transitionToRoute('high-scores');
   }
-
-});
+  
+}

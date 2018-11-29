@@ -6,7 +6,7 @@ import { victoryQuotes } from 'future-butcher-web/fixtures/mugging-quotes';
 
 export default class MuggingVictoryComponent extends Component {
 
-  cutsHarvested;
+  cutsHarvested = this.cutsHarvested !== undefined ? this.cutsHarvested : null;
 
   @computed('socket.stateData.player.weapon')
   get playerWeapon() {

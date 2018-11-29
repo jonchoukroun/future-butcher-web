@@ -8,8 +8,7 @@ import { htmlSafe } from '@ember/string';
 
 export default class SellMenuComponent extends Component {
 
-  cutName;
-  invalidSell;
+  cutName = this.cutName !== undefined ? this.cutName : null;
 
   @service('notification-service') notifications;
 

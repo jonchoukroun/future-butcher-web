@@ -9,12 +9,7 @@
         {{store/store-interface}}
 
       {{else}}
-        {{market/meat-market
-          currentStation=currentStation
-          turnsLeft=turnsLeft
-          isInDebt=isInDebt
-          sendRouteReload=(action "reloadRoute")
-        }}
+        {{market/meat-market}}
       {{/if}}
 
     </div>

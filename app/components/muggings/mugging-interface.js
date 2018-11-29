@@ -51,24 +51,24 @@ export default class MuggingInterfaceComponent extends Component {
   }
 
   @computed('startingPack', 'socket.stateData.player.pack')
-  get cutsLost() {
+  get cutLost() {
     const starting_pack = this.get('startingPack');
     const current_pack  = this.get('socket.stateData.player.pack');
 
-    let lost_cuts = new Object();
+    let cut_lost = new Object();
     Object.keys(current_pack).map(cut => {
       const d = starting_pack[cut] - current_pack[cut];
       if (d > 0) {
-        lost_cuts[cut] = d;
+        cut_lost[cut] = d;
       }
     });
 
-    return lost_cuts;
+    return cut_lost;
   }
 
-  @computed('cutsLost')
-  get hasLostCuts() {
-    return Object.entries(this.get('cutsLost'));
+  @computed('cutLost')
+  get hasLostCut() {
+    return Object.entries(this.get('cutLost'));
   }
 
   @computed('startingPack', 'socket.stateData.player.pack')

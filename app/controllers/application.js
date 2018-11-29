@@ -4,9 +4,9 @@ import { service } from '@ember-decorators/service';
 
 export default class ApplicationController extends Controller {
 
-  confirmationMessage;
-  errorMessage;
-  pinnedMessage;
+  confirmationMessage = null;
+  errorMessage        = null;
+  pinnedMessage       = null;
 
   @service('notification-service') notifications;
 
