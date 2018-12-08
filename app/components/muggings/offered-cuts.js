@@ -1,21 +1,25 @@
 import Component from '@ember/component';
-import { computed, get } from '@ember/object';
+import { computed } from '@ember-decorators/object';
+
 import { defeatedButtonText } from 'future-butcher-web/fixtures/mugging-quotes';
 
-export default Component.extend({
+export default class OfferedCutsComponent extends Component {
 
-  cutsLost: null,
+  cutLost = this.cutLost !== undefined ? this.cutLost : null;
+  muggerName = this.muggerName !== undefined ? this.muggerName : null;
 
-  cutLostName: computed('cutsLost', function() {
-    return Object.keys(get(this, 'cutsLost'))[0];
-  }),
+  @computed('cutLost')
+  get cutName() {
+    return Object.keys(this.cutLost)[0];
+  }
 
-  cutLostAmount: computed('cutsLost', 'cutLostName', function() {
-    return get(this, 'cutsLost')[get(this, 'cutLostName')];
-  }),
+  @computed('cutLost', 'cutName')
+  get lossAmount() {
+    return this.cutLost[this.cutName];
+  }
 
-  randomDefeatedButton: computed(function() {
+  @computed()
+  get randomDefeatedButton() {
     return defeatedButtonText[Math.floor(Math.random() * Math.floor(defeatedButtonText.length))];
-  })
-
-});
+  }
+}

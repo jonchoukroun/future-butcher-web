@@ -8,9 +8,9 @@ import { cutStats } from 'future-butcher-web/fixtures/cut-stats';
 
 export default class CutEntryComponent extends Component {
 
-  cut;
-  price;
-  quantity;
+  cut = this.cut !== undefined ? this.cut : null;
+  price = this.price !== undefined ? this.price : null;
+  quantity = this.quantity !== undefined ? this.quantity : null;
 
   @computed('cut', 'price')
   get isSurgePrice() {

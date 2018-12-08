@@ -6,13 +6,13 @@
 
 <p>
   You offer up
-  {{format-number cutLostAmount precision=0}}
-  {{#if (eq cutLostAmount 1)}}
+  {{format-number lossAmount precision=0}}
+  {{#if (eq lossAmount 1)}}
     lb
   {{else}}
     lbs
   {{/if}}
-  of {{cutLostName}} and hope
+  of {{cutName}} and hope
   {{muggerName}}
   doesn't ask for more.
 </p>

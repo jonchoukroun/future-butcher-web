@@ -3,8 +3,8 @@ import { action } from '@ember-decorators/object';
 
 export default class FundsDetailsComponent extends Component {
 
-  isFirstTurn;
-  playerFunds;
+  isFirstTurn = this.isFirstTurn !== undefined ? this.isFirstTurn : false;
+  playerFunds = this.playerFunds !== undefined ? this.playerFunds : null;
 
   @action
   closeFundsTutorial() {

@@ -3,11 +3,6 @@ import { action, computed } from '@ember-decorators/object';
 
 export default class MarketController extends Controller {
 
-  @computed('socket.stateData.player.debt')
-  get isInDebt() {
-    return this.get('socket.stateData.player.debt') > 0;
-  }
-
   @computed('socket.stateData.station.station_name')
   get currentStation() {
     return this.get('socket.stateData.station.station_name');

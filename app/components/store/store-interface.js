@@ -3,7 +3,7 @@ import { action, computed } from '@ember-decorators/object';
 
 export default class StoreInterfaceComponent extends Component {
 
-  storeScreen;
+  storeScreen = null;
 
   @computed('socket.stateData.rules.turns_left')
   get turnsLeft() {

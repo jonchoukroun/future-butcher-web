@@ -10,8 +10,8 @@ import { storeItems } from 'future-butcher-web/fixtures/store-items';
 
 export default class ItemDetailsComponent extends Component {
 
-  item;
-  details;
+  item = this.item !== undefined ? this.item : null;
+  details = this.details !== undefined ? this.details : null;
 
   inTransaction = false;
 

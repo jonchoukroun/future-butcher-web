@@ -7,9 +7,8 @@ export default class MeatMarketComponent extends Component {
 
   showBuyForm  = false;
   showSellForm = false;
-  buyingCut    = false;
-  sellingCut   = false;
-  isInDebt;
+  buyingCut    = null;
+  sellingCut   = null;
 
   @service('notification-service') notifications;
 
