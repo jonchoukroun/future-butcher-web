@@ -264,6 +264,11 @@ button {
   }
 }
 
+.fb-share-button, .twitter-share-button, .linkedin-share-button {
+  background: $brand-primary;
+  border-color: $brand-primary;
+}
+
 
 // Cards -----------------------------------------------------------------------
 
