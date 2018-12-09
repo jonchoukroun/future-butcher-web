@@ -47,6 +47,7 @@
     "ember-phoenix": "^0.1.7",
     "ember-resolver": "^5.0.1",
     "ember-simple-auth": "^1.7.0",
+    "ember-social-share": "^0.3.4",
     "ember-source": "~3.4.0",
     "ember-truth-helpers": "^2.0.0",
     "ember-welcome-page": "^3.2.0",
