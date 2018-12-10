@@ -8,6 +8,7 @@ import ENV from '../config/environment'
 export default Service.extend({
 
   router: service(),
+  raven: service(),
 
   gameStatus: computed('stateData.rules.state', function(){
     return get(this, 'stateData.rules.state');
@@ -111,10 +112,23 @@ export default Service.extend({
   },
 
   _handleFailure(message, response) {
-    if (ENV.environment === 'production') { return; }
     message    = message || "Failure, no message";
-    let reason = (response || {}) || "";
-    console.error(message, reason); // eslint-disable-line
+    let reason = this._decipherSocketResponse(response) || "";
+
+    if (ENV.environment === 'production') {
+      this.get('raven').captureMessage(`${message}: ${reason}`)
+    } else {
+      console.error(message, reason); // eslint-disable-line
+    }
+  },
+
+  _decipherSocketResponse(res) {
+    let msg = res["reason"];
+    if (!msg) { return res; }
+
+    return msg.split(":")[1].split(",")[0].split("_").join(" ");
   }
+
+
 
 })
