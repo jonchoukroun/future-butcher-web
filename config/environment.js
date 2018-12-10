@@ -17,9 +17,19 @@ module.exports = function(environment) {
       }
     },
 
+    sentry: {
+      dsn: "https://8809bb8c7dc0466cbfef54ec16c730de@sentry.io/1341103"
+    },
+
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+
+    contentSecurityPolicy: {
+      'script-src': "'self' 'unsafe-unline' 'unsafe-eval'",
+      'img-src': "data: app.getsentry.com",
+      'connect-src': "'self' app.getsentry.com"
     }
   };
 
