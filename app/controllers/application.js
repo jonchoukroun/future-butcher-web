@@ -9,6 +9,20 @@ export default class ApplicationController extends Controller {
   pinnedMessage       = null;
 
   @service('notification-service') notifications;
+  @service() router;
+
+  @computed('router.currentRouteName')
+  get currentRoute() {
+    return this.get('router.currentRouteName')
+  }
+
+  @computed('currentRoute')
+  get crtClass() {
+    const idx = ['create-player', 'home', 'all-scores'].indexOf(this.get('currentRoute'));
+    if (idx > -1) {
+      return "crt-grid";
+    }
+  }
 
   @computed('notifications.confirmationMessage')
   get confirmationNotification() {
