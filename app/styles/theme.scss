@@ -345,8 +345,8 @@ button {
   border: none;
 }
 
-.crt {
-  animation: textShadow 1.6s infinite;
+.crt-grid {
+  animation: textShadow 2.6s infinite;
 
   &::before {
     content: " ";
