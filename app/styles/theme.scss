@@ -265,8 +265,30 @@ button {
 }
 
 .fb-share-button, .twitter-share-button, .linkedin-share-button {
-  background: $brand-primary;
-  border-color: $brand-primary;
+  display: flex;
+  align-items: center;
+  width: auto;
+  height: auto;
+  background: transparent;
+  border-color: transparent;
+  padding: 0.2em;
+  font-size: 2em;
+
+  .fb-div, .twitter-div, .linkedin-div {
+    display: flex;
+    align-items: center;
+    padding-left: 0.5rem;
+  }
+
+  svg {
+    margin: 0;
+    padding: 0;
+
+  }
+}
+
+.share-button path {
+  fill: $brand-primary;
 }
 
 
