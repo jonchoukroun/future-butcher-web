@@ -7,5 +7,20 @@
 </div>
 
 <div class="mx-4 text-primary">
-  {{linkedin-share-button title=title url=url text=description}}
+  {{#if smsLink}}
+    <a
+      class="sms-share-button"
+      href={{smsLink}}
+    >
+      <i class="fas fa-comments"></i>
+    </a>
+
+  {{else}}
+    <a
+      class="sms-share-button"
+      href="mailto:?subject={{title}}&body={{url}}"
+    >
+      <i class="fas fa-envelope"></i>
+    </a>
+  {{/if}}
 </div>

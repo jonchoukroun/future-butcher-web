@@ -291,6 +291,16 @@ button {
   fill: $brand-primary;
 }
 
+.sms-share-button {
+  @extend .fb-share-button;
+  color: $brand-primary;
+
+  &:hover {
+    color: $brand-secondary;
+    text-decoration: none;
+  }
+}
+
 
 // Cards -----------------------------------------------------------------------
 
