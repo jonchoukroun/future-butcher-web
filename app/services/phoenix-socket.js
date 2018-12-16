@@ -107,28 +107,22 @@ export default Service.extend({
     set(this, 'stateData', response.state_data);
 
     if (ENV.environment === 'production') { return; }
+    
     message = message || "Success, no message";
     console.log(message, response); // eslint-disable-line
   },
 
   _handleFailure(message, response) {
-    message    = message || "Failure, no message";
-    let reason = this._decipherSocketResponse(response) || "";
+    message = message || "Failure, no message";
+
+    const reason = response["reason"];
+    const error_message = (reason ? reason : "No additional info");
 
     if (ENV.environment === 'production') {
-      this.get('raven').captureMessage(`${message}: ${reason}`)
+      this.get('raven').captureMessage(`${message}: ${error_message}`)
     } else {
-      console.error(message, reason); // eslint-disable-line
+      console.error(message, error_message); // eslint-disable-line
     }
-  },
-
-  _decipherSocketResponse(res) {
-    let msg = res["reason"];
-    if (!msg) { return res; }
-
-    return msg.split(":")[1].split(",")[0].split("_").join(" ");
   }
-
-
 
 })
