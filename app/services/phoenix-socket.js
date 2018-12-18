@@ -25,7 +25,7 @@ export default Service.extend({
       socket.onError(() => {
         this._handleFailure("Failed to open socket", {});
         reject(socket);
-        get(this, 'router').replaceWith('unavailable');
+        this.get('router').replaceWith('unavailable');
       });
     });
   },
@@ -43,9 +43,13 @@ export default Service.extend({
     return new RSVP.Promise((resolve, reject) => {
       channel.join()
         .receive("ok", response => {
-          localStorage.setItem('player_hash', response.hash_id);
-          set(this, 'gameChannel', channel);
+          const user_id = response.hash_id;
+          localStorage.setItem('player_hash', user_id);
+          this.set('gameChannel', channel);
+
+          analytics.identify(user_id, { player_name: name })
           this._handleSuccess("Joined successfully", response);
+
           resolve(response);
         })
         .receive("error", reason => {
@@ -58,8 +62,12 @@ export default Service.extend({
   pushCallBack(callback, payload) {
     if (!this._validateCallback(callback)) { return this._handleFailure("Invalid callback", null); }
 
+    if (ENV.environment === 'production') {
+      analytics.track(callback);
+    }
+
     return new RSVP.Promise((resolve, reject) => {
-      get(this, 'gameChannel').push(callback, payload)
+      this.get('gameChannel').push(callback, payload)
         .receive("ok", response => {
           this._handleSuccess("Success", response);
           resolve(response);
@@ -73,14 +81,17 @@ export default Service.extend({
 
   restoreGameState(name) {
     return new RSVP.Promise((resolve, reject) => {
-      get(this, 'gameChannel').push("restore_game_state", name)
+      this.get('gameChannel').push("restore_game_state", name)
         .receive("ok", response => {
-          set(this, 'gameRestoreSuccess', true);
-          this._handleSuccess("Reconnected successfully", response)
+          this.set('gameRestoreSuccess', true);
+
+          const msg = "Reconnected successfully";
+          this._handleSuccess(msg, response);
+
           resolve(response);
         })
         .receive("error", response => {
-          set(this, 'gameRestoreSuccess', false);
+          this.set('gameRestoreSuccess', false);
           this._handleFailure("Couldn't restore game state", response);
           reject(response);
         })
@@ -89,8 +100,10 @@ export default Service.extend({
 
   getScores() {
     return new RSVP.Promise((resolve) => {
-      get(this, 'gameChannel').push("get_scores").receive("ok", response => {
-        this._handleSuccess("Scores retrieved", response);
+      this.get('gameChannel').push("get_scores").receive("ok", response => {
+        const msg = "Scores retrieved";
+        this._handleSuccess(msg, response);
+
         resolve(response);
       });
     });
@@ -104,17 +117,15 @@ export default Service.extend({
   },
 
   _handleSuccess(message, response) {
-    set(this, 'stateData', response.state_data);
-
+    this.set('stateData', response.state_data);
     if (ENV.environment === 'production') { return; }
-    
+
     message = message || "Success, no message";
     console.log(message, response); // eslint-disable-line
   },
 
   _handleFailure(message, response) {
     message = message || "Failure, no message";
-
     const reason = response["reason"];
     const error_message = (reason ? reason : "No additional info");
 
