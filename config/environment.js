@@ -35,6 +35,9 @@ module.exports = function(environment) {
 
   if (environment === 'development') {
     ENV.api_url = 'ws://localhost:4000/socket';
+    ENV['ember-logging-service'] = {
+      enabled: true
+    }
   }
 
   if (environment === 'test') {
