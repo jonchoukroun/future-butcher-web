@@ -45,7 +45,6 @@
     "ember-decorators": "^2.5.2",
     "ember-export-application-global": "^2.0.0",
     "ember-load-initializers": "^1.1.0",
-    "ember-logging-service": "^0.3.0",
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-phoenix": "^0.1.7",
     "ember-resolver": "^5.0.1",
