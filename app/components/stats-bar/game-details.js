@@ -1,7 +1,10 @@
 import Component from '@ember/component';
 import { action } from '@ember-decorators/object';
+import { service } from '@ember-decorators/service';
 
 export default class GameDetailsComponent extends Component {
+
+  @service('tracking-service') trackingService;
 
   @action
   toggleStatsBar() {
@@ -13,6 +16,7 @@ export default class GameDetailsComponent extends Component {
     let payload = { hash_id: localStorage.getItem('player_hash'), score: 0 };
 
     this.get('socket').pushCallBack('end_game', payload).then(() => {
+      this.get('trackingService').trackEvent('Ended game early');
       this.get('sendQuit')();
     });
   }

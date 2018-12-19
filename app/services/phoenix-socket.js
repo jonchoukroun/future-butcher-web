@@ -62,10 +62,6 @@ export default Service.extend({
   pushCallBack(callback, payload) {
     if (!this._validateCallback(callback)) { return this._handleFailure("Invalid callback", null); }
 
-    if (ENV.environment === 'production') {
-      analytics.track(callback);
-    }
-
     return new RSVP.Promise((resolve, reject) => {
       this.get('gameChannel').push(callback, payload)
         .receive("ok", response => {

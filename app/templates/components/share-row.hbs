@@ -1,9 +1,16 @@
 <div class="mx-4 text-primary">
-  {{fb-share-button url=url quote=title}}
+  {{fb-share-button
+    url=url
+    quote=title
+  }}
 </div>
 
 <div class="mx-4 text-primary">
-  {{twitter-share-button title=title text=description url=url}}
+  {{twitter-share-button
+    title=title
+    text=description
+    url=url
+  }}
 </div>
 
 <div class="mx-4 text-primary">
@@ -19,6 +26,7 @@
     <a
       class="sms-share-button"
       href="mailto:?subject={{title}}&body={{url}}"
+      {{action "trackSMSShare"}}
     >
       <i class="fas fa-envelope"></i>
     </a>
