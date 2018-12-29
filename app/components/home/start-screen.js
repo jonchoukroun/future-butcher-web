@@ -1,7 +1,10 @@
 import HomeScreenComponent from 'future-butcher-web/components/home/home-screen';
 import { action } from '@ember-decorators/object';
+import { service } from '@ember-decorators/service';
 
 export default class IntroScreenComponent extends HomeScreenComponent {
+
+  @service('tracking-service') trackingService;
 
   didReceiveAttrs() {
     this._super(...arguments);
@@ -31,6 +34,7 @@ export default class IntroScreenComponent extends HomeScreenComponent {
 
     this.socket.pushCallBack("start_game", {}).then(() => {
       this.set('screen', 'intro');
+      this.get('trackingService').trackEvent('Clicked start game');
       this.get('sendMarketTransition')();
     })
   }

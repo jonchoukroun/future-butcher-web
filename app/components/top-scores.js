@@ -1,7 +1,10 @@
 import Component from '@ember/component';
-import { computed } from '@ember-decorators/object';
+import { computed, observes } from '@ember-decorators/object';
+import { service } from '@ember-decorators/service';
 
 export default class TopScoresComponent extends Component {
+
+  @service('tracking-service') trackingService;
 
   @computed('socket.stateData')
   get scores() {
@@ -58,6 +61,14 @@ export default class TopScoresComponent extends Component {
   @computed('playerScore', 'lowestScore')
   get isBelowTopScores() {
     return this.get('playerScore') < this.get('lowestScore');
+  }
+
+  @observes('isHighestScore')
+  trackSetRecord() {
+    if (this.get('isHighestScore')) {
+      const payload = { high_score: this.get('playerScore') };
+      this.get('trackingService').trackEvent('Set new high score', payload);
+    }
   }
 
   didReceiveAttrs() {

@@ -1,10 +1,13 @@
 import Component from '@ember/component';
-import { computed } from '@ember-decorators/object';
+import { action, computed } from '@ember-decorators/object';
+import { service } from '@ember-decorators/service';
 import { classNames } from '@ember-decorators/component';
 
-@classNames('row d-flex flex-row justify-content-center align-items-center my-3')
+@classNames('row d-flex flex-row justify-content-center align-items-center my-1')
 
 export default class ShareRowComponent extends Component {
+
+  @service('tracking-service') trackingService;
 
   url   = "https://www.futurebutcher.com";
   title = "Check out this awesome game";
@@ -23,5 +26,10 @@ export default class ShareRowComponent extends Component {
     if (this.get('userAgent.os.isAndroid')) {
       return "sms:?body=" + message;
     }
+  }
+
+  @action
+  trackSMSShare() {
+    this.get('trackingService').trackEvent('Shared via SMS');
   }
 }

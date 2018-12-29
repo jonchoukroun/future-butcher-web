@@ -1,5 +1,6 @@
 import Component from '@ember/component';
 import { action, computed } from '@ember-decorators/object';
+import { service } from '@ember-decorators/service';
 import { classNames } from '@ember-decorators/component';
 
 @classNames('signup-component')
@@ -8,6 +9,8 @@ export default class SignupFormComponent extends Component {
   inputLength = null;
   validInput  = false;
   isNameTaken = false;
+
+  @service('tracking-service') trackingService;
 
   @computed('inputLength')
   get invalidButtonText() {
@@ -51,6 +54,7 @@ export default class SignupFormComponent extends Component {
     socketService.openSocket().then((socket) => {
       socketService.joinChannel(socket, { name: name }).then(() => {
         this.set('isNameTaken', false);
+        this.get('trackingService').trackEvent('Created player');
         this.get('sendJoin')();
       }).catch(() => {
         this.set('isNameTaken', true);

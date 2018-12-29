@@ -1,9 +1,12 @@
 import Controller from '@ember/controller';
 import { action, computed } from '@ember-decorators/object';
+import { service } from '@ember-decorators/service';
 
 export default class SubwayController extends Controller {
 
   helpScreenVisible = false;
+
+  @service('tracking-service') trackingService;
 
   @computed('socket.stateData.rules.turns_left')
   get turnsLeft() {
@@ -74,6 +77,7 @@ export default class SubwayController extends Controller {
   toggleHelpScreen() {
     const helpVisibility = this.get('helpScreenVisible');
     this.set('helpScreenVisible', !helpVisibility);
+    this.get('trackingService').trackEvent('Viewed help screen');
   }
 
 }
