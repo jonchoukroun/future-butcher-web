@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { later, next } from '@ember/runloop';
+import { later } from '@ember/runloop';
 
 export default class TitleScreenComponent extends Component {
 
