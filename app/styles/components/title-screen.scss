@@ -16,10 +16,17 @@
 }
 
 #machete-sprite {
+  display: none;
   height: 100%;
 }
 
+#splatter-sprite {
+  display: none;
+  height: 50vh;
+}
+
 #title-image {
+  display: none;
   position: absolute;
   z-index: 2000;
   animation: slideDown 1s ease-in forwards;
