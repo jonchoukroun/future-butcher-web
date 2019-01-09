@@ -22,8 +22,8 @@ export default {
      */
     let contextCallback = (context) => {
       return {
-        applicationVersion: '',
-        userId: '',
+        applicationVersion: context.application,
+        userId: context.user,
         userProperties: {}
       };
     };
