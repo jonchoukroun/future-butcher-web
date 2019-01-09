@@ -9,6 +9,7 @@ export default class PhoenixSocketService extends Service {
 
   @service router;
   @service raven;
+  @service('tracking-service') TrackingService;
 
   @computed('stateData.rules.state')
   get gameStatus() {
@@ -52,7 +53,8 @@ export default class PhoenixSocketService extends Service {
           localStorage.setItem('player_hash', user_id);
           this.set('gameChannel', channel);
 
-          analytics.identify(user_id, { player_name: name })
+          this.get('TrackingService').trackUser(user_id, name);
+
           this._handleSuccess("Joined successfully", response);
 
           resolve(response);

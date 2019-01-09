@@ -54,7 +54,7 @@ export default class SignupFormComponent extends Component {
     socketService.openSocket().then((socket) => {
       socketService.joinChannel(socket, { name: name }).then(() => {
         this.set('isNameTaken', false);
-        this.get('trackingService').trackEvent('Created player');
+        this.get('trackingService').trackEvent('Created player', { player_name: name });
         this.get('sendJoin')();
       }).catch(() => {
         this.set('isNameTaken', true);
