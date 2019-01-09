@@ -35,6 +35,18 @@ module.exports = function(environment) {
 
   if (environment === 'development') {
     ENV.api_url = 'ws://localhost:4000/socket';
+
+    ENV['ember-logging-service'] = {
+      enabled: true,
+      errorsEnabled: true
+    }
+
+    ENV['ember-logging-amplitude'] = {
+      enabled: true,
+      apiKey: '06aa670dce5ece2db0701876c1530203',
+      amplitudeConfig: {},
+      tags: ['user', 'gameplay']
+    }
   }
 
   if (environment === 'test') {
@@ -51,6 +63,18 @@ module.exports = function(environment) {
 
   if (environment === 'semilocal') {
     ENV.api_url = 'wss://futurebutcher.com:4000/socket';
+
+    ENV['ember-logging-service'] = {
+      enabled: true,
+      errorsEnabled: true
+    }
+
+    ENV['ember-logging-amplitude'] = {
+      enabled: true,
+      apiKey: '06aa670dce5ece2db0701876c1530203',
+      amplitudeConfig: {},
+      tags: ['user', 'gameplay']
+    }
   }
 
   if (environment === 'production') {
