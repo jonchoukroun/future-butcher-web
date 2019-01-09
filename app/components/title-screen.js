@@ -12,7 +12,7 @@ export default class TitleScreenComponent extends Component {
 
     later(() => {
       this.animateMacheteSlash()
-    }, 2500); // switch to 2500
+    }, 2500);
 
     later(() => {
       this.animateSplatter();
