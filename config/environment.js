@@ -55,6 +55,18 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.api_url = 'wss://futurebutcher.com:4000/socket';
+
+    ENV['ember-logging-service'] = {
+      enabled: true,
+      errorsEnabled: true
+    }
+
+    ENV['ember-logging-amplitude'] = {
+      enabled: true,
+      apiKey: 'cd451162ab8d461a43d1a5c93830ae60',
+      amplitudeConfig: {},
+      tags: ['user', 'gameplay']
+    }
   }
 
   return ENV;

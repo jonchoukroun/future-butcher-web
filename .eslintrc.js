@@ -17,9 +17,6 @@ module.exports = {
   },
   rules: {
   },
-  globals: {
-    'analytics': true
-  },
   overrides: [
     // node files
     {
