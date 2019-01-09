@@ -1,7 +1,10 @@
 import Component from '@ember/component';
 import { action, computed } from '@ember-decorators/object';
+import { service } from '@ember-decorators/service'
 
 export default class SubwayTerminalComponent extends Component {
+
+  @service('tracking-service') TrackingService;
 
   @computed('socket.stateData.station.station_name')
   get currentStation() {
@@ -48,10 +51,19 @@ export default class SubwayTerminalComponent extends Component {
 
     localStorage.setItem('player_score', score);
 
-    let payload = {
+    const payload = {
       score: score,
       hash_id: localStorage.getItem('player_hash')
     };
+
+    if (score && score > 0) {
+      const tracking_payload = {
+        score: score,
+        player_name: localStorage.getItem('player_name')
+      }
+
+      this.get('TrackingService').trackEvent('Saved high score', tracking_payload);
+    }
 
     this.get('sendEndGame')(payload);
   }
