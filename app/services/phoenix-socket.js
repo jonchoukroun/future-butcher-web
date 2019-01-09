@@ -1,38 +1,42 @@
-import Service from '@ember/service'
-import { inject as service } from '@ember/service'
-import { Socket } from 'phoenix'
-import { computed, get, set } from '@ember/object'
-import RSVP from 'rsvp'
-import ENV from '../config/environment'
+import Service from '@ember/service';
+import { Socket } from 'phoenix';
+import { computed } from '@ember-decorators/object';
+import { service } from '@ember-decorators/service';
+import RSVP from 'rsvp';
+import ENV from '../config/environment';
 
-export default Service.extend({
+export default class PhoenixSocketService extends Service {
 
-  router: service(),
-  raven: service(),
+  @service router;
+  @service raven;
 
-  gameStatus: computed('stateData.rules.state', function(){
-    return get(this, 'stateData.rules.state');
-  }),
+  @computed('stateData.rules.state')
+  get gameStatus() {
+    return this.get('stateData.rules.state');
+  }
 
   openSocket() {
     const socket = new Socket(ENV.api_url, {});
+
     return new RSVP.Promise((resolve, reject) => {
       socket.connect();
+
       socket.onOpen(() => {
         this._handleSuccess("Socket opened successfully", {});
         resolve(socket);
       });
+
       socket.onError(() => {
         this._handleFailure("Failed to open socket", {});
         reject(socket);
         this.get('router').replaceWith('unavailable');
       });
     });
-  },
+  }
 
   joinChannel(socket, params) {
-    let name    = params.name;
-    let hash_id = params.hash_id;
+    const name    = params.name;
+    const hash_id = params.hash_id;
 
     localStorage.setItem('player_name', name);
 
@@ -40,6 +44,7 @@ export default Service.extend({
     if (hash_id) { payload.player_hash = hash_id }
 
     let channel = socket.channel("game:" + name, payload);
+
     return new RSVP.Promise((resolve, reject) => {
       channel.join()
         .receive("ok", response => {
@@ -57,10 +62,12 @@ export default Service.extend({
           reject(reason);
         })
     })
-  },
+  }
 
   pushCallBack(callback, payload) {
-    if (!this._validateCallback(callback)) { return this._handleFailure("Invalid callback", null); }
+    if (!this._validateCallback(callback)) {
+      return this._handleFailure("Invalid callback", null);
+    }
 
     return new RSVP.Promise((resolve, reject) => {
       this.get('gameChannel').push(callback, payload)
@@ -73,7 +80,7 @@ export default Service.extend({
           reject(response);
         })
     });
-  },
+  }
 
   restoreGameState(name) {
     return new RSVP.Promise((resolve, reject) => {
@@ -92,7 +99,7 @@ export default Service.extend({
           reject(response);
         })
     })
-  },
+  }
 
   getScores() {
     return new RSVP.Promise((resolve) => {
@@ -103,14 +110,14 @@ export default Service.extend({
         resolve(response);
       });
     });
-  },
+  }
 
   _validateCallback(callback) {
     const validCallbacks = [
       "new_game", "start_game", "end_game", "change_station", "buy_cut", "sell_cut", "pay_debt", "buy_loan", "fight_mugger", "bribe_mugger", "buy_weapon", "drop_weapon", "replace_weapon", "buy_pack"
     ];
     return validCallbacks.includes(callback);
-  },
+  }
 
   _handleSuccess(message, response) {
     this.set('stateData', response.state_data);
@@ -118,7 +125,7 @@ export default Service.extend({
 
     message = message || "Success, no message";
     console.log(message, response); // eslint-disable-line
-  },
+  }
 
   _handleFailure(message, response) {
     message = message || "Failure, no message";
@@ -132,4 +139,4 @@ export default Service.extend({
     }
   }
 
-})
+}

@@ -1,19 +1,15 @@
 {{#if hasClosedTutorials}}
   <div class="row justify-content-center align-items-center">
-    {{#if isEnabled}}
-      <p class="m-0">
-        Hide tutorial messages
-      </p>
+    <p class="text-secondary {{if isEnabled "font-italic"}} m-0">
+      Show tutorial messages
+    </p>
 
+    {{#if isEnabled}}
       <button class="btn btn-plain btn-small" {{action "toggleTutorials"}}>
         <i class="far fa-check-square"></i>
       </button>
 
     {{else}}
-      <p class="text-secondary font-italic m-0">
-        Show tutorial messages
-      </p>
-
       <button class="btn btn-plain btn-small" {{action "toggleTutorials"}}>
         <i class="far fa-square"></i>
       </button>

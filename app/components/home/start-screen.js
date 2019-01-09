@@ -19,7 +19,7 @@ export default class IntroScreenComponent extends HomeScreenComponent {
     if (this.get('isTutorialEnabled')) {
       localStorage.removeItem('closed-debt-tutorial');
       localStorage.removeItem('closed-funds-tutorial');
-      localStorage.removeItem('closed-turns-tutorial');
+      localStorage.removeItem('closed-navigation-tutorial');
     }
   }
 

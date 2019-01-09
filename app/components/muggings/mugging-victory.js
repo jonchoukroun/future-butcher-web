@@ -20,7 +20,7 @@ export default class MuggingVictoryComponent extends Component {
 
   @computed('cutsHarvested')
   get cutsList() {
-    let cuts = this.get('cutsHarvested');
+    const cuts = this.get('cutsHarvested');
 
     if (!cuts.length) { return null;}
 
@@ -29,7 +29,7 @@ export default class MuggingVictoryComponent extends Component {
     } else if (cuts.length === 2) {
       return `${cuts[0]} and ${cuts[1]}`;
     } else {
-      cuts.map((el, i) => {
+      return cuts.map((el, i) => {
         if (i === cuts.length - 1) {
           return "and " + el;
         } else {
