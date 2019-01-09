@@ -63,7 +63,7 @@ module.exports = function(environment) {
 
     ENV['ember-logging-amplitude'] = {
       enabled: true,
-      apiKey: 'cd451162ab8d461a43d1a5c93830ae60',
+      apiKey: '83122e013ff15ff5211b333d82f8ea8d',
       amplitudeConfig: {},
       tags: ['user', 'gameplay']
     }
