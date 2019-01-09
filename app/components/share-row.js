@@ -29,7 +29,18 @@ export default class ShareRowComponent extends Component {
   }
 
   @action
-  trackSMSShare() {
-    this.get('trackingService').trackEvent('Shared via SMS');
+  shareSMS() {
+    window.location.replace(this.get('smsLink'));
+    this.trackMsgShare('SMS');
+  }
+
+  @action
+  shareEmail() {
+    window.location.replace(`mailto:?subject=${this.title}&body=${this.url}`);
+    this.trackMsgShare('email');
+  }
+
+  trackMsgShare(medium) {
+    this.get('trackingService').trackEvent(`Shared via ${medium}`);
   }
 }

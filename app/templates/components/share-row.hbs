@@ -15,21 +15,21 @@
 
 <div class="mx-4 text-primary">
   {{#if smsLink}}
-    <a
+    <button
+      type="button"
       class="sms-share-button"
-      href={{smsLink}}
-      {{action "trackSMSShare"}}
+      {{action "shareSMS"}}
     >
       <i class="fas fa-comments"></i>
-    </a>
+    </button>
 
   {{else}}
-    <a
+    <button
+      type="button"
       class="sms-share-button"
-      href="mailto:?subject={{title}}&body={{url}}"
-      {{action "trackSMSShare"}}
+      {{action "shareEmail"}}
     >
       <i class="fas fa-envelope"></i>
-    </a>
+    </button>
   {{/if}}
 </div>
