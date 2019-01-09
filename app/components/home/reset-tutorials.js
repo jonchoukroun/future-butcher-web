@@ -10,9 +10,9 @@ export default class ResetTutorialsComponent extends Component {
 
     const debtTutorial = localStorage.getItem('closed-debt-tutorial');
     const fundsTutorial = localStorage.getItem('closed-funds-tutorial');
-    const turnsTutorial = localStorage.getItem('closed-turns-tutorial');
+    const navigationTutorial = localStorage.getItem('closed-navigation-tutorial');
 
-    if (debtTutorial || fundsTutorial || turnsTutorial) {
+    if (debtTutorial || fundsTutorial || navigationTutorial) {
       this.set('hasClosedTutorials', true);
     }
   }
