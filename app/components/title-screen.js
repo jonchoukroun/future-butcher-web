@@ -28,12 +28,15 @@ export default class TitleScreenComponent extends Component {
     sprite.style.transform = 'scaleX(1.3) scaleY(0.9)';
 
     later(() => {
+      if (this.isDestroyed) { return; }
       sprite.style.transform = 'scaleX(1) scaleY(1)';
 
       later(() => {
+        if (this.isDestroyed) { return; }
         this.animateHeartBeat();
 
         later(() => {
+          if (this.isDestroyed) { return; }
           sprite.style.display = 'none';
         }, 2080);
       }, 700);
