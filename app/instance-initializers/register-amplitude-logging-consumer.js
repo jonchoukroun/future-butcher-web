@@ -21,11 +21,9 @@ export default {
      *                          - userProperties: Any user-specific properties
      */
     let contextCallback = (context) => {
-      context = (context === null || context === undefined) ? {} : context;
-      
       return {
-        applicationVersion: context.application || '',
-        userId: context.user || '',
+        applicationVersion: '',
+        userId: '',
         userProperties: {}
       };
     };
