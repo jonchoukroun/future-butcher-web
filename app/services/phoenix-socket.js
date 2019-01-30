@@ -133,6 +133,7 @@ export default class PhoenixSocketService extends Service {
     message = message || "Failure, no message";
     const reason = response["reason"];
     const error_message = (reason ? reason : "No additional info");
+    if ('msg', error_message.split(',')[0].split(':')[1] === "already_started") { return; }
 
     if (ENV.environment === 'production') {
       this.get('raven').captureMessage(`${message}: ${error_message}`)
