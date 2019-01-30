@@ -20,7 +20,7 @@ export default {
      *                          - userId: The current user id
      *                          - userProperties: Any user-specific properties
      */
-    let contextCallback = (context) => {
+    let contextCallback = (/* context */) => {
       return {
         applicationVersion: '',
         userId: '',
