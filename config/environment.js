@@ -34,7 +34,7 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
-    ENV.api_url = 'ws://localhost:5000/socket';
+    ENV.api_url = 'ws://localhost:4000/socket';
 
     ENV['ember-logging-service'] = {
       enabled: true,
@@ -62,7 +62,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'semilocal') {
-    ENV.api_url = 'wss://futurebutcher.com:5000/socket';
+    ENV.api_url = 'wss://futurebutcher.com:4000/socket';
 
     ENV['ember-logging-service'] = {
       enabled: true,
@@ -78,7 +78,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.api_url = 'wss://futurebutcher.com:5000/socket';
+    ENV.api_url = 'wss://futurebutcher.com:4000/socket';
 
     ENV['ember-logging-service'] = {
       enabled: true,
