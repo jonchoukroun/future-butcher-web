@@ -1,7 +1,12 @@
 import Component from '@ember/component';
+import ENV from 'twenty20-digital/config/environment';
 import { later } from '@ember/runloop';
 
 export default class TitleScreenComponent extends Component {
+
+  heartAsset = `${ENV.ASSETS_S3_BUCKET}/pixelated-heart.png`;
+  macheteAsset = `${ENV.ASSETS_S3_BUCKET}/machete.png`;
+  bloodAsset = `${ENV.ASSETS_S3_BUCKET}/blood-splatter-pixelated.png`;
 
   didInsertElement() {
     super.didInsertElement();

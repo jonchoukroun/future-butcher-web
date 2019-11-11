@@ -2,6 +2,7 @@ import Component from '@ember/component';
 import { action, computed } from '@ember-decorators/object';
 import { service } from '@ember-decorators/service';
 import { classNames } from '@ember-decorators/component';
+import ENV from 'twenty20-digital/config/enviroment';
 
 @classNames('row d-flex flex-row justify-content-center align-items-center my-1')
 
@@ -14,7 +15,7 @@ export default class ShareRowComponent extends Component {
 
   description = "You only have 24 hours to buy and sell human meat at market and earn enough cash to smuggle yourself out of LA to Mexico.";
 
-  image_url = "https://s3-us-west-1.amazonaws.com/futurebutcher.com/assets/background-night.jpeg";
+  image_url = `${ENV.ASSETS_S3_BUCKET}/background-night.jpeg`;
 
   @computed('userAgent.os.{isIOS,isAndroid}')
   get smsLink() {
