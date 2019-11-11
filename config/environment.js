@@ -30,7 +30,9 @@ module.exports = function(environment) {
       'script-src': "'self' 'unsafe-unline' 'unsafe-eval'",
       'img-src': "data: app.getsentry.com",
       'connect-src': "'self' app.getsentry.com"
-    }
+    },
+
+    ASSETS_S3_BUCKET: process.env.ASSETS_S3_BUCKET,
   };
 
   if (environment === 'development') {

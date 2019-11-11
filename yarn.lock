@@ -3674,6 +3674,11 @@ dotenv@^1.2.0:
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-1.2.0.tgz#7cd73e16e07f057c8072147a5bc3a8677f0ab5c6"
   integrity sha1-fNc+FuB/BXyAchR6W8OoZ38KtcY=
 
+dotenv@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-7.0.0.tgz#a2be3cd52736673206e8a85fb5210eea29628e7c"
+  integrity sha512-M3NhsLbV1i6HuGzBUH8vXrtxOk+tWmzWKDMbAVSUp3Zsjm7ywFeuwrUXhmhQyRK1q5B5GGy7hcXPbj3bnfZg2g==
+
 duplexer3@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/duplexer3/-/duplexer3-0.1.4.tgz#ee01dd1cac0ed3cbc7fdbea37dc0a8f1ce002ce2"
@@ -3951,6 +3956,15 @@ ember-cli-deploy@^1.0.2:
     lodash "^4.0.0"
     rsvp "^3.3.3"
     silent-error "^1.0.0"
+
+ember-cli-dotenv@^2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/ember-cli-dotenv/-/ember-cli-dotenv-2.2.3.tgz#3e301776fda64190906ee3b6360d3a1456bf09e4"
+  integrity sha512-E13R9kMZGdtv0KlWeL5K6YLT+9QTF4hX7bH+3dUXDhqroyj2XwnO1szy+iBe90YPQ3vr00O/Z/0Hd4VCc3FRPg==
+  dependencies:
+    dotenv "^7.0.0"
+    ember-cli-babel "^7.1.2"
+    minimist "^1.2.0"
 
 ember-cli-eslint@^4.2.3:
   version "4.2.3"
