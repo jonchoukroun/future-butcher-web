@@ -64,7 +64,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'semilocal') {
-    ENV.api_url = 'wss://futurebutcher.com:4000/socket';
+    ENV.api_url = 'wss://api.futurebutcher.com:4000/socket';
 
     ENV['ember-logging-service'] = {
       enabled: true,
