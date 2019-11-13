@@ -5,7 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'future-butcher-web',
     environment,
     rootURL: '/',
-    locationType: 'auto',
+    locationType: 'hash',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -30,7 +30,9 @@ module.exports = function(environment) {
       'script-src': "'self' 'unsafe-unline' 'unsafe-eval'",
       'img-src': "data: app.getsentry.com",
       'connect-src': "'self' app.getsentry.com"
-    }
+    },
+
+    ASSETS_S3_BUCKET: process.env.ASSETS_S3_BUCKET,
   };
 
   if (environment === 'development') {
@@ -62,7 +64,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'semilocal') {
-    ENV.api_url = 'wss://futurebutcher.com:4000/socket';
+    ENV.api_url = 'wss://api.futurebutcher.com:4000/socket';
 
     ENV['ember-logging-service'] = {
       enabled: true,
@@ -78,7 +80,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.api_url = 'wss://futurebutcher.com:4000/socket';
+    ENV.api_url = process.env.API_HOST;
 
     ENV['ember-logging-service'] = {
       enabled: true,
