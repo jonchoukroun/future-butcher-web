@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import ENV from 'twenty20-digital/config/environment';
+import ENV from 'future-butcher-web/config/environment';
 import { later } from '@ember/runloop';
 
 export default class TitleScreenComponent extends Component {

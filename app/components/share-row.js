@@ -2,7 +2,7 @@ import Component from '@ember/component';
 import { action, computed } from '@ember-decorators/object';
 import { service } from '@ember-decorators/service';
 import { classNames } from '@ember-decorators/component';
-import ENV from 'twenty20-digital/config/enviroment';
+import ENV from 'future-butcher-web/config/environment';
 
 @classNames('row d-flex flex-row justify-content-center align-items-center my-1')
 
