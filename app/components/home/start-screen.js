@@ -7,7 +7,7 @@ export default class IntroScreenComponent extends HomeScreenComponent {
   @service('tracking-service') trackingService;
 
   didReceiveAttrs() {
-    this._super(...arguments);
+    super.didReceiveAttrs(...arguments);
 
     this.get('socket').getScores().then((response) => {
       const lowest_score = response.state_data[99].score;

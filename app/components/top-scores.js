@@ -72,7 +72,7 @@ export default class TopScoresComponent extends Component {
   }
 
   didReceiveAttrs() {
-    this._super(...arguments);
+    super.didReceiveAttrs(...arguments);
 
     this.set('playerName', localStorage.getItem('player_name'));
     this.set('playerScore', parseInt(localStorage.getItem('player_score')));

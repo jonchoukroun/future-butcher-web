@@ -10,8 +10,6 @@ export default class TravelingRoute extends Route {
   @service('notification-service') notifications;
 
   beforeModel() {
-    this._super(...arguments);
-
     this.handleAnimation();
     this.handleTimingNotifications();
     this.handleSurgeNotifications();

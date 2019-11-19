@@ -10,7 +10,7 @@ export default class StatsBarComponent extends Component {
   @service router;
 
   didInsertElement() {
-    this._super(...arguments);
+    super.didInsertElement(...arguments);
 
     const first_turn = this.get('isFirstTurn');
     const funds      = this.get('playerFunds');

@@ -13,7 +13,7 @@ export default class MeatMarketComponent extends Component {
   @service('notification-service') notifications;
 
   didReceiveAttrs() {
-    this._super(...arguments);
+    super.didReceiveAttrs(...arguments);
   }
 
   @computed('gameStatus', 'socket.stateData.station.market')

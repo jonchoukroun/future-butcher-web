@@ -7,7 +7,7 @@ import { classNames, tagName } from '@ember-decorators/component';
 export default class ScrollingScoresComponent extends Component {
 
   didReceiveAttrs() {
-    this._super(...arguments);
+    super.didReceiveAttrs(...arguments);
 
     if (!this.scores) {
       this.socket.getScores().then((response) => {
