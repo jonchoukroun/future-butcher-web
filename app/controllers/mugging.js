@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import { action } from '@ember-decorators/object';
+import { action } from '@ember/object';
 
 export default class MuggingController extends Controller {
 
@@ -7,5 +7,5 @@ export default class MuggingController extends Controller {
   sendToScores() {
     this.transitionToRoute('high-scores');
   }
-  
+
 }

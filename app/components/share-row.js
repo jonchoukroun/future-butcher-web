@@ -1,6 +1,6 @@
 import Component from '@ember/component';
-import { action, computed } from '@ember-decorators/object';
-import { service } from '@ember-decorators/service';
+import { action, computed } from '@ember/object';
+import { inject as service } from '@ember/service';
 import { classNames } from '@ember-decorators/component';
 import ENV from 'future-butcher-web/config/environment';
 
@@ -24,9 +24,7 @@ export default class ShareRowComponent extends Component {
       return "sms:&body=" + message;
     }
 
-    if (this.get('userAgent.os.isAndroid')) {
-      return "sms:?body=" + message;
-    }
+    return "sms:?body=" + message;
   }
 
   @action

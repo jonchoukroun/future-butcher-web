@@ -1,6 +1,7 @@
 import Component from '@ember/component';
-import { computed, observes } from '@ember-decorators/object';
-import { service } from '@ember-decorators/service';
+import { computed } from '@ember/object';
+import { inject as service } from '@ember/service';
+import { observes } from '@ember-decorators/object';
 
 export default class TopScoresComponent extends Component {
 

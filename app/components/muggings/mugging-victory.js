@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { computed } from '@ember-decorators/object';
+import { computed } from '@ember/object';
 
 import { storeItems } from 'future-butcher-web/fixtures/store-items';
 import { victoryQuotes } from 'future-butcher-web/fixtures/mugging-quotes';

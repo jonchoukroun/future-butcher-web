@@ -1,5 +1,5 @@
 import HomeScreenComponent from 'future-butcher-web/components/home/home-screen';
-import { action, computed } from '@ember-decorators/object';
+import { action, computed } from '@ember/object';
 
 export default class IntroScreenComponent extends HomeScreenComponent {
 
