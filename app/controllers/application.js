@@ -20,8 +20,10 @@ export default class ApplicationController extends Controller {
   get crtClass() {
     const idx = ['create-player', 'home', 'all-scores'].indexOf(this.get('currentRoute'));
     if (idx > -1) {
-      return "crt-grid";
+      return 'crt-grid';
     }
+
+    return '';
   }
 
   @computed('notifications.confirmationMessage')

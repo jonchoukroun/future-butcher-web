@@ -35,6 +35,8 @@ export default class ItemDetailsComponent extends Component {
       cuts.splice(cuts.length - 1, 0, "and");
       return cuts.join(" ");
     }
+
+    return false;
   }
 
   @computed('details.pack_space')
