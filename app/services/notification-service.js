@@ -20,8 +20,8 @@ export default class NotificationService extends Service {
   }
 
   pinNotification(message) {
-    if (this.get('pinnedMessage')) {
-      let messageQueue = this.get('messageQueue');
+    if (this.pinnedMessage) {
+      let messageQueue = this.messageQueue;
       messageQueue.push(message)
       this.set('messageQueue', messageQueue)
     } else {
@@ -33,8 +33,8 @@ export default class NotificationService extends Service {
     this.set('pinnedMessage', null);
 
     later(() => {
-      if (this.get('messageQueue').length) {
-        let messageQueue = this.get('messageQueue');
+      if (this.messageQueue.length) {
+        let messageQueue = this.messageQueue;
         const next_message = messageQueue.shift();
 
         this.pinNotification(next_message);
