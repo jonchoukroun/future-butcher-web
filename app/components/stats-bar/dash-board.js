@@ -17,15 +17,15 @@ export default class StatsBarComponent extends Component {
     const route      = this.get('router.currentRouteName');
 
     if (first_turn && !localStorage.getItem('closed-navigation-tutorial') && route === "subway") {
-      this.querySelector('#navigationDetails').slideToggle();
+      this.$('#navigationDetails').slideToggle();
     }
 
     if (first_turn && !localStorage.getItem('closed-funds-tutorial') && funds > 0) {
-      this.querySelector('#fundsDetails').slideToggle();
+      this.$('#fundsDetails').slideToggle();
     }
 
     if (this.get('isSecondTurn') && !localStorage.getItem('closed-debt-tutorial') && debt > 0) {
-      this.querySelector('#debtDetails').slideToggle();
+      this.$('#debtDetails').slideToggle();
     }
   }
 
@@ -81,24 +81,24 @@ export default class StatsBarComponent extends Component {
   @action
   closeNavigationTutorial() {
     localStorage.setItem('closed-navigation-tutorial', true);
-    this.querySelector('#navigationDetails').slideToggle();
+    this.$('#navigationDetails').slideToggle();
   }
 
   @action
   closeFundsTutorial() {
     localStorage.setItem('closed-funds-tutorial', true);
-    this.querySelector('#fundsDetails').slideToggle();
+    this.$('#fundsDetails').slideToggle();
   }
 
   @action
   closeDebtTutorial() {
     localStorage.setItem('closed-debt-tutorial', true);
-    this.querySelector('#debtDetails').slideToggle();
+    this.$('#debtDetails').slideToggle();
   }
 
   @action
   toggleStatsBar(selector) {
-    this.querySelector(selector).slideToggle();
+    this.$(selector).slideToggle();
   }
 
   @action
