@@ -144,10 +144,4 @@ export default class BuyMenu extends Component {
   submitBuyCut() {
     this.buyCut();
   }
-
-  didInsertElement() {
-    super.didInsertElement();
-    this.$('#buy-input').focus();
-  }
-
 }
