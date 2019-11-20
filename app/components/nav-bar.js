@@ -1,6 +1,6 @@
 import Component from '@ember/component';
-import { computed } from '@ember-decorators/object';
-import { service } from '@ember-decorators/service';
+import { computed } from '@ember/object';
+import { inject as service } from '@ember/service';
 import { classNames } from '@ember-decorators/component';
 
 @classNames('nav-bar', 'row', 'justify-content-center', 'bg-black')

@@ -52,7 +52,7 @@ export default class TitleScreenComponent extends Component {
     let sprite = document.getElementById('machete-sprite');
     sprite.style.display = 'block';
 
-    const offsetYLimit = this.get('element').offsetTop;
+    const offsetYLimit = this.element.offsetTop;
     let offsetX = sprite.offsetWidth / 2;
     let offsetY = sprite.offsetHeight;
     let rotate = 'rotate(45deg)';

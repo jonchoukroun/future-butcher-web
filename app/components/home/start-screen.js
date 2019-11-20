@@ -1,13 +1,13 @@
 import HomeScreenComponent from 'future-butcher-web/components/home/home-screen';
-import { action } from '@ember-decorators/object';
-import { service } from '@ember-decorators/service';
+import { action } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default class IntroScreenComponent extends HomeScreenComponent {
 
   @service('tracking-service') trackingService;
 
   didReceiveAttrs() {
-    this._super(...arguments);
+    super.didReceiveAttrs(...arguments);
 
     this.get('socket').getScores().then((response) => {
       const lowest_score = response.state_data[99].score;

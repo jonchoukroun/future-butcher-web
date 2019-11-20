@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { action, computed } from '@ember-decorators/object';
+import { action, computed } from '@ember/object';
 import { classNames } from '@ember-decorators/component';
 
 import { cutStats } from 'future-butcher-web/fixtures/cut-stats';

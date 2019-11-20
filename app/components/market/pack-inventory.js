@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { action, computed } from '@ember-decorators/object';
+import { action, computed } from '@ember/object';
 import { classNames } from '@ember-decorators/component';
 
 @classNames('pack-inventory', 'd-flex', 'flex-column', 'align-items-center', 'justify-content-between')

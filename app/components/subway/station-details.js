@@ -1,6 +1,6 @@
 import Component from '@ember/component';
-import { action, computed } from '@ember-decorators/object';
-import { service } from '@ember-decorators/service';
+import { action, computed } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default class StationDetailsComponent extends Component {
 
@@ -28,7 +28,7 @@ export default class StationDetailsComponent extends Component {
 
   @action
   selectStation() {
-    this.get('selectStation')(this.get('station.name'));
+    this.get('sendSelectStation')(this.get('station.name'));
   }
 
 }

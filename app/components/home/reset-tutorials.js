@@ -1,12 +1,12 @@
 import Component from '@ember/component';
-import { action } from '@ember-decorators/object';
+import { action } from '@ember/object';
 
 export default class ResetTutorialsComponent extends Component {
 
   isEnabled = false;
 
   didReceiveAttrs() {
-    this._super(...arguments);
+    super.didReceiveAttrs(...arguments);
 
     const debtTutorial = localStorage.getItem('closed-debt-tutorial');
     const fundsTutorial = localStorage.getItem('closed-funds-tutorial');

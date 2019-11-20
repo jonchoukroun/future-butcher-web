@@ -1,8 +1,7 @@
 import Component from '@ember/component';
-import { action, computed } from '@ember-decorators/object';
+import { action, computed } from '@ember/object';
+import { inject as service } from '@ember/service';
 import { classNames } from '@ember-decorators/component';
-import { service } from '@ember-decorators/service';
-import $ from 'jquery';
 
 @classNames('stats-bar', 'row', 'justify-content-center')
 export default class StatsBarComponent extends Component {
@@ -10,7 +9,7 @@ export default class StatsBarComponent extends Component {
   @service router;
 
   didInsertElement() {
-    this._super(...arguments);
+    super.didInsertElement(...arguments);
 
     const first_turn = this.get('isFirstTurn');
     const funds      = this.get('playerFunds');
@@ -18,15 +17,15 @@ export default class StatsBarComponent extends Component {
     const route      = this.get('router.currentRouteName');
 
     if (first_turn && !localStorage.getItem('closed-navigation-tutorial') && route === "subway") {
-      $('#navigationDetails').slideToggle();
+      this.$('#navigationDetails').slideToggle();
     }
 
     if (first_turn && !localStorage.getItem('closed-funds-tutorial') && funds > 0) {
-      $('#fundsDetails').slideToggle();
+      this.$('#fundsDetails').slideToggle();
     }
 
     if (this.get('isSecondTurn') && !localStorage.getItem('closed-debt-tutorial') && debt > 0) {
-      $('#debtDetails').slideToggle();
+      this.$('#debtDetails').slideToggle();
     }
   }
 
@@ -82,24 +81,24 @@ export default class StatsBarComponent extends Component {
   @action
   closeNavigationTutorial() {
     localStorage.setItem('closed-navigation-tutorial', true);
-    $('#navigationDetails').slideToggle();
+    this.$('#navigationDetails').slideToggle();
   }
 
   @action
   closeFundsTutorial() {
     localStorage.setItem('closed-funds-tutorial', true);
-    $('#fundsDetails').slideToggle();
+    this.$('#fundsDetails').slideToggle();
   }
 
   @action
   closeDebtTutorial() {
     localStorage.setItem('closed-debt-tutorial', true);
-    $('#debtDetails').slideToggle();
+    this.$('#debtDetails').slideToggle();
   }
 
   @action
   toggleStatsBar(selector) {
-    $(selector).slideToggle();
+    this.$(selector).slideToggle();
   }
 
   @action

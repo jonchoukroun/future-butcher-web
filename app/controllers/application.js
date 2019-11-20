@@ -1,6 +1,6 @@
 import Controller from '@ember/controller';
-import { action, computed } from '@ember-decorators/object';
-import { service } from '@ember-decorators/service';
+import { action, computed } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default class ApplicationController extends Controller {
 
@@ -20,8 +20,10 @@ export default class ApplicationController extends Controller {
   get crtClass() {
     const idx = ['create-player', 'home', 'all-scores'].indexOf(this.get('currentRoute'));
     if (idx > -1) {
-      return "crt-grid";
+      return 'crt-grid';
     }
+
+    return '';
   }
 
   @computed('notifications.confirmationMessage')

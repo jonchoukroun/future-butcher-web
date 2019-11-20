@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { action, computed } from '@ember-decorators/object';
+import { action, computed } from '@ember/object';
 
 export default class DebtDetailsComponent extends Component {
 
@@ -9,7 +9,7 @@ export default class DebtDetailsComponent extends Component {
 
   @computed('isSecondTurn', 'socket.stateData.rules.turns_left')
   get secondTurnHours() {
-    if (!this.get('isSecondTurn')) { return; }
+    if (!this.get('isSecondTurn')) { return false; }
 
     return 24 - this.get('socket.stateData.rules.turns_left');
   }

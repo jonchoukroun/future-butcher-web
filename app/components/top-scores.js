@@ -1,6 +1,6 @@
 import Component from '@ember/component';
-import { computed, observes } from '@ember-decorators/object';
-import { service } from '@ember-decorators/service';
+import { computed } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default class TopScoresComponent extends Component {
 
@@ -26,7 +26,7 @@ export default class TopScoresComponent extends Component {
     const scores = this.get('scores');
     return [2, 1].map(n => {
       let rank = this.get('playerScoreIndex') - n;
-      if (rank < 0) { return; }
+      if (rank < 0) { return []; }
 
       let obj = new Object;
       obj.player = scores[rank].player;
@@ -54,8 +54,15 @@ export default class TopScoresComponent extends Component {
 
   @computed('playerScore', 'highestScore')
   get isHighestScore() {
-    return this.get('playerScore') === this.get('highestScore.score') &&
+    const isHighestScore = this.get('playerScore') === this.get('highestScore.score') &&
       this.get('playerName') === this.get('highestScore.player');
+
+    if (isHighestScore) {
+      const payload = { high_score: this.get('playerScore') };
+      this.get('trackingService').trackEvent('Set new high score', payload);
+    }
+
+    return isHighestScore;
   }
 
   @computed('playerScore', 'lowestScore')
@@ -63,16 +70,8 @@ export default class TopScoresComponent extends Component {
     return this.get('playerScore') < this.get('lowestScore');
   }
 
-  @observes('isHighestScore')
-  trackSetRecord() {
-    if (this.get('isHighestScore')) {
-      const payload = { high_score: this.get('playerScore') };
-      this.get('trackingService').trackEvent('Set new high score', payload);
-    }
-  }
-
   didReceiveAttrs() {
-    this._super(...arguments);
+    super.didReceiveAttrs(...arguments);
 
     this.set('playerName', localStorage.getItem('player_name'));
     this.set('playerScore', parseInt(localStorage.getItem('player_score')));

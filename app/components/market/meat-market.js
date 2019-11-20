@@ -1,6 +1,6 @@
 import Component from '@ember/component';
-import { action, computed } from '@ember-decorators/object';
-import { service } from '@ember-decorators/service';
+import { action, computed } from '@ember/object';
+import { inject as service } from '@ember/service';
 import { later } from '@ember/runloop';
 
 export default class MeatMarketComponent extends Component {
@@ -13,12 +13,12 @@ export default class MeatMarketComponent extends Component {
   @service('notification-service') notifications;
 
   didReceiveAttrs() {
-    this._super(...arguments);
+    super.didReceiveAttrs(...arguments);
   }
 
   @computed('gameStatus', 'socket.stateData.station.market')
   get marketCuts() {
-    if (this.get('socket.gameStatus') !== 'in_game') { return; }
+    if (this.get('socket.gameStatus') !== 'in_game') { return false; }
     return this.get('socket.stateData.station.market');
   }
 

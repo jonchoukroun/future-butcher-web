@@ -3,8 +3,6 @@ import Route from '@ember/routing/route'
 export default class HomeRoute extends Route {
 
   beforeModel() {
-    this._super(...arguments);
-
     const playerName = localStorage.getItem('player_name');
     const playerHash = localStorage.getItem('player_hash');
 
@@ -16,7 +14,7 @@ export default class HomeRoute extends Route {
   }
 
   setupController(controller) {
-    this._super(...arguments);
+    super.setupController(...arguments);
 
     if (localStorage.getItem('player_score')) {
       controller.set('screen', 'intro');

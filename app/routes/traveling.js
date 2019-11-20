@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route';
-import { service } from '@ember-decorators/service';
+import { inject as service } from '@ember/service';
 import { later } from '@ember/runloop';
 
 import { cutStats } from 'future-butcher-web/fixtures/cut-stats';
@@ -10,8 +10,6 @@ export default class TravelingRoute extends Route {
   @service('notification-service') notifications;
 
   beforeModel() {
-    this._super(...arguments);
-
     this.handleAnimation();
     this.handleTimingNotifications();
     this.handleSurgeNotifications();
