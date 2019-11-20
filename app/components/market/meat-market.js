@@ -18,7 +18,7 @@ export default class MeatMarketComponent extends Component {
 
   @computed('gameStatus', 'socket.stateData.station.market')
   get marketCuts() {
-    if (this.get('socket.gameStatus') !== 'in_game') { return; }
+    if (this.get('socket.gameStatus') !== 'in_game') { return false; }
     return this.get('socket.stateData.station.market');
   }
 
