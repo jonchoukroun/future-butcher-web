@@ -28,7 +28,7 @@ export default class StationDetailsComponent extends Component {
 
   @action
   selectStation() {
-    this.get('selectStation')(this.get('station.name'));
+    this.get('sendSelectStation')(this.get('station.name'));
   }
 
 }
