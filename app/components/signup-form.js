@@ -1,4 +1,5 @@
 import Component from '@ember/component';
+import jQuery from 'jquery';
 import { action, computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { classNames } from '@ember-decorators/component';
@@ -64,7 +65,7 @@ export default class SignupFormComponent extends Component {
 
   didInsertElement() {
     super.didInsertElement();
-    this.$('#player-name').focus();
+    jQuery('#player-name').focus();
   }
 
 }

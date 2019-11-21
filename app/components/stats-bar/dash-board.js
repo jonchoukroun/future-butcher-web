@@ -1,4 +1,5 @@
 import Component from '@ember/component';
+import jQuery from 'jquery';
 import { action, computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { classNames } from '@ember-decorators/component';
@@ -17,15 +18,15 @@ export default class StatsBarComponent extends Component {
     const route      = this.get('router.currentRouteName');
 
     if (first_turn && !localStorage.getItem('closed-navigation-tutorial') && route === "subway") {
-      this.$('#navigationDetails').slideToggle();
+      jQuery('#navigationDetails').slideToggle();
     }
 
     if (first_turn && !localStorage.getItem('closed-funds-tutorial') && funds > 0) {
-      this.$('#fundsDetails').slideToggle();
+      jQuery('#fundsDetails').slideToggle();
     }
 
     if (this.get('isSecondTurn') && !localStorage.getItem('closed-debt-tutorial') && debt > 0) {
-      this.$('#debtDetails').slideToggle();
+      jQuery('#debtDetails').slideToggle();
     }
   }
 
@@ -81,24 +82,24 @@ export default class StatsBarComponent extends Component {
   @action
   closeNavigationTutorial() {
     localStorage.setItem('closed-navigation-tutorial', true);
-    this.$('#navigationDetails').slideToggle();
+    jQuery('#navigationDetails').slideToggle();
   }
 
   @action
   closeFundsTutorial() {
     localStorage.setItem('closed-funds-tutorial', true);
-    this.$('#fundsDetails').slideToggle();
+    jQuery('#fundsDetails').slideToggle();
   }
 
   @action
   closeDebtTutorial() {
     localStorage.setItem('closed-debt-tutorial', true);
-    this.$('#debtDetails').slideToggle();
+    jQuery('#debtDetails').slideToggle();
   }
 
   @action
   toggleStatsBar(selector) {
-    this.$(selector).slideToggle();
+    jQuery(selector).slideToggle();
   }
 
   @action

@@ -1,4 +1,5 @@
 import Component from '@ember/component';
+import jQuery from 'jquery';
 import { action, computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { later } from '@ember/runloop';
@@ -56,11 +57,11 @@ export default class MeatMarketComponent extends Component {
 
   @action
   closeBuyMenu() {
-    this.$('.buy-menu').addClass('terminal-close');
+    jQuery('.buy-menu').addClass('terminal-close');
     later(() => {
       this.set('showBuyForm', false);
       this.set('buyingCut', null);
-      this.$('.buy-menu').removeClass('terminal-close');
+      jQuery('.buy-menu').removeClass('terminal-close');
     }, 300);
   }
 
@@ -74,11 +75,11 @@ export default class MeatMarketComponent extends Component {
 
   @action
   closeSellMenu() {
-    this.$('.sell-menu').addClass('terminal-close');
+    jQuery('.sell-menu').addClass('terminal-close');
     later(() => {
       this.set('showSellForm', false);
       this.set('sellingCut', null);
-      this.$('.sell-menu').removeClass('terminal-close');
+      jQuery('.sell-menu').removeClass('terminal-close');
     }, 300);
   }
 
@@ -91,10 +92,10 @@ export default class MeatMarketComponent extends Component {
 
   @action
   closeInventory() {
-    this.$('.pack-inventory').addClass('terminal-close');
+    jQuery('.pack-inventory').addClass('terminal-close');
     later(() => {
       this.set('showInventory', false);
-      this.$('.pack-inventory').removeClass('terminal-close');
+      jQuery('.pack-inventory').removeClass('terminal-close');
     }, 300);
   }
 
