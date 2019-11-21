@@ -8,8 +8,8 @@ export default class MuggingInterfaceComponent extends Component {
 
   inFight = false;
 
-  constructor() {
-    super(...arguments);
+  init() {
+    super.init(...arguments);
 
     this.set('muggerName', this.getRandomName());
 
