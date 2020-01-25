@@ -18,7 +18,7 @@ module.exports = function(environment) {
     },
 
     sentry: {
-      dsn: "https://8809bb8c7dc0466cbfef54ec16c730de@sentry.io/1341103"
+      dsn: process.env.SENTRY_DSN
     },
 
     APP: {
@@ -45,7 +45,7 @@ module.exports = function(environment) {
 
     ENV['ember-logging-amplitude'] = {
       enabled: true,
-      apiKey: '06aa670dce5ece2db0701876c1530203',
+      apiKey: process.env.AMPLITUDE_API_KEY,
       amplitudeConfig: {},
       tags: ['user', 'gameplay']
     }
@@ -64,7 +64,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'semilocal') {
-    ENV.api_url = 'wss://api.futurebutcher.com:4000/socket';
+    ENV.api_url = process.env.API_HOST;
 
     ENV['ember-logging-service'] = {
       enabled: true,
@@ -73,7 +73,7 @@ module.exports = function(environment) {
 
     ENV['ember-logging-amplitude'] = {
       enabled: true,
-      apiKey: '06aa670dce5ece2db0701876c1530203',
+      apiKey: process.env.AMPLITUDE_API_KEY,
       amplitudeConfig: {},
       tags: ['user', 'gameplay']
     }
@@ -89,7 +89,7 @@ module.exports = function(environment) {
 
     ENV['ember-logging-amplitude'] = {
       enabled: true,
-      apiKey: '83122e013ff15ff5211b333d82f8ea8d',
+      apiKey: process.env.AMPLITUDE_API_KEY,
       amplitudeConfig: {},
       tags: ['user', 'gameplay']
     }
