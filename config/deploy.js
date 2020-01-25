@@ -18,15 +18,15 @@ module.exports = function(deployTarget) {
   ENV['s3'] = {
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-    bucket: 'futurebutcher.com',
-    region: 'us-west-1'
+    bucket: process.env.S3_BUCKET_NAME,
+    region: process.env.S3_BUCKET_REGION
   };
 
   ENV['s3-index'] = {
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-    bucket: 'futurebutcher.com',
-    region: 'us-west-1'
+    bucket: process.env.S3_BUCKET_NAME,
+    region: process.env.S3_BUCKET_REGION
   };
 
   return ENV;
