@@ -48,6 +48,12 @@
   font-family: 'Jura';
 }
 
+@media (max-width: 350px) {
+  .digital-text-large {
+    font-size: 24px;
+  }
+}
+
 
 // Backgrounds -----------------------------------------------------------------
 

@@ -71,6 +71,13 @@ h5.page-title {
   text-transform: uppercase;
 }
 
+@media (max-width: 350px) {
+  h4 { font-size: 16px; }
+  h5 { font-size: 15px; }
+  h6 { font-size: 14px; }
+  p { font-size: 0.8rem; }
+}
+
 // Inputs ----------------------------------------------------------------------
 
 input.form-control {
@@ -302,6 +309,31 @@ button {
   }
 }
 
+@media (max-width: 350px) {
+  .btn-secondary {
+    font-size: 18px;
+    padding: 5px 8px;
+  }
+  .btn-primary {
+    font-size: 20px;
+    padding: 5px;
+  }
+
+  // .btn-secondary {
+  //   font-size: 20px;
+  //   padding: 5px;
+  // }
+
+  .btn-simple {
+    font-size: 20px;
+    padding: 5px;
+  }
+
+  .btn-plain h2 {
+    font-size: 24px;
+  }
+}
+
 
 // Cards -----------------------------------------------------------------------
 
@@ -376,6 +408,12 @@ button {
   padding-left: 0;
   padding-right: 0;
   border: none;
+}
+
+@media (max-width: 350px) {
+  .list-group-item {
+    margin-bottom: 2px !important;
+  }
 }
 
 .crt-grid {
