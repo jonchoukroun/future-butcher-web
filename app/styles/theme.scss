@@ -74,7 +74,7 @@ h5.page-title {
   h4 { font-size: 16px; }
   h5 { font-size: 15px; }
   h6 { font-size: 13px; }
-  p { font-size: 12px; }
+  p { font-size: 14px; }
 }
 
 // Inputs ----------------------------------------------------------------------
@@ -407,9 +407,7 @@ button {
 }
 
 @media (max-width: 425px) {
-  .list-group-item {
-    // margin-bottom: 2px !important;
-  }
+  .top-spacer { padding-top: 50px; }
 }
 
 .crt-grid {
