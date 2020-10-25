@@ -21,14 +21,25 @@
       {{else}}
         <div class="d-flex flex-column">
           <div class="d-flex w-100 mb-0 mb-lg-1 justify-content-center">
-            <h5 class="page-title">Destinations</h5>
+            <h5
+              class="page-title"
+            >
+              Destinations
+              <span class="d-inline d-sm-none">
+                <button class="btn btn-plain" {{action "toggleHelpScreen"}}>
+                  <h2 class="m-0 text-secondary">
+                    <i class="far fa-question-circle"></i>
+                  </h2>
+                </button>
+              </span>
+            </h5>
           </div>
 
           <div id="subway-stations-menu">
             {{subway/subway-stations sendStation=(action "navigate")}}
           </div>
 
-          <div class="row d-flex justify-content-center mt-2 mt-sm-0">
+          <div class="row d-none d-sm-flex justify-content-center mt-2 mt-sm-0">
             <div class="col-4 d-flex align-items-center justify-content-center">
               <button class="btn btn-plain" {{action "toggleHelpScreen"}}>
                 <h2 class="m-0 text-secondary">
