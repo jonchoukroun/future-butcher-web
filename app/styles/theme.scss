@@ -65,17 +65,16 @@ p {
 
 h5.page-title {
   display: inline;
-  margin-bottom: 1em;
   padding-bottom: 0.25em;
   border-bottom: 1px solid $brand-dark;
   text-transform: uppercase;
 }
 
-@media (max-width: 350px) {
+@media (max-width: 425px) {
   h4 { font-size: 16px; }
   h5 { font-size: 15px; }
-  h6 { font-size: 14px; }
-  p { font-size: 0.8rem; }
+  h6 { font-size: 13px; }
+  p { font-size: 12px; }
 }
 
 // Inputs ----------------------------------------------------------------------
@@ -136,7 +135,6 @@ button {
 
   &:hover {
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-    transform: translateY(-2px);
   }
 }
 
@@ -171,8 +169,8 @@ button {
   line-height: 1.5rem;
 
   &:hover, &:active, &:focus {
-    background-color: inherit !important;
-    color: $brand-primary !important;
+    background-color: $brand-secondary !important;
+    color: $brand-black !important;
     border-color: $brand-primary !important;
   }
 }
@@ -182,10 +180,12 @@ button {
   border-color: rgba($brand-primary, 0.5);
   color: rgba($brand-primary, 0.5);
   font-style: italic;
+  cursor: default !important;
 
   &:hover, &:active, &:focus {
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24) !important;
     transform: translateY(0) !important;
+    background-color: $brand-black !important;
     color: rgba($brand-primary, 0.5) !important;
     border-color: rgba($brand-primary, 0.5) !important;
   }
@@ -309,20 +309,16 @@ button {
   }
 }
 
-@media (max-width: 350px) {
-  .btn-secondary {
-    font-size: 18px;
-    padding: 5px 8px;
-  }
+@media (max-width: 425px) {
   .btn-primary {
     font-size: 20px;
     padding: 5px;
   }
 
-  // .btn-secondary {
-  //   font-size: 20px;
-  //   padding: 5px;
-  // }
+  .btn-secondary {
+    font-size: 18px;
+    padding: 5px 8px;
+  }
 
   .btn-simple {
     font-size: 20px;
@@ -410,9 +406,9 @@ button {
   border: none;
 }
 
-@media (max-width: 350px) {
+@media (max-width: 425px) {
   .list-group-item {
-    margin-bottom: 2px !important;
+    // margin-bottom: 2px !important;
   }
 }
 

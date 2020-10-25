@@ -48,9 +48,13 @@
   font-family: 'Jura';
 }
 
-@media (max-width: 350px) {
+@media (max-width: 425px) {
   .digital-text-large {
     font-size: 24px;
+  }
+
+  .digital-text {
+    font-size: 20px;
   }
 }
 
